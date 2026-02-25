@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+# Unity specific
+*.cs text eol=lf
+*.shader text eol=lf
+*.cginc text eol=lf
+*.asset text eol=lf
+*.meta text eol=lf
+*.unity text eol=lf
+*.prefab text eol=lf
+*.mat text eol=lf
