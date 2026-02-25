@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 public class HandAnimatorController : MonoBehaviour
 {
     [Header("Input Action References")]
-    public InputActionReference triggerValue;
-    public InputActionReference gripValue;
+    [SerializeField] private InputActionReference triggerValue;
+    [SerializeField] private InputActionReference gripValue;
 
     private Animator handAnimator;
     
