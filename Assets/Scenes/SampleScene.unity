@@ -725,7 +725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.XR.Interaction.Toolkit::UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement.ContinuousMoveProvider
   m_Mediator: {fileID: 926361721}
   m_TransformationPriority: 0
-  m_MoveSpeed: 1
+  m_MoveSpeed: 1.5
   m_InAirControlModifier: 0.5
   m_EnableStrafe: 1
   m_EnableFly: 0
@@ -869,9 +869,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071c6fd6b85e14948a50989166114585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerVMovementController
-  moveSpeed: 1
+  vMoveSpeed: 1.5
+  sprintMultiplier: 2
   leftTriggerValue: {fileID: -4289430672226363583, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   leftGripValue: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  leftScaleToggle: {fileID: -335775248641796371, guid: c348712bda248c246b8c49b3db54643f, type: 3}
 --- !u!4 &958964898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8270855663187062767, guid: 1392f805216c47742996d4742c80721c, type: 3}
