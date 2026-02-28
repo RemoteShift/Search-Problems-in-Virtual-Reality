@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class LeftHandLocomotionInput : MonoBehaviour
+public class LeftControllerLocomotionInput : MonoBehaviour
 {
     private VRInputHandler _inputHandler;
     private PlayerLocomotion _playerLocomotion;
@@ -24,6 +24,7 @@ public class LeftHandLocomotionInput : MonoBehaviour
         _inputHandler.OnLeftGripValueChanged -= HandleVDownInput;
         
         _playerLocomotion.SetVUpInput(0f);
+        _playerLocomotion.SetVDownInput(0f);
     }
 
     private void HandleVUpInput(float value)
