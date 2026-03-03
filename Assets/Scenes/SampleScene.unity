@@ -621,6 +621,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 971801825}
     m_Modifications:
+    - target: {fileID: 22222873188720562, guid: 07d0bbb23d50fb548affdf492f28729d, type: 3}
+      propertyPath: leftUIPress
+      value: 
+      objectReference: {fileID: -6395602842196007441, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 22222873188720562, guid: 07d0bbb23d50fb548affdf492f28729d, type: 3}
+      propertyPath: leftMoveValue
+      value: 
+      objectReference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 22222873188720562, guid: 07d0bbb23d50fb548affdf492f28729d, type: 3}
+      propertyPath: leftScalePress
+      value: 
+      objectReference: {fileID: -335775248641796371, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 22222873188720562, guid: 07d0bbb23d50fb548affdf492f28729d, type: 3}
+      propertyPath: leftScaleValue
+      value: 
+      objectReference: {fileID: 6972639530819350904, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 1149405525773355359, guid: 07d0bbb23d50fb548affdf492f28729d, type: 3}
       propertyPath: m_Name
       value: VR Input Handler

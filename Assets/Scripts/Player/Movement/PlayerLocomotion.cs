@@ -14,34 +14,23 @@ public class PlayerLocomotion : Singleton<PlayerLocomotion>
     private float _vDownInput;
     
     public float sprintMultiplier = 2f;
+    private bool _isSprinting;
     
     private float _initialMoveSpeed;
     
-    [Header("Input Action References")]
-    [SerializeField] private InputActionReference leftScaleToggle;
-    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Start()
     {
         _characterController = GetComponent<CharacterController>();
         _continuousMoveProvider = GetComponent<ContinuousMoveProvider>();
         _initialMoveSpeed = _continuousMoveProvider.moveSpeed;
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (leftScaleToggle.action.IsPressed())
-        {
-            _continuousMoveProvider.moveSpeed =  _initialMoveSpeed * sprintMultiplier;
-        }
-        else
-        {
-            _continuousMoveProvider.moveSpeed = _initialMoveSpeed;
-        }
-        
         var moveDir = new Vector3(0, _vUpInput - _vDownInput , 0);
 
+        
         _characterController.Move(moveDir * (vMoveSpeed * Time.fixedDeltaTime));
     }
     
@@ -53,5 +42,17 @@ public class PlayerLocomotion : Singleton<PlayerLocomotion>
     public void SetVDownInput(float value)
     {
         _vDownInput = value;
+    }
+
+    public void ToggleSprint()
+    {
+        _isSprinting = !_isSprinting;
+        _continuousMoveProvider.moveSpeed = _isSprinting ? _initialMoveSpeed * sprintMultiplier : _initialMoveSpeed;
+    }
+
+    public void SetSprintState(bool isSprinting)
+    {
+        _isSprinting = isSprinting;
+        _continuousMoveProvider.moveSpeed = _isSprinting ? _initialMoveSpeed * sprintMultiplier : _initialMoveSpeed;
     }
 }

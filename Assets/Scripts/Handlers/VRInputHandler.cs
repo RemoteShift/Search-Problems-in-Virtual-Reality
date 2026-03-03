@@ -1,23 +1,27 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using System.Numerics;
+using UnityEngine.Serialization;
+using Vector2 = UnityEngine.Vector2;
 
 public class VRInputHandler : Singleton<VRInputHandler>
 {
     [Header("Left Hand Inputs")]
     [SerializeField] private InputActionReference leftTriggerValue;
     [SerializeField] private InputActionReference leftGripValue;
+    [SerializeField] private InputActionReference leftScalePress;
+    [SerializeField] private InputActionReference leftMoveValue;
+    [SerializeField] private InputActionReference leftUIPress;
     [Header("Right Hand Inputs")]
     [SerializeField] private InputActionReference rightTriggerValue;
     [SerializeField] private InputActionReference rightGripValue;
     
-    public float LeftTriggerValue { get; private set; }
-    public float LeftGripValue { get; private set; }
-    public float RightTriggerValue { get; private set; }
-    public float RightGripValue { get; private set; }
-    
     public event Action<float> OnLeftTriggerValueChanged;
     public event Action<float> OnLeftGripValueChanged;
+    public event Action<bool> OnLeftScalePressChanged;
+    public event Action<Vector2> OnLeftMoveValueChanged;
+    public event Action<bool> OnLeftUIPressChanged;
     public event Action<float> OnRightTriggerValueChanged;
     public event Action<float> OnRightGripValueChanged;
 
@@ -25,6 +29,9 @@ public class VRInputHandler : Singleton<VRInputHandler>
     {
         leftTriggerValue.action.Enable();
         leftGripValue.action.Enable();
+        leftScalePress.action.Enable();
+        leftMoveValue.action.Enable();
+        leftUIPress.action.Enable();
         rightTriggerValue.action.Enable();
         rightGripValue.action.Enable();
         
@@ -37,6 +44,15 @@ public class VRInputHandler : Singleton<VRInputHandler>
         leftGripValue.action.canceled += HandleLeftGrip;
         rightGripValue.action.performed += HandleRightGrip;
         rightGripValue.action.canceled += HandleRightGrip;
+
+        leftScalePress.action.performed += HandleLeftScalePress;
+        leftScalePress.action.canceled += HandleLeftScalePress;
+        
+        leftMoveValue.action.performed += HandleLeftMoveValue;
+        leftMoveValue.action.canceled += HandleLeftMoveValue;
+
+        leftUIPress.action.performed += HandleLeftUIPress;
+        leftUIPress.action.canceled += HandleLeftUIPress;
     }
 
     private void OnDisable()
@@ -51,33 +67,56 @@ public class VRInputHandler : Singleton<VRInputHandler>
         rightGripValue.action.performed -= HandleRightGrip;
         rightGripValue.action.canceled -= HandleRightGrip;
         
+        leftScalePress.action.performed -= HandleLeftScalePress;
+        leftScalePress.action.canceled -= HandleLeftScalePress;
+        
+        leftMoveValue.action.performed -= HandleLeftMoveValue;
+        leftMoveValue.action.canceled -= HandleLeftMoveValue;
+
+        leftUIPress.action.performed -= HandleLeftUIPress;
+        leftUIPress.action.canceled -= HandleLeftUIPress;
+        
         leftTriggerValue.action.Disable();
         leftGripValue.action.Disable();
+        leftScalePress.action.Disable();
+        leftMoveValue.action.Disable();
+        leftUIPress.action.Disable();
         rightTriggerValue.action.Disable();
         rightGripValue.action.Disable();
     }
     
     private void HandleLeftTrigger(InputAction.CallbackContext ctx)
     {
-        LeftTriggerValue = ctx.ReadValue<float>();
-        OnLeftTriggerValueChanged?.Invoke(LeftTriggerValue);
+        OnLeftTriggerValueChanged?.Invoke(ctx.ReadValue<float>());
     }
 
     private void HandleLeftGrip(InputAction.CallbackContext ctx)
     {
-        LeftGripValue = ctx.ReadValue<float>();
-        OnLeftGripValueChanged?.Invoke(LeftGripValue);
+        OnLeftGripValueChanged?.Invoke(ctx.ReadValue<float>());
+    }
+    
+    private void HandleLeftScalePress(InputAction.CallbackContext ctx)
+    {
+        OnLeftScalePressChanged?.Invoke(ctx.ReadValueAsButton());
+    }
+    
+    private void HandleLeftMoveValue(InputAction.CallbackContext ctx)
+    {
+        OnLeftMoveValueChanged?.Invoke(ctx.ReadValue<Vector2>());
+    }
+    
+    private void HandleLeftUIPress(InputAction.CallbackContext ctx)
+    {
+        OnLeftUIPressChanged?.Invoke(ctx.ReadValueAsButton());
     }
     
     private void HandleRightTrigger(InputAction.CallbackContext ctx)
     {
-        RightTriggerValue = ctx.ReadValue<float>();
-        OnRightTriggerValueChanged?.Invoke(RightTriggerValue);
+        OnRightTriggerValueChanged?.Invoke(ctx.ReadValue<float>());
     }
     
     private void HandleRightGrip(InputAction.CallbackContext ctx)
     {
-        RightGripValue = ctx.ReadValue<float>();
-        OnRightGripValueChanged?.Invoke(RightGripValue);
+        OnRightGripValueChanged?.Invoke(ctx.ReadValue<float>());
     }
 }

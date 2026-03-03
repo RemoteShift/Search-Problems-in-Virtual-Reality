@@ -3,11 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Rendering Pipeline.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Rendering Pipeline.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Rendering Pipeline_Renderer.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Rendering Pipeline_Renderer.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Handlers/VRInputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Handlers/VRInputHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/HandControllerToggler.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/HandControllerToggler.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerLocomotionInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerLocomotionInput.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerLocomotionInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerLocomotionInput.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Hands/RightControllerLocomotionInput.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Hands/RightControllerLocomotionInput.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Movement/PlayerLocomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Movement/PlayerLocomotion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/two.mp4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/two.mp4.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,13 +38,15 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/RightControllerLocomotionInput.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@a6e30d1f59f5/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@5f736ad4ccd8/Runtime/Interaction/XRInteractionManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@5f736ad4ccd8/Runtime/Locomotion/LocomotionProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@5f736ad4ccd8/Runtime/Locomotion/Movement/ContinuousMoveProvider.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRLoader.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRRestarter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/allou/OneDrive/Desktop/Unity Projects/VR-Bachelor/ProjectSettings/GraphicsSettings.asset" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -111,6 +120,7 @@
       <workItem from="1772105503733" duration="4596000" />
       <workItem from="1772193416636" duration="8093000" />
       <workItem from="1772274203165" duration="2215000" />
+      <workItem from="1772546742646" duration="6873000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -152,7 +162,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772201854963</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add RightControllerLocomotionInput class and associated prefab for right-hand locomotion input handling">
+      <option name="closed" value="true" />
+      <created>1772563309368</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1772563309368</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -184,7 +202,8 @@
     <MESSAGE value="Added Sprinting" />
     <MESSAGE value="Added direct grabbing functionality" />
     <MESSAGE value="Added `Singleton` Utility script  &amp; `VRInputHandler`, `LeftControllerLocomotionInput` &amp; Renamed `PlayerMovementController` to `PlayerLocomotion` &amp; Made them all Singleton.&#10;&#10;Added Left Hand" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added `Singleton` Utility script  &amp; `VRInputHandler`, `LeftControllerLocomotionInput` &amp; Renamed `PlayerMovementController` to `PlayerLocomotion` &amp; Made them all Singleton.&#10;&#10;Added Left Hand" />
+    <MESSAGE value="Add RightControllerLocomotionInput class and associated prefab for right-hand locomotion input handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add RightControllerLocomotionInput class and associated prefab for right-hand locomotion input handling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
