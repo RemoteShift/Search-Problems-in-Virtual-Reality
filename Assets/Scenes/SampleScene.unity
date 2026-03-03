@@ -495,6 +495,52 @@ Transform:
   - {fileID: 832575519}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1550845100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8956832404056751885, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
+  m_PrefabInstance: {fileID: 2718197804802517749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1550845103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550845100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d385e73db6ae2f48827f13f02da035c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LeftControllerUI
+  controllerCanvas: {fileID: 1576514778}
+--- !u!1 &1576514778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9054380528060682191, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
+  m_PrefabInstance: {fileID: 2718197804802517749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1762966468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8015050022695305634, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
+  m_PrefabInstance: {fileID: 2718197804802517749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1797675696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4244493321408299907, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
+  m_PrefabInstance: {fileID: 2718197804802517749}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1797675699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797675696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d385e73db6ae2f48827f13f02da035c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LeftControllerUI
+  controllerCanvas: {fileID: 1762966468}
 --- !u!1001 &1277631181608030781
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -600,18 +646,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 800004267634089034, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1269729002918279922, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
       propertyPath: m_InteractionManager
       value: 
       objectReference: {fileID: 475568223}
+    - target: {fileID: 2023617173554619032, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5550803319741804817, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7111181463977154052, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
       propertyPath: m_Name
       value: XR Origin
       objectReference: {fileID: 0}
+    - target: {fileID: 8956832404056751885, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8956832404056751885, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1550845103}
+    - targetCorrespondingSourceObject: {fileID: 4244493321408299907, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1797675699}
   m_SourcePrefab: {fileID: 100100000, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
 --- !u!1001 &8295422763225969519
 PrefabInstance:
@@ -625,6 +693,10 @@ PrefabInstance:
       propertyPath: leftUIPress
       value: 
       objectReference: {fileID: -6395602842196007441, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+    - target: {fileID: 22222873188720562, guid: 07d0bbb23d50fb548affdf492f28729d, type: 3}
+      propertyPath: leftMenuPress
+      value: 
+      objectReference: {fileID: 6708344170739061854, guid: c348712bda248c246b8c49b3db54643f, type: 3}
     - target: {fileID: 22222873188720562, guid: 07d0bbb23d50fb548affdf492f28729d, type: 3}
       propertyPath: leftMoveValue
       value: 
