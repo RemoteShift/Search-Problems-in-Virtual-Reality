@@ -648,7 +648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 800004267634089034, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1269729002918279922, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
       propertyPath: m_InteractionManager
@@ -656,17 +656,25 @@ PrefabInstance:
       objectReference: {fileID: 475568223}
     - target: {fileID: 2023617173554619032, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5550803319741804817, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7111181463977154052, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
       propertyPath: m_Name
       value: XR Origin
       objectReference: {fileID: 0}
+    - target: {fileID: 8015050022695305634, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8956832404056751885, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9054380528060682191, guid: 1c35df61e7c46004cbc36bc123c7ded0, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
