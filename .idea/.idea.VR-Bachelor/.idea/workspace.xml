@@ -2,10 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/New Material.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/New Material.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Controls/Left.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Controls/Left.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/XR Origin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/XR Origin.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/HandVisualizer.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/HandVisualizer.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Materials.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Materials.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Materials/HandsDefaultMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Materials/HandsDefaultMaterial.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Materials/HandsDefaultMaterial.mat.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Materials/HandsDefaultMaterial.mat.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Models.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Models.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Models/LeftHand.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Models/LeftHand.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Models/RightHand.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Models/RightHand.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Prefabs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Prefabs/Left Hand Tracking.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Prefabs/Left Hand Tracking.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Prefabs/Left Hand Tracking.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Prefabs/Left Hand Tracking.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Prefabs/Right Hand Tracking.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Prefabs/Right Hand Tracking.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Prefabs/Right Hand Tracking.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3/HandVisualizer/Prefabs/Right Hand Tracking.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.3.1/Starter Assets/DemoSceneAssets/Prefabs/UI/Interactive Controls.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/3.3.1/Starter Assets/DemoSceneAssets/Prefabs/UI/Interactive Controls.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXRPackageSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXRPackageSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,12 +49,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Settings/Performance URP Config.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@a6e30d1f59f5/Shaders/Lit.shader" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@5f736ad4ccd8/Runtime/Interaction/XRInteractionManager.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@5f736ad4ccd8/Runtime/Locomotion/LocomotionProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@5f736ad4ccd8/Runtime/Locomotion/Movement/ContinuousMoveProvider.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRLoader.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.openxr@ef0033a586bf/Runtime/OpenXRRestarter.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -117,6 +126,9 @@
       <workItem from="1772546742646" duration="8567000" />
       <workItem from="1772628004351" duration="3393000" />
       <workItem from="1772796559576" duration="3378000" />
+      <workItem from="1772807690258" duration="1690000" />
+      <workItem from="1772882224116" duration="2398000" />
+      <workItem from="1772894356796" duration="410000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -198,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772796826523</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added scrollview with VR Inputs and ray interactor.">
+      <option name="closed" value="true" />
+      <created>1772808473045</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1772808473045</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -235,7 +255,8 @@
     <MESSAGE value="Added UI Element with toggle on left controller menu button" />
     <MESSAGE value="Update graphics and quality settings, modify render pipeline configurations, and adjust scene object activation states" />
     <MESSAGE value="ionno.&#10;world space UI and UI Toolkit experimenting" />
-    <option name="LAST_COMMIT_MESSAGE" value="ionno.&#10;world space UI and UI Toolkit experimenting" />
+    <MESSAGE value="Added scrollview with VR Inputs and ray interactor." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added scrollview with VR Inputs and ray interactor." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
