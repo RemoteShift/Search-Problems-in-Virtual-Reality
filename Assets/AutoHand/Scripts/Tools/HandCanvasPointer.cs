@@ -61,7 +61,7 @@ namespace Autohand
         {
             get
             {
-                if (cam == null)
+                if (!cam)
                 {
                     cam = new GameObject("Camera Canvas Pointer (I AM CREATED AT RUNTIME FOR UI CANVAS INTERACTION, I AM NOT RENDERING ANYTHING, I AM NOT CREATING ADDITIONAL OVERHEAD)").AddComponent<Camera>();
                     cam.clearFlags = CameraClearFlags.Nothing;
