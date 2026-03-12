@@ -5,10 +5,16 @@ public class LeftControllerUI : MonoBehaviour
     private VRInputHandler _inputHandler;
     
     [SerializeField] private GameObject controllerCanvas;
+    [SerializeField] private Rigidbody rb;
+    private Vector3 _initialCanvasPosition;
 
     private void Awake()
     {
         _inputHandler = VRInputHandler.Instance;
+        if (controllerCanvas)
+        {
+            _initialCanvasPosition = controllerCanvas.transform.localPosition;
+        }
     }
     
     private void OnEnable()
@@ -24,7 +30,17 @@ public class LeftControllerUI : MonoBehaviour
 
     private void HandleUIToggle(bool isPressed)
     {
-        if(isPressed)
+        if (isPressed)
+        {
             controllerCanvas.SetActive(!controllerCanvas.activeSelf);
+            if (controllerCanvas.activeSelf)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.isKinematic = true;
+                controllerCanvas.transform.SetParent(transform);
+                controllerCanvas.transform.SetLocalPositionAndRotation(_initialCanvasPosition, Quaternion.Euler(22, -84, 2));
+            }
+        }
     }
 }
