@@ -9,7 +9,10 @@ namespace SearchCore
         public string actionFromParent { get; }
         public float pathCost { get;  } // g(n)
         public int depth { get; }
-        public SearchNode(IState state,  string actionFromParent = null, SearchNode parent = null, float stepCost = 0)
+        public SearchNode(IState state,  
+            string actionFromParent = null, 
+            SearchNode parent = null, 
+            float stepCost = 0)
         {
             this.state = state;
             this.parent = parent;

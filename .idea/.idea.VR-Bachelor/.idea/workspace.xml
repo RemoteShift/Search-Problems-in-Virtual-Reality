@@ -2,16 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/IStepCostFunction.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/IStepCostFunction.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/ITransitionFunction.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/ITransitionFunction.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/pasted__pasted__lambert6 1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/pasted__pasted__lambert6 1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/pasted__pasted__lambert6 2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/pasted__pasted__lambert6 2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/pasted__pasted__lambert6.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/pasted__pasted__lambert6.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Editor/AutoHandUpdateDataWizard.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Editor/AutoHandUpdateDataWizard.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/IState.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/IState.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Nodes/SearchNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Nodes/SearchNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Algorithms/IQueuingFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Search Algorithms/IQueuingFunction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/SearchProblem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/SearchProblem.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +36,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/IState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Search Algorithms/Algorithms/GeneralSearch.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/IStepCostFunction.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/SearchResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/Left Controller.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Settings/Performance URP Config.asset" root0="FORCE_HIGHLIGHTING" />
@@ -47,6 +49,9 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="3AAhwaufjRS4xe7odaIQqVOkM8D" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -129,7 +134,7 @@
       <workItem from="1775072854791" duration="933000" />
       <workItem from="1775249482474" duration="1390000" />
       <workItem from="1775554154811" duration="4035000" />
-      <workItem from="1775649836755" duration="4849000" />
+      <workItem from="1775649836755" duration="10685000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -251,7 +256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775250885442</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Added `IState` interface for all states&#10;Renamed `Node` to `SearchNode` &amp; Modified to worth with new interface `IState`&#10;Added namespace `SearchCore`">
+      <option name="closed" value="true" />
+      <created>1775659615896</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1775659615896</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,7 +306,8 @@
     <MESSAGE value="Added UI Interaction, Removed old UI Interaction" />
     <MESSAGE value="Changed UI to AutoHand UI.&#10;Made it Grabbable &amp; Distance Grabbable.&#10;UI resets position &amp; velocity when Menu Button toggles on." />
     <MESSAGE value="Add Follower script to enable object following behavior" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Follower script to enable object following behavior" />
+    <MESSAGE value="Added `IState` interface for all states&#10;Renamed `Node` to `SearchNode` &amp; Modified to worth with new interface `IState`&#10;Added namespace `SearchCore`" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added `IState` interface for all states&#10;Renamed `Node` to `SearchNode` &amp; Modified to worth with new interface `IState`&#10;Added namespace `SearchCore`" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
