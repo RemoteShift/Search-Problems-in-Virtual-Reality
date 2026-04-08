@@ -3,8 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/pasted__pasted__lambert6 1.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/pasted__pasted__lambert6 1.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/pasted__pasted__lambert6 2.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/pasted__pasted__lambert6 2.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/pasted__pasted__lambert6.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/pasted__pasted__lambert6.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Editor/AutoHandUpdateDataWizard.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Editor/AutoHandUpdateDataWizard.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +34,9 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/allou/OneDrive/Desktop/Unity Projects/VR-Bachelor/Assets/AutoHand/Scripts/Tools/HandCanvasPointer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/IState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/Left Controller.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Settings/Performance URP Config.asset" root0="FORCE_HIGHLIGHTING" />
@@ -120,7 +127,9 @@
       <workItem from="1773308134059" duration="7117000" />
       <workItem from="1775059071896" duration="201000" />
       <workItem from="1775072854791" duration="933000" />
-      <workItem from="1775249482474" duration="1356000" />
+      <workItem from="1775249482474" duration="1390000" />
+      <workItem from="1775554154811" duration="4035000" />
+      <workItem from="1775649836755" duration="4849000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -234,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773325121266</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Add Follower script to enable object following behavior">
+      <option name="closed" value="true" />
+      <created>1775250885442</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1775250885442</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +292,8 @@
     <MESSAGE value="Added AutoHand" />
     <MESSAGE value="Added UI Interaction, Removed old UI Interaction" />
     <MESSAGE value="Changed UI to AutoHand UI.&#10;Made it Grabbable &amp; Distance Grabbable.&#10;UI resets position &amp; velocity when Menu Button toggles on." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed UI to AutoHand UI.&#10;Made it Grabbable &amp; Distance Grabbable.&#10;UI resets position &amp; velocity when Menu Button toggles on." />
+    <MESSAGE value="Add Follower script to enable object following behavior" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Follower script to enable object following behavior" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
