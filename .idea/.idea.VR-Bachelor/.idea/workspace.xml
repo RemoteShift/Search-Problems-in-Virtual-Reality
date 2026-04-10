@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/ISearchListener.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/ISearchListener.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Nodes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Nodes/SearchNode.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Nodes/SearchNode.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Algorithms.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Algorithms/Algorithms.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Algorithms/Algorithms/GeneralSearch.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Algorithms/Algorithms/GeneralSearch.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Algorithms/IQueuingFunction.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Algorithms/IQueuingFunction.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/IState.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/IState.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/IStepCostFunction.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/IStepCostFunction.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/ITransitionFunction.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/ITransitionFunction.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/SearchProblem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/SearchProblem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/SearchResult.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/SearchResult.cs.meta" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scriptable Objects.meta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +27,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scriptable Objects.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scriptable Objects/Search Problems/SearchProblemSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/Algorithms.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/Maze/MazeStep.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/Left Controller.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerUI.cs" root0="FORCE_HIGHLIGHTING" />
@@ -146,7 +127,7 @@
       <workItem from="1775249482474" duration="1390000" />
       <workItem from="1775554154811" duration="4035000" />
       <workItem from="1775649836755" duration="10685000" />
-      <workItem from="1775829808973" duration="6188000" />
+      <workItem from="1775829808973" duration="7047000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -276,7 +257,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775659615896</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add search algorithm components: ISearchListener, IQueuingFunction, IStepCostFunction, ITransitionFunction, and SearchResult classes&#10;Also started implementation of the most simple search problem: Maze">
+      <option name="closed" value="true" />
+      <created>1775847712399</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1775847712399</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,7 +308,8 @@
     <MESSAGE value="Changed UI to AutoHand UI.&#10;Made it Grabbable &amp; Distance Grabbable.&#10;UI resets position &amp; velocity when Menu Button toggles on." />
     <MESSAGE value="Add Follower script to enable object following behavior" />
     <MESSAGE value="Added `IState` interface for all states&#10;Renamed `Node` to `SearchNode` &amp; Modified to worth with new interface `IState`&#10;Added namespace `SearchCore`" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added `IState` interface for all states&#10;Renamed `Node` to `SearchNode` &amp; Modified to worth with new interface `IState`&#10;Added namespace `SearchCore`" />
+    <MESSAGE value="Add search algorithm components: ISearchListener, IQueuingFunction, IStepCostFunction, ITransitionFunction, and SearchResult classes&#10;Also started implementation of the most simple search problem: Maze" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add search algorithm components: ISearchListener, IQueuingFunction, IStepCostFunction, ITransitionFunction, and SearchResult classes&#10;Also started implementation of the most simple search problem: Maze" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
