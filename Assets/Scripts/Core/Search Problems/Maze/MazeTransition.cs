@@ -5,19 +5,33 @@ namespace SearchCore
     public class MazeTransition : ITransitionFunction
     {
         private readonly bool[,] _mazeWalls;
-        public MazeTransition(bool[,] mazeWalls) => _mazeWalls = mazeWalls;
+        private readonly int _width, _height;
+
+        public MazeTransition(bool[,] mazeWalls, int height, int width)
+        {
+          _mazeWalls = mazeWalls;
+          _width = width;
+          _height = height;
+        }
         
         public IState GetSuccessor(IState state, string action)
         {
             if (state is not GridState gs) return null;
-            return action switch
+            
+            int newRow = gs.Row, newColumn = gs.Column;
+            switch (action)
             {
-                "Up" => !_mazeWalls[gs.X, gs.Y + 1] ? new GridState(gs.X, gs.Y + 1) : null,
-                "Down" => !_mazeWalls[gs.X, gs.Y - 1] ? new GridState(gs.X, gs.Y - 1) : null,
-                "Left" => !_mazeWalls[gs.X - 1, gs.Y] ? new GridState(gs.X - 1, gs.Y) : null,
-                "Right" => !_mazeWalls[gs.X + 1, gs.Y] ? new GridState(gs.X + 1, gs.Y) : null,
-                _ => throw new InvalidOperationException()
-            };
+                case "Up":    newRow++; break;
+                case "Down":  newRow--; break;
+                case "Left":  newColumn--; break;
+                case "Right": newColumn++; break;
+                default: throw new InvalidOperationException();
+            }
+            
+            if (newRow < 0 || newRow >= _height || newColumn < 0 || newColumn >= _width)
+                return null;
+            
+            return _mazeWalls[newRow, newColumn] ? null : new GridState(newRow, newColumn);
         }
     }
 }
