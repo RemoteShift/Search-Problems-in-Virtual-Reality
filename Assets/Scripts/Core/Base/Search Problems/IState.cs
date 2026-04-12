@@ -1,4 +1,4 @@
-namespace SearchCore
+namespace Search.Core
 {
    public interface IState
    {

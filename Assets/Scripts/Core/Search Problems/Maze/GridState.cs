@@ -1,6 +1,6 @@
 using System;
 
-namespace SearchCore
+namespace Search.Core
 {
     public class GridState : IState
     {

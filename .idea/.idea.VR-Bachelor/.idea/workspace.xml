@@ -2,26 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Levels.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Levels/Maze.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/SearchProblemType.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/SearchProblemType.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels/LevelData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels/LevelData.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels/LevelTypes.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels/LevelTypes/MazeLevelData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels/LevelTypes/MazeLevelData.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Search Problems.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Search Problems/SearchProblemSO.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Search Problems/SearchProblemSO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Test Cube.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Test Cube.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/ISearchListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/ISearchListener.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Nodes/SearchNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Nodes/SearchNode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/Algorithms/GeneralSearch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/IQueuingFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/IQueuingFunction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/IState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/IState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/IStepCostFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/IStepCostFunction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/ITransitionFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/ITransitionFunction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/SearchProblem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/SearchProblem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/SearchProblemType.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/SearchProblemType.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/SearchResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/SearchResult.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/Maze/GridState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/Maze/GridState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/Maze/MazeStep.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/Maze/MazeStep.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/Maze/MazeTransition.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/Maze/MazeTransition.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels/LevelData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels/LevelData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels/LevelTypes/MazeLevelData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels/LevelTypes/MazeLevelData.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,12 +45,16 @@
     <setting file="file://$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptable Objects.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scriptable Objects/Levels/Maze/MazeLevel 1.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/Algorithms.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/allou/OneDrive/Desktop/Unity Projects/VR-Bachelor/Assets/Scripts/Core/Search Problems/Maze/GridState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/allou/OneDrive/Desktop/Unity Projects/VR-Bachelor/Assets/Scripts/Core/Search Problems/Maze/GridState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/Maze/MazeStep.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/Left Controller.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Settings/Performance URP Config.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0.unity" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -148,7 +150,7 @@
       <workItem from="1775554154811" duration="4035000" />
       <workItem from="1775649836755" duration="10685000" />
       <workItem from="1775829808973" duration="9441000" />
-      <workItem from="1775894106347" duration="10094000" />
+      <workItem from="1775894106347" duration="16878000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -294,7 +296,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775850850813</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Refactor GridState to use Row and Column properties; add MazeLevelData and MazeTransition classes for maze level handling&#10;&#10;Changed all grid layouts to be defined as (row, column)">
+      <option name="closed" value="true" />
+      <created>1775996760285</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1775996760285</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,7 +349,8 @@
     <MESSAGE value="Added `IState` interface for all states&#10;Renamed `Node` to `SearchNode` &amp; Modified to worth with new interface `IState`&#10;Added namespace `SearchCore`" />
     <MESSAGE value="Add search algorithm components: ISearchListener, IQueuingFunction, IStepCostFunction, ITransitionFunction, and SearchResult classes&#10;Also started implementation of the most simple search problem: Maze" />
     <MESSAGE value="Add ScriptableObject classes for search problems and types; implement SearchProblemSO and SearchProblemType" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add ScriptableObject classes for search problems and types; implement SearchProblemSO and SearchProblemType" />
+    <MESSAGE value="Refactor GridState to use Row and Column properties; add MazeLevelData and MazeTransition classes for maze level handling&#10;&#10;Changed all grid layouts to be defined as (row, column)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor GridState to use Row and Column properties; add MazeLevelData and MazeTransition classes for maze level handling&#10;&#10;Changed all grid layouts to be defined as (row, column)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

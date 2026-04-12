@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SearchCore
+namespace Search.Core
 {
     public interface ISearchListener
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
-using SearchCore;
+using Search.Core;
 
-namespace SearchLevels
+namespace Search.Levels
 {
     public abstract class LevelData : ScriptableObject
     {

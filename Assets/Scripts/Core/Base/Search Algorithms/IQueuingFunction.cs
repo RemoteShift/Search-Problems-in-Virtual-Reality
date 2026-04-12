@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SearchCore
+namespace Search.Core
 {
     /// <summary>
     /// Strategy that determines the order in which nodes are explored.

@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3393776929391379752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8360653278976132828}
+  - component: {fileID: 2890230152045529708}
+  m_Layer: 0
+  m_Name: Maze Visualizer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8360653278976132828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393776929391379752}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06269, y: 2.321, z: -0.807}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2890230152045529708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393776929391379752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b754396a93bde7142a0591b4287cf340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MazeVisualizer
+  groundTilePrefab: {fileID: 4716793099625547376, guid: edf5c299c5c3b6241be7f6b832f34296, type: 3}
+  wallPrefab: {fileID: 884503557422159803, guid: d0cbdab3379c7844cb1444cea5f05f08, type: 3}
+  startMarkerPrefab: {fileID: 7954769360132981449, guid: 6cf328fc921fe1845a63235577e0df76, type: 3}
+  goalMarkerPrefab: {fileID: 6681585830969861019, guid: 7ee8333f6bc0ba043a08ebc6b82bb994, type: 3}
+  nodePrefab: {fileID: 6681585830969861019, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
+  cellSize: 1
+  yOffsetGround: 0
+  yOffsetWall: 0.5
+  yOffsetMarker: 0.1
+  yOffsetNode: 0.2

@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using SearchCore;
+using Search.Core;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace SearchLevels
+namespace Search.Levels
 {
     [CreateAssetMenu(fileName = "MazeLevel", menuName = "Levels/Maze")]
     public class MazeLevelData : LevelData
@@ -15,6 +14,8 @@ namespace SearchLevels
         public Vector2Int start;
         public Vector2Int[] goals;
         public List<Vector2Int> wallsPositions; // only cells where there are walls, the rest is considered empty
+
+        private bool[,] walls;
 
         public override SearchProblem CreateSearchProblem()
         {
@@ -35,9 +36,13 @@ namespace SearchLevels
             return new SearchProblem(initialState, goalTest, actions, transitionFunc, stepCostFunc);
         }
         
-        private bool[,] GetWalls2D()
+        public bool[,] GetWalls2D()
         {
-            var walls = new bool[height, width];
+            if (walls != null)
+            {
+                return walls;
+            }
+            walls = new bool[height, width];
             foreach (var wall in wallsPositions.Where(pos => pos.x >= 0 && pos.x < height && 
                                                             pos.y >= 0 && pos.y < width))
             {
