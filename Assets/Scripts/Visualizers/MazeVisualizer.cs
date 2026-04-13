@@ -3,17 +3,16 @@ using System.Linq;
 using Search.Core;
 using Search.Levels;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Search.Visualization
 {
     public class MazeVisualizer : MonoBehaviour, ISearchListener
     {
-        [Header("Prefabs")] [SerializeField] private GameObject groundTilePrefab; // flat tile for walkable cells
-        [SerializeField] private GameObject wallPrefab; // cube for walls
-        [SerializeField] private GameObject startMarkerPrefab; // e.g., green cylinder
-        [SerializeField] private GameObject goalMarkerPrefab; // e.g., red cylinder
-        [SerializeField] private GameObject nodePrefab; // sphere for search nodes
+        [Header("Prefabs")] [SerializeField] private GameObject groundTilePrefab;
+        [SerializeField] private GameObject wallPrefab;
+        [SerializeField] private GameObject startMarkerPrefab;
+        [SerializeField] private GameObject goalMarkerPrefab;
+        [SerializeField] private GameObject nodePrefab;
 
         [Header("Visual Settings")] [SerializeField]
         private float cellSize = 1f;
@@ -22,8 +21,7 @@ namespace Search.Visualization
         [SerializeField] private float yOffsetWall = 0.5f;
         [SerializeField] private float yOffsetMarker = 0.1f;
         [SerializeField] private float yOffsetNode = 0.2f;
-
-        // Internal data
+        
         private MazeLevelData _levelData;
         private SearchProblem _problem;
         private readonly Dictionary<string, NodeVisual> _nodeVisuals = new();
@@ -31,26 +29,23 @@ namespace Search.Visualization
         private GameObject _startObject;
         private readonly List<GameObject> _goalObjects = new();
 
-        /// <summary>
-        ///     Call this after loading a MazeLevelData to build the static maze.
-        /// </summary>
+        
         public void Setup(MazeLevelData levelData, SearchProblem problem)
         {
             _levelData = levelData;
             _problem = problem;
 
-            // Clear previous visuals
+     
             ClearVisuals();
-
-            // Build static maze
+            
             BuildGroundAndWalls();
             PlaceStartMarker();
             PlaceGoalMarkers();
+            PlayerLocomotion.Instance.TeleportTo(_startObject.transform.position, _startObject.transform.rotation);
         }
 
         private void ClearVisuals()
         {
-            // Destroy all dynamically created objects
             foreach (var kvp in _nodeVisuals.Where(kvp => kvp.Value))
             {
                 Destroy(kvp.Value.gameObject);
@@ -88,11 +83,9 @@ namespace Search.Visualization
             for (var col = 0; col < width; col++)
             {
                 var pos = new Vector3(col * cellSize, yOffsetGround, row * cellSize);
-
-                // Ground tile (always place)
+                
                 Instantiate(groundTilePrefab, pos, Quaternion.identity, transform);
-
-                // Wall if needed
+                
                 if (walls[row, col])
                 {
                     var wallPos = new Vector3(col * cellSize, yOffsetWall, row * cellSize);
@@ -129,7 +122,7 @@ namespace Search.Visualization
 
             var pos = new Vector3(state.Column * cellSize, yOffsetNode, state.Row * cellSize);
             var go = Instantiate(nodePrefab, pos, Quaternion.identity, transform);
-            var visual = go.GetComponent<NodeVisual>(); // or get from prefab
+            var visual = go.GetComponent<NodeVisual>();
             visual.Initialize(state, pos);
             _nodeVisuals[state.id] = visual;
             return visual;

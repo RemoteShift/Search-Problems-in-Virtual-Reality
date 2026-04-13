@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Search.Core
@@ -11,6 +12,7 @@ namespace Search.Core
         public IState initialState { get; private set; }
     
         private readonly Func<IState, bool> _goalTest;
+        private readonly Func<IState, float> _heuristicFunction;
     
         public ITransitionFunction transitionFunction { get; }
         public IStepCostFunction stepCostFunction { get; }
@@ -20,10 +22,12 @@ namespace Search.Core
             Func<IState, bool> goalTest,
             IReadOnlyList<string> actions,
             ITransitionFunction transitionFunction,
-            IStepCostFunction stepCostFunction)
+            IStepCostFunction stepCostFunction,
+            [CanBeNull] Func<IState, float> heuristicFunction = null)
         {
             this.initialState = initialState;
             this._goalTest = goalTest;
+            this._heuristicFunction = heuristicFunction ?? (_ => 0f);
             this.actions = actions;
             this.transitionFunction = transitionFunction;
             this.stepCostFunction = stepCostFunction;

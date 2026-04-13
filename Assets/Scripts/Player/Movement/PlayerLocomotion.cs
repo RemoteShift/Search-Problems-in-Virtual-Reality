@@ -1,6 +1,5 @@
-using Unity.VisualScripting;
+using Search.Utils;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
 
 [RequireComponent(typeof(CharacterController))]
@@ -54,5 +53,13 @@ public class PlayerLocomotion : Singleton<PlayerLocomotion>
     {
         _isSprinting = isSprinting;
         _continuousMoveProvider.moveSpeed = _isSprinting ? _initialMoveSpeed * sprintMultiplier : _initialMoveSpeed;
+    }
+    
+    public void TeleportTo(Vector3 position, Quaternion rotation)
+    {
+        _characterController.enabled = false; // Disable to avoid collision issues
+        transform.position = position;
+        transform.rotation = rotation;
+        _characterController.enabled = true; // Re-enable after teleporting
     }
 }

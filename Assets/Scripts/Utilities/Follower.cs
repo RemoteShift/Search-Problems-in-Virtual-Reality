@@ -1,16 +1,26 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class Follower : MonoBehaviour
+namespace Search.Utils
 {
-    [SerializeField]
-    private Transform target;
-    public float followSpeed = 5f;
-
-    // Update is called once per frame
-    void Update()
+    public class Follower : MonoBehaviour
     {
-        Vector3 desiredPosition = target.position;
-        transform.position = Vector3.Lerp(transform.position, desiredPosition, followSpeed * Time.deltaTime);
+        [SerializeField] private Transform target;
+        public float followSpeed = 5f;
+        public float rotationFollowSpeed = 5f;
+
+        // Update is called once per frame
+        void Update()
+        {
+            Vector3 desiredPosition = target.position;
+            transform.position = Vector3.Lerp(
+                transform.position,
+                desiredPosition,
+                followSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                target.rotation,
+                rotationFollowSpeed * Time.deltaTime
+            );
+        }
     }
 }

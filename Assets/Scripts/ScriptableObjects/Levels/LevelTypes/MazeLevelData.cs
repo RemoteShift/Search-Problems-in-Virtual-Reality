@@ -27,13 +27,19 @@ namespace Search.Levels
             IStepCostFunction stepCostFunc = new MazeStep();
             
             var initialState = new GridState(start.x, start.y);
-            
-            Func<IState, bool> goalTest = state =>
+
+            return new SearchProblem(initialState, GoalTest, actions, transitionFunc, stepCostFunc, HeuristicFunction);
+
+            bool GoalTest(IState state)
             {
                 return state is GridState gs && goals.Any(goal => gs.Row == goal.x && gs.Column == goal.y);
-            };
-            
-            return new SearchProblem(initialState, goalTest, actions, transitionFunc, stepCostFunc);
+            }
+
+            float HeuristicFunction(IState state)
+            {
+                if (state is not GridState gs) return 0f;
+                return goals.Min(goal => Mathf.Abs(gs.Row - goal.x) + Mathf.Abs(gs.Column - goal.y));
+            }
         }
         
         public bool[,] GetWalls2D()

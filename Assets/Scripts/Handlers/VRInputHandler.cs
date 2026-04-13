@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using System.Numerics;
+using Search.Utils;
 using UnityEngine.Serialization;
 using Vector2 = UnityEngine.Vector2;
 

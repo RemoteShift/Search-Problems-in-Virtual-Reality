@@ -1,6 +1,8 @@
 using UnityEngine;
 using Search.Core;
+using Search.Utils;
 using Search.Visualization;
+using Unity.XR.CoreUtils;
 
 namespace Search.Levels
 {
@@ -29,8 +31,7 @@ namespace Search.Levels
         {
             currentLevel = level;
             _currentProblem = level.CreateSearchProblem();
-
-            // Set up the appropriate visualizer based on level type
+            
             if (mazeVisualizer && level is MazeLevelData mazeLevel)
             {
                 mazeVisualizer.Setup(mazeLevel, _currentProblem);

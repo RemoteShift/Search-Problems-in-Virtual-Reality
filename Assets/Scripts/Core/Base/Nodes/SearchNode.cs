@@ -8,16 +8,21 @@ namespace Search.Core
         public SearchNode parent { get; }
         public string actionFromParent { get; }
         public float pathCost { get;  } // g(n)
+        public float heuristicCost { get; } // h(n)
+        public float F => pathCost + heuristicCost; // f(n) = g(n) + h(n)
+
         public int depth { get; }
         public SearchNode(IState state,  
             string actionFromParent = null, 
             SearchNode parent = null, 
-            float stepCost = 0)
+            float stepCost = 0,
+            float heuristicCost = 0)
         {
             this.state = state;
             this.parent = parent;
             this.actionFromParent = actionFromParent;
             this.pathCost = stepCost + (parent?.pathCost ?? 0);
+            this.heuristicCost = heuristicCost;
             this.depth = parent?.depth + 1 ?? 0;
         }
         
