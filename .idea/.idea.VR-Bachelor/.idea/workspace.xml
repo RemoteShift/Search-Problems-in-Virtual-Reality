@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/Algorithms/GeneralSearch.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/Algorithms/GeneralSearch.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/IFrontier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/IFrontier.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/IQueuingFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/IQueuingFunction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/SearchProblem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/SearchProblem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/SearchResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/SearchResult.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/PriorityQueue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/PriorityQueue.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Queue.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Queue.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,7 +144,7 @@
       <workItem from="1776096072186" duration="8075000" />
       <workItem from="1776168653332" duration="7047000" />
       <workItem from="1776250634999" duration="5119000" />
-      <workItem from="1776338759851" duration="7845000" />
+      <workItem from="1776338759851" duration="9584000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -322,7 +314,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776107534820</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Add A* and BFS algorithm implementations&#10;Completed logic of `GeneralSearch.cs`&#10;&#10;TODO: Add the expanded collection, call the visualizer and implement it">
+      <option name="closed" value="true" />
+      <created>1776362196435</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1776362196435</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -341,7 +341,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -370,7 +376,8 @@
     <MESSAGE value="Refactor GridState to use Row and Column properties; add MazeLevelData and MazeTransition classes for maze level handling&#10;&#10;Changed all grid layouts to be defined as (row, column)" />
     <MESSAGE value="Refactor namespaces to use Search.Core; add NodeState enum and NodeVisual class for node visualization" />
     <MESSAGE value="Add Queue and PriorityQueue implementations; introduce IFrontier interface for frontier management&#10;Added Heuristic function fro informed searches&#10;&#10;TODO: Implement different IQueuingFunctions like BFS, DFS, UCS, and so on" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Queue and PriorityQueue implementations; introduce IFrontier interface for frontier management&#10;Added Heuristic function fro informed searches&#10;&#10;TODO: Implement different IQueuingFunctions like BFS, DFS, UCS, and so on" />
+    <MESSAGE value="Add A* and BFS algorithm implementations&#10;Completed logic of `GeneralSearch.cs`&#10;&#10;TODO: Add the expanded collection, call the visualizer and implement it" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add A* and BFS algorithm implementations&#10;Completed logic of `GeneralSearch.cs`&#10;&#10;TODO: Add the expanded collection, call the visualizer and implement it" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

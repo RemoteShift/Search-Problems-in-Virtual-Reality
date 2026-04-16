@@ -10,6 +10,7 @@ namespace Search.Core.Algorithms
         private readonly IQueuingFunction _queueingFunction;
         
         private readonly IFrontier<SearchNode> _frontier;
+        public readonly List<SearchNode> Expanded = new();
 
         private int _levelLimit;
         
@@ -89,6 +90,7 @@ namespace Search.Core.Algorithms
                 _levelManager.mazeVisualizer.OnNodeGenerated(successor);
             }
             
+            Expanded.Add(node);
             _levelManager.mazeVisualizer.OnNodeExpanded(node);
             return successors;
         }
