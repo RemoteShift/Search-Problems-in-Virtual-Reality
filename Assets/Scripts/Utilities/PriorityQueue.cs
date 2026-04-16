@@ -25,17 +25,25 @@ namespace Search.Utils
 
         public int Count => _heap.Count;
 
-        public bool IsEmpty => _heap.Count == 0;
+        public bool IsEmpty => Count == 0;
 
-        public void Enqueue(T item)
+        public void Add(T item)
         {
             _heap.Add(item);
             int idx = _heap.Count - 1;
             _indexMap[item] = idx;
             HeapifyUp(idx);
         }
+        
+        public void AddRange(IEnumerable<T> items)
+        {
+            foreach (var item in items)
+            {
+                Add(item);
+            }
+        }
 
-        public T Dequeue()
+        public T Remove()
         {
             if (_heap.Count == 0) throw new InvalidOperationException("PriorityQueue is empty");
             var root = _heap[0];

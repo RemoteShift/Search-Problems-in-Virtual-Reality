@@ -20,6 +20,8 @@ namespace Search.Core
         /// </summary>
 
         #endregion
-        IEnumerable<SearchNode> Reorder(IEnumerable<SearchNode> frontier, IEnumerable<SearchNode> successors);
+        IFrontier<SearchNode> Reorder(IFrontier<SearchNode> frontier, IEnumerable<SearchNode> successors);
+
+        bool isInformed { get; }
     }
 }

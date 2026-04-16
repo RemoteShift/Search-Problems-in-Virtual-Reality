@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -32,5 +33,9 @@ namespace Search.Core
             this.transitionFunction = transitionFunction;
             this.stepCostFunction = stepCostFunction;
         }
+        
+        public float GetHeuristicCost(IState state) => _heuristicFunction(state);
+        
+        public bool IsGoal(IState state) => _goalTest(state);
     }
 }

@@ -10,11 +10,11 @@ namespace Search.Core
         public string failureReason { get; }
 
         public SearchResult(bool success, 
-            SearchNode solutionNode, 
             int nodesExpanded, 
             int nodesGenerated, 
             int totalTimeMs, 
-            string failureReason)
+            string failureReason,
+            SearchNode solutionNode = null)
         {
             this.success = success;
             this.solutionNode = solutionNode;
@@ -25,9 +25,9 @@ namespace Search.Core
         }
         
         public static SearchResult Found(SearchNode node, int expanded, int generated, int timeMs)
-            => new SearchResult(true, node, expanded, generated, timeMs, null);
+            => new SearchResult(true, expanded, generated, timeMs, null, solutionNode: node);
 
         public static SearchResult Failed(string reason, int expanded, int generated, int timeMs)
-            => new SearchResult(false, null, expanded, generated, timeMs, reason);
+            => new SearchResult(false, expanded, generated, timeMs, reason);
     }
 }

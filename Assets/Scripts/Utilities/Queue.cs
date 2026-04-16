@@ -1,15 +1,23 @@
+using System.Collections.Generic;
 using Search.Core;
 
 namespace Search.Utils
 {
     public class Queue<T> : IFrontier<T>
     {
-        private readonly Queue<T> _queue = new();
+        private readonly System.Collections.Generic.Queue<T> _queue = new();
 
-        public void Enqueue(T node) => _queue.Enqueue(node);
+        public void Add(T node) => _queue.Enqueue(node);
+        public void AddRange(IEnumerable<T> nodes)
+        {
+            foreach (var node in nodes)
+            {
+                _queue.Enqueue(node);
+            }
+        }
 
-        public T Dequeue() => _queue.Dequeue();
+        public T Remove() => _queue.Dequeue();
 
-        public bool IsEmpty => _queue.IsEmpty;
+        public bool IsEmpty => _queue.Count == 0;
     }
 }

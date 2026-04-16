@@ -2,7 +2,6 @@ using UnityEngine;
 using Search.Core;
 using Search.Utils;
 using Search.Visualization;
-using Unity.XR.CoreUtils;
 
 namespace Search.Levels
 {
@@ -11,8 +10,8 @@ namespace Search.Levels
         [Header("Level Asset")] [SerializeField]
         private LevelData currentLevel;
 
-        [Header("Scene References")] [SerializeField]
-        private MazeVisualizer mazeVisualizer;
+        [Header("Scene References")]
+        public MazeVisualizer mazeVisualizer;
 
         // For graph levels you could add GraphVisualizer later
         //[SerializeField] private VRSearchController searchController;
