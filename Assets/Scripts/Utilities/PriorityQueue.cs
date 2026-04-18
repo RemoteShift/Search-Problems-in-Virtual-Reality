@@ -27,6 +27,12 @@ namespace Search.Utils
 
         public bool IsEmpty => Count == 0;
 
+        public void Clear()
+        {
+            _heap.Clear();
+            _indexMap.Clear();
+        }
+        
         public void Add(T item)
         {
             _heap.Add(item);

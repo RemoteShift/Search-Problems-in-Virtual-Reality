@@ -8,5 +8,7 @@ namespace Search.Core
         void AddRange(IEnumerable<T> nodes);
         T Remove();
         bool IsEmpty { get; }
+        int Count { get; }
+        void Clear();
     }
 }

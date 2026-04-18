@@ -21,5 +21,9 @@ namespace Search.Utils
         public T Remove() => _stack.Pop();
 
         public bool IsEmpty => _stack.Count == 0;
+        
+        public int Count => _stack.Count;
+        
+        public void Clear() => _stack.Clear();
     }
 }

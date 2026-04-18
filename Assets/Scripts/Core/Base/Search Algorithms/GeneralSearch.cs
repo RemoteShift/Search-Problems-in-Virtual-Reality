@@ -16,7 +16,9 @@ namespace Search.Core.Algorithms
         
         private LevelManager _levelManager;
         
-        public GeneralSearch(SearchProblem searchProblem, IQueuingFunction queueingFunction, int levelLimit = 0)
+        private SearchResult _searchResult;
+        
+        public GeneralSearch(IQueuingFunction queueingFunction, int levelLimit = 0)
         {
             _queueingFunction = queueingFunction;
             _levelLimit = levelLimit;
@@ -38,6 +40,18 @@ namespace Search.Core.Algorithms
 
         public void Search(SearchProblem searchProblem)
         {
+            if (_queueingFunction is IDS)
+            {
+                RunIDS(searchProblem);
+                return;
+            }
+            
+            RunSingleSearch(searchProblem);
+        }
+
+        private void RunSingleSearch(SearchProblem searchProblem, int? levelLimit = null)
+        {
+            ResetState();
             var initialHeuristic = _queueingFunction.isInformed
                 ? searchProblem.GetHeuristicCost(searchProblem.initialState)
                 : 0f;
@@ -51,21 +65,18 @@ namespace Search.Core.Algorithms
 
                 if (searchProblem.IsGoal(node.state))
                 {
-                    // Goal found, return the solution path
                     var solutionPath = node.GetPathActions();
-                    //SearchResult searchResult = SearchResult.Found(node, );
-                    // Handle the solution path as needed (e.g., print it, return it, etc.)
+                    _searchResult = SearchResult.Found(node, Expanded.Count, 
+                        Expanded.Count + _frontier.Count, solutionPath: solutionPath);
+                    _searchResult.PrintSummary();
                     return;
                 }
 
+                if (levelLimit.HasValue && node.depth >= levelLimit.Value)
+                    continue;
+                
                 var successors = Expand(node, searchProblem);
                 _frontier.AddRange(successors);
-
-                /*if (_levelLimit == 0 || node.Depth < _levelLimit)
-                {
-                    var successors = searchProblem.GetSuccessors(node);
-                    _queueingFunction.Reorder(_frontier, successors);
-                }*/
             }
 
             //var searchResult = SearchResult.Failed("Allahu a3lam", )
@@ -93,6 +104,24 @@ namespace Search.Core.Algorithms
             Expanded.Add(node);
             _levelManager.mazeVisualizer.OnNodeExpanded(node);
             return successors;
+        }
+        
+        private void RunIDS(SearchProblem searchProblem)
+        {
+            for (var limit = 0; limit <= _levelLimit ; limit++)
+            {
+                RunSingleSearch(searchProblem, limit);
+
+                if (_searchResult is { success: true })
+                    return;
+            }
+        }
+        
+        private void ResetState()
+        {
+            _frontier.Clear();
+            Expanded.Clear();
+            _searchResult = null;
         }
     }
 }

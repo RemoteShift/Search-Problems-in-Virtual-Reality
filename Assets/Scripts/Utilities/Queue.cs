@@ -19,5 +19,9 @@ namespace Search.Utils
         public T Remove() => _queue.Dequeue();
 
         public bool IsEmpty => _queue.Count == 0;
+        
+        public int Count => _queue.Count;
+        
+        public void Clear() => _queue.Clear();
     }
 }
