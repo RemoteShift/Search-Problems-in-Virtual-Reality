@@ -17,6 +17,7 @@ namespace Search.Utils
             }
         }
 
+        public bool Contains(T node) => _stack.Contains(node);
 
         public T Remove() => _stack.Pop();
 

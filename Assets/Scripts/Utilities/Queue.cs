@@ -15,6 +15,8 @@ namespace Search.Utils
                 _queue.Enqueue(node);
             }
         }
+        
+        public bool Contains(T node) => _queue.Contains(node);
 
         public T Remove() => _queue.Dequeue();
 

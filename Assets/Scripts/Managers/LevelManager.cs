@@ -11,6 +11,9 @@ namespace Search.Levels
         [Header("Level Asset")] [SerializeField]
         private LevelData currentLevel;
 
+        [Header("Search Algorithm Settings")]
+        [SerializeField] private AlgorithmType currentAlgorithm = AlgorithmType.None;
+        
         [Header("Scene References")]
         public MazeVisualizer mazeVisualizer;
 
@@ -26,6 +29,11 @@ namespace Search.Levels
                 LoadLevel(currentLevel);
             else
                 Debug.LogWarning("No level assigned to LevelManager");
+            
+            if (currentAlgorithm != AlgorithmType.None)
+                StartSearch();
+            else
+                Debug.LogWarning("No search algorithm assigned to LevelManager");
         }
 
         private void LoadLevel(LevelData level)
@@ -46,7 +54,7 @@ namespace Search.Levels
                 //searchController.SetProblem(_currentProblem);
         }
 
-        public void StartSearch(IQueuingFunction queuingFunction, int levelLimit = 0)
+        private void StartSearch(int levelLimit = 0)
         {
             if (_currentProblem == null)
             {
@@ -54,6 +62,18 @@ namespace Search.Levels
                 return;
             }
 
+            IQueuingFunction queuingFunction = currentAlgorithm switch
+            {
+                AlgorithmType.BFS => new BFS(),
+                AlgorithmType.DFS => new DFS(),
+                AlgorithmType.UCS => new UCS(),
+                AlgorithmType.IDS => new IDS(),
+                AlgorithmType.GBFS => new GBFS(),
+                AlgorithmType.Astar => new Astar(),
+                AlgorithmType.None => throw new System.InvalidOperationException("No algorithm selected"),
+                _ => throw new System.ArgumentException("Unsupported algorithm type")
+            };
+            
             _currentAlgorithm = new GeneralSearch(queuingFunction, levelLimit);
             _currentAlgorithm.Search(_currentProblem);
         }

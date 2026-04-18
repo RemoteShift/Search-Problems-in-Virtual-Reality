@@ -33,7 +33,7 @@ namespace Search.Core
             int timeMs = 0)
             => new SearchResult(true, expanded, generated, timeMs, solutionNode: node, solutionPath: solutionPath);
 
-        public static SearchResult Failed(string reason, int expanded, int generated, int timeMs)
+        public static SearchResult Failed(string reason, int expanded, int generated, int timeMs = 0)
             => new SearchResult(false, expanded, generated, timeMs, failureReason: reason);
 
         public void PrintSummary()

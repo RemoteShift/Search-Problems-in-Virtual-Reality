@@ -114,6 +114,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RobotHand
       objectReference: {fileID: 0}
+    - target: {fileID: 5930526719744542035, guid: ff7842774db58ab488b42a407bc96be0, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.005
+      objectReference: {fileID: 0}
     - target: {fileID: 6639974499140840992, guid: ff7842774db58ab488b42a407bc96be0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

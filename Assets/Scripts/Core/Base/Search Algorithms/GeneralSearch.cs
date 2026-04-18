@@ -10,7 +10,8 @@ namespace Search.Core.Algorithms
         private readonly IQueuingFunction _queueingFunction;
         
         private readonly IFrontier<SearchNode> _frontier;
-        public readonly List<SearchNode> Expanded = new();
+        private readonly List<SearchNode> _expanded = new();
+        private readonly HashSet<IState> _visited = new();
 
         private int _levelLimit;
         
@@ -57,6 +58,7 @@ namespace Search.Core.Algorithms
                 : 0f;
             var startNode = new SearchNode(searchProblem.initialState, heuristicCost: initialHeuristic);
 
+            _visited.Add(startNode.state);
             _frontier.Add(startNode);
 
             while (!_frontier.IsEmpty)
@@ -66,8 +68,8 @@ namespace Search.Core.Algorithms
                 if (searchProblem.IsGoal(node.state))
                 {
                     var solutionPath = node.GetPathActions();
-                    _searchResult = SearchResult.Found(node, Expanded.Count, 
-                        Expanded.Count + _frontier.Count, solutionPath: solutionPath);
+                    _searchResult = SearchResult.Found(node, _expanded.Count, 
+                        _expanded.Count + _frontier.Count, solutionPath: solutionPath);
                     _searchResult.PrintSummary();
                     return;
                 }
@@ -79,7 +81,9 @@ namespace Search.Core.Algorithms
                 _frontier.AddRange(successors);
             }
 
-            //var searchResult = SearchResult.Failed("Allahu a3lam", )
+            _searchResult = SearchResult.Failed("Exhausted state space. No solution found", _expanded.Count, 
+                _expanded.Count + _frontier.Count);
+            _searchResult.PrintSummary();
         }
 
         private List<SearchNode> Expand(SearchNode node, SearchProblem searchProblem)
@@ -92,17 +96,18 @@ namespace Search.Core.Algorithms
             foreach (var action in actions)
             {
                 var successorState = transitionFunction.GetSuccessor(node.state, action);
-                if (successorState == null)
+                if (successorState == null || _visited.Contains(successorState))
                     continue;
                 var successor = new SearchNode(successorState, action, node,
                     stepCostFunction.GetCost(node.state, action, successorState),
                     _queueingFunction.isInformed ? searchProblem.GetHeuristicCost(successorState) : 0f);
+                _visited.Add(successorState);
                 successors.Add(successor);
-                _levelManager.mazeVisualizer.OnNodeGenerated(successor);
+                //_levelManager.mazeVisualizer.OnNodeGenerated(successor);
             }
             
-            Expanded.Add(node);
-            _levelManager.mazeVisualizer.OnNodeExpanded(node);
+            _expanded.Add(node);
+            //_levelManager.mazeVisualizer.OnNodeExpanded(node);
             return successors;
         }
         
@@ -120,7 +125,8 @@ namespace Search.Core.Algorithms
         private void ResetState()
         {
             _frontier.Clear();
-            Expanded.Clear();
+            _expanded.Clear();
+            _visited.Clear();
             _searchResult = null;
         }
     }

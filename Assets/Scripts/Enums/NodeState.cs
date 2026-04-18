@@ -1,7 +1,10 @@
-public enum NodeState
+namespace Search.Core
 {
-    Default,
-    Expanded,
-    Frontier,
-    Path
+    public enum NodeState
+    {
+        Default,
+        Expanded,
+        Frontier,
+        Path
+    }
 }
