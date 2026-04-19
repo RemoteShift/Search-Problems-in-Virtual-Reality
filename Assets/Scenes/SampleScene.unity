@@ -4456,6 +4456,10 @@ PrefabInstance:
       value: Level Manager
       objectReference: {fileID: 0}
     - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
+      propertyPath: levelLimit
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
       propertyPath: currentLevel
       value: 
       objectReference: {fileID: 11400000, guid: d532c4e372077654c86c74fbdaafa0f8, type: 2}
@@ -4465,6 +4469,10 @@ PrefabInstance:
       objectReference: {fileID: 320099972}
     - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
       propertyPath: currentAlgorithm
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
+      propertyPath: currentAlgorithmType
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

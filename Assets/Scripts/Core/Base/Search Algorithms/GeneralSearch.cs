@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Search.Levels;
 using Search.Utils;
+using UnityEngine;
 
 namespace Search.Core.Algorithms
 {
@@ -11,15 +13,15 @@ namespace Search.Core.Algorithms
         
         private readonly IFrontier<SearchNode> _frontier;
         private readonly List<SearchNode> _expanded = new();
-        private readonly HashSet<IState> _visited = new();
-
-        private int _levelLimit;
+        private readonly Dictionary<IState, SearchNode> _searchNodes = new();
+        
+        private int? _levelLimit;
         
         private LevelManager _levelManager;
         
         private SearchResult _searchResult;
         
-        public GeneralSearch(IQueuingFunction queueingFunction, int levelLimit = 0)
+        public GeneralSearch(IQueuingFunction queueingFunction, int? levelLimit = 0)
         {
             _queueingFunction = queueingFunction;
             _levelLimit = levelLimit;
@@ -44,33 +46,37 @@ namespace Search.Core.Algorithms
             if (_queueingFunction is IDS)
             {
                 RunIDS(searchProblem);
+                _searchResult.PrintSummary();
                 return;
             }
             
             RunSingleSearch(searchProblem);
+            _searchResult.PrintSummary();
         }
 
         private void RunSingleSearch(SearchProblem searchProblem, int? levelLimit = null)
         {
-            ResetState();
+            Reset();
             var initialHeuristic = _queueingFunction.isInformed
                 ? searchProblem.GetHeuristicCost(searchProblem.initialState)
                 : 0f;
-            var startNode = new SearchNode(searchProblem.initialState, heuristicCost: initialHeuristic);
+            var startNode = new SearchNode(searchProblem.initialState, 0, heuristicCost: initialHeuristic);
 
-            _visited.Add(startNode.state);
+            _searchNodes[startNode.state] = startNode;
             _frontier.Add(startNode);
 
             while (!_frontier.IsEmpty)
             {
                 var node = _frontier.Remove();
+                if (_searchNodes[node.state] != node)
+                    continue;
 
                 if (searchProblem.IsGoal(node.state))
                 {
                     var solutionPath = node.GetPathActions();
-                    _searchResult = SearchResult.Found(node, _expanded.Count, 
-                        _expanded.Count + _frontier.Count, solutionPath: solutionPath);
-                    _searchResult.PrintSummary();
+                    _searchResult = SearchResult.Found(node, _expanded.Count,
+                        _expanded.Count + _frontier.Count, solutionPath: solutionPath, 
+                        level: levelLimit ?? _levelLimit);
                     return;
                 }
 
@@ -82,8 +88,7 @@ namespace Search.Core.Algorithms
             }
 
             _searchResult = SearchResult.Failed("Exhausted state space. No solution found", _expanded.Count, 
-                _expanded.Count + _frontier.Count);
-            _searchResult.PrintSummary();
+                _expanded.Count + _frontier.Count, level: levelLimit ?? _levelLimit);
         }
 
         private List<SearchNode> Expand(SearchNode node, SearchProblem searchProblem)
@@ -96,14 +101,39 @@ namespace Search.Core.Algorithms
             foreach (var action in actions)
             {
                 var successorState = transitionFunction.GetSuccessor(node.state, action);
-                if (successorState == null || _visited.Contains(successorState))
+                if (successorState == null)
                     continue;
-                var successor = new SearchNode(successorState, action, node,
-                    stepCostFunction.GetCost(node.state, action, successorState),
-                    _queueingFunction.isInformed ? searchProblem.GetHeuristicCost(successorState) : 0f);
-                _visited.Add(successorState);
-                successors.Add(successor);
-                //_levelManager.mazeVisualizer.OnNodeGenerated(successor);
+                
+                var candidateDepth = node.depth + 1;
+                var stepCost = stepCostFunction.GetCost(node.state, action, successorState);
+
+                if (!_searchNodes.TryGetValue(successorState, out var existingNode))
+                {
+                    var successor = new SearchNode(successorState, candidateDepth, action, node,
+                        stepCost: stepCost,
+                        _queueingFunction.isInformed ? searchProblem.GetHeuristicCost(successorState) : 0f);
+                    _searchNodes[successorState] = successor;
+                    successors.Add(successor);
+                    continue;
+                }
+
+                if (_queueingFunction is IDS && candidateDepth < existingNode.depth)
+                {
+                    existingNode.SetDepth(candidateDepth);
+                    existingNode.SetParent(node, action, stepCost);
+                    if (_frontier.Contains(existingNode))
+                    {
+                        if (_frontier is PriorityQueue<SearchNode> pq) 
+                            pq.TryUpdate(existingNode);
+                    }
+                    else
+                    {
+                        successors.Add(existingNode);
+                    }
+                        
+                    _expanded.Remove(existingNode);
+                    continue;
+                }
             }
             
             _expanded.Add(node);
@@ -116,17 +146,17 @@ namespace Search.Core.Algorithms
             for (var limit = 0; limit <= _levelLimit ; limit++)
             {
                 RunSingleSearch(searchProblem, limit);
-
+                
                 if (_searchResult is { success: true })
                     return;
             }
         }
         
-        private void ResetState()
+        private void Reset()
         {
             _frontier.Clear();
             _expanded.Clear();
-            _visited.Clear();
+            _searchNodes.Clear();
             _searchResult = null;
         }
     }

@@ -9,6 +9,7 @@ namespace Search.Core
         private List<string> solutionPath { get; }
         public int nodesExpanded { get; }
         private int nodesGenerated { get; }
+        private int? level { get; }
         private int totalTimeMs { get; }
         private string failureReason { get; }
 
@@ -18,7 +19,8 @@ namespace Search.Core
             int totalTimeMs,
             string failureReason = null,
             SearchNode solutionNode = null,
-            List<string> solutionPath = null)
+            List<string> solutionPath = null,
+            int? level = null)
         {
             this.success = success;
             this.solutionNode = solutionNode;
@@ -27,14 +29,18 @@ namespace Search.Core
             this.nodesGenerated = nodesGenerated;
             this.totalTimeMs = totalTimeMs;
             this.failureReason = failureReason;
+            this.level = level;
         }
 
         public static SearchResult Found(SearchNode node, int expanded, int generated, List<string> solutionPath,
-            int timeMs = 0)
-            => new SearchResult(true, expanded, generated, timeMs, solutionNode: node, solutionPath: solutionPath);
+            int timeMs = 0, int? level = null)
+            => new SearchResult(true, expanded, generated, timeMs, solutionNode: node, 
+                solutionPath: solutionPath, level: level);
 
-        public static SearchResult Failed(string reason, int expanded, int generated, int timeMs = 0)
-            => new SearchResult(false, expanded, generated, timeMs, failureReason: reason);
+        public static SearchResult Failed(string reason, int expanded, int generated, int timeMs = 0, 
+            int? level = null)
+            => new SearchResult(false, expanded, generated, timeMs, failureReason: reason, 
+                level: level);
 
         public void PrintSummary()
         {
@@ -42,7 +48,9 @@ namespace Search.Core
                 ? $"Search successful! Solution Node: {solutionNode.state.id}\n" +
                   $"Solution path: {string.Join(" -> ", solutionPath)}"
                 : $"Search failed. Reason: {failureReason}");
-            UnityEngine.Debug.Log(
+            UnityEngine.Debug.Log( level.HasValue ? 
+                $"Depth {level}: Nodes Expanded: {nodesExpanded}, Nodes Generated: {nodesGenerated}, " +
+                $"Time: {totalTimeMs} ms" :
                 $"Nodes Expanded: {nodesExpanded}, Nodes Generated: {nodesGenerated}, Time: {totalTimeMs} ms");
         }
     }

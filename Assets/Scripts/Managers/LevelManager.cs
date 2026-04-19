@@ -12,7 +12,8 @@ namespace Search.Levels
         private LevelData currentLevel;
 
         [Header("Search Algorithm Settings")]
-        [SerializeField] private AlgorithmType currentAlgorithm = AlgorithmType.None;
+        [SerializeField] private AlgorithmType currentAlgorithmType = AlgorithmType.None;
+        [SerializeField] private int levelLimit = 5;
         
         [Header("Scene References")]
         public MazeVisualizer mazeVisualizer;
@@ -21,17 +22,20 @@ namespace Search.Levels
         //[SerializeField] private VRSearchController searchController;
 
         private SearchProblem _currentProblem;
-        private GeneralSearch _currentAlgorithm;
+        private GeneralSearch _currentSearchAlgorithm;
 
-        private void Start()
+        public void Start()
         {
             if (currentLevel)
                 LoadLevel(currentLevel);
             else
                 Debug.LogWarning("No level assigned to LevelManager");
             
-            if (currentAlgorithm != AlgorithmType.None)
-                StartSearch();
+            if (currentAlgorithmType != AlgorithmType.None)
+                if(currentAlgorithmType == AlgorithmType.IDS)
+                    StartSearch(levelLimit);
+                else
+                    StartSearch();
             else
                 Debug.LogWarning("No search algorithm assigned to LevelManager");
         }
@@ -54,7 +58,7 @@ namespace Search.Levels
                 //searchController.SetProblem(_currentProblem);
         }
 
-        private void StartSearch(int levelLimit = 0)
+        private void StartSearch(int? _levelLimit = null)
         {
             if (_currentProblem == null)
             {
@@ -62,7 +66,7 @@ namespace Search.Levels
                 return;
             }
 
-            IQueuingFunction queuingFunction = currentAlgorithm switch
+            IQueuingFunction queuingFunction = currentAlgorithmType switch
             {
                 AlgorithmType.BFS => new BFS(),
                 AlgorithmType.DFS => new DFS(),
@@ -74,12 +78,13 @@ namespace Search.Levels
                 _ => throw new System.ArgumentException("Unsupported algorithm type")
             };
             
-            _currentAlgorithm = new GeneralSearch(queuingFunction, levelLimit);
-            _currentAlgorithm.Search(_currentProblem);
+            _currentSearchAlgorithm = new GeneralSearch(queuingFunction, _levelLimit);
+            _currentSearchAlgorithm.Search(_currentProblem);
         }
         
         public SearchProblem GetCurrentProblem() => _currentProblem;
-        public GeneralSearch GetCurrentAlgorithm() => _currentAlgorithm;
+        public GeneralSearch GetCurrentSearchAlgorithm() => _currentSearchAlgorithm;
+        public AlgorithmType GetCurrentAlgorithm() => currentAlgorithmType;
         public LevelData GetCurrentLevel() => currentLevel;
     }
 }
