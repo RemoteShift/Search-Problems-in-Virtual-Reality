@@ -4475,6 +4475,18 @@ PrefabInstance:
       propertyPath: currentAlgorithmType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
+      propertyPath: searchAlgorithm.maxExpansions
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
+      propertyPath: searchAlgorithm.expansionLimit
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
+      propertyPath: searchAlgorithm.useGraphSearch
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

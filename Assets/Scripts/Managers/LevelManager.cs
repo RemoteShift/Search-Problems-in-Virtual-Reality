@@ -3,6 +3,7 @@ using Search.Core;
 using Search.Core.Algorithms;
 using Search.Utils;
 using Search.Visualization;
+using UnityEngine.Serialization;
 
 namespace Search.Levels
 {
@@ -13,7 +14,12 @@ namespace Search.Levels
 
         [Header("Search Algorithm Settings")]
         [SerializeField] private AlgorithmType currentAlgorithmType = AlgorithmType.None;
+        
+        [Tooltip("For algorithms like IDS, this sets the maximum depth limit. Ignored for other algorithms.")]
         [SerializeField] private int levelLimit = 5;
+
+        [Tooltip("Live Search Algorithm Instance (for debugging and visualization purposes)")]
+        public GeneralSearch searchAlgorithm;
         
         [Header("Scene References")]
         public MazeVisualizer mazeVisualizer;
@@ -21,8 +27,8 @@ namespace Search.Levels
         // For graph levels you could add GraphVisualizer later
         //[SerializeField] private VRSearchController searchController;
 
-        private SearchProblem _currentProblem;
-        private GeneralSearch _currentSearchAlgorithm;
+        private SearchProblem _problem;
+        private Coroutine _searchCoroutine;
 
         public void Start()
         {
@@ -43,11 +49,11 @@ namespace Search.Levels
         private void LoadLevel(LevelData level)
         {
             currentLevel = level;
-            _currentProblem = level.CreateSearchProblem();
+            _problem = level.CreateSearchProblem();
             
             if (mazeVisualizer && level is MazeLevelData mazeLevel)
             {
-                mazeVisualizer.Setup(mazeLevel, _currentProblem);
+                mazeVisualizer.Setup(mazeLevel, _problem);
             }
             // Add future support for GraphLevelData here:
             // else if (level is GraphLevelData graphLevel && graphVisualizer != null)
@@ -60,11 +66,14 @@ namespace Search.Levels
 
         private void StartSearch(int? _levelLimit = null)
         {
-            if (_currentProblem == null)
+            if (_problem == null)
             {
                 Debug.LogError("No search problem loaded. Cannot start search.");
                 return;
             }
+
+            if (_searchCoroutine != null)
+                StopCoroutine(_searchCoroutine);
 
             IQueuingFunction queuingFunction = currentAlgorithmType switch
             {
@@ -78,12 +87,13 @@ namespace Search.Levels
                 _ => throw new System.ArgumentException("Unsupported algorithm type")
             };
             
-            _currentSearchAlgorithm = new GeneralSearch(queuingFunction, _levelLimit);
-            _currentSearchAlgorithm.Search(_currentProblem);
+            searchAlgorithm = new GeneralSearch(queuingFunction, _levelLimit, searchAlgorithm.useGraphSearch, 
+                searchAlgorithm.expansionLimit);
+            _searchCoroutine = StartCoroutine(searchAlgorithm.SearchCoroutine(_problem, this));
         }
         
-        public SearchProblem GetCurrentProblem() => _currentProblem;
-        public GeneralSearch GetCurrentSearchAlgorithm() => _currentSearchAlgorithm;
+        public SearchProblem GetCurrentProblem() => _problem;
+        public GeneralSearch GetCurrentSearchAlgorithm() => searchAlgorithm;
         public AlgorithmType GetCurrentAlgorithm() => currentAlgorithmType;
         public LevelData GetCurrentLevel() => currentLevel;
     }
