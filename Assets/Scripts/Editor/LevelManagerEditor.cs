@@ -17,6 +17,15 @@ public class LevelManagerEditor : Editor
         if (GUILayout.Button("Start Search"))
         {
             myScript.Start();
+            Repaint();
+        }
+
+        if(myScript.isStepped)
+        {
+            if (GUILayout.Button("Next Step"))
+            {
+                myScript.searchAlgorithm.AdvanceStep(); 
+            }
         }
     }
 }

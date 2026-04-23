@@ -29,6 +29,9 @@ namespace Search.Visualization
         private GameObject _startObject;
         private readonly List<GameObject> _goalObjects = new();
 
+        [HideInInspector] public bool isTreeSearch;
+
+        [HideInInspector] public bool isAnimating;
         
         public void Setup(MazeLevelData levelData, SearchProblem problem)
         {
@@ -141,7 +144,16 @@ namespace Search.Visualization
         {
             if (node.state is GridState gs)
             {
-                GetOrCreateNodeVisual(gs).SetState(NodeState.Frontier);
+                if (isTreeSearch && _nodeVisuals.TryGetValue(gs.id, out var oldVisual))
+                {
+                    Destroy(oldVisual.gameObject);
+                    _nodeVisuals.Remove(gs.id);
+                }
+                
+                var visual = GetOrCreateNodeVisual(gs);
+                visual.SetState(NodeState.Frontier);
+                
+                //visual.PlayGeneratedAnimation();
             }
         }
 

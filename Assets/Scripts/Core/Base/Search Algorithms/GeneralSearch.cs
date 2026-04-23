@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Search.Levels;
 using Search.Utils;
+using Search.Visualization;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,11 +13,6 @@ namespace Search.Core.Algorithms
     public class GeneralSearch
     {
         private readonly IQueuingFunction _queueingFunction;
-
-        [FormerlySerializedAs("_useGraphSearch")]
-        [Tooltip("Whether to use graph search (track explored states and avoid duplicates in frontier) " +
-                 "or tree search (allow duplicates in frontier).")]
-        public bool useGraphSearch;
         
         private readonly IFrontier<SearchNode> _frontier;
         private readonly List<SearchNode> _expanded = new();
@@ -25,21 +21,26 @@ namespace Search.Core.Algorithms
         private readonly int? _levelLimit;
         
         private LevelManager _levelManager;
+        private ISearchListener _searchListener;
         
         private SearchResult _searchResult;
 
         private Stopwatch _searchTimer;
         public float ElapsedTimeinS => _searchTimer?.ElapsedMilliseconds / 1000f ?? 0f;
 
+        private bool _stepRequested = false; // becomes true when user clicks "Next Step"
+        
         [Tooltip("Maximum number of nodes to expand before terminating search with failure.")]
         public int expansionLimit;
         
-        public GeneralSearch(IQueuingFunction queueingFunction, int? levelLimit = 0, bool useGraphSearch = false,
+        public GeneralSearch(IQueuingFunction queueingFunction, int? levelLimit = 0,
             int expansionLimit = 10000)
         {
+            _levelManager = LevelManager.Instance;
+            //_mazeVisualizer = _levelManager.mazeVisualizer;
             _queueingFunction = queueingFunction;
-            _searchNodes = useGraphSearch ? new() : null;
-            this.useGraphSearch = useGraphSearch;
+            _searchNodes = _levelManager.useGraphSearch ? new() 
+                : null;
             _levelLimit = levelLimit;
             this.expansionLimit = expansionLimit;
             _frontier = _queueingFunction switch
@@ -55,7 +56,6 @@ namespace Search.Core.Algorithms
                     a.F.CompareTo(b.F)),
                 _ => throw new System.ArgumentException("Unsupported queuing function")
             };
-            _levelManager = LevelManager.Instance;
         }
 
         public IEnumerator SearchCoroutine(SearchProblem searchProblem, MonoBehaviour owner)
@@ -80,8 +80,8 @@ namespace Search.Core.Algorithms
                 ? searchProblem.GetHeuristicCost(searchProblem.initialState)
                 : 0f;
             var startNode = new SearchNode(searchProblem.initialState, 0, heuristicCost: initialHeuristic);
-
-            if (useGraphSearch)
+            
+            if (_levelManager.useGraphSearch)
             {
                 _searchNodes[startNode.state] = startNode;
             }
@@ -90,7 +90,7 @@ namespace Search.Core.Algorithms
             while (!_frontier.IsEmpty)
             {
                 var node = _frontier.Remove();
-                if (useGraphSearch && _searchNodes[node.state] != node)
+                if (_levelManager.useGraphSearch && _searchNodes[node.state] != node)
                     continue;
 
                 if (searchProblem.IsGoal(node.state))
@@ -116,8 +116,18 @@ namespace Search.Core.Algorithms
                         timeS: ElapsedTimeinS);
                     yield break;
                 }
-                
-                yield return null;
+
+                if (_levelManager.isStepped)
+                {
+                    _searchTimer.Stop();
+                    _stepRequested = false;
+                    yield return new WaitUntil(() => _stepRequested && !_levelManager.mazeVisualizer.isAnimating);
+                    _searchTimer.Start();
+                }
+                else
+                {
+                    yield return null;
+                }
             }
 
             _searchResult = SearchResult.Failed("Exhausted state space. No solution found", _expanded.Count, 
@@ -144,7 +154,7 @@ namespace Search.Core.Algorithms
                     : 0f;
                 
                 // Tree search: no need to check for existing nodes or expanded states. Keep duplicates in frontier.
-                if (!useGraphSearch)
+                if (!_levelManager.useGraphSearch)
                 {
                     var newNode = new SearchNode(successorState, candidateDepth, action, node, stepCost, heuristic);
                     successors.Add(newNode);
@@ -203,5 +213,8 @@ namespace Search.Core.Algorithms
             _searchResult = null;
             _searchNodes?.Clear();
         }
+        
+        /// <summary>Called by the UI to advance one step.</summary>
+        public void AdvanceStep() => _stepRequested = true;
     }
 }

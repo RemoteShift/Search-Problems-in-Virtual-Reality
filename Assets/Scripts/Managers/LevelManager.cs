@@ -15,10 +15,18 @@ namespace Search.Levels
         [Header("Search Algorithm Settings")]
         [SerializeField] private AlgorithmType currentAlgorithmType = AlgorithmType.None;
         
+        [Tooltip("Whether to use graph search (track explored states and avoid duplicates in frontier) " +
+                 "or tree search (allow duplicates in frontier).")]
+        public bool useGraphSearch = false;
+
+        [Tooltip("Whether to step through the search algorithm one expansion at a time (e.g. via UI button) " +
+                 "or let it run continuously until completion.")]
+        public bool isStepped = false;
+        
         [Tooltip("For algorithms like IDS, this sets the maximum depth limit. Ignored for other algorithms.")]
         [SerializeField] private int levelLimit = 5;
 
-        [Tooltip("Live Search Algorithm Instance (for debugging and visualization purposes)")]
+        [Tooltip("Live Search Algorithm Instance")]
         public GeneralSearch searchAlgorithm;
         
         [Header("Scene References")]
@@ -53,6 +61,7 @@ namespace Search.Levels
             
             if (mazeVisualizer && level is MazeLevelData mazeLevel)
             {
+                mazeVisualizer.isTreeSearch = !useGraphSearch;
                 mazeVisualizer.Setup(mazeLevel, _problem);
             }
             // Add future support for GraphLevelData here:
@@ -87,7 +96,7 @@ namespace Search.Levels
                 _ => throw new System.ArgumentException("Unsupported algorithm type")
             };
             
-            searchAlgorithm = new GeneralSearch(queuingFunction, _levelLimit, searchAlgorithm.useGraphSearch, 
+            searchAlgorithm = new GeneralSearch(queuingFunction, _levelLimit, 
                 searchAlgorithm.expansionLimit);
             _searchCoroutine = StartCoroutine(searchAlgorithm.SearchCoroutine(_problem, this));
         }

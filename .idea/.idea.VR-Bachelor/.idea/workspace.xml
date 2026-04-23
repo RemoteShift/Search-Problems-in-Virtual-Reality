@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/SearchResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/SearchResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/LevelManagerEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/LevelManagerEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,7 +162,7 @@
       <workItem from="1776494153936" duration="8261000" />
       <workItem from="1776590425923" duration="25413000" />
       <workItem from="1776763191537" duration="6436000" />
-      <workItem from="1776950126354" duration="4108000" />
+      <workItem from="1776950126354" duration="9940000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -379,7 +380,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776770916035</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Add elapsed time tracking to search results; update SearchResult to report time in seconds">
+      <option name="closed" value="true" />
+      <created>1776957135816</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1776957135816</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,7 +421,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added Sprinting" />
     <MESSAGE value="Added direct grabbing functionality" />
     <MESSAGE value="Added `Singleton` Utility script  &amp; `VRInputHandler`, `LeftControllerLocomotionInput` &amp; Renamed `PlayerMovementController` to `PlayerLocomotion` &amp; Made them all Singleton.&#10;&#10;Added Left Hand" />
     <MESSAGE value="Add RightControllerLocomotionInput class and associated prefab for right-hand locomotion input handling" />
@@ -437,7 +445,8 @@
     <MESSAGE value="Refactor GeneralSearch to improve state management and add algorithm selection; enhance SearchResult handling" />
     <MESSAGE value="Refactor GeneralSearch to enhance state management and search result reporting; update LevelManager for algorithm selection and level limit configuration&#10;&#10;All search algorithms work now. fadel adding time logging and visualization" />
     <MESSAGE value="Refactor GeneralSearch to support configurable graph search and expansion limits; update LevelManager for improved algorithm management&#10;&#10;Added Tree Search and made it interchangeable with Graph Search" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor GeneralSearch to support configurable graph search and expansion limits; update LevelManager for improved algorithm management&#10;&#10;Added Tree Search and made it interchangeable with Graph Search" />
+    <MESSAGE value="Add elapsed time tracking to search results; update SearchResult to report time in seconds" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add elapsed time tracking to search results; update SearchResult to report time in seconds" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
