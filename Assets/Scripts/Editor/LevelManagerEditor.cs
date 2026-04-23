@@ -1,3 +1,4 @@
+using Search.Controllers;
 using Search.Levels;
 using UnityEditor;
 using UnityEngine;
@@ -24,7 +25,7 @@ public class LevelManagerEditor : Editor
         {
             if (GUILayout.Button("Next Step"))
             {
-                myScript.searchAlgorithm.AdvanceStep(); 
+                SearchController.Instance.AdvanceStep();
             }
         }
     }

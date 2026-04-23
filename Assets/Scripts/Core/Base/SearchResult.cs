@@ -5,8 +5,8 @@ namespace Search.Core
     public class SearchResult
     {
         public bool success { get; }
-        private SearchNode solutionNode { get; }
-        private List<string> solutionPath { get; }
+        public SearchNode solutionNode { get; }
+        public List<string> solutionPath { get; }
         public int nodesExpanded { get; }
         private int nodesGenerated { get; }
         private int? level { get; }

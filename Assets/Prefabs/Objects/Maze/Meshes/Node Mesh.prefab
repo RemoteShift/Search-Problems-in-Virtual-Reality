@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7922251121040759823, guid: ab1bd23f3bec2ec48820ee43ba016c6f, type: 3}
+  - {fileID: 2100000, guid: 729b23678db777c41b13d291145b2217, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103,7 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdcace5e732d2634bb8151e608a1ef12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NodeVisual
-  defaultMat: {fileID: 7922251121040759823, guid: ab1bd23f3bec2ec48820ee43ba016c6f, type: 3}
-  frontierMat: {fileID: 0}
-  expandedMat: {fileID: 0}
-  pathMat: {fileID: 0}
+  defaultMat: {fileID: 2100000, guid: 729b23678db777c41b13d291145b2217, type: 2}
+  frontierMat: {fileID: 2100000, guid: 1f16aab4ae3292e40a8fb56e28b9c05c, type: 2}
+  expandedMat: {fileID: 2100000, guid: bcebd8ca019eca547b932f6e20056233, type: 2}
+  expandingMat: {fileID: 2100000, guid: 729b23678db777c41b13d291145b2217, type: 2}
+  pathMat: {fileID: 2100000, guid: b531e8ba5345c8f439bf187010a60c8c, type: 2}

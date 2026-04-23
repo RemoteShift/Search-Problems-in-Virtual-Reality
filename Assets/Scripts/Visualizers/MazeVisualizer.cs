@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Search.Visualization
 {
-    public class MazeVisualizer : MonoBehaviour, ISearchListener
+    public class MazeVisualizer : MonoBehaviour, IVisualizer
     {
         [Header("Prefabs")] [SerializeField] private GameObject groundTilePrefab;
         [SerializeField] private GameObject wallPrefab;
@@ -25,29 +25,31 @@ namespace Search.Visualization
         private MazeLevelData _levelData;
         private SearchProblem _problem;
         private readonly Dictionary<string, NodeVisual> _nodeVisuals = new();
+        private readonly Dictionary<Vector2Int, GameObject> _groundObjects = new();
         private readonly Dictionary<Vector2Int, GameObject> _wallObjects = new();
         private GameObject _startObject;
         private readonly List<GameObject> _goalObjects = new();
 
         [HideInInspector] public bool isTreeSearch;
 
-        [HideInInspector] public bool isAnimating;
+        [HideInInspector] public bool IsAnimating { get; }
         
-        public void Setup(MazeLevelData levelData, SearchProblem problem)
+        public Coroutine blinkingCoroutine { get; set; }
+        
+        public void Setup(LevelData levelData, SearchProblem problem)
         {
-            _levelData = levelData;
+            _levelData = (MazeLevelData) levelData;
             _problem = problem;
 
-     
             ClearVisuals();
-            
+
             BuildGroundAndWalls();
             PlaceStartMarker();
             PlaceGoalMarkers();
             PlayerLocomotion.Instance.TeleportTo(_startObject.transform.position, _startObject.transform.rotation);
         }
-
-        private void ClearVisuals()
+        
+        public void ClearVisuals()
         {
             foreach (var kvp in _nodeVisuals.Where(kvp => kvp.Value))
             {
@@ -56,6 +58,13 @@ namespace Search.Visualization
 
             _nodeVisuals.Clear();
 
+            foreach (var obj in _groundObjects.Values.Where(obj => obj))
+            {
+                Destroy(obj);
+            }
+
+            _groundObjects.Clear();
+            
             foreach (var obj in _wallObjects.Values.Where(obj => obj))
             {
                 Destroy(obj);
@@ -76,6 +85,16 @@ namespace Search.Visualization
             _goalObjects.Clear();
         }
 
+        public void ClearNodeVisuals()
+        {
+            foreach (var kvp in _nodeVisuals.Where(kvp => kvp.Value))
+            {
+                Destroy(kvp.Value.gameObject);
+            }
+
+            _nodeVisuals.Clear();
+        }
+        
         private void BuildGroundAndWalls()
         {
             var walls = _levelData.GetWalls2D();
@@ -87,7 +106,8 @@ namespace Search.Visualization
             {
                 var pos = new Vector3(col * cellSize, yOffsetGround, row * cellSize);
                 
-                Instantiate(groundTilePrefab, pos, Quaternion.identity, transform);
+                var ground = Instantiate(groundTilePrefab, pos, Quaternion.identity, transform);
+                _groundObjects[new Vector2Int(row, col)] = ground;
                 
                 if (walls[row, col])
                 {
@@ -115,83 +135,33 @@ namespace Search.Visualization
                 _goalObjects.Add(marker);
             }
         }
-        
-        private NodeVisual GetOrCreateNodeVisual(GridState state)
+
+        public NodeVisual GetOrCreateNodeVisual(IState state)
         {
+            var gridState = (GridState)state;
             if (_nodeVisuals.TryGetValue(state.id, out var existing))
             {
                 return existing;
             }
 
-            var pos = new Vector3(state.Column * cellSize, yOffsetNode, state.Row * cellSize);
+            var pos = new Vector3(gridState.Column * cellSize, yOffsetNode, gridState.Row * cellSize);
             var go = Instantiate(nodePrefab, pos, Quaternion.identity, transform);
-            var visual = go.GetComponent<NodeVisual>();
+            var visual = go.GetComponentInChildren<NodeVisual>();
             visual.Initialize(state, pos);
             _nodeVisuals[state.id] = visual;
             return visual;
         }
-
-        // ---------- ISearchListener implementation ----------
-        public void OnNodeExpanded(SearchNode node)
+        
+        public void BlinkNode(IState state)
         {
-            if (node.state is GridState gs)
-            {
-                GetOrCreateNodeVisual(gs).SetState(NodeState.Expanded);
-            }
-        }
-
-        public void OnNodeGenerated(SearchNode node)
-        {
-            if (node.state is GridState gs)
-            {
-                if (isTreeSearch && _nodeVisuals.TryGetValue(gs.id, out var oldVisual))
-                {
-                    Destroy(oldVisual.gameObject);
-                    _nodeVisuals.Remove(gs.id);
-                }
-                
-                var visual = GetOrCreateNodeVisual(gs);
-                visual.SetState(NodeState.Frontier);
-                
-                //visual.PlayGeneratedAnimation();
-            }
-        }
-
-        public void OnFrontierUpdated(IReadOnlyList<SearchNode> frontier)
-        {
-            // Reset all frontier visuals first
-            foreach (var visual in _nodeVisuals.Values.Where(visual => visual.currentState == NodeState.Frontier))
-            {
-                visual.SetState(NodeState.Default);
-            }
-
-            // Mark current frontier nodes
-            foreach (var node in frontier)
-            {
-                if (node.state is GridState gs)
-                {
-                    GetOrCreateNodeVisual(gs).SetState(NodeState.Frontier);
-                }
-            }
-        }
-
-        public void OnSolutionFound(SearchNode solution)
-        {
-            var current = solution;
-            while (current != null)
-            {
-                if (current.state is GridState gs)
-                {
-                    GetOrCreateNodeVisual(gs).SetState(NodeState.Path);
-                }
-
-                current = current.parent;
-            }
-        }
-
-        public void OnSearchComplete(SearchResult result)
-        {
-            Debug.Log($"Search completed. Success: {result.success}, Expanded: {result.nodesExpanded}");
+            if (state is not GridState)
+                return;
+            
+            if(blinkingCoroutine != null)
+                StopCoroutine(blinkingCoroutine);
+            
+            if (_nodeVisuals.TryGetValue(state.id, out var nodeVisual))
+                blinkingCoroutine = StartCoroutine(nodeVisual.Blink());
         }
     }
 }

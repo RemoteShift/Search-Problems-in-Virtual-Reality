@@ -41,6 +41,8 @@ namespace Search.Utils
             HeapifyUp(idx);
         }
         
+        public IReadOnlyList<T> ToList() => _heap.AsReadOnly();
+        
         public void AddRange(IEnumerable<T> items)
         {
             foreach (var item in items)

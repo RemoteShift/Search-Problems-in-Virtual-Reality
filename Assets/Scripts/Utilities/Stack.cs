@@ -18,6 +18,8 @@ namespace Search.Utils
         }
 
         public bool Contains(T node) => _stack.Contains(node);
+        
+        public T Peek() => _stack.Peek();
 
         public T Remove() => _stack.Pop();
 
@@ -26,5 +28,7 @@ namespace Search.Utils
         public int Count => _stack.Count;
         
         public void Clear() => _stack.Clear();
+        
+        public IReadOnlyList<T> ToList() => _stack.ToArray();
     }
 }

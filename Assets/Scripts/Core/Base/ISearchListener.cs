@@ -8,6 +8,11 @@ namespace Search.Core
         /// Called when a node is expanded.
         /// </summary>
         void OnNodeExpanded(SearchNode node);
+        
+        /// <summary>
+        /// Called when a node is about to be expanded in the next step.
+        /// </summary>
+        void OnNodeExpanding(SearchNode node);
 
         /// <summary>
         /// Called when a node is generated.
@@ -18,7 +23,13 @@ namespace Search.Core
         /// Called after the frontier has been reordered.
         /// Provides the current frontier for visualization.
         /// </summary>
-        void OnFrontierUpdated(IReadOnlyList<SearchNode> frontier);
+        void OnFrontierReordered();
+        
+        /// <summary>
+        /// Called when a node is added to the frontier.
+        /// </summary>
+        /// <param name="node">The new node</param>
+        void OnNodesAddedToFrontier(IReadOnlyList<SearchNode> node);
 
         /// <summary>
         /// Called when a solution is found.

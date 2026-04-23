@@ -17,6 +17,8 @@ namespace Search.Utils
         }
         
         public bool Contains(T node) => _queue.Contains(node);
+        
+        public T Peek() => _queue.Peek();
 
         public T Remove() => _queue.Dequeue();
 
@@ -25,5 +27,7 @@ namespace Search.Utils
         public int Count => _queue.Count;
         
         public void Clear() => _queue.Clear();
+        
+        public IReadOnlyList<T> ToList() => _queue.ToArray();
     }
 }
