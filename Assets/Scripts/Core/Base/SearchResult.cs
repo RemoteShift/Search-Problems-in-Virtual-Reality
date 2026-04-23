@@ -10,13 +10,13 @@ namespace Search.Core
         public int nodesExpanded { get; }
         private int nodesGenerated { get; }
         private int? level { get; }
-        private int totalTimeMs { get; }
+        private float totalTimeS { get; }
         private string failureReason { get; }
 
         private SearchResult(bool success,
             int nodesExpanded,
             int nodesGenerated,
-            int totalTimeMs,
+            float totalTimeS,
             string failureReason = null,
             SearchNode solutionNode = null,
             List<string> solutionPath = null,
@@ -27,19 +27,19 @@ namespace Search.Core
             this.solutionPath = solutionPath;
             this.nodesExpanded = nodesExpanded;
             this.nodesGenerated = nodesGenerated;
-            this.totalTimeMs = totalTimeMs;
+            this.totalTimeS = totalTimeS;
             this.failureReason = failureReason;
             this.level = level;
         }
 
         public static SearchResult Found(SearchNode node, int expanded, int generated, List<string> solutionPath,
-            int timeMs = 0, int? level = null)
-            => new SearchResult(true, expanded, generated, timeMs, solutionNode: node, 
+            float timeS = 0f, int? level = null)
+            => new SearchResult(true, expanded, generated, timeS, solutionNode: node, 
                 solutionPath: solutionPath, level: level);
 
-        public static SearchResult Failed(string reason, int expanded, int generated, int timeMs = 0, 
+        public static SearchResult Failed(string reason, int expanded, int generated, float timeS = 0f, 
             int? level = null)
-            => new SearchResult(false, expanded, generated, timeMs, failureReason: reason, 
+            => new SearchResult(false, expanded, generated, timeS, failureReason: reason, 
                 level: level);
 
         public void PrintSummary()
@@ -50,8 +50,8 @@ namespace Search.Core
                 : $"Search failed. Reason: {failureReason}");
             UnityEngine.Debug.Log( level.HasValue ? 
                 $"Depth {level}: Nodes Expanded: {nodesExpanded}, Nodes Generated: {nodesGenerated}, " +
-                $"Time: {totalTimeMs} ms" :
-                $"Nodes Expanded: {nodesExpanded}, Nodes Generated: {nodesGenerated}, Time: {totalTimeMs} ms");
+                $"Time: {totalTimeS} Seconds" :
+                $"Nodes Expanded: {nodesExpanded}, Nodes Generated: {nodesGenerated}, Time: {totalTimeS} Seconds");
         }
     }
 }

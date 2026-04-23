@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Search.Levels;
 using Search.Utils;
 using UnityEngine;
@@ -26,6 +27,9 @@ namespace Search.Core.Algorithms
         private LevelManager _levelManager;
         
         private SearchResult _searchResult;
+
+        private Stopwatch _searchTimer;
+        public float ElapsedTimeinS => _searchTimer?.ElapsedMilliseconds / 1000f ?? 0f;
 
         [Tooltip("Maximum number of nodes to expand before terminating search with failure.")]
         public int expansionLimit;
@@ -56,6 +60,7 @@ namespace Search.Core.Algorithms
 
         public IEnumerator SearchCoroutine(SearchProblem searchProblem, MonoBehaviour owner)
         {
+            _searchTimer = Stopwatch.StartNew();
             if (_queueingFunction is IDS)
             {
                 yield return owner.StartCoroutine(RunIDSCoroutine(searchProblem));
@@ -64,7 +69,7 @@ namespace Search.Core.Algorithms
             {
                 yield return owner.StartCoroutine(RunSingleSearchCoroutine(searchProblem));
             }
-            
+            _searchTimer.Stop();
             _searchResult.PrintSummary();
         }
 
@@ -93,7 +98,7 @@ namespace Search.Core.Algorithms
                     var solutionPath = node.GetPathActions();
                     _searchResult = SearchResult.Found(node, _expanded.Count,
                         _expanded.Count + _frontier.Count, solutionPath: solutionPath, 
-                        level: levelLimit ?? _levelLimit);
+                        level: levelLimit ?? _levelLimit, timeS: ElapsedTimeinS);
                     yield break;
                 }
 
@@ -107,7 +112,8 @@ namespace Search.Core.Algorithms
                 {
                     _searchResult = SearchResult.Failed($"Step limit of {expansionLimit} exceeded. " +
                                                         $"No solution found", _expanded.Count,
-                        _expanded.Count + _frontier.Count, level: levelLimit ?? _levelLimit);
+                        _expanded.Count + _frontier.Count, level: levelLimit ?? _levelLimit,
+                        timeS: ElapsedTimeinS);
                     yield break;
                 }
                 
@@ -115,7 +121,7 @@ namespace Search.Core.Algorithms
             }
 
             _searchResult = SearchResult.Failed("Exhausted state space. No solution found", _expanded.Count, 
-                _expanded.Count + _frontier.Count, level: levelLimit ?? _levelLimit);
+                _expanded.Count + _frontier.Count, level: levelLimit ?? _levelLimit, timeS: ElapsedTimeinS);
         }
 
         private List<SearchNode> Expand(SearchNode node, SearchProblem searchProblem)
