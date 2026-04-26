@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Search.Core;
@@ -25,8 +26,11 @@ namespace Search.Visualization
         private MazeLevelData _levelData;
         private SearchProblem _problem;
         private readonly Dictionary<string, NodeVisual> _nodeVisuals = new();
+        private GameObject _nodeContainer;
         private readonly Dictionary<Vector2Int, GameObject> _groundObjects = new();
+        private GameObject _groundContainer;
         private readonly Dictionary<Vector2Int, GameObject> _wallObjects = new();
+        private GameObject _wallContainer;
         private GameObject _startObject;
         private readonly List<GameObject> _goalObjects = new();
 
@@ -35,7 +39,19 @@ namespace Search.Visualization
         [HideInInspector] public bool IsAnimating { get; }
         
         public Coroutine blinkingCoroutine { get; set; }
-        
+
+        private void Awake()
+        {
+            _groundContainer = new GameObject("Grounds");
+            _groundContainer.transform.SetParent(transform);
+            
+            _wallContainer = new GameObject("Walls");
+            _wallContainer.transform.SetParent(transform);
+
+            _nodeContainer = new GameObject("Nodes");
+            _nodeContainer.transform.SetParent(transform);
+        }
+
         public void Setup(LevelData levelData, SearchProblem problem)
         {
             _levelData = (MazeLevelData) levelData;
@@ -107,12 +123,14 @@ namespace Search.Visualization
                 var pos = new Vector3(col * cellSize, yOffsetGround, row * cellSize);
                 
                 var ground = Instantiate(groundTilePrefab, pos, Quaternion.identity, transform);
+                ground.transform.SetParent(_groundContainer.transform);
                 _groundObjects[new Vector2Int(row, col)] = ground;
                 
                 if (walls[row, col])
                 {
                     var wallPos = new Vector3(col * cellSize, yOffsetWall, row * cellSize);
                     var wall = Instantiate(wallPrefab, wallPos, Quaternion.identity, transform);
+                    wall.transform.SetParent(_wallContainer.transform);
                     _wallObjects[new Vector2Int(row, col)] = wall;
                 }
             }
@@ -146,6 +164,7 @@ namespace Search.Visualization
 
             var pos = new Vector3(gridState.Column * cellSize, yOffsetNode, gridState.Row * cellSize);
             var go = Instantiate(nodePrefab, pos, Quaternion.identity, transform);
+            go.transform.SetParent(_nodeContainer.transform);
             var visual = go.GetComponentInChildren<NodeVisual>();
             visual.Initialize(state, pos);
             _nodeVisuals[state.id] = visual;

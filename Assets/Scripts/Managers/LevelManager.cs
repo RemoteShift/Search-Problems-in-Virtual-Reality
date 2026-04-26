@@ -3,7 +3,6 @@ using Search.Core;
 using Search.Core.Algorithms;
 using Search.Utils;
 using Search.Visualization;
-using UnityEngine.Serialization;
 
 namespace Search.Levels
 {
@@ -34,12 +33,15 @@ namespace Search.Levels
         public IVisualizer ProblemVisualizer;
         // [SerializeField] public IVisualizer treeVisualizer;
 
+        private EdgeManager _edgeManager;
+        
         private SearchProblem _problem;
         private Coroutine _searchCoroutine;
 
         public void Start()
         {
             ProblemVisualizer = problemVisualizer.GetComponent<IVisualizer>();
+            _edgeManager = EdgeManager.Instance;
             
             if (currentLevel)
                 LoadLevel(currentLevel);
@@ -61,6 +63,7 @@ namespace Search.Levels
             _problem = level.CreateSearchProblem();
 
             ProblemVisualizer?.ClearVisuals();
+            _edgeManager.ClearEdges();
 
             if (ProblemVisualizer is MazeVisualizer mazeVisualizer && level is MazeLevelData mazeLevel)
             {

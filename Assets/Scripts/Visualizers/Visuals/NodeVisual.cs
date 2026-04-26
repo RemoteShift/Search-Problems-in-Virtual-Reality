@@ -16,11 +16,12 @@ namespace Search.Visualization
         [SerializeField] private Material pathMat;
         public NodeState currentState { get; private set; }
         public string stateId { get; private set; }
+        public Vector3 position => transform.position;
 
-        public void Initialize(IState state, Vector3 position)
+        public void Initialize(IState state, Vector3 newPosition)
         {
             stateId = state.id;
-            transform.position = position;
+            transform.position = newPosition;
             _renderer = GetComponent<MeshRenderer>();
             SetState(NodeState.Default);
         }

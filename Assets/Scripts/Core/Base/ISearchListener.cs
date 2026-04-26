@@ -40,5 +40,17 @@ namespace Search.Core
         /// Called when the search completes.
         /// </summary>
         void OnSearchComplete(SearchResult result);
+        
+        /// <summary>
+        /// Adds an edge between nodes a and b in the visualizer(s)
+        /// </summary>
+        void AddEdge(SearchNode a, SearchNode b);
+        
+        /// <summary>
+        /// Removes the edge between the nodes a and b in the visualizer(s)
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        void RemoveEdge(SearchNode a, SearchNode b);
     }
 }

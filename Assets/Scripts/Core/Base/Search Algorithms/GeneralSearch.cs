@@ -174,6 +174,7 @@ namespace Search.Core.Algorithms
                 if (!_levelManager.useGraphSearch)
                 {
                     var newNode = new SearchNode(successorState, candidateDepth, action, node, stepCost, heuristic);
+                    _searchListener.AddEdge(node, newNode);
                     successors.Add(newNode);
                     continue;
                 }
@@ -184,11 +185,14 @@ namespace Search.Core.Algorithms
                     var successor = new SearchNode(successorState, candidateDepth, action, node,
                         stepCost: stepCost,
                         heuristicCost: heuristic);
+                    _searchListener.AddEdge(node, successor);
                     _searchNodes[successorState] = successor;
                     successors.Add(successor);
                     continue;
                 }
 
+                _searchListener.AddEdge(node, existingNode);
+                
                 if (_queueingFunction is IDS && candidateDepth < existingNode.depth)
                 {
                     existingNode.SetDepth(candidateDepth);

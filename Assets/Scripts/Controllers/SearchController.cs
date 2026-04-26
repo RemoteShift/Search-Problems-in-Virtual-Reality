@@ -1,35 +1,28 @@
 ﻿using System.Collections.Generic;
 using Search.Core;
 using Search.Levels;
-using Search.Utils;
 using Search.Visualization;
-using UnityEngine;
 
 namespace Search.Controllers
 {
-    public class SearchController : Singleton<SearchController>, ISearchListener
+    public class SearchController : Utils.Singleton<SearchController>, ISearchListener
     {
+        private readonly IVisualizer _problemVisualizer = LevelManager.Instance.ProblemVisualizer;
+        
         public void OnNodeExpanded(SearchNode node)
         {
-            var problemVisualizer = LevelManager.Instance.ProblemVisualizer;
-            
-            problemVisualizer.GetOrCreateNodeVisual(node.state).SetState(NodeState.Expanded);
+            _problemVisualizer.GetOrCreateNodeVisual(node.state).SetState(NodeState.Expanded);
         }
 
         public void OnNodeExpanding(SearchNode node)
         {
-            var problemVisualizer = LevelManager.Instance.ProblemVisualizer;
-
-            
-            problemVisualizer.GetOrCreateNodeVisual(node.state).SetState(NodeState.Expanding);
-            problemVisualizer.BlinkNode(node.state);
+            _problemVisualizer.GetOrCreateNodeVisual(node.state).SetState(NodeState.Expanding);
+            _problemVisualizer.BlinkNode(node.state);
         }
 
         public void OnNodeGenerated(SearchNode node)
         {
-            var problemVisualizer = LevelManager.Instance.ProblemVisualizer;
-
-            problemVisualizer.GetOrCreateNodeVisual(node.state).SetState(NodeState.Default);
+            _problemVisualizer.GetOrCreateNodeVisual(node.state).SetState(NodeState.Default);
         }
 
         public void OnFrontierReordered()
@@ -39,11 +32,9 @@ namespace Search.Controllers
 
         public void OnNodesAddedToFrontier(IReadOnlyList<SearchNode> nodes)
         {
-            var problemVisualizer = LevelManager.Instance.ProblemVisualizer;
-
             foreach (var node in nodes)
             {
-                problemVisualizer.GetOrCreateNodeVisual(node.state).SetState(NodeState.Frontier);
+                _problemVisualizer.GetOrCreateNodeVisual(node.state).SetState(NodeState.Frontier);
             }
             
         }
@@ -56,6 +47,19 @@ namespace Search.Controllers
         public void OnSearchComplete(SearchResult result)
         {
             // TODO: Breh 3
+        }
+
+        public void AddEdge(SearchNode a, SearchNode b)
+        {
+            var nodeA = _problemVisualizer.GetOrCreateNodeVisual(a.state);
+            var nodeB = _problemVisualizer.GetOrCreateNodeVisual(b.state);
+            
+            EdgeManager.Instance.AddEdge(a.state.id, b.state.id, nodeA.transform, nodeB.transform);
+        }
+
+        public void RemoveEdge(SearchNode a, SearchNode b)
+        {
+            EdgeManager.Instance.RemoveEdge(a.state.id, b.state.id);
         }
 
         public void AdvanceStep()
