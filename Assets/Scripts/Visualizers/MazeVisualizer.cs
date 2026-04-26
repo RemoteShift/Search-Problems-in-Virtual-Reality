@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using NaughtyAttributes;
 using Search.Core;
 using Search.Levels;
 using UnityEngine;
@@ -9,18 +10,29 @@ namespace Search.Visualization
 {
     public class MazeVisualizer : MonoBehaviour, IVisualizer
     {
-        [Header("Prefabs")] [SerializeField] private GameObject groundTilePrefab;
+        [Foldout("Prefabs")] 
+        [SerializeField] private GameObject groundTilePrefab;
+        [Foldout("Prefabs")] 
         [SerializeField] private GameObject wallPrefab;
+        [Foldout("Prefabs")] 
         [SerializeField] private GameObject startMarkerPrefab;
+        [Foldout("Prefabs")] 
         [SerializeField] private GameObject goalMarkerPrefab;
+        [Foldout("Prefabs")] 
         [SerializeField] private GameObject nodePrefab;
+        
+        [Header("General Settings")]
+        [SerializeField] private GameObject mazeCamera;
 
-        [Header("Visual Settings")] [SerializeField]
-        private float cellSize = 1f;
-
+        [Foldout("Visual Settings")] 
+        [SerializeField] private float cellSize = 1f;
+        [Foldout("Visual Settings")] 
         [SerializeField] private float yOffsetGround;
+        [Foldout("Visual Settings")] 
         [SerializeField] private float yOffsetWall = 0.5f;
+        [Foldout("Visual Settings")]
         [SerializeField] private float yOffsetMarker = 0.1f;
+        [Foldout("Visual Settings")] 
         [SerializeField] private float yOffsetNode = 0.2f;
         
         private MazeLevelData _levelData;
@@ -33,6 +45,7 @@ namespace Search.Visualization
         private GameObject _wallContainer;
         private GameObject _startObject;
         private readonly List<GameObject> _goalObjects = new();
+
 
         [HideInInspector] public bool isTreeSearch;
 
@@ -63,6 +76,8 @@ namespace Search.Visualization
             PlaceStartMarker();
             PlaceGoalMarkers();
             PlayerLocomotion.Instance.TeleportTo(_startObject.transform.position, _startObject.transform.rotation);
+
+            PositionCamera();
         }
         
         public void ClearVisuals()
@@ -152,6 +167,23 @@ namespace Search.Visualization
                 var marker = Instantiate(goalMarkerPrefab, pos, Quaternion.identity, transform);
                 _goalObjects.Add(marker);
             }
+        }
+
+        private void PositionCamera()
+        {
+            var width = _levelData.width;
+            var height = _levelData.height;
+            
+            mazeCamera.transform.position = new Vector3((width-1)/2f, 10, (height-1)/2f);
+            var cameraComponent = mazeCamera.GetComponent<Camera>();
+            
+            cameraComponent.orthographicSize = height / 2f;
+            
+            var halfHeight = cameraComponent.orthographicSize;
+            var halfWidth = width / 2f;
+            var m = Matrix4x4.Ortho(-halfWidth, halfWidth, -halfHeight, halfHeight, 
+                cameraComponent.nearClipPlane, cameraComponent.farClipPlane);
+            cameraComponent.projectionMatrix = m;
         }
 
         public NodeVisual GetOrCreateNodeVisual(IState state)

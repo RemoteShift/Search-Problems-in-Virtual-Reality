@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SearchLevels.MazeLevelData
   levelName: MazeLevel_1
   description: Introduction to finite state spaces and the shortest path
-  width: 8
+  width: 10
   height: 8
   start: {x: 1, y: 1}
   goals:

@@ -2,45 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Graph.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Graph/Edges.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Graph/Edges/Edge.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Graph/Edges/Edge.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Graph/Nodes.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Graph/Nodes/Default.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Graph/Nodes/Default.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Graph/Nodes/Expanded.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Graph/Nodes/Expanded.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Graph/Nodes/Frontier.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Graph/Nodes/Frontier.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Graph/Nodes/Path.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Materials/Graph/Nodes/Path.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/EdgeDynamicUpdater.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/EdgeDynamicUpdater.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/EdgeManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/EdgeManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/copilotDiffState.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/dictionaries/project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Nodes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Nodes/Default.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Nodes/Default.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Nodes/Expanded.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Nodes/Expanded.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Nodes/Frontier.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Nodes/Frontier.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Nodes/Path.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Nodes/Path.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Level Manager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Level Manager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/ISearchListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/ISearchListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Visualizers/Maze Visualizer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Visualizers/Maze Visualizer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/LevelManagerEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/LevelManagerEditor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/InputPriorities.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/InputPriorities.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +91,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Confirmation",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -204,7 +173,7 @@
       <workItem from="1776950126354" duration="18164000" />
       <workItem from="1777061636893" duration="31000" />
       <workItem from="1777135476449" duration="163000" />
-      <workItem from="1777177510778" duration="10634000" />
+      <workItem from="1777177510778" duration="15053000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -446,7 +415,15 @@
       <option name="project" value="LOCAL" />
       <updated>1776974685194</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Add EdgeManager and EdgeDynamicUpdater for dynamic edge visualization; implement edge addition and removal in search visualization">
+      <option name="closed" value="true" />
+      <created>1777215157766</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1777215157766</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -479,7 +456,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add RightControllerLocomotionInput class and associated prefab for right-hand locomotion input handling" />
     <MESSAGE value="Fixed some input problems and make sprint toggleable" />
     <MESSAGE value="Added UI Element with toggle on left controller menu button" />
     <MESSAGE value="Update graphics and quality settings, modify render pipeline configurations, and adjust scene object activation states" />
@@ -504,7 +480,8 @@
     <MESSAGE value="Add elapsed time tracking to search results; update SearchResult to report time in seconds" />
     <MESSAGE value="Refactor GeneralSearch and LevelManager to support step-by-step search execution; enhance visualization and state management" />
     <MESSAGE value="Add SearchController to manage search state and visualization; enhance node state handling and UI interaction" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add SearchController to manage search state and visualization; enhance node state handling and UI interaction" />
+    <MESSAGE value="Add EdgeManager and EdgeDynamicUpdater for dynamic edge visualization; implement edge addition and removal in search visualization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add EdgeManager and EdgeDynamicUpdater for dynamic edge visualization; implement edge addition and removal in search visualization" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
