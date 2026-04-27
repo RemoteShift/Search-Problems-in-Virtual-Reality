@@ -55,14 +55,19 @@ namespace Search.Visualization
 
         private void Awake()
         {
-            _groundContainer = new GameObject("Grounds");
-            _groundContainer.transform.SetParent(transform);
-            
-            _wallContainer = new GameObject("Walls");
-            _wallContainer.transform.SetParent(transform);
+            _groundContainer = CreateContainer("Grounds");
+            _wallContainer = CreateContainer("Walls");
+            _nodeContainer = CreateContainer("Nodes");
+        }
 
-            _nodeContainer = new GameObject("Nodes");
-            _nodeContainer.transform.SetParent(transform);
+        private GameObject CreateContainer(string namee)
+        {
+            var container = new GameObject(namee);
+            container.transform.SetParent(transform);
+            container.transform.localPosition = Vector3.zero;
+            container.transform.localRotation = Quaternion.identity;
+            container.transform.localScale = Vector3.one;
+            return container;
         }
 
         public void Setup(LevelData levelData, SearchProblem problem)
@@ -75,7 +80,7 @@ namespace Search.Visualization
             BuildGroundAndWalls();
             PlaceStartMarker();
             PlaceGoalMarkers();
-            PlayerLocomotion.Instance.TeleportTo(_startObject.transform.position, _startObject.transform.rotation);
+            //PlayerLocomotion.Instance.TeleportTo(_startObject.transform.position, _startObject.transform.rotation);
 
             PositionCamera();
         }
@@ -136,16 +141,18 @@ namespace Search.Visualization
             for (var col = 0; col < width; col++)
             {
                 var pos = new Vector3(col * cellSize, yOffsetGround, row * cellSize);
-                
-                var ground = Instantiate(groundTilePrefab, pos, Quaternion.identity, transform);
-                ground.transform.SetParent(_groundContainer.transform);
+
+                var ground = Instantiate(groundTilePrefab, _groundContainer.transform);
+                ground.transform.localPosition = pos;
+                ground.transform.localRotation = Quaternion.identity;
                 _groundObjects[new Vector2Int(row, col)] = ground;
-                
+
                 if (walls[row, col])
                 {
                     var wallPos = new Vector3(col * cellSize, yOffsetWall, row * cellSize);
-                    var wall = Instantiate(wallPrefab, wallPos, Quaternion.identity, transform);
-                    wall.transform.SetParent(_wallContainer.transform);
+                    var wall = Instantiate(wallPrefab, _wallContainer.transform);
+                    wall.transform.localPosition = wallPos;
+                    wall.transform.localRotation = Quaternion.identity;
                     _wallObjects[new Vector2Int(row, col)] = wall;
                 }
             }
@@ -155,7 +162,9 @@ namespace Search.Visualization
         {
             var start = _levelData.start;
             var pos = new Vector3(start.y * cellSize, yOffsetMarker, start.x * cellSize);
-            _startObject = Instantiate(startMarkerPrefab, pos, Quaternion.identity, transform);
+            _startObject = Instantiate(startMarkerPrefab, transform);
+            _startObject.transform.localPosition = pos;
+            _startObject.transform.localRotation = Quaternion.identity;
         }
 
         private void PlaceGoalMarkers()
@@ -164,7 +173,9 @@ namespace Search.Visualization
             foreach (var goal in goals)
             {
                 var pos = new Vector3(goal.y * cellSize, yOffsetMarker, goal.x * cellSize);
-                var marker = Instantiate(goalMarkerPrefab, pos, Quaternion.identity, transform);
+                var marker = Instantiate(goalMarkerPrefab, transform);
+                marker.transform.localPosition = pos;
+                marker.transform.localRotation = Quaternion.identity;
                 _goalObjects.Add(marker);
             }
         }
@@ -173,15 +184,18 @@ namespace Search.Visualization
         {
             var width = _levelData.width;
             var height = _levelData.height;
-            
-            mazeCamera.transform.position = new Vector3((width-1)/2f, 10, (height-1)/2f);
+
+            mazeCamera.transform.SetParent(transform);
+            mazeCamera.transform.localPosition = new Vector3((width - 1) / 2f, 10f, (height - 1) / 2f);
+            mazeCamera.transform.localRotation = Quaternion.Euler(90, 0, 0);
+
             var cameraComponent = mazeCamera.GetComponent<Camera>();
-            
+
             cameraComponent.orthographicSize = height / 2f;
-            
+
             var halfHeight = cameraComponent.orthographicSize;
             var halfWidth = width / 2f;
-            var m = Matrix4x4.Ortho(-halfWidth, halfWidth, -halfHeight, halfHeight, 
+            var m = Matrix4x4.Ortho(-halfWidth, halfWidth, -halfHeight, halfHeight,
                 cameraComponent.nearClipPlane, cameraComponent.farClipPlane);
             cameraComponent.projectionMatrix = m;
         }
@@ -195,10 +209,11 @@ namespace Search.Visualization
             }
 
             var pos = new Vector3(gridState.Column * cellSize, yOffsetNode, gridState.Row * cellSize);
-            var go = Instantiate(nodePrefab, pos, Quaternion.identity, transform);
-            go.transform.SetParent(_nodeContainer.transform);
+            var go = Instantiate(nodePrefab, _nodeContainer.transform);
+            go.transform.localPosition = pos;
+            go.transform.localRotation = Quaternion.identity;
             var visual = go.GetComponentInChildren<NodeVisual>();
-            visual.Initialize(state, pos);
+            visual.Initialize(state, go.transform.position);
             _nodeVisuals[state.id] = visual;
             return visual;
         }

@@ -9,9 +9,9 @@ namespace Search.Utils
         public float rotationFollowSpeed = 5f;
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            Vector3 desiredPosition = target.position;
+            var desiredPosition = target.position;
             transform.position = Vector3.Lerp(
                 transform.position,
                 desiredPosition,

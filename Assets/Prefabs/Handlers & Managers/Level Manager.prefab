@@ -46,14 +46,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef685b1df16356e45bb43e6e06bfc287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Search.Levels.LevelManager
-  currentLevel: {fileID: 0}
-  currentAlgorithmType: 0
-  useGraphSearch: 0
-  isStepped: 0
-  levelLimit: 5
+  currentLevel: {fileID: 11400000, guid: d532c4e372077654c86c74fbdaafa0f8, type: 2}
+  currentAlgorithmType: 1
+  useGraphSearch: 1
+  isStepped: 1
+  levelLimit: 9
   searchAlgorithm:
-    expansionLimit: 0
-  problemVisualizer: {fileID: 0}
+    expansionLimit: 1000
+  problemVisualizer: {fileID: 362784998034671216}
 --- !u!1 &5947026155385610969
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8360653278976132828, guid: 2385d6857cf2c9b4c80067b2a2523d27, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.21866
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8360653278976132828, guid: 2385d6857cf2c9b4c80067b2a2523d27, type: 3}
       propertyPath: m_LocalRotation.w
@@ -193,6 +193,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2385d6857cf2c9b4c80067b2a2523d27, type: 3}
+--- !u!1 &362784998034671216 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3393776929391379752, guid: 2385d6857cf2c9b4c80067b2a2523d27, type: 3}
+  m_PrefabInstance: {fileID: 3031416412392948568}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6779818452743570820 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8360653278976132828, guid: 2385d6857cf2c9b4c80067b2a2523d27, type: 3}
