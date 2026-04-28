@@ -2,14 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/copilotDiffState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Level Manager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Level Manager.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Visualizers/Maze Visualizer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Visualizers/Maze Visualizer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Meshes/Node Mesh.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Meshes/Node Mesh.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Levels/Maze/MazeLevel 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Levels/Maze/MazeLevel 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Follower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Follower.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/IVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/IVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Textures/Maze Camera Texture.renderTexture" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/Maze Camera Texture.renderTexture" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,12 +46,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/6b/553687d2/List`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/85/b80371df/Dictionary`2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Level Manager.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/allou/OneDrive/Desktop/Unity Projects/VR-Bachelor/Assets/Prefabs/Handlers &amp; Managers/Level Manager.prefab" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptable Objects.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptable Objects/Levels/Maze/MazeLevel 1.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/EdgeDynamicUpdater.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/allou/OneDrive/Desktop/Unity Projects/VR-Bachelor/Assets/Scripts/Controllers/SearchController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Base/IVisualizer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/Algorithms.meta" root0="FORCE_HIGHLIGHTING" />
@@ -56,12 +64,17 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/EdgeManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/allou/OneDrive/Desktop/Unity Projects/VR-Bachelor/Assets/Scripts/Managers/LevelManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/allou/OneDrive/Desktop/Unity Projects/VR-Bachelor/Assets/Scripts/Managers/LevelManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Misc/NodeVisualPasser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/Left Controller.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/PriorityQueue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/Queue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/Stack.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/allou/OneDrive/Desktop/Unity Projects/VR-Bachelor/Assets/Scripts/Visualizers/MazeVisualizer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Settings/Performance URP Config.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (3).unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0.unity" root0="FORCE_HIGHLIGHTING" />
@@ -174,7 +187,8 @@
       <workItem from="1777061636893" duration="31000" />
       <workItem from="1777135476449" duration="163000" />
       <workItem from="1777177510778" duration="15094000" />
-      <workItem from="1777266289225" duration="5277000" />
+      <workItem from="1777266289225" duration="5302000" />
+      <workItem from="1777365440544" duration="13360000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -432,7 +446,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777223769384</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Update maze level dimensions and camera positioning; refactor MazeVisualizer for improved container management">
+      <option name="closed" value="true" />
+      <created>1777284350243</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1777284350244</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,7 +487,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added UI Element with toggle on left controller menu button" />
     <MESSAGE value="Update graphics and quality settings, modify render pipeline configurations, and adjust scene object activation states" />
     <MESSAGE value="ionno.&#10;world space UI and UI Toolkit experimenting" />
     <MESSAGE value="Added scrollview with VR Inputs and ray interactor." />
@@ -490,7 +511,8 @@
     <MESSAGE value="Add SearchController to manage search state and visualization; enhance node state handling and UI interaction" />
     <MESSAGE value="Add EdgeManager and EdgeDynamicUpdater for dynamic edge visualization; implement edge addition and removal in search visualization" />
     <MESSAGE value="Add maze camera positioning logic and update maze level dimensions; enhance visual settings organization in MazeVisualizer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add maze camera positioning logic and update maze level dimensions; enhance visual settings organization in MazeVisualizer" />
+    <MESSAGE value="Update maze level dimensions and camera positioning; refactor MazeVisualizer for improved container management" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update maze level dimensions and camera positioning; refactor MazeVisualizer for improved container management" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

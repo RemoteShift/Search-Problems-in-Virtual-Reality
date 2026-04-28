@@ -16,7 +16,7 @@ namespace Search.Core.Algorithms
 
         private readonly IFrontier<SearchNode> _frontier;
         private readonly List<SearchNode> _expanded = new();
-        private readonly Dictionary<IState, SearchNode> _searchNodes;
+        public readonly Dictionary<IState, SearchNode> SearchNodes;
 
         private readonly int? _levelLimit;
         private readonly LevelManager _levelManager;
@@ -37,7 +37,7 @@ namespace Search.Core.Algorithms
             _levelManager = LevelManager.Instance;
             _searchListener = SearchController.Instance;
             _queueingFunction = queueingFunction;
-            _searchNodes = _levelManager.useGraphSearch ? new Dictionary<IState, SearchNode>() : null;
+            SearchNodes = _levelManager.useGraphSearch ? new Dictionary<IState, SearchNode>() : null;
             _levelLimit = levelLimit;
             this.expansionLimit = expansionLimit;
             _frontier = _queueingFunction switch
@@ -83,7 +83,7 @@ namespace Search.Core.Algorithms
             
             if (_levelManager.useGraphSearch)
             {
-                _searchNodes[startNode.state] = startNode;
+                SearchNodes[startNode.state] = startNode;
             }
             _frontier.Add(startNode);
             _searchListener?.OnNodesAddedToFrontier(new List<SearchNode> { startNode });
@@ -91,7 +91,7 @@ namespace Search.Core.Algorithms
             while (!_frontier.IsEmpty)
             {
                 var node = _frontier.Remove();
-                if (_levelManager.useGraphSearch && _searchNodes[node.state] != node)
+                if (_levelManager.useGraphSearch && SearchNodes[node.state] != node)
                     continue;
 
                 if (searchProblem.IsGoal(node.state))
@@ -180,13 +180,13 @@ namespace Search.Core.Algorithms
                 }
 
                 // Graph search: check for existing nodes and expanded states to avoid duplicates in frontier.
-                if (!_searchNodes.TryGetValue(successorState, out var existingNode))
+                if (!SearchNodes.TryGetValue(successorState, out var existingNode))
                 {
                     var successor = new SearchNode(successorState, candidateDepth, action, node,
                         stepCost: stepCost,
                         heuristicCost: heuristic);
                     _searchListener.AddEdge(node, successor);
-                    _searchNodes[successorState] = successor;
+                    SearchNodes[successorState] = successor;
                     successors.Add(successor);
                     continue;
                 }
@@ -237,7 +237,7 @@ namespace Search.Core.Algorithms
             _frontier.Clear();
             _expanded.Clear();
             _searchResult = null;
-            _searchNodes?.Clear();
+            SearchNodes?.Clear();
         }
 
         /// <summary>Called by the UI to advance one step.</summary>

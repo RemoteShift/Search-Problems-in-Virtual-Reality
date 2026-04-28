@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using Search.Core;
+﻿using Search.Core;
 using Search.Levels;
-using UnityEngine;
 
 namespace Search.Visualization
 {
@@ -14,7 +12,7 @@ namespace Search.Visualization
 
         #region Node Visuals
         void ClearNodeVisuals();
-        NodeVisual GetOrCreateNodeVisual(IState state);
+        NodeVisual GetOrCreateNodeVisual(SearchNode node, SearchNode parent = null);
         void BlinkNode(IState state);
         #endregion
     }

@@ -18,9 +18,12 @@ namespace Search.Visualization
         public string stateId { get; private set; }
         public Vector3 position => transform.position;
 
-        public void Initialize(IState state, Vector3 newPosition)
+        [HideInInspector] public SearchNode SearchNode;
+
+        public void Initialize(IState state, SearchNode searchNode, Vector3 newPosition)
         {
             stateId = state.id;
+            SearchNode = searchNode;
             transform.position = newPosition;
             _renderer = GetComponent<MeshRenderer>();
             SetState(NodeState.Default);

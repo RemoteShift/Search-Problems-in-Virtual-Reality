@@ -6423,6 +6423,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 971801825}
     m_Modifications:
+    - target: {fileID: 783274831938394155, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
+      propertyPath: nodeScale
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 783274831938394155, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
+      propertyPath: verticalSpacing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 783274831938394155, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
+      propertyPath: horizontalSpacing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3950165550301626801, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -6463,26 +6475,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5509270996513048051, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5877859809975935770, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
       propertyPath: m_Name
       value: Level Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 6779818452743570820, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
+    - target: {fileID: 5935220780922618782, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6400
+      value: 1.41
       objectReference: {fileID: 0}
-    - target: {fileID: 6779818452743570820, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 6400
+    - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
+      propertyPath: isStepped
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6792457471963996760, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 8400000, guid: 8e647f31d8805d04fbff35121611fc96, type: 2}
+    - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
+      propertyPath: useGraphSearch
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
+      propertyPath: currentAlgorithmType
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

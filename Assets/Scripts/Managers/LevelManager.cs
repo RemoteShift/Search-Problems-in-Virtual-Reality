@@ -28,10 +28,11 @@ namespace Search.Levels
         [Tooltip("Live Search Algorithm Instance")]
         public GeneralSearch searchAlgorithm;
 
-        [Header("Scene References")] [SerializeField]
-        private GameObject problemVisualizer;
+        [Header("Scene References")] 
+        [SerializeField] private GameObject problemVisualizer;
+        [SerializeField] private GameObject treeVisualizer;
         public IVisualizer ProblemVisualizer;
-        // [SerializeField] public IVisualizer treeVisualizer;
+        public TreeVisualizer TreeVisualizer;
 
         private EdgeManager _edgeManager;
         
@@ -41,6 +42,7 @@ namespace Search.Levels
         public void Start()
         {
             ProblemVisualizer = problemVisualizer.GetComponent<IVisualizer>();
+            TreeVisualizer = treeVisualizer.GetComponent<TreeVisualizer>();
             _edgeManager = EdgeManager.Instance;
             
             if (currentLevel)
@@ -63,12 +65,17 @@ namespace Search.Levels
             _problem = level.CreateSearchProblem();
 
             ProblemVisualizer?.ClearVisuals();
+            TreeVisualizer?.ClearVisuals();
             _edgeManager.ClearEdges();
 
             if (ProblemVisualizer is MazeVisualizer mazeVisualizer && level is MazeLevelData mazeLevel)
             {
-                mazeVisualizer.isTreeSearch = !useGraphSearch;
                 mazeVisualizer.Setup(mazeLevel, _problem);
+            }
+            
+            if (TreeVisualizer is TreeVisualizer tv)
+            {
+                tv.Setup(level, _problem);
             }
             // Add future support for GraphLevelData here:
             // else if (level is GraphLevelData graphLevel && graphVisualizer != null)

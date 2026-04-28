@@ -46,9 +46,6 @@ namespace Search.Visualization
         private GameObject _startObject;
         private readonly List<GameObject> _goalObjects = new();
 
-
-        [HideInInspector] public bool isTreeSearch;
-
         [HideInInspector] public bool IsAnimating { get; }
         
         public Coroutine blinkingCoroutine { get; set; }
@@ -200,20 +197,18 @@ namespace Search.Visualization
             cameraComponent.projectionMatrix = m;
         }
 
-        public NodeVisual GetOrCreateNodeVisual(IState state)
+        public NodeVisual GetOrCreateNodeVisual(SearchNode node, SearchNode parent = null)
         {
+            var state = node.state;
             var gridState = (GridState)state;
             if (_nodeVisuals.TryGetValue(state.id, out var existing))
-            {
                 return existing;
-            }
 
             var pos = new Vector3(gridState.Column * cellSize, yOffsetNode, gridState.Row * cellSize);
             var go = Instantiate(nodePrefab, _nodeContainer.transform);
             go.transform.localPosition = pos;
-            go.transform.localRotation = Quaternion.identity;
             var visual = go.GetComponentInChildren<NodeVisual>();
-            visual.Initialize(state, go.transform.position);
+            visual.Initialize(state, node, go.transform.position);
             _nodeVisuals[state.id] = visual;
             return visual;
         }

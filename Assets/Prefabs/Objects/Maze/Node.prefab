@@ -9,7 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 260748890797284030}
-  m_Layer: 0
+  - component: {fileID: -6192002693636258792}
+  - component: {fileID: 746653997760720160}
+  - component: {fileID: 5500847256755537420}
+  m_Layer: 7
   m_Name: Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,6 +35,135 @@ Transform:
   - {fileID: 4439998988669233264}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-6192002693636258792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380804615307029302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 822bc9090447b9c40833509c4a32e597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AutoHandAssembly::Autohand.Grabbable
+  ignoreMe: 0
+  body: {fileID: 2711754622859965237}
+  hightlightMaterial: {fileID: 0}
+  isGrabbable: 1
+  CopySettings: {fileID: 0}
+  grabType: 0
+  grabPoseType: 0
+  handType: 0
+  singleHandOnly: 0
+  instantGrab: 0
+  useGentleGrab: 0
+  maintainGrabOffset: 0
+  parentOnGrab: 1
+  heldNoFriction: 1
+  ignoreWeight: 0
+  allowHeldSwapping: 1
+  throwPower: 1
+  jointBreakForce: 3500
+  showAdvancedSettings: 1
+  makeChildrenGrabbable: 1
+  grabPriorityWeight: 1
+  ignoreReleaseTime: 0.5
+  minHeldDrag: 1.5
+  minHeldAngleDrag: 3
+  minHeldMass: 0.1
+  maxHeldVelocity: 10
+  heldPositionOffset: {x: 0, y: 0, z: 0}
+  heldRotationOffset: {x: 0, y: 0, z: 0}
+  customGrabJoint: {fileID: 0}
+  jointedBodies: []
+  heldIgnoreColliders: []
+  pullApartBreakOnly: 1
+  showEvents: 1
+  onGrab:
+    m_PersistentCalls:
+      m_Calls: []
+  onRelease:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5500847256755537420}
+        m_TargetAssemblyTypeName: Search.Visualization.NodeVisualPasser, Assembly-CSharp
+        m_MethodName: SetNodeManualPosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSqueeze:
+    m_PersistentCalls:
+      m_Calls: []
+  onUnsqueeze:
+    m_PersistentCalls:
+      m_Calls: []
+  onHighlight:
+    m_PersistentCalls:
+      m_Calls: []
+  onUnhighlight:
+    m_PersistentCalls:
+      m_Calls: []
+  OnJointBreak:
+    m_PersistentCalls:
+      m_Calls: []
+  lockHandOnGrab: 0
+--- !u!114 &746653997760720160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380804615307029302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935aaf7da50abf94697c8d70a7a71efe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AutoHandAssembly::Autohand.DistanceGrabbable
+  ignoreMe: 0
+  instantPull: 1
+  grabType: 1
+  archMultiplier: 0.6
+  gravitationVelocity: 1
+  rotate: 1
+  rotationSpeed: 1
+  ignoreHighlights: 1
+  targetedMaterial: {fileID: 0}
+  selectedMaterial: {fileID: 0}
+  showEvents: 1
+  OnPull:
+    m_PersistentCalls:
+      m_Calls: []
+  StartTargeting:
+    m_PersistentCalls:
+      m_Calls: []
+  StopTargeting:
+    m_PersistentCalls:
+      m_Calls: []
+  StartSelecting:
+    m_PersistentCalls:
+      m_Calls: []
+  StopSelecting:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &5500847256755537420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 380804615307029302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47fb12471dbec14aabf4295c5cdfd70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Search.Visualization.NodeVisualPasser
 --- !u!1001 &3942112051621479701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80,6 +212,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1375608274912032288, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375608274912032288, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
+      propertyPath: m_ImplicitCom
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4688975999596157272, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 6681585830969861019, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
       propertyPath: m_Name
       value: Node
@@ -89,6 +233,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
+--- !u!54 &2711754622859965237 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 1375608274912032288, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
+  m_PrefabInstance: {fileID: 3942112051621479701}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4439998988669233264 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 804800214947229029, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
