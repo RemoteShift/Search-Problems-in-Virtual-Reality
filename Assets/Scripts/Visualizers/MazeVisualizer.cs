@@ -114,6 +114,7 @@ namespace Search.Visualization
                 Destroy(obj);
             }
 
+            sameStateVisual = null;
             _goalObjects.Clear();
         }
 

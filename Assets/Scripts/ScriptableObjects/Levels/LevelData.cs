@@ -7,6 +7,7 @@ namespace Search.Levels
     {
         public string levelName;
         public string description;
+        public int expansionLimit;
 
         public abstract SearchProblem CreateSearchProblem();
     }

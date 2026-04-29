@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/copilotDiffState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/IVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/IVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Levels/Maze/MazeLevel 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Levels/Maze/MazeLevel 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels/LevelData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels/LevelData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
     </list>
@@ -179,7 +179,7 @@
       <workItem from="1777177510778" duration="15094000" />
       <workItem from="1777266289225" duration="5302000" />
       <workItem from="1777365440544" duration="13397000" />
-      <workItem from="1777442004605" duration="21705000" />
+      <workItem from="1777442004605" duration="22463000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -477,7 +477,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777482642271</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Refactor visualizer methods; update TryPlaySameState and StopSameStateAnimation in IVisualizer, MazeVisualizer, and TreeVisualizer for improved node handling">
+      <option name="closed" value="true" />
+      <created>1777484846614</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1777484846616</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -510,7 +518,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added UI Interaction, Removed old UI Interaction" />
     <MESSAGE value="Changed UI to AutoHand UI.&#10;Made it Grabbable &amp; Distance Grabbable.&#10;UI resets position &amp; velocity when Menu Button toggles on." />
     <MESSAGE value="Add Follower script to enable object following behavior" />
     <MESSAGE value="Added `IState` interface for all states&#10;Renamed `Node` to `SearchNode` &amp; Modified to worth with new interface `IState`&#10;Added namespace `SearchCore`" />
@@ -535,7 +542,8 @@
     <MESSAGE value="Refactor visualizer components; enhance TreeVisualizer and SearchController for improved node handling and edge management" />
     <MESSAGE value="Add same state animation to Node visuals; enhance visual feedback in TreeVisualizer and SearchController" />
     <MESSAGE value="Enhance node blinking functionality; update BlinkNode method to accept color parameter in IVisualizer and related visualizer classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance node blinking functionality; update BlinkNode method to accept color parameter in IVisualizer and related visualizer classes" />
+    <MESSAGE value="Refactor visualizer methods; update TryPlaySameState and StopSameStateAnimation in IVisualizer, MazeVisualizer, and TreeVisualizer for improved node handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor visualizer methods; update TryPlaySameState and StopSameStateAnimation in IVisualizer, MazeVisualizer, and TreeVisualizer for improved node handling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -554,13 +562,13 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs</url>
-          <line>237</line>
+          <line>238</line>
           <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\Visualizers\MazeVisualizer.cs" containingFunctionPresentation="Method 'TryPlaySameState'">
             <startOffsets>
-              <option value="8443" />
+              <option value="8479" />
             </startOffsets>
             <endOffsets>
-              <option value="8444" />
+              <option value="8480" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="29" />

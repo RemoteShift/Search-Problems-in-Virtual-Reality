@@ -106,7 +106,7 @@ namespace Search.Levels
             };
             
             searchAlgorithm = new GeneralSearch(queuingFunction, levelLimitValue ?? levelLimit, 
-                searchAlgorithm?.expansionLimit ?? 10000);
+                currentLevel.expansionLimit);
             _searchCoroutine = StartCoroutine(searchAlgorithm.SearchCoroutine(_problem, this));
         }
         

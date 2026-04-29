@@ -66,8 +66,6 @@ namespace Search.Visualization
             _nodeVisuals.Clear();
             _parentMap.Clear();
             _childrenMap.Clear();
-            
-            StopSameStateAnimation();
         }
 
         public NodeVisual GetNodeVisual(SearchNode node)
