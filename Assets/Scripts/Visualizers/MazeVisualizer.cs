@@ -74,7 +74,7 @@ namespace Search.Visualization
             ClearVisuals();
 
             BuildGroundAndWalls();
-            PlaceStartMarker();
+            // PlaceStartMarker();
             PlaceGoalMarkers();
             //PlayerLocomotion.Instance.TeleportTo(_startObject.transform.position, _startObject.transform.rotation);
 

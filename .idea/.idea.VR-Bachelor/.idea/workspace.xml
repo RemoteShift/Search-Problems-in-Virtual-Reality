@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/Levels/Maze/MazeLevel 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/Levels/Maze/MazeLevel 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels/LevelData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Levels/LevelData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +178,7 @@
       <workItem from="1777177510778" duration="15094000" />
       <workItem from="1777266289225" duration="5302000" />
       <workItem from="1777365440544" duration="13397000" />
-      <workItem from="1777442004605" duration="22463000" />
+      <workItem from="1777442004605" duration="23876000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -485,7 +484,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777484846616</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Update search algorithm configuration; modify expansion limit and algorithm type in Game.unity, LevelData, and LevelManager for improved search performance">
+      <option name="closed" value="true" />
+      <created>1777485600346</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1777485600348</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -518,7 +525,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Changed UI to AutoHand UI.&#10;Made it Grabbable &amp; Distance Grabbable.&#10;UI resets position &amp; velocity when Menu Button toggles on." />
     <MESSAGE value="Add Follower script to enable object following behavior" />
     <MESSAGE value="Added `IState` interface for all states&#10;Renamed `Node` to `SearchNode` &amp; Modified to worth with new interface `IState`&#10;Added namespace `SearchCore`" />
     <MESSAGE value="Add search algorithm components: ISearchListener, IQueuingFunction, IStepCostFunction, ITransitionFunction, and SearchResult classes&#10;Also started implementation of the most simple search problem: Maze" />
@@ -543,7 +549,8 @@
     <MESSAGE value="Add same state animation to Node visuals; enhance visual feedback in TreeVisualizer and SearchController" />
     <MESSAGE value="Enhance node blinking functionality; update BlinkNode method to accept color parameter in IVisualizer and related visualizer classes" />
     <MESSAGE value="Refactor visualizer methods; update TryPlaySameState and StopSameStateAnimation in IVisualizer, MazeVisualizer, and TreeVisualizer for improved node handling" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor visualizer methods; update TryPlaySameState and StopSameStateAnimation in IVisualizer, MazeVisualizer, and TreeVisualizer for improved node handling" />
+    <MESSAGE value="Update search algorithm configuration; modify expansion limit and algorithm type in Game.unity, LevelData, and LevelManager for improved search performance" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update search algorithm configuration; modify expansion limit and algorithm type in Game.unity, LevelData, and LevelManager for improved search performance" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -565,10 +572,10 @@
           <line>238</line>
           <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\Visualizers\MazeVisualizer.cs" containingFunctionPresentation="Method 'TryPlaySameState'">
             <startOffsets>
-              <option value="8479" />
+              <option value="8482" />
             </startOffsets>
             <endOffsets>
-              <option value="8480" />
+              <option value="8483" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="29" />

@@ -230,11 +230,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4688975999596157272, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 256
+      value: 288
       objectReference: {fileID: 0}
     - target: {fileID: 6681585830969861019, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
       propertyPath: m_Name
       value: Node
+      objectReference: {fileID: 0}
+    - target: {fileID: 6681585830969861019, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6681585830969861019, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
       propertyPath: m_IsActive
