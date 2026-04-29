@@ -1,5 +1,6 @@
 ﻿using Search.Core;
 using Search.Levels;
+using UnityEngine;
 
 namespace Search.Visualization
 {
@@ -15,8 +16,8 @@ namespace Search.Visualization
         NodeVisual GetOrCreateNodeVisual(SearchNode node, SearchNode parent = null);
         NodeVisual GetNodeVisual(SearchNode node);
         NodeVisual CreateNodeVisual(SearchNode node, SearchNode parent = null);
-        void BlinkNode(IState state);
-        void TryPlaySameState(IState state);
+        void BlinkNode(IState state, Color color);
+        void TryPlaySameState(IState state, SearchNode node = null);
 
         #endregion
     }

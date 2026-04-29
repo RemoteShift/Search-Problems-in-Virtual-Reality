@@ -8,6 +8,7 @@ namespace Search.Visualization
     public class NodeVisual : MonoBehaviour
     {
         private MeshRenderer _renderer;
+        private Color _currentOriginalColor;
         [SerializeField] private Material defaultMat;
         [SerializeField] private Material frontierMat;
         [SerializeField] private Material expandedMat;
@@ -21,7 +22,9 @@ namespace Search.Visualization
         private Vector3 initialScale;
 
         [HideInInspector] public SearchNode SearchNode;
-
+        private Coroutine _blinkingCoroutine;
+        
+        
         private Animator _anim;
         public void Initialize(IState state, SearchNode searchNode, Vector3 newPosition)
         {
@@ -46,16 +49,29 @@ namespace Search.Visualization
                 NodeState.Path => pathMat,
                 _ => defaultMat
             };
+            _currentOriginalColor = _renderer.material.color;
         }
 
-        public IEnumerator Blink()
+        public void BlinkNode(Color color)
         {
-            var initialColor = _renderer.material.color;
+            StopBlinking();
+            _blinkingCoroutine = StartCoroutine(Blink(color));
+        }
+        
+        public void StopBlinking()
+        {
+            if (_blinkingCoroutine != null)
+                StopCoroutine(_blinkingCoroutine);
+            _renderer.material.color = _currentOriginalColor;
+        }
+        
+        private IEnumerator Blink(Color color)
+        {
             while (true)
             {
-                _renderer.material.color = Color.red;
+                _renderer.material.color = color;
                 yield return new WaitForSeconds(0.5f);
-                _renderer.material.color = initialColor;
+                _renderer.material.color = _currentOriginalColor;
                 yield return new WaitForSeconds(0.5f);
             }
         }

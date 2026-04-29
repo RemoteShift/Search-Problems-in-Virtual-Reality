@@ -48,9 +48,6 @@ namespace Search.Visualization
 
         [HideInInspector] public bool IsAnimating { get; }
         private NodeVisual sameStateVisual;
-        
-        
-        public Coroutine blinkingCoroutine { get; set; }
 
         private void Awake()
         {
@@ -230,19 +227,16 @@ namespace Search.Visualization
             return CreateNodeVisual(node, parent);
         }
         
-        public void BlinkNode(IState state)
+        public void BlinkNode(IState state, Color color)
         {
             if (state is not GridState)
                 return;
-            
-            if(blinkingCoroutine != null)
-                StopCoroutine(blinkingCoroutine);
-            
+
             if (_nodeVisuals.TryGetValue(state.id, out var nodeVisual))
-                blinkingCoroutine = StartCoroutine(nodeVisual.Blink());
+                nodeVisual.BlinkNode(color);
         }
 
-        public void TryPlaySameState(IState state)
+        public void TryPlaySameState(IState state, SearchNode node = null)
         {
             if (state is not GridState)
                 return;
@@ -259,6 +253,7 @@ namespace Search.Visualization
         private void StopSameStateAnimation()
         {
             sameStateVisual?.StopAnimation();
+            sameStateVisual?.StopBlinking();
         }
     }
 }

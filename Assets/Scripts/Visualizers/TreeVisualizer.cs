@@ -33,8 +33,6 @@ namespace Search.Visualization
         public bool IsAnimating { get; }
         private List<NodeVisual> _currentSameStateVisuals = new();
 
-        public Coroutine blinkingCoroutine { get; set; }
-
         private void Awake()
         {
             _nodeContainer = CreateContainer("Nodes");
@@ -271,28 +269,26 @@ namespace Search.Visualization
             }
         }
 
-        public void BlinkNode(SearchNode node)
+        public void BlinkNode(SearchNode node, Color color)
         {
             if (_nodeVisuals.TryGetValue(node, out var visual))
             {
-                if (blinkingCoroutine != null) StopCoroutine(blinkingCoroutine);
-                blinkingCoroutine = StartCoroutine(visual.Blink());
+                visual.BlinkNode(color);
             }
         }
 
-        public void BlinkNode(IState state)
+        public void BlinkNode(IState state, Color color)
         {
             var visual = _nodeVisuals.Values.FirstOrDefault(v => v.stateId == state.id);
             if (visual)
             {
-                if (blinkingCoroutine != null) StopCoroutine(blinkingCoroutine);
-                blinkingCoroutine = StartCoroutine(visual.Blink());
+                visual.BlinkNode(color);
             }
         }
 
-        public void TryPlaySameState(IState state)
+        public void TryPlaySameState(IState state, SearchNode node = null)
         {
-            StopSameStateAnimation();
+            StopSameStateAnimation(node);
             
             var newVisuals = _nodeVisuals.Values
                 .Where(v => v.SearchNode.state.Equals(state))
@@ -301,16 +297,21 @@ namespace Search.Visualization
             foreach (var visual in newVisuals)
             {
                 visual.PlaySameStateAnimation();
+                if (node != null && visual != _nodeVisuals[node])
+                {
+                    visual.BlinkNode(Color.blue);
+                }
             }
 
             _currentSameStateVisuals = newVisuals;
         }
 
-        private void StopSameStateAnimation()
+        private void StopSameStateAnimation(SearchNode node = null)
         {
             foreach (var nodeVisual in _currentSameStateVisuals)
             {
                 nodeVisual.StopAnimation();
+                nodeVisual.StopBlinking();
             }
 
             _currentSameStateVisuals.Clear();

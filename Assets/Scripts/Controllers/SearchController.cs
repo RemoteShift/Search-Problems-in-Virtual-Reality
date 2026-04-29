@@ -3,6 +3,7 @@ using Search.Core;
 using Search.Levels;
 using Search.Utils;
 using Search.Visualization;
+using UnityEngine;
 
 namespace Search.Controllers
 {
@@ -20,12 +21,12 @@ namespace Search.Controllers
         public void OnNodeExpanding(SearchNode node)
         {
             _problemVisualizer.GetOrCreateNodeVisual(node).SetState(NodeState.Expanding);
-            _problemVisualizer.BlinkNode(node.state);
+            _problemVisualizer.BlinkNode(node.state, Color.red);
             _problemVisualizer.TryPlaySameState(node.state);
             
             _treeVisualizer.GetOrCreateNodeVisual(node).SetState(NodeState.Expanding);
-            _treeVisualizer.BlinkNode(node);
-            _treeVisualizer.TryPlaySameState(node.state);
+            _treeVisualizer.BlinkNode(node, Color.red);
+            _treeVisualizer.TryPlaySameState(node.state, node);
         }
 
         public void OnNodeGenerated(SearchNode node)
