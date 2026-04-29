@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/copilotDiffState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/IVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/IVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,7 +179,7 @@
       <workItem from="1777177510778" duration="15094000" />
       <workItem from="1777266289225" duration="5302000" />
       <workItem from="1777365440544" duration="13397000" />
-      <workItem from="1777442004605" duration="19538000" />
+      <workItem from="1777442004605" duration="21705000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -468,7 +469,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777480545296</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Enhance node blinking functionality; update BlinkNode method to accept color parameter in IVisualizer and related visualizer classes">
+      <option name="closed" value="true" />
+      <created>1777482642270</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1777482642271</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -501,7 +510,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added AutoHand" />
     <MESSAGE value="Added UI Interaction, Removed old UI Interaction" />
     <MESSAGE value="Changed UI to AutoHand UI.&#10;Made it Grabbable &amp; Distance Grabbable.&#10;UI resets position &amp; velocity when Menu Button toggles on." />
     <MESSAGE value="Add Follower script to enable object following behavior" />
@@ -526,7 +534,8 @@
     <MESSAGE value="Add TreeVisualizer for hierarchical search visualization; enhance SearchController and related components for improved node handling" />
     <MESSAGE value="Refactor visualizer components; enhance TreeVisualizer and SearchController for improved node handling and edge management" />
     <MESSAGE value="Add same state animation to Node visuals; enhance visual feedback in TreeVisualizer and SearchController" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add same state animation to Node visuals; enhance visual feedback in TreeVisualizer and SearchController" />
+    <MESSAGE value="Enhance node blinking functionality; update BlinkNode method to accept color parameter in IVisualizer and related visualizer classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance node blinking functionality; update BlinkNode method to accept color parameter in IVisualizer and related visualizer classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -544,17 +553,17 @@
           <option name="timeStamp" value="3" />
         </breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs</url>
-          <line>21</line>
-          <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\Controllers\SearchController.cs" containingFunctionPresentation="Method 'OnNodeExpanding'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs</url>
+          <line>237</line>
+          <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\Visualizers\MazeVisualizer.cs" containingFunctionPresentation="Method 'TryPlaySameState'">
             <startOffsets>
-              <option value="765" />
+              <option value="8443" />
             </startOffsets>
             <endOffsets>
-              <option value="766" />
+              <option value="8444" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="24" />
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

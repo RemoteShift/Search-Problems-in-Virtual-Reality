@@ -125,8 +125,6 @@ namespace Search.Visualization
             }
 
             _nodeVisuals.Clear();
-            
-            StopSameStateAnimation();
         }
         
         private void BuildGroundAndWalls()
@@ -236,24 +234,29 @@ namespace Search.Visualization
                 nodeVisual.BlinkNode(color);
         }
 
-        public void TryPlaySameState(IState state, SearchNode node = null)
+        public void TryPlaySameState(SearchNode node)
         {
-            if (state is not GridState)
+            if (node.state is not GridState)
                 return;
 
-            StopSameStateAnimation();
+            StopSameStateAnimation(node);
             
-            if (_nodeVisuals.TryGetValue(state.id, out var nodeVisual))
+            if (_nodeVisuals.TryGetValue(node.state.id, out var nodeVisual))
             {
                 nodeVisual.PlaySameStateAnimation();
                 sameStateVisual = nodeVisual;
             }
         }
 
-        private void StopSameStateAnimation()
+        private void StopSameStateAnimation(SearchNode node)
         {
-            sameStateVisual?.StopAnimation();
-            sameStateVisual?.StopBlinking();
+            if (sameStateVisual is null)
+                return;
+            
+            sameStateVisual.StopAnimation();
+            
+            if(!sameStateVisual.SearchNode.state.Equals(node.state))
+                sameStateVisual.StopBlinking();
         }
     }
 }

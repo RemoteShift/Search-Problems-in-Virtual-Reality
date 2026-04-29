@@ -117,7 +117,7 @@ namespace Search.Core.Algorithms
                     _searchListener?.OnNodeGenerated(successor);
 
                 _frontier.AddRange(successors);
-                _searchListener?.OnNodesAddedToFrontier(_frontier.ToList());
+                _searchListener?.OnNodesAddedToFrontier(successors);
 
                 if (_expanded.Count > expansionLimit)
                 {

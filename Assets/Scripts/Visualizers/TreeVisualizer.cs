@@ -286,18 +286,18 @@ namespace Search.Visualization
             }
         }
 
-        public void TryPlaySameState(IState state, SearchNode node = null)
+        public void TryPlaySameState(SearchNode node)
         {
             StopSameStateAnimation(node);
             
             var newVisuals = _nodeVisuals.Values
-                .Where(v => v.SearchNode.state.Equals(state))
+                .Where(v => v.SearchNode.state.Equals(node.state))
                 .ToList();
-
+            
             foreach (var visual in newVisuals)
             {
                 visual.PlaySameStateAnimation();
-                if (node != null && visual != _nodeVisuals[node])
+                if (visual != _nodeVisuals[node])
                 {
                     visual.BlinkNode(Color.blue);
                 }
@@ -311,7 +311,8 @@ namespace Search.Visualization
             foreach (var nodeVisual in _currentSameStateVisuals)
             {
                 nodeVisual.StopAnimation();
-                nodeVisual.StopBlinking();
+                if(nodeVisual.SearchNode != node)
+                    nodeVisual.StopBlinking();
             }
 
             _currentSameStateVisuals.Clear();

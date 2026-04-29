@@ -22,11 +22,11 @@ namespace Search.Controllers
         {
             _problemVisualizer.GetOrCreateNodeVisual(node).SetState(NodeState.Expanding);
             _problemVisualizer.BlinkNode(node.state, Color.red);
-            _problemVisualizer.TryPlaySameState(node.state);
+            _problemVisualizer.TryPlaySameState(node);
             
             _treeVisualizer.GetOrCreateNodeVisual(node).SetState(NodeState.Expanding);
             _treeVisualizer.BlinkNode(node, Color.red);
-            _treeVisualizer.TryPlaySameState(node.state, node);
+            _treeVisualizer.TryPlaySameState(node);
         }
 
         public void OnNodeGenerated(SearchNode node)
