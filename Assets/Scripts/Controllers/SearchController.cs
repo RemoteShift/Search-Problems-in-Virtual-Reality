@@ -60,9 +60,13 @@ namespace Search.Controllers
             var nodeAProblem = _problemVisualizer.GetOrCreateNodeVisual(a);
             var nodeBProblem = _problemVisualizer.GetOrCreateNodeVisual(b);
             EdgeManager.Instance.AddEdge(a.state.id, b.state.id, nodeAProblem.transform, nodeBProblem.transform);
-            
-            var nodeATree = _treeVisualizer.GetOrCreateNodeVisual(a);
-            var nodeBTree = _treeVisualizer.GetOrCreateNodeVisual(b);
+
+            if (LevelManager.Instance.useGraphSearch && _treeVisualizer.GetNodeVisual(b))
+            {
+                return;
+            }
+            var nodeATree = _treeVisualizer.GetOrCreateNodeVisual(a, a.parent);
+            var nodeBTree = _treeVisualizer.GetOrCreateNodeVisual(b, b.parent);
             
             var uniqueIdA = a.GetHashCode().ToString();
             var uniqueIdB = b.GetHashCode().ToString();

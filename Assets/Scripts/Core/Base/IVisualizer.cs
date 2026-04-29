@@ -13,6 +13,8 @@ namespace Search.Visualization
         #region Node Visuals
         void ClearNodeVisuals();
         NodeVisual GetOrCreateNodeVisual(SearchNode node, SearchNode parent = null);
+        NodeVisual GetNodeVisual(SearchNode node);
+        NodeVisual CreateNodeVisual(SearchNode node, SearchNode parent = null);
         void BlinkNode(IState state);
         #endregion
     }

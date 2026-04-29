@@ -4,6 +4,7 @@ using System.Diagnostics;
 using Search.Controllers;
 using Search.Levels;
 using Search.Utils;
+using Search.Visualization;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -98,7 +99,7 @@ namespace Search.Core.Algorithms
                 {
                     var solutionPath = node.GetPathActions();
                     _searchResult = SearchResult.Found(node, _expanded.Count,
-                        _expanded.Count + _frontier.Count, solutionPath: solutionPath,
+                        _expanded.Count + 1 + _frontier.Count, solutionPath: solutionPath,
                         level: levelLimit ?? _levelLimit, timeS: ElapsedTimeinS);
                     _searchListener?.OnSolutionFound(node);
                     yield break;
@@ -225,6 +226,8 @@ namespace Search.Core.Algorithms
             for (var limit = 0; limit <= _levelLimit; limit++)
             {
                 _levelManager.ProblemVisualizer.ClearNodeVisuals();
+                _levelManager.TreeVisualizer.ClearNodeVisuals();
+                EdgeManager.Instance.ClearEdges();
                 yield return RunSingleSearchCoroutine(searchProblem, limit);
 
                 if (_searchResult is { success: true })

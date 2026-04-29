@@ -197,13 +197,18 @@ namespace Search.Visualization
             cameraComponent.projectionMatrix = m;
         }
 
-        public NodeVisual GetOrCreateNodeVisual(SearchNode node, SearchNode parent = null)
+        public NodeVisual GetNodeVisual(SearchNode node)
+        {
+            var state = node.state;
+            if (_nodeVisuals.TryGetValue(state.id, out var existing))
+                return existing;
+            return null;
+        }
+
+        public NodeVisual CreateNodeVisual(SearchNode node, SearchNode parent = null)
         {
             var state = node.state;
             var gridState = (GridState)state;
-            if (_nodeVisuals.TryGetValue(state.id, out var existing))
-                return existing;
-
             var pos = new Vector3(gridState.Column * cellSize, yOffsetNode, gridState.Row * cellSize);
             var go = Instantiate(nodePrefab, _nodeContainer.transform);
             go.transform.localPosition = pos;
@@ -211,6 +216,14 @@ namespace Search.Visualization
             visual.Initialize(state, node, go.transform.position);
             _nodeVisuals[state.id] = visual;
             return visual;
+        }
+
+        public NodeVisual GetOrCreateNodeVisual(SearchNode node, SearchNode parent = null)
+        {
+            var existing = GetNodeVisual(node);
+            if (existing)
+                return existing;
+            return CreateNodeVisual(node, parent);
         }
         
         public void BlinkNode(IState state)

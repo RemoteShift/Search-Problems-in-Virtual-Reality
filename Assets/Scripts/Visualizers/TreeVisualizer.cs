@@ -16,13 +16,11 @@ namespace Search.Visualization
 
         private SearchProblem _problem;
         private GameObject _nodeContainer;
-
-        // Core data structures
+        
         private readonly Dictionary<SearchNode, NodeVisual> _nodeVisuals = new();
         private readonly Dictionary<SearchNode, SearchNode> _parentMap = new();      // child → parent
         private readonly Dictionary<SearchNode, List<SearchNode>> _childrenMap = new(); // parent → children
-
-        // Stores custom positions for manually moved nodes
+        
         private readonly Dictionary<SearchNode, Vector3> _manualPositions = new();
         
         public bool IsAnimating { get; }
@@ -63,11 +61,15 @@ namespace Search.Visualization
             _childrenMap.Clear();
         }
 
-        public NodeVisual GetOrCreateNodeVisual(SearchNode node, SearchNode parent = null)
+        public NodeVisual GetNodeVisual(SearchNode node)
         {
             if (_nodeVisuals.TryGetValue(node, out var existing))
                 return existing;
+            return null;
+        }
 
+        public NodeVisual CreateNodeVisual(SearchNode node, SearchNode parent = null)
+        {
             // Removed the manual parent/child maps – LayoutTree will rebuild from node.parent
             var go = Instantiate(nodePrefab, _nodeContainer.transform);
             go.transform.localRotation = Quaternion.identity;
@@ -76,8 +78,31 @@ namespace Search.Visualization
             visual.Initialize(node.state, node, Vector3.zero);
             _nodeVisuals[node] = visual;
 
+            if (parent != null && _manualPositions.TryGetValue(parent, out var parentManualPos))
+            {
+                // Determine child index for this parent
+                var childIndex = _childrenMap.TryGetValue(parent, out var value) ? value.Count : 0;
+        
+                // Compute offset: spread children horizontally from parent's position
+                var xOffset = (childIndex - 0.5f) * horizontalSpacing;  // 0.5 centers the first child
+                var childLocalPos = parentManualPos + new Vector3(xOffset, verticalSpacing, 0f);
+        
+                visual.transform.localPosition = childLocalPos;
+                _manualPositions[node] = childLocalPos;   // mark as manually placed
+            }
+            
             LayoutTree();
             return visual;
+        }
+
+        public NodeVisual GetOrCreateNodeVisual(SearchNode node, SearchNode parent = null)
+        {
+            var existing = GetNodeVisual(node);
+            
+            if (existing)
+                return existing;
+            
+            return CreateNodeVisual(node, parent);
         }
 
         /// <summary>
@@ -87,7 +112,6 @@ namespace Search.Visualization
         public void SetNodeManualPosition(NodeVisual visual)
         {
             if (!visual || visual.SearchNode == null) return;
-            
             _manualPositions[visual.SearchNode] = visual.transform.localPosition;
         }
         
@@ -107,15 +131,12 @@ namespace Search.Visualization
             // Rebuild parent/child maps from SearchNode.parent
             _parentMap.Clear();
             _childrenMap.Clear();
-            foreach (var node in _nodeVisuals.Keys)
+            foreach (var node in _nodeVisuals.Keys.Where(node => node.parent != null))
             {
-                if (node.parent != null)
-                {
-                    _parentMap[node] = node.parent;
-                    if (!_childrenMap.ContainsKey(node.parent))
-                        _childrenMap[node.parent] = new List<SearchNode>();
-                    _childrenMap[node.parent].Add(node);
-                }
+                _parentMap[node] = node.parent;
+                if (!_childrenMap.ContainsKey(node.parent))
+                    _childrenMap[node.parent] = new List<SearchNode>();
+                _childrenMap[node.parent].Add(node);
             }
 
             // Find roots

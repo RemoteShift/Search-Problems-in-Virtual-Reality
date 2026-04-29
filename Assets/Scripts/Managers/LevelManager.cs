@@ -32,7 +32,7 @@ namespace Search.Levels
         [SerializeField] private GameObject problemVisualizer;
         [SerializeField] private GameObject treeVisualizer;
         public IVisualizer ProblemVisualizer;
-        public TreeVisualizer TreeVisualizer;
+        [HideInInspector] public TreeVisualizer TreeVisualizer;
 
         private EdgeManager _edgeManager;
         
