@@ -16,6 +16,8 @@ namespace Search.Visualization
         NodeVisual GetNodeVisual(SearchNode node);
         NodeVisual CreateNodeVisual(SearchNode node, SearchNode parent = null);
         void BlinkNode(IState state);
+        void TryPlaySameState(IState state);
+
         #endregion
     }
 }

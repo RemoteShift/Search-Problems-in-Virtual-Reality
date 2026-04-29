@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
 using Search.Core;
@@ -10,20 +11,28 @@ namespace Search.Visualization
     public class TreeVisualizer : MonoBehaviour, IVisualizer
     {
         [Foldout("Prefabs")] [SerializeField] private GameObject nodePrefab;
-        [Foldout("Visual Settings")] [SerializeField] private float verticalSpacing = 2f;
-        [Foldout("Visual Settings")] [SerializeField] private float horizontalSpacing = 1.5f;
-        [Foldout("Visual Settings")] [SerializeField] private float nodeScale = 1f;
+
+        [Foldout("Visual Settings")] [SerializeField]
+        private float verticalSpacing = 2f;
+
+        [Foldout("Visual Settings")] [SerializeField]
+        private float horizontalSpacing = 1.5f;
+
+        [Foldout("Visual Settings")] [SerializeField]
+        private float nodeScale = 1f;
 
         private SearchProblem _problem;
         private GameObject _nodeContainer;
-        
+
         private readonly Dictionary<SearchNode, NodeVisual> _nodeVisuals = new();
-        private readonly Dictionary<SearchNode, SearchNode> _parentMap = new();      // child → parent
+        private readonly Dictionary<SearchNode, SearchNode> _parentMap = new(); // child → parent
         private readonly Dictionary<SearchNode, List<SearchNode>> _childrenMap = new(); // parent → children
-        
+
         private readonly Dictionary<SearchNode, Vector3> _manualPositions = new();
-        
+
         public bool IsAnimating { get; }
+        private List<NodeVisual> _currentSameStateVisuals = new();
+
         public Coroutine blinkingCoroutine { get; set; }
 
         private void Awake()
@@ -59,6 +68,8 @@ namespace Search.Visualization
             _nodeVisuals.Clear();
             _parentMap.Clear();
             _childrenMap.Clear();
+            
+            StopSameStateAnimation();
         }
 
         public NodeVisual GetNodeVisual(SearchNode node)
@@ -82,15 +93,15 @@ namespace Search.Visualization
             {
                 // Determine child index for this parent
                 var childIndex = _childrenMap.TryGetValue(parent, out var value) ? value.Count : 0;
-        
+
                 // Compute offset: spread children horizontally from parent's position
-                var xOffset = (childIndex - 0.5f) * horizontalSpacing;  // 0.5 centers the first child
+                var xOffset = (childIndex - 0.5f) * horizontalSpacing; // 0.5 centers the first child
                 var childLocalPos = parentManualPos + new Vector3(xOffset, verticalSpacing, 0f);
-        
+
                 visual.transform.localPosition = childLocalPos;
-                _manualPositions[node] = childLocalPos;   // mark as manually placed
+                _manualPositions[node] = childLocalPos; // mark as manually placed
             }
-            
+
             LayoutTree();
             return visual;
         }
@@ -98,10 +109,10 @@ namespace Search.Visualization
         public NodeVisual GetOrCreateNodeVisual(SearchNode node, SearchNode parent = null)
         {
             var existing = GetNodeVisual(node);
-            
+
             if (existing)
                 return existing;
-            
+
             return CreateNodeVisual(node, parent);
         }
 
@@ -114,7 +125,7 @@ namespace Search.Visualization
             if (!visual || visual.SearchNode == null) return;
             _manualPositions[visual.SearchNode] = visual.transform.localPosition;
         }
-        
+
         /// <summary>
         /// Clears all manually placed positions and recomputes the full tree layout.
         /// </summary>
@@ -246,7 +257,7 @@ namespace Search.Visualization
             {
                 var node = kvp.Key;
                 var visual = kvp.Value;
-    
+
                 if (_manualPositions.TryGetValue(node, out var manualPos))
                 {
                     // Node was manually placed – keep its position, do not apply auto layout
@@ -277,6 +288,32 @@ namespace Search.Visualization
                 if (blinkingCoroutine != null) StopCoroutine(blinkingCoroutine);
                 blinkingCoroutine = StartCoroutine(visual.Blink());
             }
+        }
+
+        public void TryPlaySameState(IState state)
+        {
+            StopSameStateAnimation();
+            
+            var newVisuals = _nodeVisuals.Values
+                .Where(v => v.SearchNode.state.Equals(state))
+                .ToList();
+
+            foreach (var visual in newVisuals)
+            {
+                visual.PlaySameStateAnimation();
+            }
+
+            _currentSameStateVisuals = newVisuals;
+        }
+
+        private void StopSameStateAnimation()
+        {
+            foreach (var nodeVisual in _currentSameStateVisuals)
+            {
+                nodeVisual.StopAnimation();
+            }
+
+            _currentSameStateVisuals.Clear();
         }
     }
 }

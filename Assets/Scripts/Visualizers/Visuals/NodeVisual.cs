@@ -1,4 +1,5 @@
 using System.Collections;
+using NaughtyAttributes;
 using UnityEngine;
 using Search.Core;
 
@@ -17,15 +18,19 @@ namespace Search.Visualization
         public NodeState currentState { get; private set; }
         public string stateId { get; private set; }
         public Vector3 position => transform.position;
+        private Vector3 initialScale;
 
         [HideInInspector] public SearchNode SearchNode;
 
+        private Animator _anim;
         public void Initialize(IState state, SearchNode searchNode, Vector3 newPosition)
         {
             stateId = state.id;
             SearchNode = searchNode;
             transform.position = newPosition;
+            initialScale = transform.localScale;
             _renderer = GetComponent<MeshRenderer>();
+            _anim = GetComponent<Animator>();
             SetState(NodeState.Default);
         }
 
@@ -53,6 +58,19 @@ namespace Search.Visualization
                 _renderer.material.color = initialColor;
                 yield return new WaitForSeconds(0.5f);
             }
+        }
+        
+        public void PlaySameStateAnimation()
+        {
+            _anim.enabled = true;
+
+            _anim.CrossFade("sameState", 0f);
+        }
+
+        public void StopAnimation()
+        {
+            transform.localScale = initialScale;
+            _anim.enabled = false;
         }
     }
 }

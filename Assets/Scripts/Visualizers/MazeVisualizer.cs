@@ -47,6 +47,8 @@ namespace Search.Visualization
         private readonly List<GameObject> _goalObjects = new();
 
         [HideInInspector] public bool IsAnimating { get; }
+        private NodeVisual sameStateVisual;
+        
         
         public Coroutine blinkingCoroutine { get; set; }
 
@@ -126,6 +128,8 @@ namespace Search.Visualization
             }
 
             _nodeVisuals.Clear();
+            
+            StopSameStateAnimation();
         }
         
         private void BuildGroundAndWalls()
@@ -236,6 +240,25 @@ namespace Search.Visualization
             
             if (_nodeVisuals.TryGetValue(state.id, out var nodeVisual))
                 blinkingCoroutine = StartCoroutine(nodeVisual.Blink());
+        }
+
+        public void TryPlaySameState(IState state)
+        {
+            if (state is not GridState)
+                return;
+
+            StopSameStateAnimation();
+            
+            if (_nodeVisuals.TryGetValue(state.id, out var nodeVisual))
+            {
+                nodeVisual.PlaySameStateAnimation();
+                sameStateVisual = nodeVisual;
+            }
+        }
+
+        private void StopSameStateAnimation()
+        {
+            sameStateVisual?.StopAnimation();
         }
     }
 }
