@@ -7,9 +7,8 @@ namespace Search.Utils
         [SerializeField] private Transform target;
         public float followSpeed = 5f;
         public float rotationFollowSpeed = 5f;
-
-        // Update is called once per frame
-        private void Update()
+        
+        private void LateUpdate()
         {
             var desiredPosition = target.position;
             transform.position = Vector3.Lerp(

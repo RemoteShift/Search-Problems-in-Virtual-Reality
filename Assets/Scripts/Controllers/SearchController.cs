@@ -63,7 +63,8 @@ namespace Search.Controllers
         {
             var nodeAProblem = _problemVisualizer.GetOrCreateNodeVisual(a);
             var nodeBProblem = _problemVisualizer.GetOrCreateNodeVisual(b);
-            EdgeManager.Instance.AddEdge(a.state.id, b.state.id, nodeAProblem.transform, nodeBProblem.transform);
+            EdgeManager.Instance.AddEdge(a.state.id, b.state.id, nodeAProblem.transform, nodeBProblem.transform,
+                b.actionFromParent);
 
             if (LevelManager.Instance.useGraphSearch && _treeVisualizer.GetNodeVisual(b))
             {
@@ -75,7 +76,8 @@ namespace Search.Controllers
             var uniqueIdA = a.GetHashCode().ToString();
             var uniqueIdB = b.GetHashCode().ToString();
 
-            EdgeManager.Instance.AddEdge(uniqueIdA, uniqueIdB, nodeATree.transform, nodeBTree.transform);
+            EdgeManager.Instance.AddEdge(uniqueIdA, uniqueIdB, nodeATree.transform, nodeBTree.transform, 
+                b.actionFromParent);
         }
 
         public void RemoveEdge(SearchNode a, SearchNode b)

@@ -8,17 +8,25 @@ namespace Search.Visualization
         private Transform _from;
         private Transform _to;
     
+        private DistanceCulling _cullingScript;
+        
         public void Initialize(Transform from, Transform to)
         {
             _from = from;
             _to = to;
             _lr = GetComponent<LineRenderer>();
+            _cullingScript = GetComponentInChildren<DistanceCulling>();
+            if(!_cullingScript)
+                Debug.LogWarning("DistanceCulling script not found on edge label. Distance-based culling will not work.");
         }
 
         private void LateUpdate()
         {
             if (_from && _to)
                 _lr.SetPositions(new[] { _from.position, _to.position });
+            
+            transform.position = (_from.position + _to.position) * 0.5f;
+            _cullingScript.maxDistance = Mathf.Max(Vector3.Distance(_from.position, _to.position), 4f);
         }
     }
 }

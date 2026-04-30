@@ -297,7 +297,7 @@ namespace Search.Visualization
                 visual.PlaySameStateAnimation();
                 if (visual != _nodeVisuals[node])
                 {
-                    visual.BlinkNode(Color.blue);
+                    visual.BlinkNode(Color.deepSkyBlue);
                 }
             }
 

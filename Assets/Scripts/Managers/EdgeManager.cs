@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using Search.Utils;
+using TMPro;
 using UnityEngine;
 
 namespace Search.Visualization
@@ -9,10 +11,13 @@ namespace Search.Visualization
     {
         public Material edgeMaterial;
         public float edgeWidth;
+
+        [Foldout("Prefabs")] [SerializeField] 
+        private GameObject labelPrefab;
         
         private readonly Dictionary<(string, string), GameObject> _edges = new();
     
-        public void AddEdge(string fromId, string toId, Transform from, Transform to)
+        public void AddEdge(string fromId, string toId, Transform from, Transform to, string label = "")
         {
             // Normalize so (A,B) and (B,A) both use the same key
             var key = (string.Compare(fromId, toId, StringComparison.Ordinal) < 0) ? 
@@ -32,6 +37,9 @@ namespace Search.Visualization
             lr.endWidth = edgeWidth;
             lr.useWorldSpace = true;
 
+            var labelObj = Instantiate(labelPrefab, edgeObj.transform);
+            labelObj.GetComponentInChildren<TextMeshProUGUI>().text = label;
+            
             var updater = edgeObj.AddComponent<EdgeDynamicUpdater>();
             updater.Initialize(from, to);
             _edges[key] = edgeObj;
