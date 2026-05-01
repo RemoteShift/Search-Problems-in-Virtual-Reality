@@ -76,6 +76,11 @@ namespace Search.Visualization
             }
         }
         
+        public void SetColor(Color color)
+        {
+            _renderer.material.color = color;
+        }
+        
         public void PlaySameStateAnimation()
         {
             _anim.enabled = true;

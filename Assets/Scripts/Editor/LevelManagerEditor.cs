@@ -1,4 +1,5 @@
 using Search.Controllers;
+using Search.Culling;
 using Search.Levels;
 using UnityEditor;
 using UnityEngine;
@@ -27,6 +28,11 @@ public class LevelManagerEditor : Editor
             {
                 SearchController.Instance.AdvanceStep();
             }
+        }
+
+        if (GUILayout.Button("Toggle Culling"))
+        {
+            CanvasCulling.IsCullingEnabled = !CanvasCulling.IsCullingEnabled;
         }
     }
 }

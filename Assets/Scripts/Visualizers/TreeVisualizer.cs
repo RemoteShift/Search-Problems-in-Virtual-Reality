@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
 using Search.Core;
@@ -19,6 +20,9 @@ namespace Search.Visualization
 
         [Foldout("Visual Settings")] [SerializeField]
         private float nodeScale = 1f;
+        
+        [Foldout("Visual Settings")] [SerializeField]
+        private float subTreeDeletionDelay = 1f;
 
         private SearchProblem _problem;
         private GameObject _nodeContainer;
@@ -28,6 +32,10 @@ namespace Search.Visualization
         private readonly Dictionary<SearchNode, List<SearchNode>> _childrenMap = new(); // parent → children
 
         private readonly Dictionary<SearchNode, Vector3> _manualPositions = new();
+        
+        private readonly Dictionary<SearchNode, float> _subtreeWidth = new();
+        private readonly Dictionary<SearchNode, float> _nodeX = new();
+        private readonly Dictionary<SearchNode, int> _depth = new();
 
         public bool IsAnimating { get; }
         private List<NodeVisual> _currentSameStateVisuals = new();
@@ -55,19 +63,20 @@ namespace Search.Visualization
 
         public void ClearVisuals()
         {
+            StopAllCoroutines();
             ClearNodeVisuals();
         }
 
         public void ClearNodeVisuals()
         {
-            foreach (var visual in _nodeVisuals.Values.Where(visual => visual))
-            {
-                Destroy(visual.gameObject);
-            }
-
+            foreach (var visual in _nodeVisuals.Values.Where(visual => visual)) Destroy(visual.gameObject);
             _nodeVisuals.Clear();
             _parentMap.Clear();
             _childrenMap.Clear();
+            _subtreeWidth.Clear();
+            _nodeX.Clear();
+            _depth.Clear();
+            StopSameStateAnimation();
         }
 
         public NodeVisual GetNodeVisual(SearchNode node)
@@ -77,7 +86,6 @@ namespace Search.Visualization
 
         public NodeVisual CreateNodeVisual(SearchNode node, SearchNode parent = null)
         {
-            // Removed the manual parent/child maps – LayoutTree will rebuild from node.parent
             var go = Instantiate(nodePrefab, _nodeContainer.transform);
             go.transform.localRotation = Quaternion.identity;
             go.transform.localScale = Vector3.one * nodeScale;
@@ -85,17 +93,23 @@ namespace Search.Visualization
             visual.Initialize(node.state, node, Vector3.zero);
             _nodeVisuals[node] = visual;
 
+            // --- Incrementally update parent/child maps ---
+            if (parent != null)
+            {
+                _parentMap[node] = parent;
+                if (!_childrenMap.ContainsKey(parent))
+                    _childrenMap[parent] = new List<SearchNode>();
+                _childrenMap[parent].Add(node);
+            }
+
+            // Manual positioning (if parent is manually placed)
             if (parent != null && _manualPositions.TryGetValue(parent, out var parentManualPos))
             {
-                // Determine child index for this parent
-                var childIndex = _childrenMap.TryGetValue(parent, out var value) ? value.Count : 0;
-
-                // Compute offset: spread children horizontally from parent's position
-                var xOffset = (childIndex - 0.5f) * horizontalSpacing; // 0.5 centers the first child
+                var childIndex = _childrenMap[parent].Count - 1;   // index of this child
+                var xOffset = (childIndex - 0.5f) * horizontalSpacing;
                 var childLocalPos = parentManualPos + new Vector3(xOffset, verticalSpacing, 0f);
-
                 visual.transform.localPosition = childLocalPos;
-                _manualPositions[node] = childLocalPos; // mark as manually placed
+                _manualPositions[node] = childLocalPos;
             }
 
             LayoutTree();
@@ -127,6 +141,152 @@ namespace Search.Visualization
             _manualPositions[visual.SearchNode] = visual.transform.localPosition;
         }
 
+        public void ResetParent(SearchNode child)
+        {
+            if (child == null)
+            {
+                return;
+            }
+
+            if (!_nodeVisuals.TryGetValue(child, out var oldVisual) || !oldVisual)
+            {
+                return;
+            }
+
+            // Data has already been updated externally; use the current parent from SearchNode.
+            var newParent = child.parent;
+
+            // Detach child from its previous parent relation, if any.
+            if (_parentMap.TryGetValue(child, out var previousParent) &&
+                _childrenMap.TryGetValue(previousParent, out var previousSiblings))
+            {
+                previousSiblings.Remove(child);
+            }
+
+            if (newParent != null)
+            {
+                _parentMap[child] = newParent;
+                if (!_childrenMap.ContainsKey(newParent))
+                {
+                    _childrenMap[newParent] = new List<SearchNode>();
+                }
+
+                if (!_childrenMap[newParent].Contains(child))
+                {
+                    _childrenMap[newParent].Add(child);
+                }
+            }
+            else
+            {
+                _parentMap.Remove(child);
+            }
+
+            // Keep the old visual in the scene as historical marker.
+            StartCoroutine(DeleteSubTree(oldVisual, subTreeDeletionDelay));
+
+            // Create replacement visual and remap the active reference.
+            var go = Instantiate(nodePrefab, _nodeContainer.transform);
+            go.transform.localRotation = Quaternion.identity;
+            go.transform.localScale = Vector3.one * nodeScale;
+            var newVisual = go.GetComponentInChildren<NodeVisual>();
+            newVisual.Initialize(child.state, child, Vector3.zero);
+            _nodeVisuals[child] = newVisual;
+
+            // Remove any previously stored manual position for this node.
+            _manualPositions.Remove(child);
+
+            // If the new parent is manually positioned, compute a position relative to the parent,
+            // store it as manual, and apply it immediately.
+            if (newParent != null && _manualPositions.TryGetValue(newParent, out var parentManualPos))
+            {
+                var siblingIndex = _childrenMap[newParent].IndexOf(child);
+                if (siblingIndex < 0) siblingIndex = _childrenMap[newParent].Count - 1;
+                var xOffset = (siblingIndex - 0.5f) * horizontalSpacing;
+                var childLocalPos = parentManualPos + new Vector3(xOffset, verticalSpacing, 0f);
+    
+                _manualPositions[child] = childLocalPos;
+                newVisual.transform.localPosition = childLocalPos;
+            }
+
+            LayoutTree();
+        }
+
+        private IEnumerator DeleteSubTree(NodeVisual visual, float delay)
+        {
+            var subTree = GetSubTree(visual);
+            foreach (var nodeVisual in subTree)
+            {
+                if (nodeVisual)
+                {
+                    nodeVisual.SetColor(Color.red);
+                }
+            }
+
+            yield return new WaitForSeconds(delay);
+
+            var deletedAnyActiveNode = false;
+            foreach (var nodeVisual in subTree)
+            {
+                if (!nodeVisual)
+                {
+                    continue;
+                }
+
+                var node = nodeVisual.SearchNode;
+
+                // Only remove dictionary mappings if this visual is still the active visual for this node.
+                if (_nodeVisuals.TryGetValue(node, out var activeVisual) && activeVisual == nodeVisual)
+                {
+                    if (_parentMap.TryGetValue(node, out var parent) && _childrenMap.TryGetValue(parent, out var siblings))
+                    {
+                        siblings.Remove(node);
+                    }
+
+                    _parentMap.Remove(node);
+                    _childrenMap.Remove(node);
+                    _manualPositions.Remove(node);
+                    _nodeVisuals.Remove(node);
+                    deletedAnyActiveNode = true;
+                }
+                
+                Destroy(nodeVisual.gameObject);
+            }
+
+            if (deletedAnyActiveNode)
+            {
+                LayoutTree();
+            }
+        }
+        
+        private List<NodeVisual> GetSubTree(NodeVisual rootVisual)
+        {
+            var result = new List<NodeVisual>();
+            var stack = new Stack<NodeVisual>();
+            stack.Push(rootVisual);
+            while (stack.Count > 0)
+            {
+                var current = stack.Pop();
+                result.Add(current);
+                var currentNode = current.SearchNode;
+                if (_childrenMap.TryGetValue(currentNode, out var children))
+                {
+                    foreach (var child in children)
+                    {
+                        if (_nodeVisuals.TryGetValue(child, out var childVisual) && childVisual)
+                        {
+                            stack.Push(childVisual);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        public List<NodeVisual> GetSubTree(SearchNode root)
+        {
+            return GetSubTree(_nodeVisuals.GetValueOrDefault(root));
+        }
+        
         /// <summary>
         ///     Clears all manually placed positions and recomputes the full tree layout.
         /// </summary>
@@ -138,175 +298,125 @@ namespace Search.Visualization
 
         private void LayoutTree()
         {
-            if (_nodeVisuals.Count == 0)
+            if (_nodeVisuals.Count == 0) return;
+
+            // Clear reusable dictionaries
+            _subtreeWidth.Clear();
+            _nodeX.Clear();
+            _depth.Clear();
+
+            // Find roots (nodes without parent in _parentMap) – iterative, no LINQ
+            var roots = new List<SearchNode>();
+            foreach (var n in _nodeVisuals.Keys)
+                if (!_parentMap.ContainsKey(n))
+                    roots.Add(n);
+            if (roots.Count == 0) return;
+
+            // ---------- 1. Compute subtree widths (iterative post-order) ----------
+            var postOrder = new List<SearchNode>();
+            var stack = new Stack<SearchNode>();
+            foreach (var r in roots) stack.Push(r);
+            while (stack.Count > 0)
             {
-                return;
+                var n = stack.Pop();
+                postOrder.Add(n);
+                if (_childrenMap.TryGetValue(n, out var children))
+                    foreach (var c in children)
+                        stack.Push(c);
             }
 
-            // Rebuild parent/child maps from SearchNode.parent
-            _parentMap.Clear();
-            _childrenMap.Clear();
-            foreach (var node in _nodeVisuals.Keys.Where(node => node.parent != null))
+            // Process in reverse (post-order)
+            for (int i = postOrder.Count - 1; i >= 0; i--)
             {
-                _parentMap[node] = node.parent;
-                if (!_childrenMap.ContainsKey(node.parent))
-                {
-                    _childrenMap[node.parent] = new List<SearchNode>();
-                }
-
-                _childrenMap[node.parent].Add(node);
-            }
-
-            // Find roots
-            var roots = _nodeVisuals.Keys.Where(n => !_parentMap.ContainsKey(n)).ToList();
-            if (roots.Count == 0)
-            {
-                return;
-            }
-
-            // ---------- 1. Subtree width ----------
-            var subtreeWidth = new Dictionary<SearchNode, float>();
-
-            float ComputeWidth(SearchNode n)
-            {
-                if (subtreeWidth.TryGetValue(n, out var cached))
-                {
-                    return cached;
-                }
-
+                var n = postOrder[i];
                 if (!_childrenMap.TryGetValue(n, out var children) || children.Count == 0)
+                    _subtreeWidth[n] = 1f;
+                else
                 {
-                    subtreeWidth[n] = 1f;
-                    return 1f;
+                    float total = 0f;
+                    foreach (var c in children) total += _subtreeWidth[c];
+                    _subtreeWidth[n] = total;
                 }
-
-                var total = 0f;
-                foreach (var child in children)
-                {
-                    total += ComputeWidth(child);
-                }
-
-                subtreeWidth[n] = total;
-                return total;
             }
 
+            // ---------- 2. Assign X coordinates (iterative post-order with state machine) ----------
             foreach (var root in roots)
             {
-                ComputeWidth(root);
+                // Stack holds (node, leftBound, state)
+                // state 0 = first visit (push children), state 1 = children done (compute parent X)
+                var stackX = new Stack<(SearchNode node, float left, int state)>();
+                stackX.Push((root, 0f, 0));
+    
+                while (stackX.Count > 0)
+                {
+                    var (n, left, state) = stackX.Pop();
+        
+                    if (state == 0)
+                    {
+                        // First time seeing this node
+                        if (!_childrenMap.TryGetValue(n, out var children) || children.Count == 0)
+                        {
+                            // Leaf – assign X directly
+                            _nodeX[n] = left;
+                            continue;
+                        }
+            
+                        // Push the parent back with state=1 (to compute after children)
+                        stackX.Push((n, left, 1));
+            
+                        // Push children in reverse order so they are processed left‑to‑right
+                        float currentX = left;
+                        for (int i = children.Count - 1; i >= 0; i--)
+                        {
+                            var child = children[i];
+                            stackX.Push((child, currentX, 0));
+                            currentX += _subtreeWidth[child] * horizontalSpacing;
+                        }
+                    }
+                    else // state == 1 – all children have been processed
+                    {
+                        var children = _childrenMap[n];
+                        float firstChildX = _nodeX[children[0]];
+                        float lastChildX = _nodeX[children[^1]];
+                        _nodeX[n] = (firstChildX + lastChildX) / 2f;
+                    }
+                }
             }
 
-            // ---------- 2. X coordinates (parent centered) ----------
-            var nodeX = new Dictionary<SearchNode, float>();
-
-            void AssignX(SearchNode n, float leftBound)
+            // ---------- 3. Compute depth (use postOrder – now root-first after reversal) ----------
+            foreach (var n in postOrder) // postOrder was built root-first, so depth can be assigned top-down
             {
-                if (!_childrenMap.TryGetValue(n, out var children) || children.Count == 0)
-                {
-                    nodeX[n] = leftBound;
-                    return;
-                }
-
-                var currentX = leftBound;
-                foreach (var child in children)
-                {
-                    AssignX(child, currentX);
-                    currentX += subtreeWidth[child] * horizontalSpacing;
-                }
-
-                var firstChildX = nodeX[children[0]];
-                var lastChildX = nodeX[children[^1]];
-                nodeX[n] = (firstChildX + lastChildX) / 2f;
-            }
-
-            foreach (var root in roots)
-            {
-                AssignX(root, 0f);
-            }
-
-            // ---------- 3. Depth (Y coordinate) ----------
-            var depth = new Dictionary<SearchNode, int>();
-
-            int GetDepth(SearchNode n)
-            {
-                if (depth.TryGetValue(n, out var d))
-                {
-                    return d;
-                }
-
                 if (!_parentMap.TryGetValue(n, out var parent))
-                {
-                    depth[n] = 0;
-                    return 0;
-                }
-
-                d = GetDepth(parent) + 1;
-                depth[n] = d;
-                return d;
+                    _depth[n] = 0;
+                else
+                    _depth[n] = _depth[parent] + 1;
             }
 
-            foreach (var node in _nodeVisuals.Keys)
-            {
-                GetDepth(node);
-            }
-
-            // ---------- 4. Compute raw positions (root y=0, children above) ----------
-            var computedPositions = new Dictionary<SearchNode, Vector3>();
-            foreach (var kvp in _nodeVisuals)
-            {
-                var node = kvp.Key;
-                var x = nodeX.GetValueOrDefault(node, 0f);
-                var y = depth.GetValueOrDefault(node, 0) * verticalSpacing;
-                computedPositions[node] = new Vector3(x, y, 0f);
-            }
-
-            // ---------- 5. Find min/max X only for NON‑manual nodes ----------
+            // ---------- 4. Center the non‑manual nodes (single pass) ----------
             float minX = float.MaxValue, maxX = float.MinValue;
-            var hasNonManual = false;
+            bool hasNonManual = false;
             foreach (var kvp in _nodeVisuals)
             {
                 var node = kvp.Key;
-                if (_manualPositions.ContainsKey(node))
-                {
-                    continue; // skip manual nodes
-                }
-
-                var x = computedPositions[node].x;
-                if (x < minX)
-                {
-                    minX = x;
-                }
-
-                if (x > maxX)
-                {
-                    maxX = x;
-                }
-
+                if (_manualPositions.ContainsKey(node)) continue;
+                float x = _nodeX[node];
+                if (x < minX) minX = x;
+                if (x > maxX) maxX = x;
                 hasNonManual = true;
             }
 
-            var offsetX = 0f;
-            if (hasNonManual)
-            {
-                var centerX = (minX + maxX) / 2f;
-                offsetX = -centerX; // shift so that the non‑manual tree is centered at x=0
-            }
+            float offsetX = hasNonManual ? -(minX + maxX) / 2f : 0f;
 
-            // ---------- 6. Apply final positions (manual nodes are NOT moved) ----------
+            // ---------- 5. Apply final positions ----------
             foreach (var kvp in _nodeVisuals)
             {
                 var node = kvp.Key;
                 var visual = kvp.Value;
-
                 if (_manualPositions.TryGetValue(node, out var manualPos))
-                {
-                    // Node was manually placed – keep its position, do not apply auto layout
                     visual.transform.localPosition = manualPos;
-                }
                 else
-                {
-                    var rawPos = computedPositions[node];
-                    visual.transform.localPosition = new Vector3(rawPos.x + offsetX, rawPos.y, 0f);
-                }
+                    visual.transform.localPosition =
+                        new Vector3(_nodeX[node] + offsetX, _depth[node] * verticalSpacing, 0f);
             }
         }
 

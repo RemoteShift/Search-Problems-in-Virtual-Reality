@@ -813,7 +813,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -3759,7 +3759,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -6277,6 +6277,10 @@ PrefabInstance:
       propertyPath: horizontalSpacing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 783274831938394155, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
+      propertyPath: subTreeDeletionDelay
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2195378564306077073, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
       propertyPath: edgeWidth
       value: 0.05
@@ -6335,7 +6339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
       propertyPath: isStepped
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
       propertyPath: useGraphSearch
@@ -6343,7 +6347,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
       propertyPath: currentAlgorithmType
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6788359328426414584, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
       propertyPath: searchAlgorithm.expansionLimit

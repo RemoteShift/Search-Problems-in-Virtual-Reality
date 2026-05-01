@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NaughtyAttributes;
 using Search.Utils;
 using TMPro;
@@ -57,6 +58,14 @@ namespace Search.Visualization
             
             Destroy(edgeObject);
             _edges.Remove(key);
+        }
+
+        public void RemoveEdge(GameObject edgeObject)
+        {
+            var edgeEntry = _edges.FirstOrDefault(kvp => kvp.Value == edgeObject);
+            
+            Destroy(edgeEntry.Value);
+            _edges.Remove(edgeEntry.Key);
         }
     
         public void ClearEdges()

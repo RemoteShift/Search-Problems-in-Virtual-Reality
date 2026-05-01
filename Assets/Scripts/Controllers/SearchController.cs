@@ -86,6 +86,15 @@ namespace Search.Controllers
             EdgeManager.Instance.RemoveEdge(a.state.id + "_tree", b.state.id + "_tree");
         }
 
+        public void ResetParent(SearchNode childNode)
+        {
+            _treeVisualizer.ResetParent(childNode);
+            var parentNodeVisual = _treeVisualizer.GetOrCreateNodeVisual(childNode.parent, childNode.parent.parent);
+            var childNodeVisual = _treeVisualizer.GetOrCreateNodeVisual(childNode, childNode.parent);
+            EdgeManager.Instance.AddEdge(childNode.parent.state.id + "_tree", childNode.state.id + "_tree",
+                parentNodeVisual.transform, childNodeVisual.transform, childNode.actionFromParent);
+        }
+
         public void AdvanceStep()
         {
             var search = LevelManager.Instance.searchAlgorithm;

@@ -23,6 +23,12 @@ namespace Search.Visualization
 
         private void LateUpdate()
         {
+            if (!_from || !_to)
+            {
+                EdgeManager.Instance.RemoveEdge(gameObject);
+                return;
+            }
+            
             if (_from && _to)
                 _lr.SetPositions(new[] { _from.position, _to.position });
             

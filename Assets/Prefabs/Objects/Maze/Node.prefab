@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4688975999596157272, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 288
+      value: 32
       objectReference: {fileID: 0}
     - target: {fileID: 6681585830969861019, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
       propertyPath: m_Name
@@ -412,33 +412,8 @@ PrefabInstance:
     - {fileID: 7432823526223354895, guid: f9848012e26cf7040b8cc34d4fce2901, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5474199682446456322, guid: f9848012e26cf7040b8cc34d4fce2901, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7943559913179420368}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9848012e26cf7040b8cc34d4fce2901, type: 3}
---- !u!1 &1964188622863899737 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5474199682446456322, guid: f9848012e26cf7040b8cc34d4fce2901, type: 3}
-  m_PrefabInstance: {fileID: 5817085833746606683}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7943559913179420368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1964188622863899737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d04ece050c2342798099ba8684734982, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Search.Culling.CanvasCulling
-  playerCamera: {fileID: 0}
-  treatOverlayAsVisible: 1
-  aabbPadding: {x: 0, y: 0, z: 0}
-  enableDistanceCulling: 1
-  maxDistance: 10
 --- !u!224 &4321807439645889598 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7728269634014002789, guid: f9848012e26cf7040b8cc34d4fce2901, type: 3}

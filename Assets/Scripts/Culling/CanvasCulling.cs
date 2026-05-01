@@ -5,6 +5,8 @@ namespace Search.Culling
     [RequireComponent(typeof(Canvas))]
     public class CanvasCulling : MonoBehaviour
     {
+        public static bool IsCullingEnabled = true;
+        
         [Tooltip("The camera to measure visibility from. If left empty, the main camera will be used.")]
         [SerializeField]
         private Camera playerCamera;
@@ -49,6 +51,12 @@ namespace Search.Culling
 
         private void LateUpdate()
         {
+            if (!IsCullingEnabled)
+            {
+                _targetCanvas.enabled = true;
+                return;
+            }
+            
             if (!_targetCanvas || !_rectTransform)
             {
                 return;

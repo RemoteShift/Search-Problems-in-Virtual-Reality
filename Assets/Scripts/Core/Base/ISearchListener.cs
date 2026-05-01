@@ -52,5 +52,16 @@ namespace Search.Core
         /// <param name="a"></param>
         /// <param name="b"></param>
         void RemoveEdge(SearchNode a, SearchNode b);
+
+        /// <summary>
+        /// Resets the parent of the given child node in the visualizer(s) to match the current parent in the search
+        /// tree.
+        /// </summary>
+        /// <remarks>
+        /// Make sure you have already updated the child node's parent in the search tree before calling this method,
+        /// as it will read the current parent from the child node and update the visualizer(s) accordingly.
+        /// </remarks>
+        /// <param name="childNode"></param>
+        void ResetParent(SearchNode childNode);
     }
 }

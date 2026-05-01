@@ -17,6 +17,9 @@ namespace Search.Core.Algorithms
 
         private readonly IFrontier<SearchNode> _frontier;
         private readonly List<SearchNode> _expanded = new();
+        // Keep track of nodes that were expanded but then re-added to frontier with better path
+        // (only relevant for IDS right now)
+        private readonly List<SearchNode> _wrongfullyExpanded = new();
         public readonly Dictionary<IState, SearchNode> SearchNodes;
 
         private readonly int? _levelLimit;
@@ -67,7 +70,7 @@ namespace Search.Core.Algorithms
             {
                 yield return owner.StartCoroutine(RunSingleSearchCoroutine(searchProblem));
             }
-            Debug.Log("Finished?");
+
             _searchTimer.Stop();
             _searchListener?.OnSearchComplete(_searchResult);
             _searchResult.PrintSummary();
@@ -98,8 +101,9 @@ namespace Search.Core.Algorithms
                 if (searchProblem.IsGoal(node.state))
                 {
                     var solutionPath = node.GetPathActions();
-                    _searchResult = SearchResult.Found(node, _expanded.Count,
-                        _expanded.Count + 1 + _frontier.Count, solutionPath: solutionPath,
+                    _searchResult = SearchResult.Found(node, _expanded.Count + _wrongfullyExpanded.Count,
+                        _expanded.Count + 1 + _frontier.Count + _wrongfullyExpanded.Count, 
+                        solutionPath: solutionPath,
                         level: levelLimit ?? _levelLimit, timeS: ElapsedTimeinS);
                     _searchListener?.OnSolutionFound(node);
                     yield break;
@@ -108,6 +112,7 @@ namespace Search.Core.Algorithms
                 if (levelLimit.HasValue && node.depth >= levelLimit.Value)
                 {
                     _searchListener?.OnNodeExpanded(node);
+                    _expanded.Add(node);
                     continue;
                 }
                     
@@ -191,8 +196,6 @@ namespace Search.Core.Algorithms
                     successors.Add(successor);
                     continue;
                 }
-
-                _searchListener.AddEdge(node, existingNode);
                 
                 if (_queueingFunction is IDS && candidateDepth < existingNode.depth)
                 {
@@ -213,6 +216,15 @@ namespace Search.Core.Algorithms
                     }
 
                     _expanded.Remove(existingNode);
+
+                    var wrongfullyExpandedNodes = 
+                        _levelManager.TreeVisualizer.GetSubTree(existingNode);
+                    foreach (var wrongfullyExpandedNode in wrongfullyExpandedNodes)
+                    {
+                        _wrongfullyExpanded.Add(wrongfullyExpandedNode.SearchNode);
+                    }
+                    _searchListener.ResetParent(existingNode);
+                    _searchListener.AddEdge(node, existingNode);
                 }
             }
 
