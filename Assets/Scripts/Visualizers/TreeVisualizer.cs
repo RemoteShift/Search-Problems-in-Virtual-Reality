@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
 using Search.Core;
@@ -54,7 +53,10 @@ namespace Search.Visualization
             ClearVisuals();
         }
 
-        public void ClearVisuals() => ClearNodeVisuals();
+        public void ClearVisuals()
+        {
+            ClearNodeVisuals();
+        }
 
         public void ClearNodeVisuals()
         {
@@ -70,9 +72,7 @@ namespace Search.Visualization
 
         public NodeVisual GetNodeVisual(SearchNode node)
         {
-            if (_nodeVisuals.TryGetValue(node, out var existing))
-                return existing;
-            return null;
+            return _nodeVisuals.GetValueOrDefault(node);
         }
 
         public NodeVisual CreateNodeVisual(SearchNode node, SearchNode parent = null)
@@ -107,23 +107,28 @@ namespace Search.Visualization
             var existing = GetNodeVisual(node);
 
             if (existing)
+            {
                 return existing;
+            }
 
             return CreateNodeVisual(node, parent);
         }
-
+        
         /// <summary>
-        /// <summary>
-        /// Call this from your VR grab script when a node is moved.
+        ///     Call this from your VR grab script when a node is moved.
         /// </summary>
         public void SetNodeManualPosition(NodeVisual visual)
         {
-            if (!visual || visual.SearchNode == null) return;
+            if (!visual || visual.SearchNode == null)
+            {
+                return;
+            }
+
             _manualPositions[visual.SearchNode] = visual.transform.localPosition;
         }
 
         /// <summary>
-        /// Clears all manually placed positions and recomputes the full tree layout.
+        ///     Clears all manually placed positions and recomputes the full tree layout.
         /// </summary>
         public void ResetManualPositions()
         {
@@ -133,7 +138,10 @@ namespace Search.Visualization
 
         private void LayoutTree()
         {
-            if (_nodeVisuals.Count == 0) return;
+            if (_nodeVisuals.Count == 0)
+            {
+                return;
+            }
 
             // Rebuild parent/child maps from SearchNode.parent
             _parentMap.Clear();
@@ -142,35 +150,50 @@ namespace Search.Visualization
             {
                 _parentMap[node] = node.parent;
                 if (!_childrenMap.ContainsKey(node.parent))
+                {
                     _childrenMap[node.parent] = new List<SearchNode>();
+                }
+
                 _childrenMap[node.parent].Add(node);
             }
 
             // Find roots
             var roots = _nodeVisuals.Keys.Where(n => !_parentMap.ContainsKey(n)).ToList();
-            if (roots.Count == 0) return;
+            if (roots.Count == 0)
+            {
+                return;
+            }
 
             // ---------- 1. Subtree width ----------
             var subtreeWidth = new Dictionary<SearchNode, float>();
 
             float ComputeWidth(SearchNode n)
             {
-                if (subtreeWidth.TryGetValue(n, out var cached)) return cached;
+                if (subtreeWidth.TryGetValue(n, out var cached))
+                {
+                    return cached;
+                }
+
                 if (!_childrenMap.TryGetValue(n, out var children) || children.Count == 0)
                 {
                     subtreeWidth[n] = 1f;
                     return 1f;
                 }
 
-                float total = 0f;
+                var total = 0f;
                 foreach (var child in children)
+                {
                     total += ComputeWidth(child);
+                }
+
                 subtreeWidth[n] = total;
                 return total;
             }
 
             foreach (var root in roots)
+            {
                 ComputeWidth(root);
+            }
 
             // ---------- 2. X coordinates (parent centered) ----------
             var nodeX = new Dictionary<SearchNode, float>();
@@ -183,27 +206,33 @@ namespace Search.Visualization
                     return;
                 }
 
-                float currentX = leftBound;
+                var currentX = leftBound;
                 foreach (var child in children)
                 {
                     AssignX(child, currentX);
                     currentX += subtreeWidth[child] * horizontalSpacing;
                 }
 
-                float firstChildX = nodeX[children[0]];
-                float lastChildX = nodeX[children[^1]];
+                var firstChildX = nodeX[children[0]];
+                var lastChildX = nodeX[children[^1]];
                 nodeX[n] = (firstChildX + lastChildX) / 2f;
             }
 
             foreach (var root in roots)
+            {
                 AssignX(root, 0f);
+            }
 
             // ---------- 3. Depth (Y coordinate) ----------
             var depth = new Dictionary<SearchNode, int>();
 
             int GetDepth(SearchNode n)
             {
-                if (depth.TryGetValue(n, out var d)) return d;
+                if (depth.TryGetValue(n, out var d))
+                {
+                    return d;
+                }
+
                 if (!_parentMap.TryGetValue(n, out var parent))
                 {
                     depth[n] = 0;
@@ -216,35 +245,49 @@ namespace Search.Visualization
             }
 
             foreach (var node in _nodeVisuals.Keys)
+            {
                 GetDepth(node);
+            }
 
             // ---------- 4. Compute raw positions (root y=0, children above) ----------
             var computedPositions = new Dictionary<SearchNode, Vector3>();
             foreach (var kvp in _nodeVisuals)
             {
                 var node = kvp.Key;
-                float x = nodeX.GetValueOrDefault(node, 0f);
-                float y = depth.GetValueOrDefault(node, 0) * verticalSpacing;
+                var x = nodeX.GetValueOrDefault(node, 0f);
+                var y = depth.GetValueOrDefault(node, 0) * verticalSpacing;
                 computedPositions[node] = new Vector3(x, y, 0f);
             }
 
             // ---------- 5. Find min/max X only for NON‑manual nodes ----------
             float minX = float.MaxValue, maxX = float.MinValue;
-            bool hasNonManual = false;
+            var hasNonManual = false;
             foreach (var kvp in _nodeVisuals)
             {
                 var node = kvp.Key;
-                if (_manualPositions.ContainsKey(node)) continue; // skip manual nodes
-                float x = computedPositions[node].x;
-                if (x < minX) minX = x;
-                if (x > maxX) maxX = x;
+                if (_manualPositions.ContainsKey(node))
+                {
+                    continue; // skip manual nodes
+                }
+
+                var x = computedPositions[node].x;
+                if (x < minX)
+                {
+                    minX = x;
+                }
+
+                if (x > maxX)
+                {
+                    maxX = x;
+                }
+
                 hasNonManual = true;
             }
 
-            float offsetX = 0f;
+            var offsetX = 0f;
             if (hasNonManual)
             {
-                float centerX = (minX + maxX) / 2f;
+                var centerX = (minX + maxX) / 2f;
                 offsetX = -centerX; // shift so that the non‑manual tree is centered at x=0
             }
 
@@ -261,7 +304,7 @@ namespace Search.Visualization
                 }
                 else
                 {
-                    Vector3 rawPos = computedPositions[node];
+                    var rawPos = computedPositions[node];
                     visual.transform.localPosition = new Vector3(rawPos.x + offsetX, rawPos.y, 0f);
                 }
             }
@@ -287,11 +330,11 @@ namespace Search.Visualization
         public void TryPlaySameState(SearchNode node)
         {
             StopSameStateAnimation(node);
-            
+
             var newVisuals = _nodeVisuals.Values
                 .Where(v => v.SearchNode.state.Equals(node.state))
                 .ToList();
-            
+
             foreach (var visual in newVisuals)
             {
                 visual.PlaySameStateAnimation();
@@ -309,8 +352,10 @@ namespace Search.Visualization
             foreach (var nodeVisual in _currentSameStateVisuals)
             {
                 nodeVisual.StopAnimation();
-                if(nodeVisual.SearchNode != node)
+                if (nodeVisual.SearchNode != node)
+                {
                     nodeVisual.StopBlinking();
+                }
             }
 
             _currentSameStateVisuals.Clear();

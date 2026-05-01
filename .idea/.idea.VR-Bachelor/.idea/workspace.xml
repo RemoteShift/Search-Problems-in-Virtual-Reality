@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Culling/CanvasCulling.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Culling/CanvasCulling.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Action Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Action Canvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Label Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Label Canvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/State ID Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/State ID Canvas.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/EdgeDynamicUpdater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/EdgeDynamicUpdater.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/Maze/GridState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/Maze/GridState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/EdgeManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/EdgeManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Follower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Follower.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Culling/DistanceCulling.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Culling/DistanceCulling.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile.shader" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +56,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/Algorithms/Informed/GBFS.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/Algorithms/Uninformed/UCS.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/Maze/MazeStep.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Culling.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/EdgeManager.cs" root0="FORCE_HIGHLIGHTING" />
@@ -185,7 +186,8 @@
       <workItem from="1777266289225" duration="5302000" />
       <workItem from="1777365440544" duration="13397000" />
       <workItem from="1777442004605" duration="23899000" />
-      <workItem from="1777528737601" duration="13356000" />
+      <workItem from="1777528737601" duration="13406000" />
+      <workItem from="1777614973686" duration="5048000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -507,7 +509,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777487035316</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Add new scripts for UI functionality; implement FaceCamera and SetStateIDText for improved camera orientation and state display">
+      <option name="closed" value="true" />
+      <created>1777562832251</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1777562832252</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -540,7 +550,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Added `IState` interface for all states&#10;Renamed `Node` to `SearchNode` &amp; Modified to worth with new interface `IState`&#10;Added namespace `SearchCore`" />
     <MESSAGE value="Add search algorithm components: ISearchListener, IQueuingFunction, IStepCostFunction, ITransitionFunction, and SearchResult classes&#10;Also started implementation of the most simple search problem: Maze" />
     <MESSAGE value="Add ScriptableObject classes for search problems and types; implement SearchProblemSO and SearchProblemType" />
     <MESSAGE value="Refactor GridState to use Row and Column properties; add MazeLevelData and MazeTransition classes for maze level handling&#10;&#10;Changed all grid layouts to be defined as (row, column)" />
@@ -565,7 +574,8 @@
     <MESSAGE value="Refactor visualizer methods; update TryPlaySameState and StopSameStateAnimation in IVisualizer, MazeVisualizer, and TreeVisualizer for improved node handling" />
     <MESSAGE value="Update search algorithm configuration; modify expansion limit and algorithm type in Game.unity, LevelData, and LevelManager for improved search performance" />
     <MESSAGE value="Update dynamics and layer settings; modify collision matrix and layer bits in DynamicsManager, Game.unity, Node prefab, and TagManager for improved physics interactions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update dynamics and layer settings; modify collision matrix and layer bits in DynamicsManager, Game.unity, Node prefab, and TagManager for improved physics interactions" />
+    <MESSAGE value="Add new scripts for UI functionality; implement FaceCamera and SetStateIDText for improved camera orientation and state display" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add new scripts for UI functionality; implement FaceCamera and SetStateIDText for improved camera orientation and state display" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

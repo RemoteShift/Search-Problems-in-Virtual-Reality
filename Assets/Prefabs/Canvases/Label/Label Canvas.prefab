@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 820162260153392979}
   - component: {fileID: 8013987384017404361}
   - component: {fileID: 6907624303964583515}
-  - component: {fileID: 2013680065702347367}
+  - component: {fileID: 3199807008441052680}
   m_Layer: 5
   m_Name: Label Canvas
   m_TagString: Untagged
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FaceCamera
   playerCamera: {fileID: 0}
---- !u!114 &2013680065702347367
+--- !u!114 &3199807008441052680
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,11 +126,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3975822361647261802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6f9b1b0ab5880a4cb20d17457b240de, type: 3}
+  m_Script: {fileID: 11500000, guid: d04ece050c2342798099ba8684734982, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DistanceCulling
-  maxDistance: 4
+  m_EditorClassIdentifier: Assembly-CSharp::Search.Culling.CanvasCulling
   playerCamera: {fileID: 0}
+  treatOverlayAsVisible: 1
+  aabbPadding: {x: 0, y: 0, z: 0}
+  enableDistanceCulling: 1
+  maxDistance: 10
 --- !u!1 &8566292151937974010
 GameObject:
   m_ObjectHideFlags: 0
