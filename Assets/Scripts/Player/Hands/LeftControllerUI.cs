@@ -30,6 +30,9 @@ public class LeftControllerUI : MonoBehaviour
 
     private void HandleUIToggle(bool isPressed)
     {
+        if (!controllerCanvas)
+            return;
+        
         if (isPressed)
         {
             controllerCanvas.SetActive(!controllerCanvas.activeSelf);

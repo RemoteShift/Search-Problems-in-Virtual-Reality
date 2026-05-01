@@ -228,6 +228,10 @@ PrefabInstance:
       propertyPath: m_ImplicitCom
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1375608274912032288, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
+      propertyPath: m_LinearDamping
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4688975999596157272, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 32
