@@ -3,6 +3,7 @@ using Search.Core;
 using Search.Levels;
 using Search.Utils;
 using Search.Visualization;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Search.Controllers
@@ -56,7 +57,19 @@ namespace Search.Controllers
 
         public void OnSearchComplete(SearchResult result)
         {
-            // TODO: Breh 3
+            if (result.success)
+            {
+                var node = result.solutionNode;
+
+                while (node != null)
+                {
+                    _problemVisualizer.GetNodeVisual(node).SetState(NodeState.Path);
+                    _treeVisualizer.GetNodeVisual(node).SetState(NodeState.Path);
+                    node = node.parent;
+                }
+            }
+            
+            result.PrintSummary();
         }
 
         public void AddEdge(SearchNode a, SearchNode b)

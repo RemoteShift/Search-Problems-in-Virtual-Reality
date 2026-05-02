@@ -73,7 +73,6 @@ namespace Search.Core.Algorithms
 
             _searchTimer.Stop();
             _searchListener?.OnSearchComplete(_searchResult);
-            _searchResult.PrintSummary();
         }
 
         private IEnumerator RunSingleSearchCoroutine(SearchProblem searchProblem, int? levelLimit = null)

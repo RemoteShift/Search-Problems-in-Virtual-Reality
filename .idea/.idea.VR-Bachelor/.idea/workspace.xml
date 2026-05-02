@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/copilotDiffState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Righteous-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Righteous-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Graph/Nodes/Same State.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Graph/Nodes/Same State.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +186,8 @@
       <workItem from="1777365440544" duration="13397000" />
       <workItem from="1777442004605" duration="23899000" />
       <workItem from="1777528737601" duration="13406000" />
-      <workItem from="1777614973686" duration="19006000" />
+      <workItem from="1777614973686" duration="19158000" />
+      <workItem from="1777714718072" duration="735000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -531,7 +533,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777662016145</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Added UI in Main Menu Scene&#10;&#10;Imported packages:&#10;- Better Mesh&#10;- LeanTween">
+      <option name="closed" value="true" />
+      <created>1777669351149</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1777669351149</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -564,7 +574,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Refactor GridState to use Row and Column properties; add MazeLevelData and MazeTransition classes for maze level handling&#10;&#10;Changed all grid layouts to be defined as (row, column)" />
     <MESSAGE value="Refactor namespaces to use Search.Core; add NodeState enum and NodeVisual class for node visualization" />
     <MESSAGE value="Add Queue and PriorityQueue implementations; introduce IFrontier interface for frontier management&#10;Added Heuristic function fro informed searches&#10;&#10;TODO: Implement different IQueuingFunctions like BFS, DFS, UCS, and so on" />
     <MESSAGE value="Add A* and BFS algorithm implementations&#10;Completed logic of `GeneralSearch.cs`&#10;&#10;TODO: Add the expanded collection, call the visualizer and implement it" />
@@ -589,7 +598,8 @@
     <MESSAGE value="Add new scripts for UI functionality; implement FaceCamera and SetStateIDText for improved camera orientation and state display" />
     <MESSAGE value="Add CanvasCulling script for improved canvas visibility management; implement distance-based culling and frustum checks" />
     <MESSAGE value="Implement canvas culling functionality; add toggle for culling, update prefab settings, and enhance edge management in visualizers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement canvas culling functionality; add toggle for culling, update prefab settings, and enhance edge management in visualizers" />
+    <MESSAGE value="Added UI in Main Menu Scene&#10;&#10;Imported packages:&#10;- Better Mesh&#10;- LeanTween" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added UI in Main Menu Scene&#10;&#10;Imported packages:&#10;- Better Mesh&#10;- LeanTween" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

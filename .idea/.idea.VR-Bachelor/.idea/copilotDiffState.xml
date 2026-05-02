@@ -3,15 +3,6 @@
   <component name="CopilotDiffPersistence">
     <option name="pendingDiffs">
       <map>
-        <entry key="$PROJECT_DIR$/Assets/Scripts/Editor/LevelManagerEditor.cs">
-          <value>
-            <PendingDiffInfo>
-              <option name="filePath" value="$PROJECT_DIR$/Assets/Scripts/Editor/LevelManagerEditor.cs" />
-              <option name="originalContent" value="using Search.Controllers;&#10;using Search.Levels;&#10;using UnityEditor;&#10;using UnityEngine;&#10;&#10;[CustomEditor(typeof(LevelManager))]&#10;public class LevelManagerEditor : Editor&#10;{&#10;    public override void OnInspectorGUI()&#10;    {&#10;        // Draw the default Inspector (serialized fields)&#10;        DrawDefaultInspector();&#10;&#10;        // Get a reference to the target script&#10;        LevelManager myScript = LevelManager.Instance;&#10;&#10;        // Draw a button&#10;        if (GUILayout.Button(&quot;Start Search&quot;))&#10;        {&#10;            myScript.Start();&#10;            Repaint();&#10;        }&#10;&#10;        if(myScript.isStepped)&#10;        {&#10;            if (GUILayout.Button(&quot;Next Step&quot;))&#10;            {&#10;                SearchController.Instance.AdvanceStep();&#10;            }&#10;        }&#10;    }&#10;}" />
-              <option name="updatedContent" value="using Search.Controllers;&#10;using Search.Levels;&#10;using UnityEditor;&#10;using UnityEngine;&#10;&#10;[CustomEditor(typeof(LevelManager))]&#10;public class LevelManagerEditor : Editor&#10;{&#10;    public override void OnInspectorGUI()&#10;    {&#10;        // Draw the default Inspector (serialized fields)&#10;        DrawDefaultInspector();&#10;&#10;        // Get a reference to the target script&#10;        LevelManager myScript = LevelManager.Instance;&#10;&#10;        // Draw a button&#10;        if (GUILayout.Button(&quot;Start Search&quot;))&#10;        {&#10;            myScript.Start();&#10;            Repaint();&#10;        }&#10;&#10;        if(myScript.isStepped)&#10;        {&#10;            if (GUILayout.Button(&quot;Next Step&quot;))&#10;            {&#10;                SearchController.Instance.AdvanceStep();&#10;            }&#10;        }&#10;    }&#10;}" />
-            </PendingDiffInfo>
-          </value>
-        </entry>
         <entry key="$PROJECT_DIR$/plan-searchVisualizationRefactor.prompt.md">
           <value>
             <PendingDiffInfo>

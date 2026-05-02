@@ -450,7 +450,7 @@ namespace Search.Visualization
                 visual.PlaySameStateAnimation();
                 if (visual != _nodeVisuals[node])
                 {
-                    visual.BlinkNode(Color.deepSkyBlue);
+                    visual.BlinkNode(Color.darkBlue);
                 }
             }
 
