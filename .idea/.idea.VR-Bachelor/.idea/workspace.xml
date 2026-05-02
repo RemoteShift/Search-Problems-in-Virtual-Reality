@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Action Canvas.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Action Canvas.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Label Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Label Canvas.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/State ID Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/State ID Canvas.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Nodes/SearchNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Nodes/SearchNode.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +37,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/85/b80371df/Dictionary`2.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Animations.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Label Canvas.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Level Manager.prefab" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" root0="FORCE_HIGHLIGHTING" />
@@ -62,6 +60,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/Left Controller.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SetStateIDText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/DistanceBasedScaler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/PriorityQueue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/Queue.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/Stack.cs" root0="FORCE_HIGHLIGHTING" />
@@ -187,7 +186,7 @@
       <workItem from="1777442004605" duration="23899000" />
       <workItem from="1777528737601" duration="13406000" />
       <workItem from="1777614973686" duration="19158000" />
-      <workItem from="1777714718072" duration="2786000" />
+      <workItem from="1777714718072" duration="5068000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -549,7 +548,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777715744840</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Add Edge Label Canvas prefab; update SearchNode to include step cost and modify edge labeling in SearchController">
+      <option name="closed" value="true" />
+      <created>1777717685417</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1777717685417</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -582,7 +589,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add Queue and PriorityQueue implementations; introduce IFrontier interface for frontier management&#10;Added Heuristic function fro informed searches&#10;&#10;TODO: Implement different IQueuingFunctions like BFS, DFS, UCS, and so on" />
     <MESSAGE value="Add A* and BFS algorithm implementations&#10;Completed logic of `GeneralSearch.cs`&#10;&#10;TODO: Add the expanded collection, call the visualizer and implement it" />
     <MESSAGE value="Add expanded node collection to GeneralSearch" />
     <MESSAGE value="Refactor GeneralSearch to support iterative deepening search; enhance SearchResult handling and visualization" />
@@ -607,7 +613,8 @@
     <MESSAGE value="Implement canvas culling functionality; add toggle for culling, update prefab settings, and enhance edge management in visualizers" />
     <MESSAGE value="Added UI in Main Menu Scene&#10;&#10;Imported packages:&#10;- Better Mesh&#10;- LeanTween" />
     <MESSAGE value="Refactor search result handling in SearchController; update visualizer states for successful search paths and remove summary printing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor search result handling in SearchController; update visualizer states for successful search paths and remove summary printing" />
+    <MESSAGE value="Add Edge Label Canvas prefab; update SearchNode to include step cost and modify edge labeling in SearchController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Edge Label Canvas prefab; update SearchNode to include step cost and modify edge labeling in SearchController" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
