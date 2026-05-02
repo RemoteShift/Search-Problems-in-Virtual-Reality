@@ -3,7 +3,6 @@ using Search.Core;
 using Search.Levels;
 using Search.Utils;
 using Search.Visualization;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace Search.Controllers
@@ -74,10 +73,19 @@ namespace Search.Controllers
 
         public void AddEdge(SearchNode a, SearchNode b)
         {
+            var label = LevelManager.Instance.GetCurrentAlgorithm() switch
+            {
+                AlgorithmType.BFS or AlgorithmType.DFS or 
+                    AlgorithmType.IDS or AlgorithmType.GBFS => b.actionFromParent,
+                AlgorithmType.UCS or AlgorithmType.Astar => $"{b.actionFromParent}\n" +
+                                                            $"{b.stepCostFromParent}",
+                _ => b.actionFromParent
+            };
+            
             var nodeAProblem = _problemVisualizer.GetOrCreateNodeVisual(a);
             var nodeBProblem = _problemVisualizer.GetOrCreateNodeVisual(b);
             EdgeManager.Instance.AddEdge(a.state.id, b.state.id, nodeAProblem.transform, nodeBProblem.transform,
-                b.actionFromParent);
+                label);
 
             if (LevelManager.Instance.useGraphSearch && _treeVisualizer.GetNodeVisual(b))
             {
@@ -90,7 +98,7 @@ namespace Search.Controllers
             var uniqueIdB = b.GetHashCode().ToString();
 
             EdgeManager.Instance.AddEdge(uniqueIdA, uniqueIdB, nodeATree.transform, nodeBTree.transform, 
-                b.actionFromParent);
+                label);
         }
 
         public void RemoveEdge(SearchNode a, SearchNode b)
@@ -101,11 +109,20 @@ namespace Search.Controllers
 
         public void ResetParent(SearchNode childNode)
         {
+            var label = LevelManager.Instance.GetCurrentAlgorithm() switch
+            {
+                AlgorithmType.BFS or AlgorithmType.DFS or 
+                    AlgorithmType.IDS or AlgorithmType.GBFS => childNode.actionFromParent,
+                AlgorithmType.UCS or AlgorithmType.Astar => $"{childNode.actionFromParent}\n" +
+                                                            $"{childNode.stepCostFromParent}",
+                _ => childNode.actionFromParent
+            };
+            
             _treeVisualizer.ResetParent(childNode);
             var parentNodeVisual = _treeVisualizer.GetOrCreateNodeVisual(childNode.parent, childNode.parent.parent);
             var childNodeVisual = _treeVisualizer.GetOrCreateNodeVisual(childNode, childNode.parent);
             EdgeManager.Instance.AddEdge(childNode.parent.state.id + "_tree", childNode.state.id + "_tree",
-                parentNodeVisual.transform, childNodeVisual.transform, childNode.actionFromParent);
+                parentNodeVisual.transform, childNodeVisual.transform, label);
         }
 
         public void AdvanceStep()

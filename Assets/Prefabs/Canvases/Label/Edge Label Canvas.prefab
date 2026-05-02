@@ -10,11 +10,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 820162260153392979, guid: ed214eb625172d74aaf1bb7626161d21, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1296400832918903142, guid: ed214eb625172d74aaf1bb7626161d21, type: 3}
       propertyPath: m_fontSize
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296400832918903142, guid: ed214eb625172d74aaf1bb7626161d21, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296400832918903142, guid: ed214eb625172d74aaf1bb7626161d21, type: 3}
+      propertyPath: m_TextWrappingMode
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1699232055685767181, guid: ed214eb625172d74aaf1bb7626161d21, type: 3}
       propertyPath: m_Pivot.x
@@ -102,7 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3975822361647261802, guid: ed214eb625172d74aaf1bb7626161d21, type: 3}
       propertyPath: m_Name
-      value: Edge Action Canvas
+      value: Edge Label Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 6907624303964583515, guid: ed214eb625172d74aaf1bb7626161d21, type: 3}
       propertyPath: playerCamera

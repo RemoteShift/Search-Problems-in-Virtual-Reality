@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/copilotDiffState.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/copilotDiffState.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Graph/Nodes/Same State.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Graph/Nodes/Same State.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Action Canvas.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Action Canvas.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/State ID Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/State ID Canvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Nodes/SearchNode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Nodes/SearchNode.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +187,7 @@
       <workItem from="1777442004605" duration="23899000" />
       <workItem from="1777528737601" duration="13406000" />
       <workItem from="1777614973686" duration="19158000" />
-      <workItem from="1777714718072" duration="735000" />
+      <workItem from="1777714718072" duration="2786000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -541,7 +541,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777669351149</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Refactor search result handling in SearchController; update visualizer states for successful search paths and remove summary printing">
+      <option name="closed" value="true" />
+      <created>1777715744840</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1777715744840</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,7 +582,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Refactor namespaces to use Search.Core; add NodeState enum and NodeVisual class for node visualization" />
     <MESSAGE value="Add Queue and PriorityQueue implementations; introduce IFrontier interface for frontier management&#10;Added Heuristic function fro informed searches&#10;&#10;TODO: Implement different IQueuingFunctions like BFS, DFS, UCS, and so on" />
     <MESSAGE value="Add A* and BFS algorithm implementations&#10;Completed logic of `GeneralSearch.cs`&#10;&#10;TODO: Add the expanded collection, call the visualizer and implement it" />
     <MESSAGE value="Add expanded node collection to GeneralSearch" />
@@ -599,7 +606,8 @@
     <MESSAGE value="Add CanvasCulling script for improved canvas visibility management; implement distance-based culling and frustum checks" />
     <MESSAGE value="Implement canvas culling functionality; add toggle for culling, update prefab settings, and enhance edge management in visualizers" />
     <MESSAGE value="Added UI in Main Menu Scene&#10;&#10;Imported packages:&#10;- Better Mesh&#10;- LeanTween" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added UI in Main Menu Scene&#10;&#10;Imported packages:&#10;- Better Mesh&#10;- LeanTween" />
+    <MESSAGE value="Refactor search result handling in SearchController; update visualizer states for successful search paths and remove summary printing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor search result handling in SearchController; update visualizer states for successful search paths and remove summary printing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

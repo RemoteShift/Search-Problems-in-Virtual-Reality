@@ -7,6 +7,7 @@ namespace Search.Core
         public IState state { get; }
         public SearchNode parent { get; private set; }
         public string actionFromParent { get; private set; }
+        public float stepCostFromParent { get; private set; }
         public float pathCost { get; private set; } // g(n)
         public float heuristicCost { get; } // h(n)
         public float F => pathCost + heuristicCost; // f(n) = g(n) + h(n)
@@ -22,6 +23,7 @@ namespace Search.Core
             this.state = state;
             this.parent = parent;
             this.actionFromParent = actionFromParent;
+            this.stepCostFromParent = stepCost;
             this.pathCost = stepCost + (parent?.pathCost ?? 0);
             this.heuristicCost = heuristicCost;
             this.depth = depth;
