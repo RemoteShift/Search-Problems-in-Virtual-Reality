@@ -3,30 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Grid Metal 3.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Grid Metal 3.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Righteous-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Righteous-Regular SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Level Manager.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Level Manager.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/VR Input Handler.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/VR Input Handler.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/XR Interaction Manager.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/XR Interaction Manager.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Start.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Start.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Visualizers/Tree Visualizer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Visualizers/Tree Visualizer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Prefabs/Attachments/UIPointer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Prefabs/Attachments/UIPointer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Prefabs/Demo/Zone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Prefabs/Demo/Zone.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Tools/HandCanvasPointer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Tools/HandCanvasPointer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Controls/Right.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Controls/Right.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/XR Origin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/XR Origin.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/XR Origin.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/XR Origin.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Game.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Loading Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Loading Scene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/LevelManagerEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/LevelManagerEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/LoadingSceneController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/LoadingSceneController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Follower.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Follower.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +47,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Animations.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Label Canvas.prefab" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Children.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptable Objects.meta" root0="FORCE_HIGHLIGHTING" />
@@ -91,7 +80,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Settings/Performance URP Config.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (3).unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (4).unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (5).unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@57d0e36f6123/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@5f736ad4ccd8/Runtime/Inputs/InputActionManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@5f736ad4ccd8/Runtime/Locomotion/LocomotionMediator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -210,7 +201,8 @@
       <workItem from="1777528737601" duration="13406000" />
       <workItem from="1777614973686" duration="19158000" />
       <workItem from="1777714718072" duration="8037000" />
-      <workItem from="1777803877578" duration="18883000" />
+      <workItem from="1777803877578" duration="19704000" />
+      <workItem from="1777838828543" duration="6703000" />
     </task>
     <task id="LOCAL-00001" summary="Added Hand animations">
       <option name="closed" value="true" />
@@ -588,7 +580,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777727566284</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="Add MainMenu and LoadingManager scripts; implement scene loading and UI management">
+      <option name="closed" value="true" />
+      <created>1777828193419</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1777828193419</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -621,7 +621,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add expanded node collection to GeneralSearch" />
     <MESSAGE value="Refactor GeneralSearch to support iterative deepening search; enhance SearchResult handling and visualization" />
     <MESSAGE value="Refactor GeneralSearch to improve state management and add algorithm selection; enhance SearchResult handling" />
     <MESSAGE value="Refactor GeneralSearch to enhance state management and search result reporting; update LevelManager for algorithm selection and level limit configuration&#10;&#10;All search algorithms work now. fadel adding time logging and visualization" />
@@ -646,7 +645,8 @@
     <MESSAGE value="Refactor search result handling in SearchController; update visualizer states for successful search paths and remove summary printing" />
     <MESSAGE value="Add Edge Label Canvas prefab; update SearchNode to include step cost and modify edge labeling in SearchController" />
     <MESSAGE value="Add DistanceBasedScaler script for dynamic label scaling based on distance from target; update prefab settings for edge labels" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add DistanceBasedScaler script for dynamic label scaling based on distance from target; update prefab settings for edge labels" />
+    <MESSAGE value="Add MainMenu and LoadingManager scripts; implement scene loading and UI management" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add MainMenu and LoadingManager scripts; implement scene loading and UI management" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

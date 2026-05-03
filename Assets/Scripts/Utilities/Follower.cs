@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Search.Utils
@@ -7,7 +8,15 @@ namespace Search.Utils
         [SerializeField] private Transform target;
         public float followSpeed = 5f;
         public float rotationFollowSpeed = 5f;
-        
+
+        private void Start()
+        {
+            if (!target)
+            {
+                target = PlayerLocomotion.Instance.transform;
+            }
+        }
+
         private void LateUpdate()
         {
             var desiredPosition = target.position;

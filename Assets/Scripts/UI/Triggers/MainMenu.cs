@@ -1,8 +1,12 @@
+using Autohand;
 using Search.Levels;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private LeftControllerUI leftControllerUI;
+    
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -12,6 +16,8 @@ public class MainMenu : MonoBehaviour
     {
         LoadingManager.Instance.LoadScene(sceneIndex: 2, onComplete:() =>
         {
+            leftControllerUI.isUIActive = true;
+            leftControllerUI.controllerCanvas.SetActive(true);
             LevelManager.Instance.visualizeTree = true;
             LevelManager.Instance.Initialize();
             LevelManager.Instance.StartSearch();

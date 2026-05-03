@@ -64,6 +64,7 @@ namespace Autohand
                 if (!cam)
                 {
                     cam = new GameObject("Camera Canvas Pointer (I AM CREATED AT RUNTIME FOR UI CANVAS INTERACTION, I AM NOT RENDERING ANYTHING, I AM NOT CREATING ADDITIONAL OVERHEAD)").AddComponent<Camera>();
+                    DontDestroyOnLoad(cam.gameObject);
                     cam.clearFlags = CameraClearFlags.Nothing;
                     cam.stereoTargetEye = StereoTargetEyeMask.None;
                     cam.orthographic = true;
@@ -168,6 +169,7 @@ namespace Autohand
                     EventSystem system = AutoHandExtensions.CanFindObjectOfType<EventSystem>();
                     if(system == null) {
                         system = new GameObject().AddComponent<EventSystem>();
+                        DontDestroyOnLoad(system.gameObject);
                         system.name = "UI Input Event System";
                     }
                     inputModule = system.gameObject.AddComponent<AutoInputModule>();

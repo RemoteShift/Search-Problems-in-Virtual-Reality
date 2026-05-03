@@ -6,7 +6,7 @@ public class LeftControllerUI : MonoBehaviour
 
     public bool isUIActive;
     
-    [SerializeField] private GameObject controllerCanvas;
+    public GameObject controllerCanvas;
     [SerializeField] private Rigidbody rb;
     private Vector3 _initialCanvasPosition;
 

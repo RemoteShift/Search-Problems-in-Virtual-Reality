@@ -12,6 +12,8 @@ public class LoadingSceneController : MonoBehaviour
     [SerializeField] private Slider progressSlider;
     [SerializeField] private TextMeshProUGUI progressText;
 
+    private Canvas _loadingCanvas;
+
     private void Start()
     {
         if (!LoadingManager.Instance)
@@ -20,6 +22,9 @@ public class LoadingSceneController : MonoBehaviour
             return;
         }
 
+        _loadingCanvas = GetComponent<Canvas>();
+        _loadingCanvas.worldCamera = PlayerLocomotion.Instance.GetComponentInChildren<Camera>();
+        
         StartCoroutine(LoadTargetSceneAsync());
     }
 
