@@ -93,6 +93,21 @@ namespace Search.Core.Algorithms
 
             while (!_frontier.IsEmpty)
             {
+                _searchListener?.OnNodeExpanding(_frontier.Peek());
+                if (_levelManager.isStepped)
+                {
+                    _searchTimer.Stop();
+                    _stepRequested = false;
+                    yield return new WaitUntil(() => _stepRequested && !IsAnimating());
+                    _searchTimer.Start();
+                }
+                else
+                {
+                    _searchTimer.Stop();
+                    yield return null;
+                    _searchTimer.Start();
+                }
+                
                 var node = _frontier.Remove();
                 if (_levelManager.useGraphSearch && SearchNodes[node.state] != node)
                     continue;
@@ -130,23 +145,6 @@ namespace Search.Core.Algorithms
                         _expanded.Count + _frontier.Count, level: levelLimit ?? _levelLimit,
                         timeS: ElapsedTimeinS);
                     yield break;
-                }
-
-                if(_frontier.Count != 0)
-                    _searchListener?.OnNodeExpanding(_frontier.Peek());
-                
-                if (_levelManager.isStepped)
-                {
-                    _searchTimer.Stop();
-                    _stepRequested = false;
-                    yield return new WaitUntil(() => _stepRequested && !IsAnimating());
-                    _searchTimer.Start();
-                }
-                else
-                {
-                    _searchTimer.Stop();
-                    yield return null;
-                    _searchTimer.Start();
                 }
             }
 

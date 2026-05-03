@@ -3,6 +3,8 @@ using UnityEngine;
 public class LeftControllerUI : MonoBehaviour
 {
     private VRInputHandler _inputHandler;
+
+    public bool isUIActive;
     
     [SerializeField] private GameObject controllerCanvas;
     [SerializeField] private Rigidbody rb;
@@ -25,12 +27,13 @@ public class LeftControllerUI : MonoBehaviour
     private void OnDisable()
     {
         _inputHandler.OnLeftMenuPressChanged -= HandleUIToggle;
-        controllerCanvas.SetActive(false);
+        if(controllerCanvas)
+            controllerCanvas.SetActive(false);
     }
 
     private void HandleUIToggle(bool isPressed)
     {
-        if (!controllerCanvas)
+        if (!controllerCanvas || !isUIActive)
             return;
         
         if (isPressed)

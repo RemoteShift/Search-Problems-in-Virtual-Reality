@@ -8,8 +8,10 @@ namespace Search.Levels
 {
     public class LevelManager : Singleton<LevelManager>
     {
-        [Header("Level Asset")] [SerializeField]
+        [Header("Level Settings")] [SerializeField]
         private LevelData currentLevel;
+
+        public bool visualizeTree = true;
 
         [Header("Search Algorithm Settings")]
         [SerializeField] private AlgorithmType currentAlgorithmType = AlgorithmType.None;
@@ -29,8 +31,8 @@ namespace Search.Levels
         public GeneralSearch searchAlgorithm;
 
         [Header("Scene References")] 
-        [SerializeField] private GameObject problemVisualizer;
-        [SerializeField] private GameObject treeVisualizer;
+        public GameObject problemVisualizer;
+        public GameObject treeVisualizer;
         public IVisualizer ProblemVisualizer;
         [HideInInspector] public TreeVisualizer TreeVisualizer;
 
@@ -39,27 +41,37 @@ namespace Search.Levels
         private SearchProblem _problem;
         private Coroutine _searchCoroutine;
 
-        public void Start()
+        public void Initialize()
         {
-            ProblemVisualizer = problemVisualizer.GetComponent<IVisualizer>();
-            TreeVisualizer = treeVisualizer.GetComponent<TreeVisualizer>();
+            if (problemVisualizer)
+                ProblemVisualizer = problemVisualizer.GetComponent<IVisualizer>();
+            if (treeVisualizer)
+                TreeVisualizer = treeVisualizer.GetComponent<TreeVisualizer>();
             _edgeManager = EdgeManager.Instance;
-            
+
             if (currentLevel)
                 LoadLevel(currentLevel);
             else
                 Debug.LogWarning("No level assigned to LevelManager");
-            
+        }
+
+        public void StartSearch()
+        {
             if (currentAlgorithmType != AlgorithmType.None)
-                if(currentAlgorithmType == AlgorithmType.IDS)
-                    StartSearch(levelLimit);
+            {
+                ProblemVisualizer?.ClearNodeVisuals();
+                TreeVisualizer?.ClearNodeVisuals();
+                if (currentAlgorithmType == AlgorithmType.IDS)
+                    StartSearchCoroutine(levelLimit);
                 else
-                    StartSearch();
+                    StartSearchCoroutine();
+            }
+                
             else
                 Debug.LogWarning("No search algorithm assigned to LevelManager");
         }
 
-        private void LoadLevel(LevelData level)
+        public void LoadLevel(LevelData level)
         {
             currentLevel = level;
             _problem = level.CreateSearchProblem();
@@ -73,16 +85,20 @@ namespace Search.Levels
                 mazeVisualizer.Setup(mazeLevel, _problem);
             }
             
-            if (TreeVisualizer is TreeVisualizer tv)
+            if (visualizeTree)
             {
-                tv.Setup(level, _problem);
+                TreeVisualizer?.Setup(level, _problem);
             }
-            // Add future support for GraphLevelData here:
-            // else if (level is GraphLevelData graphLevel && graphVisualizer != null)
-            //     graphVisualizer.Setup(graphLevel, _currentProblem);
+        }
+        
+        public void UnloadLevel()
+        {
+            ProblemVisualizer?.ClearVisuals();
+            TreeVisualizer?.ClearVisuals();
+            _edgeManager.ClearEdges();
         }
 
-        private void StartSearch(int? levelLimitValue = null)
+        private void StartSearchCoroutine(int? levelLimitValue = null)
         {
             if (_problem == null)
             {

@@ -15,10 +15,16 @@ public class LevelManagerEditor : Editor
         // Get a reference to the target script
         LevelManager myScript = LevelManager.Instance;
 
+        if(GUILayout.Button("Initialize & Load Level"))
+        {
+            myScript.Initialize();
+            Repaint();
+        }
+        
         // Draw a button
         if (GUILayout.Button("Start Search"))
         {
-            myScript.Start();
+            myScript.StartSearch();
             Repaint();
         }
 

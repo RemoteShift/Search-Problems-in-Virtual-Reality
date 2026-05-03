@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Search.Levels.LevelManager
   currentLevel: {fileID: 11400000, guid: d532c4e372077654c86c74fbdaafa0f8, type: 2}
+  visualizeTree: 0
   currentAlgorithmType: 1
   useGraphSearch: 1
   isStepped: 1
@@ -56,6 +57,7 @@ MonoBehaviour:
     expansionLimit: 1000
   problemVisualizer: {fileID: 362784998034671216}
   treeVisualizer: {fileID: 3814434948179335386}
+  TreeVisualizer: {fileID: 0}
 --- !u!1 &5947026155385610969
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Search.Visualization.EdgeManager
   edgeMaterial: {fileID: 2100000, guid: 55f37ab2ffee134489dd70db9326c1f6, type: 2}
   edgeWidth: 0.03
+  labelPrefab: {fileID: 0}
 --- !u!1001 &3031416412392948568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -219,14 +222,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7985816858058250962, guid: 14446d147a49ec149b491814ee4ef2e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985816858058250962, guid: 14446d147a49ec149b491814ee4ef2e1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7985816858058250962, guid: 14446d147a49ec149b491814ee4ef2e1, type: 3}
-      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7985816858058250962, guid: 14446d147a49ec149b491814ee4ef2e1, type: 3}

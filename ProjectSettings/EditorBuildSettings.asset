@@ -6,7 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Game.unity
+    path: Assets/Scenes/Main Menu.unity
+    guid: 4692972e99bc52a41bd868c5f5ffa3d5
+  - enabled: 1
+    path: Assets/Scenes/Loading Scene.unity
+    guid: 20c7be6ea6ab2774893babfd627e4bce
+  - enabled: 1
+    path: Assets/Scenes/Level Selector.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}

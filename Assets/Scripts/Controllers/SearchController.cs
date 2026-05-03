@@ -9,30 +9,31 @@ namespace Search.Controllers
 {
     public class SearchController : Singleton<SearchController>, ISearchListener
     {
-        private readonly IVisualizer _problemVisualizer = LevelManager.Instance.ProblemVisualizer;
-        private readonly TreeVisualizer _treeVisualizer = LevelManager.Instance.TreeVisualizer;
+        private IVisualizer problemVisualizer => LevelManager.Instance?.ProblemVisualizer;
+        private TreeVisualizer treeVisualizer => LevelManager.Instance.visualizeTree ? 
+            LevelManager.Instance?.TreeVisualizer : null;
 
         public void OnNodeExpanded(SearchNode node)
         {
-            _problemVisualizer.GetOrCreateNodeVisual(node).SetState(NodeState.Expanded);
-            _treeVisualizer.GetOrCreateNodeVisual(node).SetState(NodeState.Expanded);
+            problemVisualizer?.GetOrCreateNodeVisual(node).SetState(NodeState.Expanded);
+            treeVisualizer?.GetOrCreateNodeVisual(node).SetState(NodeState.Expanded);
         }
 
         public void OnNodeExpanding(SearchNode node)
         {
-            _problemVisualizer.GetOrCreateNodeVisual(node).SetState(NodeState.Expanding);
-            _problemVisualizer.BlinkNode(node.state, Color.red);
-            _problemVisualizer.TryPlaySameState(node);
+            problemVisualizer?.GetOrCreateNodeVisual(node).SetState(NodeState.Expanding);
+            problemVisualizer?.BlinkNode(node.state, Color.red);
+            problemVisualizer?.TryPlaySameState(node);
             
-            _treeVisualizer.GetOrCreateNodeVisual(node).SetState(NodeState.Expanding);
-            _treeVisualizer.BlinkNode(node, Color.red);
-            _treeVisualizer.TryPlaySameState(node);
+            treeVisualizer?.GetOrCreateNodeVisual(node).SetState(NodeState.Expanding);
+            treeVisualizer?.BlinkNode(node, Color.red);
+            treeVisualizer?.TryPlaySameState(node);
         }
 
         public void OnNodeGenerated(SearchNode node)
         {
-            _problemVisualizer.GetOrCreateNodeVisual(node).SetState(NodeState.Default);
-            _treeVisualizer.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Default);
+            problemVisualizer?.GetOrCreateNodeVisual(node).SetState(NodeState.Default);
+            treeVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Default);
         }
 
         public void OnFrontierReordered()
@@ -44,8 +45,8 @@ namespace Search.Controllers
         {
             foreach (var node in nodes)
             {
-                _problemVisualizer.GetOrCreateNodeVisual(node).SetState(NodeState.Frontier);
-                _treeVisualizer.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Frontier);
+                problemVisualizer?.GetOrCreateNodeVisual(node).SetState(NodeState.Frontier);
+                treeVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Frontier);
             }
         }
 
@@ -62,8 +63,8 @@ namespace Search.Controllers
 
                 while (node != null)
                 {
-                    _problemVisualizer.GetNodeVisual(node).SetState(NodeState.Path);
-                    _treeVisualizer.GetNodeVisual(node).SetState(NodeState.Path);
+                    problemVisualizer?.GetNodeVisual(node).SetState(NodeState.Path);
+                    treeVisualizer?.GetNodeVisual(node).SetState(NodeState.Path);
                     node = node.parent;
                 }
             }
@@ -82,17 +83,21 @@ namespace Search.Controllers
                 _ => b.actionFromParent
             };
             
-            var nodeAProblem = _problemVisualizer.GetOrCreateNodeVisual(a);
-            var nodeBProblem = _problemVisualizer.GetOrCreateNodeVisual(b);
-            EdgeManager.Instance.AddEdge(a.state.id, b.state.id, nodeAProblem.transform, nodeBProblem.transform,
-                label);
+            var nodeAProblem = problemVisualizer?.GetOrCreateNodeVisual(a);
+            var nodeBProblem = problemVisualizer?.GetOrCreateNodeVisual(b);
+            if(nodeAProblem && nodeBProblem)
+                EdgeManager.Instance.AddEdge(a.state.id, b.state.id, nodeAProblem.transform, nodeBProblem.transform,
+                    label);
 
-            if (LevelManager.Instance.useGraphSearch && _treeVisualizer.GetNodeVisual(b))
+            if (LevelManager.Instance.useGraphSearch && treeVisualizer?.GetNodeVisual(b))
             {
                 return;
             }
-            var nodeATree = _treeVisualizer.GetOrCreateNodeVisual(a, a.parent);
-            var nodeBTree = _treeVisualizer.GetOrCreateNodeVisual(b, b.parent);
+            var nodeATree = treeVisualizer?.GetOrCreateNodeVisual(a, a.parent);
+            var nodeBTree = treeVisualizer?.GetOrCreateNodeVisual(b, b.parent);
+            
+            if(!nodeATree || !nodeBTree)
+                return;
             
             var uniqueIdA = a.GetHashCode().ToString();
             var uniqueIdB = b.GetHashCode().ToString();
@@ -109,6 +114,8 @@ namespace Search.Controllers
 
         public void ResetParent(SearchNode childNode)
         {
+            if(!treeVisualizer)
+                return;
             var label = LevelManager.Instance.GetCurrentAlgorithm() switch
             {
                 AlgorithmType.BFS or AlgorithmType.DFS or 
@@ -118,9 +125,9 @@ namespace Search.Controllers
                 _ => childNode.actionFromParent
             };
             
-            _treeVisualizer.ResetParent(childNode);
-            var parentNodeVisual = _treeVisualizer.GetOrCreateNodeVisual(childNode.parent, childNode.parent.parent);
-            var childNodeVisual = _treeVisualizer.GetOrCreateNodeVisual(childNode, childNode.parent);
+            treeVisualizer.ResetParent(childNode);
+            var parentNodeVisual = treeVisualizer.GetOrCreateNodeVisual(childNode.parent, childNode.parent.parent);
+            var childNodeVisual = treeVisualizer.GetOrCreateNodeVisual(childNode, childNode.parent);
             EdgeManager.Instance.AddEdge(childNode.parent.state.id + "_tree", childNode.state.id + "_tree",
                 parentNodeVisual.transform, childNodeVisual.transform, label);
         }

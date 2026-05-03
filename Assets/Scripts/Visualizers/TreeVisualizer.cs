@@ -71,6 +71,7 @@ namespace Search.Visualization
         {
             foreach (var visual in _nodeVisuals.Values.Where(visual => visual)) Destroy(visual.gameObject);
             _nodeVisuals.Clear();
+            _currentSameStateVisuals.Clear();
             _parentMap.Clear();
             _childrenMap.Clear();
             _subtreeWidth.Clear();
