@@ -4,7 +4,7 @@ public class LeftControllerUI : MonoBehaviour
 {
     private VRInputHandler _inputHandler;
 
-    public bool isUIActive;
+    public bool isUIToggleable;
     
     public GameObject controllerCanvas;
     [SerializeField] private Rigidbody rb;
@@ -33,7 +33,7 @@ public class LeftControllerUI : MonoBehaviour
 
     private void HandleUIToggle(bool isPressed)
     {
-        if (!controllerCanvas || !isUIActive)
+        if (!controllerCanvas || !isUIToggleable)
             return;
         
         if (isPressed)

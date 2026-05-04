@@ -6,6 +6,7 @@ using Search.Levels;
 using Search.Utils;
 using Search.Visualization;
 using UnityEngine;
+using UnityEngine.Events;
 using Debug = UnityEngine.Debug;
 
 namespace Search.Core.Algorithms
@@ -13,13 +14,17 @@ namespace Search.Core.Algorithms
     [System.Serializable]
     public class GeneralSearch
     {
-        private readonly IQueuingFunction _queueingFunction;
+        public readonly IQueuingFunction QueueingFunction;
 
         private readonly IFrontier<SearchNode> _frontier;
+        public int frontierCount => _frontier.Count;
         private readonly List<SearchNode> _expanded = new();
+        public int expandedCount => _expanded.Count;
         // Keep track of nodes that were expanded but then re-added to frontier with better path
         // (only relevant for IDS right now)
         private readonly List<SearchNode> _wrongfullyExpanded = new();
+        public int wrongfullyExpandedCount => _wrongfullyExpanded.Count;
+        public int totalNodesGenerated => _expanded.Count + _frontier.Count + _wrongfullyExpanded.Count;
         public readonly Dictionary<IState, SearchNode> SearchNodes;
 
         private readonly int? _levelLimit;
@@ -32,6 +37,8 @@ namespace Search.Core.Algorithms
 
         private bool _stepRequested = false; // becomes true when user clicks "Next Step"
 
+        public UnityEvent onStepCompleted = new();
+
         [Tooltip("Maximum number of nodes to expand before terminating search with failure.")]
         public int expansionLimit;
 
@@ -40,11 +47,11 @@ namespace Search.Core.Algorithms
         {
             _levelManager = LevelManager.Instance;
             _searchListener = SearchController.Instance;
-            _queueingFunction = queueingFunction;
+            QueueingFunction = queueingFunction;
             SearchNodes = _levelManager.useGraphSearch ? new Dictionary<IState, SearchNode>() : null;
             _levelLimit = levelLimit;
             this.expansionLimit = expansionLimit;
-            _frontier = _queueingFunction switch
+            _frontier = QueueingFunction switch
             {
                 BFS => new Utils.Queue<SearchNode>(),
                 DFS => new Utils.Stack<SearchNode>(),
@@ -62,7 +69,7 @@ namespace Search.Core.Algorithms
         public IEnumerator SearchCoroutine(SearchProblem searchProblem, MonoBehaviour owner)
         {
             _searchTimer = Stopwatch.StartNew();
-            if (_queueingFunction is IDS)
+            if (QueueingFunction is IDS)
             {
                 yield return owner.StartCoroutine(RunIdsCoroutine(searchProblem));
             }
@@ -78,7 +85,7 @@ namespace Search.Core.Algorithms
         private IEnumerator RunSingleSearchCoroutine(SearchProblem searchProblem, int? levelLimit = null)
         {
             Reset();
-            var initialHeuristic = _queueingFunction.isInformed
+            var initialHeuristic = QueueingFunction.isInformed
                 ? searchProblem.GetHeuristicCost(searchProblem.initialState)
                 : 0f;
             var startNode = new SearchNode(searchProblem.initialState, 0, heuristicCost: initialHeuristic);
@@ -93,6 +100,7 @@ namespace Search.Core.Algorithms
 
             while (!_frontier.IsEmpty)
             {
+                onStepCompleted.Invoke();
                 _searchListener?.OnNodeExpanding(_frontier.Peek());
                 if (_levelManager.isStepped)
                 {
@@ -116,7 +124,7 @@ namespace Search.Core.Algorithms
                 {
                     var solutionPath = node.GetPathActions();
                     _searchResult = SearchResult.Found(node, _expanded.Count + _wrongfullyExpanded.Count,
-                        _expanded.Count + 1 + _frontier.Count + _wrongfullyExpanded.Count, 
+                        totalNodesGenerated, 
                         solutionPath: solutionPath,
                         level: levelLimit ?? _levelLimit, timeS: ElapsedTimeinS);
                     _searchListener?.OnSolutionFound(node);
@@ -142,14 +150,14 @@ namespace Search.Core.Algorithms
                 {
                     _searchResult = SearchResult.Failed($"Step limit of {expansionLimit} exceeded. " +
                                                         $"No solution found", _expanded.Count,
-                        _expanded.Count + _frontier.Count, level: levelLimit ?? _levelLimit,
+                        totalNodesGenerated, level: levelLimit ?? _levelLimit,
                         timeS: ElapsedTimeinS);
                     yield break;
                 }
             }
 
             _searchResult = SearchResult.Failed("Exhausted state space. No solution found", _expanded.Count,
-                _expanded.Count + _frontier.Count, level: levelLimit ?? _levelLimit, timeS: ElapsedTimeinS);
+                totalNodesGenerated, level: levelLimit ?? _levelLimit, timeS: ElapsedTimeinS);
         }
 
         private bool IsAnimating() => _levelManager.ProblemVisualizer.IsAnimating;
@@ -169,7 +177,7 @@ namespace Search.Core.Algorithms
 
                 var candidateDepth = node.depth + 1;
                 var stepCost = stepCostFunction.GetCost(node.state, action, successorState);
-                var heuristic = _queueingFunction.isInformed
+                var heuristic = QueueingFunction.isInformed
                     ? searchProblem.GetHeuristicCost(successorState)
                     : 0f;
 
@@ -194,7 +202,7 @@ namespace Search.Core.Algorithms
                     continue;
                 }
                 
-                if (_queueingFunction is IDS && candidateDepth < existingNode.depth)
+                if (QueueingFunction is IDS && candidateDepth < existingNode.depth)
                 {
                     existingNode.SetDepth(candidateDepth);
                     existingNode.SetParent(node, action, stepCost);

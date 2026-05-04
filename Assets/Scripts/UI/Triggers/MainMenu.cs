@@ -16,8 +16,7 @@ public class MainMenu : MonoBehaviour
     {
         LoadingManager.Instance.LoadScene(sceneIndex: 2, onComplete:() =>
         {
-            leftControllerUI.isUIActive = true;
-            leftControllerUI.controllerCanvas.SetActive(true);
+            leftControllerUI.isUIToggleable = true;
             LevelManager.Instance.visualizeTree = true;
             LevelManager.Instance.Initialize();
             LevelManager.Instance.StartSearch();

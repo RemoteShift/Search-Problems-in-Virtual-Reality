@@ -3,6 +3,7 @@ using Search.Core;
 using Search.Core.Algorithms;
 using Search.Utils;
 using Search.Visualization;
+using UnityEngine.Events;
 
 namespace Search.Levels
 {
@@ -15,6 +16,7 @@ namespace Search.Levels
 
         [Header("Search Algorithm Settings")]
         [SerializeField] private AlgorithmType currentAlgorithmType = AlgorithmType.None;
+        [HideInInspector] public UnityEvent onAlgorithmChanged = new();
         
         [Tooltip("Whether to use graph search (track explored states and avoid duplicates in frontier) " +
                  "or tree search (allow duplicates in frontier).")]
@@ -25,7 +27,7 @@ namespace Search.Levels
         public bool isStepped;
         
         [Tooltip("For algorithms like IDS, this sets the maximum depth limit. Ignored for other algorithms.")]
-        [SerializeField] private int levelLimit = 5;
+        public int levelLimit = 5;
 
         [Tooltip("Live Search Algorithm Instance")]
         public GeneralSearch searchAlgorithm;
@@ -41,6 +43,8 @@ namespace Search.Levels
         private SearchProblem _problem;
         private Coroutine _searchCoroutine;
 
+        [HideInInspector] public UnityEvent onSearchLoaded;
+        
         public void Initialize()
         {
             if (problemVisualizer)
@@ -123,12 +127,19 @@ namespace Search.Levels
             
             searchAlgorithm = new GeneralSearch(queuingFunction, levelLimitValue ?? levelLimit, 
                 currentLevel.expansionLimit);
+            onSearchLoaded.Invoke();
             _searchCoroutine = StartCoroutine(searchAlgorithm.SearchCoroutine(_problem, this));
         }
         
         public SearchProblem GetCurrentProblem() => _problem;
         public GeneralSearch GetCurrentSearchAlgorithm() => searchAlgorithm;
         public AlgorithmType GetCurrentAlgorithm() => currentAlgorithmType;
+        public void SetCurrentAlgorithm(AlgorithmType algorithmType)
+        {
+            currentAlgorithmType = algorithmType;
+            onAlgorithmChanged.Invoke();
+        }
+
         public LevelData GetCurrentLevel() => currentLevel;
     }
 }
