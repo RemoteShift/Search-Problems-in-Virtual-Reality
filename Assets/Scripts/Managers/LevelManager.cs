@@ -124,6 +124,9 @@ namespace Search.Levels
                 AlgorithmType.None => throw new System.InvalidOperationException("No algorithm selected"),
                 _ => throw new System.ArgumentException("Unsupported algorithm type")
             };
+
+            if (searchAlgorithm is { LevelLimit: not null })
+                levelLimit = searchAlgorithm.LevelLimit.Value;
             
             searchAlgorithm = new GeneralSearch(queuingFunction, levelLimitValue ?? levelLimit, 
                 currentLevel.expansionLimit);

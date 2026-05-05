@@ -50,14 +50,24 @@ MonoBehaviour:
   currentLevel: {fileID: 11400000, guid: d532c4e372077654c86c74fbdaafa0f8, type: 2}
   visualizeTree: 0
   currentAlgorithmType: 1
-  useGraphSearch: 1
+  onAlgorithmChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  useGraphSearch: 0
   isStepped: 1
-  levelLimit: 9
+  levelLimit: 10
   searchAlgorithm:
+    currentLevelLimit: 0
+    onStepCompleted:
+      m_PersistentCalls:
+        m_Calls: []
     expansionLimit: 1000
   problemVisualizer: {fileID: 362784998034671216}
   treeVisualizer: {fileID: 3814434948179335386}
   TreeVisualizer: {fileID: 0}
+  onSearchLoaded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &5947026155385610969
 GameObject:
   m_ObjectHideFlags: 0

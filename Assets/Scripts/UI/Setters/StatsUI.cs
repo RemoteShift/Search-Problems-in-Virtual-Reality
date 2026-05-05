@@ -1,14 +1,16 @@
-using Search.Core;
 using Search.Core.Algorithms;
 using Search.Levels;
+using Search.Utils;
 using TMPro;
 using UnityEngine;
 
-public class StatsUI : MonoBehaviour
+public class StatsUI : Singleton<StatsUI>
 {
     [Header("UI Elements")]
     [SerializeField] private TextMeshProUGUI searchAlgorithmText;
+    [SerializeField] private GameObject levelLimitObject;
     [SerializeField] private TextMeshProUGUI levelLimitText;
+    [SerializeField] private TextMeshProUGUI currLevelLimitText;
     [SerializeField] private TextMeshProUGUI nodesGeneratedText;
     [SerializeField] private TextMeshProUGUI nodesExpandedText;
     [SerializeField] private TextMeshProUGUI nodesWrongfullyExpandedText;
@@ -44,33 +46,34 @@ public class StatsUI : MonoBehaviour
         _generalSearch.onStepCompleted.AddListener(UpdateStatsUI);
     }
     
-    private void UpdateStatsUI()
+    public void UpdateStatsUI()
     {
         if (!_levelManager) return;
         
-        var algorithmType = _levelManager.GetCurrentAlgorithm();
+        var algorithmType = _levelManager.GetCurrentSearchAlgorithm().QueueingFunction;
         
         var algorithmName = algorithmType switch
         {
-            AlgorithmType.Astar => "A*",
-            _ => algorithmType.ToString()
+            Astar => "A*",
+            _ => algorithmType.GetType().Name
         };
 
         _generalSearch = _levelManager.GetCurrentSearchAlgorithm();
 
-        if (algorithmType != AlgorithmType.IDS)
+        if (algorithmType is not IDS)
         {
-            levelLimitText.gameObject.SetActive(false);
+            levelLimitObject.gameObject.SetActive(false);
             nodesWrongfullyExpandedText.gameObject.SetActive(false);
         }
         else
         {
-            levelLimitText.gameObject.SetActive(true);
+            levelLimitObject.gameObject.SetActive(true);
             nodesWrongfullyExpandedText.gameObject.SetActive(true);
         }
         
         searchAlgorithmText.text = $"Search Algorithm: {algorithmName}";
-        levelLimitText.text = $"Level Limit: {_levelManager.levelLimit}";
+        levelLimitText.text = $"{_generalSearch.LevelLimit}";
+        currLevelLimitText.text = $"Curr. Level Limit: {_generalSearch.currentLevelLimit}";
         nodesGeneratedText.text = $"Nodes Generated: {_generalSearch.totalNodesGenerated}";
         nodesExpandedText.text = $"Nodes Expanded: {_generalSearch.expandedCount}";
         nodesWrongfullyExpandedText.text = $"Wrongly Expanded Nodes: {_generalSearch.wrongfullyExpandedCount}";
