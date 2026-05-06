@@ -1,3 +1,4 @@
+using System.Collections;
 using Search.Core;
 using Search.Core.Algorithms;
 using Search.Levels;
@@ -10,7 +11,9 @@ using UnityEngine.UI;
 public class NodeStatsUI : Singleton<NodeStatsUI>
 {
     [SerializeField] private GameObject nodeVisualObject;
-
+    [Tooltip("Duration for which the UI will stay active after being enabled.")]
+    [SerializeField] private float disableDuration = 1f;
+    
     [Header("UI Elements")] 
     [SerializeField] private TextMeshProUGUI nodeStateText;
     [SerializeField] private Image nodeStateImage;
@@ -23,6 +26,7 @@ public class NodeStatsUI : Singleton<NodeStatsUI>
     
     public void EnableAndUpdateNodeStatsUI(NodeVisual nodeVisual)
     {
+        StopAllCoroutines();
         UpdateNodeVisual(nodeVisual);
         UpdateUI(nodeVisual);
         
@@ -31,6 +35,12 @@ public class NodeStatsUI : Singleton<NodeStatsUI>
     
     public void DisableNodeStatsUI()
     {
+        StartCoroutine(DisableUI(disableDuration));
+    }
+
+    private IEnumerator DisableUI(float duration)
+    {
+        yield return new WaitForSeconds(duration);
         transform.GetChild(0).gameObject.SetActive(false);
     }
 

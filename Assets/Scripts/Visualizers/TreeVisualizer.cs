@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
+using DG.Tweening;
+using Search.Controllers;
 using Search.Core;
 using Search.Levels;
 using UnityEngine;
@@ -89,7 +91,7 @@ namespace Search.Visualization
             go.transform.localRotation = Quaternion.identity;
             go.transform.localScale = Vector3.one * nodeScale;
             var visual = go.GetComponentInChildren<NodeVisual>();
-            visual.Initialize(node.state, node, Vector3.zero);
+            visual.Initialize(node.state, node);
             _nodeVisuals[node] = visual;
 
             // --- Incrementally update parent/child maps ---
@@ -107,7 +109,29 @@ namespace Search.Visualization
                 var childIndex = _childrenMap[parent].Count - 1;   // index of this child
                 var xOffset = (childIndex - 0.5f) * horizontalSpacing;
                 var childLocalPos = parentVisual.transform.localPosition + new Vector3(xOffset, verticalSpacing, 0f);
-                visual.transform.localPosition = childLocalPos;
+                
+                var searchController = SearchController.Instance;
+
+                if (searchController.isAutomaticSearch)
+                {
+                    if (parentVisual)
+                    {
+                        visual.transform.localPosition = parentVisual.transform.localPosition;
+                    }
+                    
+                    var collide = visual.GetComponent<Collider>();
+                    collide.enabled = false;
+                    
+                    visual.transform.DOLocalMove(childLocalPos, searchController.treeNodeCreationAnimationDuration)
+                        .SetEase(Ease.OutCirc).OnComplete(() =>
+                        {
+                            collide.enabled = true;
+                        });
+                }
+                else
+                {
+                    visual.transform.localPosition = childLocalPos;
+                }
                 visual.manuallyPositioned = true;
             }
 
@@ -189,7 +213,7 @@ namespace Search.Visualization
             go.transform.localRotation = Quaternion.identity;
             go.transform.localScale = Vector3.one * nodeScale;
             var newVisual = go.GetComponentInChildren<NodeVisual>();
-            newVisual.Initialize(child.state, child, Vector3.zero);
+            newVisual.Initialize(child.state, child);
             _nodeVisuals[child] = newVisual;
 
             // New visual starts as not manually positioned.
@@ -420,8 +444,32 @@ namespace Search.Visualization
                 if (visual && visual.manuallyPositioned)
                     ; // keep visual.transform.localPosition as set by the user
                 else
-                    visual.transform.localPosition =
+                {
+                    var target = 
                         new Vector3(_nodeX[node] + offsetX, _depth[node] * verticalSpacing, 0f);
+                    
+                    var searchController = SearchController.Instance;
+                    
+                    if (searchController.isAutomaticSearch)
+                    {
+                        _parentMap.TryGetValue(node, out var parent);
+                        if (parent != null)
+                            visual.transform.localPosition = _nodeVisuals[parent].transform.localPosition;
+                        
+                        var collide = visual.GetComponent<Collider>();
+                        collide.enabled = false;
+                        
+                        visual.transform.DOLocalMove(target, searchController.treeNodeCreationAnimationDuration)
+                            .SetEase(Ease.OutCirc).OnComplete(() =>
+                            {
+                                collide.enabled = true;
+                            });
+                    }
+                    else
+                    {
+                        visual.transform.localPosition = target;
+                    }
+                }
              }
          }
 

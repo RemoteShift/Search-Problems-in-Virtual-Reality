@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using DG.Tweening;
 using Search.Core;
 using Search.Levels;
 using Search.Utils;
@@ -12,6 +14,10 @@ namespace Search.Controllers
         private IVisualizer problemVisualizer => LevelManager.Instance?.ProblemVisualizer;
         private TreeVisualizer treeVisualizer => LevelManager.Instance.visualizeTree ? 
             LevelManager.Instance?.TreeVisualizer : null;
+
+        public bool isAutomaticSearch = false;
+        public float problemNodeCreationAnimationDuration = 1f;
+        public float treeNodeCreationAnimationDuration = 1f;
 
         public void OnNodeExpanded(SearchNode node)
         {
@@ -136,7 +142,45 @@ namespace Search.Controllers
         {
             var search = LevelManager.Instance.searchAlgorithm;
 
+            if (IsAnimating())
+            {
+                DOTween.CompleteAll();
+                return;
+            }
+            
             search?.AdvanceStep();
         }
+        
+        public void SetAutomaticSearch(bool value)
+        {
+            isAutomaticSearch = value;
+
+            if (value)
+            {
+                StartCoroutine(PollAutomation(DOTween.timeScale * 1f));
+            }
+            else
+            {
+                StopAllCoroutines();
+            }
+        }
+        
+        private IEnumerator PollAutomation(float delay)
+        {
+            var search = LevelManager.Instance.searchAlgorithm;
+            
+            while (isAutomaticSearch)
+            {
+                yield return new WaitUntil(() => !IsAnimating());
+                yield return new WaitForSeconds(delay);
+                
+                if(!isAutomaticSearch) // in case it was turned off while waiting
+                    yield break;
+                
+                search?.AdvanceStep();
+            }
+        }
+        
+        public bool IsAnimating() => DOTween.TotalPlayingTweens() > 0;
     }
 }

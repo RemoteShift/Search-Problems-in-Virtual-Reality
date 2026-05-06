@@ -27,11 +27,10 @@ namespace Search.Visualization
         
         
         private Animator _anim;
-        public void Initialize(IState state, SearchNode searchNode, Vector3 newPosition)
+        public void Initialize(IState state, SearchNode searchNode)
         {
             stateId = state.id;
             SearchNode = searchNode;
-            transform.position = newPosition;
             initialScale = transform.localScale;
             _renderer = GetComponent<MeshRenderer>();
             _anim = GetComponent<Animator>();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using DG.Tweening;
 using Search.Controllers;
 using Search.Levels;
 using Search.Utils;
@@ -107,7 +108,7 @@ namespace Search.Core.Algorithms
                 {
                     _searchTimer.Stop();
                     _stepRequested = false;
-                    yield return new WaitUntil(() => _stepRequested && !IsAnimating());
+                    yield return new WaitUntil(() => _stepRequested);
                     _searchTimer.Start();
                 }
                 else
@@ -160,8 +161,6 @@ namespace Search.Core.Algorithms
             _searchResult = SearchResult.Failed("Exhausted state space. No solution found", _expanded.Count,
                 totalNodesGenerated, level: levelLimit ?? LevelLimit, timeS: ElapsedTimeinS);
         }
-
-        private bool IsAnimating() => _levelManager.ProblemVisualizer.IsAnimating;
 
         private List<SearchNode> Expand(SearchNode node, SearchProblem searchProblem)
         {

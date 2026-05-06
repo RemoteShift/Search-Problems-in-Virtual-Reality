@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using NaughtyAttributes;
+using Search.Controllers;
 using Search.Core;
 using Search.Levels;
+using Search.Utils;
 using UnityEngine;
 
 namespace Search.Visualization
@@ -212,9 +215,30 @@ namespace Search.Visualization
             var gridState = (GridState)state;
             var pos = new Vector3(gridState.Column * cellSize, yOffsetNode, gridState.Row * cellSize);
             var go = Instantiate(nodePrefab, _nodeContainer.transform);
-            go.transform.localPosition = pos;
+            
+            var searchController = SearchController.Instance;
+            
+            if (searchController.isAutomaticSearch)
+            {
+                if(parent != null)
+                    go.transform.localPosition = _nodeVisuals[parent.state.id].transform.localPosition;
+                
+                var collide = go.GetComponentInChildren<Collider>();
+                collide.enabled = false;
+                
+                go.transform.DOLocalMove(pos, searchController.problemNodeCreationAnimationDuration)
+                    .SetEase(Ease.OutCirc).OnComplete(() =>
+                    {
+                        collide.enabled = true;
+                    });
+            }
+            else
+            {
+                go.transform.localPosition = pos;
+            }
+            
             var visual = go.GetComponentInChildren<NodeVisual>();
-            visual.Initialize(state, node, go.transform.position);
+            visual.Initialize(state, node);
             _nodeVisuals[state.id] = visual;
             return visual;
         }
