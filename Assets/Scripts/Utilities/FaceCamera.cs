@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Search.Utils
@@ -7,6 +8,12 @@ namespace Search.Utils
         [Tooltip("The camera to face. If null, will use the main camera.")]
         [SerializeField] private Camera playerCamera;
 
+        [Foldout("Constraints")] public bool lockX = false;
+        [Foldout("Constraints")] public bool lockY = false;
+        [Foldout("Constraints")] public bool lockZ = false;
+
+        public bool enable = true;
+        
         private void Start()
         {
             playerCamera = !playerCamera ? Camera.main : playerCamera;
@@ -14,9 +21,22 @@ namespace Search.Utils
 
         private void LateUpdate()
         {
-            // Alternative: full 3D facing (like a nameplate)
-            transform.LookAt(playerCamera.transform);
-            //transform.Rotate(0, 180, 0);
+            if (!playerCamera || !enable) return;
+            
+            var direction = transform.position - playerCamera.transform.position;
+            
+            if (direction == Vector3.zero) return;
+            
+            var targetRotation = Quaternion.LookRotation(direction);
+            
+            var currentEuler = transform.eulerAngles;
+            var targetEuler = targetRotation.eulerAngles;
+            
+            if (lockX) targetEuler.x = currentEuler.x;
+            if (lockY) targetEuler.y = currentEuler.y;
+            if (lockZ) targetEuler.z = currentEuler.z;
+            
+            transform.rotation = Quaternion.Euler(targetEuler);
         }
     }
 }

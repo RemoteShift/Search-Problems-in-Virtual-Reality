@@ -142,10 +142,34 @@ MonoBehaviour:
       m_Calls: []
   StartTargeting:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5500847256755537420}
+        m_TargetAssemblyTypeName: Search.Visualization.NodeVisualPasser, Assembly-CSharp
+        m_MethodName: EnableAndPassNodeVisualStatsUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   StopTargeting:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5500847256755537420}
+        m_TargetAssemblyTypeName: Search.Visualization.NodeVisualPasser, Assembly-CSharp
+        m_MethodName: DisableNodeStatsUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   StartSelecting:
     m_PersistentCalls:
       m_Calls: []
@@ -220,22 +244,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1375608274912032288, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375608274912032288, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
-      propertyPath: m_ImplicitCom
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1375608274912032288, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
-      propertyPath: m_LinearDamping
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4688975999596157272, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 32
-      objectReference: {fileID: 0}
     - target: {fileID: 6681585830969861019, guid: b0bcebe19d802024ab3f4a6abf46e4a4, type: 3}
       propertyPath: m_Name
       value: Node
@@ -304,6 +312,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4439998988669233264}
     m_Modifications:
+    - target: {fileID: 102739910290208353, guid: f9848012e26cf7040b8cc34d4fce2901, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5474199682446456322, guid: f9848012e26cf7040b8cc34d4fce2901, type: 3}
       propertyPath: m_Name
       value: State ID Canvas

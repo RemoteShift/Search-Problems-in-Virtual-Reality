@@ -105,11 +105,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdcace5e732d2634bb8151e608a1ef12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NodeVisual
+  currentOriginalColor: {r: 0, g: 0, b: 0, a: 0}
   defaultMat: {fileID: 2100000, guid: 729b23678db777c41b13d291145b2217, type: 2}
   frontierMat: {fileID: 2100000, guid: 1f16aab4ae3292e40a8fb56e28b9c05c, type: 2}
   expandedMat: {fileID: 2100000, guid: bcebd8ca019eca547b932f6e20056233, type: 2}
   expandingMat: {fileID: 2100000, guid: 729b23678db777c41b13d291145b2217, type: 2}
   pathMat: {fileID: 2100000, guid: b531e8ba5345c8f439bf187010a60c8c, type: 2}
+  manuallyPositioned: 0
 --- !u!135 &4688975999596157272
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -123,7 +125,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 32
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -139,8 +141,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6681585830969861019}
   serializedVersion: 5
-  m_Mass: 1000
-  m_LinearDamping: 0
+  m_Mass: 1
+  m_LinearDamping: 5
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

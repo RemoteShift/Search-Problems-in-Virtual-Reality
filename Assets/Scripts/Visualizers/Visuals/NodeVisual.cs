@@ -1,14 +1,14 @@
 using System.Collections;
-using NaughtyAttributes;
 using UnityEngine;
 using Search.Core;
+using UnityEngine.Serialization;
 
 namespace Search.Visualization
 {
     public class NodeVisual : MonoBehaviour
     {
         private MeshRenderer _renderer;
-        private Color _currentOriginalColor;
+        public Color currentOriginalColor;
         [SerializeField] private Material defaultMat;
         [SerializeField] private Material frontierMat;
         [SerializeField] private Material expandedMat;
@@ -19,6 +19,7 @@ namespace Search.Visualization
         public NodeState currentState { get; private set; }
         public string stateId { get; private set; }
         public Vector3 position => transform.position;
+        public bool manuallyPositioned = false;
         private Vector3 initialScale;
 
         [HideInInspector] public SearchNode SearchNode;
@@ -49,7 +50,7 @@ namespace Search.Visualization
                 NodeState.Path => pathMat,
                 _ => defaultMat
             };
-            _currentOriginalColor = _renderer.material.color;
+            currentOriginalColor = _renderer.material.color;
         }
 
         public void BlinkNode(Color color)
@@ -62,7 +63,7 @@ namespace Search.Visualization
         {
             if (_blinkingCoroutine != null)
                 StopCoroutine(_blinkingCoroutine);
-            _renderer.material.color = _currentOriginalColor;
+            _renderer.material.color = currentOriginalColor;
         }
         
         private IEnumerator Blink(Color color)
@@ -71,7 +72,7 @@ namespace Search.Visualization
             {
                 _renderer.material.color = color;
                 yield return new WaitForSeconds(0.5f);
-                _renderer.material.color = _currentOriginalColor;
+                _renderer.material.color = currentOriginalColor;
                 yield return new WaitForSeconds(0.5f);
             }
         }

@@ -1,3 +1,4 @@
+using System;
 using Search.Levels;
 using UnityEngine;
 
@@ -12,6 +13,16 @@ namespace Search.Visualization
     
             var treeVisualizer = LevelManager.Instance?.TreeVisualizer;
             treeVisualizer?.SetNodeManualPosition(nodeVisual);
+        }
+
+        public void EnableAndPassNodeVisualStatsUI()
+        {
+            NodeStatsUI.Instance.EnableAndUpdateNodeStatsUI(GetComponentInChildren<NodeVisual>());
+        }
+
+        public void DisableNodeStatsUI()
+        {
+            NodeStatsUI.Instance.DisableNodeStatsUI();
         }
     }
 }
