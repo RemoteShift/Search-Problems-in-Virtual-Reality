@@ -151,19 +151,27 @@ namespace Search.Controllers
             search?.AdvanceStep();
         }
         
-        public void SetAutomaticSearch(bool value)
+        public void SetAutomaticSearch(bool? value = null)
         {
-            isAutomaticSearch = value;
-
-            if (value)
-            {
-                StartCoroutine(PollAutomation(1f/DOTween.timeScale));
-            }
+            if(!value.HasValue)
+                // ReSharper disable once TailRecursiveCall
+                SetAutomaticSearch(isAutomaticSearch);
             else
             {
-                StopAllCoroutines();
+                isAutomaticSearch = value.Value;
+
+                if (value.Value)
+                {
+                    StartCoroutine(PollAutomation(1f / DOTween.timeScale));
+                }
+                else
+                {
+                    StopAllCoroutines();
+                }
             }
         }
+
+        public bool skipDelay;
         
         private IEnumerator PollAutomation(float delay)
         {
@@ -172,7 +180,19 @@ namespace Search.Controllers
             while (isAutomaticSearch)
             {
                 yield return new WaitUntil(() => !IsAnimating() && DOTween.timeScale != 0);
-                yield return new WaitForSeconds(delay);
+
+                skipDelay = false;
+                
+                var elapsed = 0f;
+                while (elapsed < delay && !skipDelay)
+                {
+                    if(!isAutomaticSearch) // in case it was turned off while waiting
+                        yield break;
+                    
+                    yield return new WaitUntil(() => DOTween.timeScale > 0f);
+                    elapsed += Time.unscaledDeltaTime * DOTween.timeScale;
+                    yield return null;
+                }
                 
                 if(!isAutomaticSearch) // in case it was turned off while waiting
                     yield break;

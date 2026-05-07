@@ -49,7 +49,7 @@ namespace Search.Visualization
         private GameObject _startObject;
         private readonly List<GameObject> _goalObjects = new();
         
-        private NodeVisual sameStateVisual;
+        private NodeVisual _sameStateVisual;
 
         private void Awake()
         {
@@ -74,63 +74,48 @@ namespace Search.Visualization
             _problem = problem;
 
             ClearVisuals();
-
             BuildGroundAndWalls();
             PlaceStartMarker();
             PlaceGoalMarkers();
-            //PlayerLocomotion.Instance.TeleportTo(_startObject.transform.position, _startObject.transform.rotation);
-
             PositionCamera();
         }
-        
+
         public void ClearVisuals()
         {
             foreach (var kvp in _nodeVisuals.Where(kvp => kvp.Value))
-            {
                 Destroy(kvp.Value.gameObject);
-            }
 
             _nodeVisuals.Clear();
 
             foreach (var obj in _groundObjects.Values.Where(obj => obj))
-            {
                 Destroy(obj);
-            }
 
             _groundObjects.Clear();
-            
+
             foreach (var obj in _wallObjects.Values.Where(obj => obj))
-            {
                 Destroy(obj);
-            }
 
             _wallObjects.Clear();
 
             if (_startObject)
-            {
                 Destroy(_startObject);
-            }
 
             foreach (var obj in _goalObjects.Where(obj => obj))
-            {
                 Destroy(obj);
-            }
 
-            sameStateVisual = null;
+            _sameStateVisual = null;
             _goalObjects.Clear();
         }
 
         public void ClearNodeVisuals()
         {
             foreach (var kvp in _nodeVisuals.Where(kvp => kvp.Value))
-            {
                 Destroy(kvp.Value.gameObject);
-            }
 
             _nodeVisuals.Clear();
-            sameStateVisual = null;
+            _sameStateVisual = null;
         }
-        
+
         private void BuildGroundAndWalls()
         {
             var walls = _levelData.GetWalls2D();
@@ -190,7 +175,6 @@ namespace Search.Visualization
             mazeCamera.transform.localRotation = Quaternion.Euler(90, 0, 0);
 
             var cameraComponent = mazeCamera.GetComponent<Camera>();
-
             cameraComponent.orthographicSize = height / 2f;
 
             var halfHeight = cameraComponent.orthographicSize;
@@ -214,40 +198,25 @@ namespace Search.Visualization
             var gridState = (GridState)state;
             var pos = new Vector3(gridState.Column * cellSize, yOffsetNode, gridState.Row * cellSize);
             var go = Instantiate(nodePrefab, _nodeContainer.transform);
-            
             var searchController = SearchController.Instance;
-            
-            // Initialize visual before positioning/animating so isNew flag is set
             var visual = go.GetComponentInChildren<NodeVisual>();
             visual.Initialize(state, node);
             _nodeVisuals[state.id] = visual;
 
             if (searchController.isAutomaticSearch)
             {
-                Vector3 startPos = pos; // fallback to target if parent not available
+                var startPos = pos;
 
-                if (parent != null)
-                {
-                    // Try to use parent's visual position if present
-                    if (_nodeVisuals.TryGetValue(parent.state.id, out var parentVisual) && parentVisual)
-                    {
-                        startPos = parentVisual.transform.localPosition;
-                    }
-                    else
-                    {
-                        // parent visual not yet present, compute parent's grid pos as fallback
-                        var pGrid = (GridState)parent.state;
-                        startPos = new Vector3(pGrid.Column * cellSize, yOffsetNode, pGrid.Row * cellSize);
-                    }
-                }
+                if (parent != null && _nodeVisuals.TryGetValue(parent.state.id, out var parentVisual) && parentVisual)
+                    startPos = parentVisual.transform.localPosition;
 
-                go.transform.localPosition = startPos;
+                visual.transform.localPosition = startPos;
 
                 var collide = go.GetComponentInChildren<Collider>();
                 if (collide) collide.enabled = false;
 
                 visual.isNew = true;
-                go.transform.DOLocalMove(pos, searchController.problemNodeCreationAnimationDuration)
+                visual.transform.DOLocalMove(pos, searchController.problemNodeCreationAnimationDuration)
                     .SetEase(Ease.OutCirc).OnComplete(() =>
                     {
                         if (collide) collide.enabled = true;
@@ -255,22 +224,19 @@ namespace Search.Visualization
                     });
             }
             else
-            {
-                go.transform.localPosition = pos;
+            {   visual.transform.localPosition = pos;
                 visual.isNew = false;
             }
-            
+
             return visual;
         }
 
         public NodeVisual GetOrCreateNodeVisual(SearchNode node, SearchNode parent = null)
         {
             var existing = GetNodeVisual(node);
-            if (existing)
-                return existing;
-            return CreateNodeVisual(node, parent);
+            return existing ? existing : CreateNodeVisual(node, parent);
         }
-        
+
         public void BlinkNode(IState state, Color color)
         {
             if (state is not GridState)
@@ -290,19 +256,19 @@ namespace Search.Visualization
             if (_nodeVisuals.TryGetValue(node.state.id, out var nodeVisual))
             {
                 nodeVisual.PlaySameStateAnimation();
-                sameStateVisual = nodeVisual;
+                _sameStateVisual = nodeVisual;
             }
         }
 
         private void StopSameStateAnimation(SearchNode node)
         {
-            if (sameStateVisual is null)
+            if (_sameStateVisual is null)
                 return;
             
-            sameStateVisual.StopAnimation();
+            _sameStateVisual.StopAnimation();
             
-            if(!sameStateVisual.SearchNode.state.Equals(node.state))
-                sameStateVisual.StopBlinking();
+            if(!_sameStateVisual.SearchNode.state.Equals(node.state))
+                _sameStateVisual.StopBlinking();
         }
     }
 }

@@ -7,11 +7,20 @@ public class SearchControllerUI : MonoBehaviour
 {
     [SerializeField] private Dropdown timeScaleDropdown;
 
-    private float _timeScaleChosen = 1f;
-    
+    private void Update()
+    {
+        Debug.Log($"Time Scale: {DOTween.timeScale}. Automatic Search: {SearchController.Instance.isAutomaticSearch}" +
+                  $" DOTween Tweens: {DOTween.TotalPlayingTweens()}");
+    }
+
     public void SetTimeScale(int index)
     {
-        _timeScaleChosen = index switch
+        if (DOTween.timeScale == 0f)
+        {
+            return; // Don't change the timeScale if animations are currently paused
+        }
+        
+        DOTween.timeScale = index switch
         {
             0 => 1f,
             1 => 2f,
@@ -19,19 +28,12 @@ public class SearchControllerUI : MonoBehaviour
             3 => 5f,
             4 => 10f,
             _ => 1f
-        };
-
-        if (DOTween.timeScale == 0f)
-        {
-            return; // Don't change the timeScale if animations are currently paused
-        }
-        
-        DOTween.timeScale = _timeScaleChosen;
+        };;
     }
 
     public void SetAutomaticSearch(bool value)
     {
-        DOTween.KillAll();
+        DOTween.CompleteAll();
         
         SearchController.Instance.SetAutomaticSearch(value);
     }
@@ -43,11 +45,20 @@ public class SearchControllerUI : MonoBehaviour
     
     public void ResumeAnimations()
     {
-        DOTween.timeScale = _timeScaleChosen;
+        DOTween.timeScale = timeScaleDropdown.value switch
+        {
+            0 => 1f,
+            1 => 2f,
+            2 => 3f,
+            3 => 5f,
+            4 => 10f,
+            _ => 1f
+        };
     }
 
     public void SkipAnimations()
     {
         DOTween.CompleteAll();
+        SearchController.Instance.skipDelay = true;
     }
 }

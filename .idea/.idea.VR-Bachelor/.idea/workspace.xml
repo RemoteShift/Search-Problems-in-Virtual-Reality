@@ -3,21 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Children/Search Controller.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Children/Search Controller.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/ISearchListener.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/ISearchListener.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/IVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/IVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor/LevelManagerEditor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor/LevelManagerEditor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/RestartSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/RestartSearch.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,15 +219,7 @@
       <workItem from="1778012591479" duration="5703000" />
       <workItem from="1778057977049" duration="15867000" />
       <workItem from="1778088227339" duration="14990000" />
-      <workItem from="1778149796806" duration="6234000" />
-    </task>
-    <task id="LOCAL-00005" summary="Added `Singleton` Utility script  &amp; `VRInputHandler`, `LeftControllerLocomotionInput` &amp; Renamed `PlayerMovementController` to `PlayerLocomotion` &amp; Made them all Singleton.&#10;&#10;Added Left Hand">
-      <option name="closed" value="true" />
-      <created>1772201854963</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1772201854963</updated>
+      <workItem from="1778149796806" duration="11927000" />
     </task>
     <task id="LOCAL-00006" summary="Add RightControllerLocomotionInput class and associated prefab for right-hand locomotion input handling">
       <option name="closed" value="true" />
@@ -623,7 +605,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778105383714</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Refactor search-related classes; add automatic search functionality and improve animation handling">
+      <option name="closed" value="true" />
+      <created>1778156357208</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1778156357209</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -656,7 +646,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Refactor GeneralSearch and LevelManager to support step-by-step search execution; enhance visualization and state management" />
     <MESSAGE value="Add SearchController to manage search state and visualization; enhance node state handling and UI interaction" />
     <MESSAGE value="Add EdgeManager and EdgeDynamicUpdater for dynamic edge visualization; implement edge addition and removal in search visualization" />
     <MESSAGE value="Add maze camera positioning logic and update maze level dimensions; enhance visual settings organization in MazeVisualizer" />
@@ -681,7 +670,8 @@
     <MESSAGE value="Add metadata files for new UI components; implement StatsUI, ChangeAlgorithm, and related scripts for enhanced functionality" />
     <MESSAGE value="Add NodeStatsUI and related metadata files; implement UI updates for node statistics and visual representation" />
     <MESSAGE value="Add new UI components and scripts; implement functionality for SearchControllerUI and NodeStatsUI&#10;&#10;TODO: Find out why the nodes are still spawning at the start position in both visualizers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add new UI components and scripts; implement functionality for SearchControllerUI and NodeStatsUI&#10;&#10;TODO: Find out why the nodes are still spawning at the start position in both visualizers" />
+    <MESSAGE value="Refactor search-related classes; add automatic search functionality and improve animation handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor search-related classes; add automatic search functionality and improve animation handling" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
