@@ -15,7 +15,7 @@ namespace Search.Controllers
         private TreeVisualizer treeVisualizer => LevelManager.Instance.visualizeTree ? 
             LevelManager.Instance?.TreeVisualizer : null;
 
-        public bool isAutomaticSearch { get; private set; } = false;
+        [field: SerializeField] public bool isAutomaticSearch { get; private set; } = false;
         public float problemNodeCreationAnimationDuration = 1f;
         public float treeNodeCreationAnimationDuration = 1f;
 
@@ -175,10 +175,9 @@ namespace Search.Controllers
         
         private IEnumerator PollAutomation(float delay)
         {
-            var search = LevelManager.Instance.searchAlgorithm;
-            
             while (isAutomaticSearch)
             {
+                var search = LevelManager.Instance.GetCurrentSearchAlgorithm();
                 yield return new WaitUntil(() => !IsAnimating() && DOTween.timeScale != 0);
 
                 skipDelay = false;

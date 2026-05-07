@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using DG.Tweening;
 using Search.Controllers;
 using Search.Levels;
 using Search.Utils;
 using Search.Visualization;
 using UnityEngine;
 using UnityEngine.Events;
-using Debug = UnityEngine.Debug;
 
 namespace Search.Core.Algorithms
 {
@@ -253,7 +251,7 @@ namespace Search.Core.Algorithms
             SearchNodes?.Clear();
         }
 
-        /// <summary>Called by the UI to advance one step.</summary>
+        /// <summary>Called by the SearchController to advance one step.</summary>
         public void AdvanceStep() => _stepRequested = true;
     }
 }

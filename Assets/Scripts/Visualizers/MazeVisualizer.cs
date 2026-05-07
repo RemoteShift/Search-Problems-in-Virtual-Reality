@@ -6,7 +6,6 @@ using NaughtyAttributes;
 using Search.Controllers;
 using Search.Core;
 using Search.Levels;
-using Search.Utils;
 using UnityEngine;
 
 namespace Search.Visualization

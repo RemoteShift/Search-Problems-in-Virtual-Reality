@@ -10,12 +10,12 @@ namespace Search.Levels
     public class LevelManager : Singleton<LevelManager>
     {
         [Header("Level Settings")] [SerializeField]
-        private LevelData currentLevel;
+        public LevelData currentLevel;
 
         public bool visualizeTree = true;
 
         [Header("Search Algorithm Settings")]
-        [SerializeField] private AlgorithmType currentAlgorithmType = AlgorithmType.None;
+        public AlgorithmType currentAlgorithmType = AlgorithmType.None;
         [HideInInspector] public UnityEvent onAlgorithmChanged = new();
         
         [Tooltip("Whether to use graph search (track explored states and avoid duplicates in frontier) " +

@@ -9,6 +9,5 @@ public class RestartSearch : MonoBehaviour
     {
         DOTween.CompleteAll();
         LevelManager.Instance.StartSearch();
-        SearchController.Instance.SetAutomaticSearch();
     }
 }
