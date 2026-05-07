@@ -6,23 +6,33 @@ using UnityEngine.UI;
 public class SearchControllerUI : MonoBehaviour
 {
     [SerializeField] private Dropdown timeScaleDropdown;
+
+    private float _timeScaleChosen = 1f;
     
     public void SetTimeScale(int index)
     {
-        DOTween.timeScale = index switch
+        _timeScaleChosen = index switch
         {
             0 => 1f,
-            1 => 0.25f,
-            2 => 0.5f,
-            3 => 2f,
-            4 => 5f,
-            5 => 10f,
+            1 => 2f,
+            2 => 3f,
+            3 => 5f,
+            4 => 10f,
             _ => 1f
         };
+
+        if (DOTween.timeScale == 0f)
+        {
+            return; // Don't change the timeScale if animations are currently paused
+        }
+        
+        DOTween.timeScale = _timeScaleChosen;
     }
 
     public void SetAutomaticSearch(bool value)
     {
+        DOTween.KillAll();
+        
         SearchController.Instance.SetAutomaticSearch(value);
     }
     
@@ -33,16 +43,7 @@ public class SearchControllerUI : MonoBehaviour
     
     public void ResumeAnimations()
     {
-        DOTween.timeScale = timeScaleDropdown.value switch
-        {
-            0 => 1f,
-            1 => 0.25f,
-            2 => 0.5f,
-            3 => 2f,
-            4 => 5f,
-            5 => 10f,
-            _ => 1f
-        };
+        DOTween.timeScale = _timeScaleChosen;
     }
 
     public void SkipAnimations()

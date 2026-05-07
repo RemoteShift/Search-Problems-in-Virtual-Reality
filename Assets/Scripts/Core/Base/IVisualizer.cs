@@ -8,8 +8,6 @@ namespace Search.Visualization
     {
         void Setup(LevelData levelData, SearchProblem problem);
         void ClearVisuals();
-        
-        bool IsAnimating { get; }
 
         #region Node Visuals
         void ClearNodeVisuals();

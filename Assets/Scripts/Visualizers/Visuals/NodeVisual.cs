@@ -24,6 +24,9 @@ namespace Search.Visualization
 
         [HideInInspector] public SearchNode SearchNode;
         private Coroutine _blinkingCoroutine;
+
+        // NEW: mark visuals that were just created so visualizers can animate only those
+        [HideInInspector] public bool isNew = true;
         
         
         private Animator _anim;
@@ -35,6 +38,9 @@ namespace Search.Visualization
             _renderer = GetComponent<MeshRenderer>();
             _anim = GetComponent<Animator>();
             SetState(NodeState.Default);
+
+            // By default, a newly initialized visual is considered new (animation should run)
+            isNew = true;
         }
 
         public void SetState(NodeState newState)

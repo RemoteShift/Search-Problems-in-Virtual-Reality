@@ -21,10 +21,6 @@ namespace Search.Levels
         [Tooltip("Whether to use graph search (track explored states and avoid duplicates in frontier) " +
                  "or tree search (allow duplicates in frontier).")]
         public bool useGraphSearch;
-
-        [Tooltip("Whether to step through the search algorithm one expansion at a time (e.g. via UI button) " +
-                 "or let it run continuously until completion.")]
-        public bool isStepped;
         
         [Tooltip("For algorithms like IDS, this sets the maximum depth limit. Ignored for other algorithms.")]
         public int levelLimit = 5;

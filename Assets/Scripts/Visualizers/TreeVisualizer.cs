@@ -25,8 +25,7 @@ namespace Search.Visualization
         
         [Foldout("Visual Settings")] [SerializeField]
         private float subTreeDeletionDelay = 1f;
-
-        private SearchProblem _problem;
+        
         private GameObject _nodeContainer;
 
         private readonly Dictionary<SearchNode, NodeVisual> _nodeVisuals = new();
@@ -36,8 +35,7 @@ namespace Search.Visualization
         private readonly Dictionary<SearchNode, float> _subtreeWidth = new();
         private readonly Dictionary<SearchNode, float> _nodeX = new();
         private readonly Dictionary<SearchNode, int> _depth = new();
-
-        public bool IsAnimating { get; }
+        
         private List<NodeVisual> _currentSameStateVisuals = new();
 
         private void Awake()
@@ -45,9 +43,9 @@ namespace Search.Visualization
             _nodeContainer = CreateContainer("Nodes");
         }
 
-        private GameObject CreateContainer(string name)
+        private GameObject CreateContainer(string containerName)
         {
-            var container = new GameObject(name);
+            var container = new GameObject(containerName);
             container.transform.SetParent(transform);
             container.transform.localPosition = Vector3.zero;
             container.transform.localRotation = Quaternion.identity;
@@ -57,7 +55,6 @@ namespace Search.Visualization
 
         public void Setup(LevelData levelData, SearchProblem problem)
         {
-            _problem = problem;
             ClearVisuals();
         }
 
@@ -103,35 +100,14 @@ namespace Search.Visualization
                 _childrenMap[parent].Add(node);
             }
 
-            // Manual positioning (if parent is manually placed)
-            if (parent != null && _nodeVisuals.TryGetValue(parent, out var parentVisual) && parentVisual && parentVisual.manuallyPositioned)
+            // If we're in automatic search, let LayoutTree handle the initial spawn animation.
+            // Otherwise, place immediately when the parent is manually positioned.
+            if (parent != null && _nodeVisuals.TryGetValue(parent, out var parentVisual) && parentVisual && parentVisual.manuallyPositioned && !SearchController.Instance.isAutomaticSearch)
             {
                 var childIndex = _childrenMap[parent].Count - 1;   // index of this child
                 var xOffset = (childIndex - 0.5f) * horizontalSpacing;
                 var childLocalPos = parentVisual.transform.localPosition + new Vector3(xOffset, verticalSpacing, 0f);
-                
-                var searchController = SearchController.Instance;
-
-                if (searchController.isAutomaticSearch)
-                {
-                    if (parentVisual)
-                    {
-                        visual.transform.localPosition = parentVisual.transform.localPosition;
-                    }
-                    
-                    var collide = visual.GetComponent<Collider>();
-                    collide.enabled = false;
-                    
-                    visual.transform.DOLocalMove(childLocalPos, searchController.treeNodeCreationAnimationDuration)
-                        .SetEase(Ease.OutCirc).OnComplete(() =>
-                        {
-                            collide.enabled = true;
-                        });
-                }
-                else
-                {
-                    visual.transform.localPosition = childLocalPos;
-                }
+                visual.transform.localPosition = childLocalPos;
                 visual.manuallyPositioned = true;
             }
 
@@ -441,36 +417,68 @@ namespace Search.Visualization
                  var node = kvp.Key;
                  var visual = kvp.Value;
                 
-                if (visual && visual.manuallyPositioned)
-                    ; // keep visual.transform.localPosition as set by the user
-                else
-                {
-                    var target = 
-                        new Vector3(_nodeX[node] + offsetX, _depth[node] * verticalSpacing, 0f);
-                    
-                    var searchController = SearchController.Instance;
-                    
-                    if (searchController.isAutomaticSearch)
-                    {
-                        _parentMap.TryGetValue(node, out var parent);
-                        if (parent != null)
-                            visual.transform.localPosition = _nodeVisuals[parent].transform.localPosition;
-                        
-                        var collide = visual.GetComponent<Collider>();
-                        collide.enabled = false;
-                        
-                        visual.transform.DOLocalMove(target, searchController.treeNodeCreationAnimationDuration)
-                            .SetEase(Ease.OutCirc).OnComplete(() =>
-                            {
-                                collide.enabled = true;
-                            });
-                    }
-                    else
-                    {
-                        visual.transform.localPosition = target;
-                    }
-                }
+                 if (visual && visual.manuallyPositioned)
+                 {
+                     // Keep visual.transform.localPosition as set by the user.
+                     continue;
+                 }
+
+                 var target = new Vector3(_nodeX[node] + offsetX, _depth[node] * verticalSpacing, 0f);
+                 var searchController = SearchController.Instance;
+
+                 if (searchController.isAutomaticSearch)
+                 {
+                     _parentMap.TryGetValue(node, out var parent);
+
+                     // Only start from parent's position if this visual is new (just created)
+                     if (visual.isNew && parent != null && _nodeVisuals.TryGetValue(parent, out var parentVis) && parentVis)
+                     {
+                         visual.transform.localPosition = parentVis.transform.localPosition;
+                     }
+
+                     var collide = visual.GetComponent<Collider>();
+                     if (collide) collide.enabled = false;
+
+                     if (visual.isNew)
+                     {
+                         visual.transform.DOLocalMove(target, searchController.treeNodeCreationAnimationDuration)
+                             .SetEase(Ease.OutCirc).OnComplete(() =>
+                             {
+                                 if (collide) collide.enabled = true;
+                                 visual.isNew = false;
+                             });
+                     }
+                     else
+                     {
+                         // Not new: snap to target immediately without animation
+                         visual.transform.localPosition = target;
+                         if (collide) collide.enabled = true;
+                     }
+                 }
+                 else
+                 {
+                     visual.transform.localPosition = target;
+                 }
              }
+         }
+
+         private void StopSameStateAnimation(NodeVisual nodeVisual = null)
+         {
+             foreach (var visual in _currentSameStateVisuals)
+             {
+                 if (!visual)
+                 {
+                     continue;
+                 }
+
+                 visual.StopAnimation();
+                 if (nodeVisual == null || visual != nodeVisual)
+                 {
+                     visual.StopBlinking();
+                 }
+             }
+
+             _currentSameStateVisuals.Clear();
          }
 
          public void BlinkNode(SearchNode node, Color color)
@@ -492,9 +500,10 @@ namespace Search.Visualization
 
          public void TryPlaySameState(SearchNode node)
          {
-             StopSameStateAnimation(node);
+             _nodeVisuals.TryGetValue(node, out var nodeVisual);
+             StopSameStateAnimation(nodeVisual);
 
-             var newVisuals = _nodeVisuals.Values
+              var newVisuals = _nodeVisuals.Values
                  .Where(v => v.SearchNode.state.Equals(node.state))
                  .ToList();
 
@@ -508,20 +517,6 @@ namespace Search.Visualization
              }
 
              _currentSameStateVisuals = newVisuals;
-         }
-
-         private void StopSameStateAnimation(SearchNode node = null)
-         {
-             foreach (var nodeVisual in _currentSameStateVisuals)
-             {
-                 nodeVisual.StopAnimation();
-                 if (nodeVisual.SearchNode != node)
-                 {
-                     nodeVisual.StopBlinking();
-                 }
-             }
-
-             _currentSameStateVisuals.Clear();
          }
      }
  }

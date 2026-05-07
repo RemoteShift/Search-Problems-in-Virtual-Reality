@@ -10302,11 +10302,9 @@ MonoBehaviour:
     m_Options:
     - m_Text: 1x
       m_Image: {fileID: 0}
-    - m_Text: 0.25x
-      m_Image: {fileID: 0}
-    - m_Text: 0.5x
-      m_Image: {fileID: 0}
     - m_Text: 2x
+      m_Image: {fileID: 0}
+    - m_Text: 3x
       m_Image: {fileID: 0}
     - m_Text: 5x
       m_Image: {fileID: 0}
@@ -13123,6 +13121,7 @@ MonoBehaviour:
   expandingMat: {fileID: 2100000, guid: 729b23678db777c41b13d291145b2217, type: 2}
   pathMat: {fileID: 2100000, guid: b531e8ba5345c8f439bf187010a60c8c, type: 2}
   manuallyPositioned: 0
+  isNew: 1
 --- !u!4 &8663626971055619278
 Transform:
   m_ObjectHideFlags: 0

@@ -48,8 +48,7 @@ namespace Search.Visualization
         private GameObject _wallContainer;
         private GameObject _startObject;
         private readonly List<GameObject> _goalObjects = new();
-
-        [HideInInspector] public bool IsAnimating { get; }
+        
         private NodeVisual sameStateVisual;
 
         private void Awake()
@@ -218,28 +217,49 @@ namespace Search.Visualization
             
             var searchController = SearchController.Instance;
             
+            // Initialize visual before positioning/animating so isNew flag is set
+            var visual = go.GetComponentInChildren<NodeVisual>();
+            visual.Initialize(state, node);
+            _nodeVisuals[state.id] = visual;
+
             if (searchController.isAutomaticSearch)
             {
-                if(parent != null)
-                    go.transform.localPosition = _nodeVisuals[parent.state.id].transform.localPosition;
-                
+                Vector3 startPos = pos; // fallback to target if parent not available
+
+                if (parent != null)
+                {
+                    // Try to use parent's visual position if present
+                    if (_nodeVisuals.TryGetValue(parent.state.id, out var parentVisual) && parentVisual)
+                    {
+                        startPos = parentVisual.transform.localPosition;
+                    }
+                    else
+                    {
+                        // parent visual not yet present, compute parent's grid pos as fallback
+                        var pGrid = (GridState)parent.state;
+                        startPos = new Vector3(pGrid.Column * cellSize, yOffsetNode, pGrid.Row * cellSize);
+                    }
+                }
+
+                go.transform.localPosition = startPos;
+
                 var collide = go.GetComponentInChildren<Collider>();
-                collide.enabled = false;
-                
+                if (collide) collide.enabled = false;
+
+                visual.isNew = true;
                 go.transform.DOLocalMove(pos, searchController.problemNodeCreationAnimationDuration)
                     .SetEase(Ease.OutCirc).OnComplete(() =>
                     {
-                        collide.enabled = true;
+                        if (collide) collide.enabled = true;
+                        visual.isNew = false;
                     });
             }
             else
             {
                 go.transform.localPosition = pos;
+                visual.isNew = false;
             }
             
-            var visual = go.GetComponentInChildren<NodeVisual>();
-            visual.Initialize(state, node);
-            _nodeVisuals[state.id] = visual;
             return visual;
         }
 

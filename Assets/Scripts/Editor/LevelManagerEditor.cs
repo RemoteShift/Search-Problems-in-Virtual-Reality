@@ -27,14 +27,12 @@ public class LevelManagerEditor : Editor
             myScript.StartSearch();
             Repaint();
         }
-
-        if(myScript.isStepped)
+        
+        if (GUILayout.Button("Next Step"))
         {
-            if (GUILayout.Button("Next Step"))
-            {
-                SearchController.Instance.AdvanceStep();
-            }
+            SearchController.Instance.AdvanceStep();
         }
+
 
         if (GUILayout.Button("Toggle Culling"))
         {

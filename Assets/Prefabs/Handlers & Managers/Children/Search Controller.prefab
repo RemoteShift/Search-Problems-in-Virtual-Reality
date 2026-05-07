@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Search.Controllers.SearchController
   isAutomaticSearch: 0
-  problemNodeCreationAnimationDuration: 1
-  treeNodeCreationAnimationDuration: 1
+  problemNodeCreationAnimationDuration: 0.5
+  treeNodeCreationAnimationDuration: 0.5
 --- !u!114 &4275246426324231026
 MonoBehaviour:
   m_ObjectHideFlags: 0

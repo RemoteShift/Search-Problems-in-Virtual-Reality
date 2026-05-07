@@ -104,19 +104,12 @@ namespace Search.Core.Algorithms
             {
                 onStepCompleted.Invoke();
                 _searchListener?.OnNodeExpanding(_frontier.Peek());
-                if (_levelManager.isStepped)
-                {
-                    _searchTimer.Stop();
-                    _stepRequested = false;
-                    yield return new WaitUntil(() => _stepRequested);
-                    _searchTimer.Start();
-                }
-                else
-                {
-                    _searchTimer.Stop();
-                    yield return null;
-                    _searchTimer.Start();
-                }
+                
+                // Pause the search until the user clicks "Next Step" or the automation polls
+                _searchTimer.Stop();
+                _stepRequested = false;
+                yield return new WaitUntil(() => _stepRequested);
+                _searchTimer.Start();
                 
                 var node = _frontier.Remove();
                 if (_levelManager.useGraphSearch && SearchNodes[node.state] != node)

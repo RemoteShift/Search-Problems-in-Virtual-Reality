@@ -15,30 +15,30 @@ namespace Search.Controllers
         private TreeVisualizer treeVisualizer => LevelManager.Instance.visualizeTree ? 
             LevelManager.Instance?.TreeVisualizer : null;
 
-        public bool isAutomaticSearch = false;
+        public bool isAutomaticSearch { get; private set; } = false;
         public float problemNodeCreationAnimationDuration = 1f;
         public float treeNodeCreationAnimationDuration = 1f;
 
         public void OnNodeExpanded(SearchNode node)
         {
-            problemVisualizer?.GetOrCreateNodeVisual(node).SetState(NodeState.Expanded);
-            treeVisualizer?.GetOrCreateNodeVisual(node).SetState(NodeState.Expanded);
+            problemVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Expanded);
+            treeVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Expanded);
         }
 
         public void OnNodeExpanding(SearchNode node)
         {
-            problemVisualizer?.GetOrCreateNodeVisual(node).SetState(NodeState.Expanding);
+            problemVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Expanding);
             problemVisualizer?.BlinkNode(node.state, Color.red);
             problemVisualizer?.TryPlaySameState(node);
             
-            treeVisualizer?.GetOrCreateNodeVisual(node).SetState(NodeState.Expanding);
+            treeVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Expanding);
             treeVisualizer?.BlinkNode(node, Color.red);
             treeVisualizer?.TryPlaySameState(node);
         }
 
         public void OnNodeGenerated(SearchNode node)
         {
-            problemVisualizer?.GetOrCreateNodeVisual(node).SetState(NodeState.Default);
+            problemVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Default);
             treeVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Default);
         }
 
@@ -51,7 +51,7 @@ namespace Search.Controllers
         {
             foreach (var node in nodes)
             {
-                problemVisualizer?.GetOrCreateNodeVisual(node).SetState(NodeState.Frontier);
+                problemVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Frontier);
                 treeVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Frontier);
             }
         }
@@ -89,8 +89,8 @@ namespace Search.Controllers
                 _ => b.actionFromParent
             };
             
-            var nodeAProblem = problemVisualizer?.GetOrCreateNodeVisual(a);
-            var nodeBProblem = problemVisualizer?.GetOrCreateNodeVisual(b);
+            var nodeAProblem = problemVisualizer?.GetOrCreateNodeVisual(a, a.parent);
+            var nodeBProblem = problemVisualizer?.GetOrCreateNodeVisual(b, b.parent);
             if(nodeAProblem && nodeBProblem)
                 EdgeManager.Instance.AddEdge(a.state.id, b.state.id, nodeAProblem.transform, nodeBProblem.transform,
                     label);
@@ -157,7 +157,7 @@ namespace Search.Controllers
 
             if (value)
             {
-                StartCoroutine(PollAutomation(DOTween.timeScale * 1f));
+                StartCoroutine(PollAutomation(1f/DOTween.timeScale));
             }
             else
             {
@@ -171,7 +171,7 @@ namespace Search.Controllers
             
             while (isAutomaticSearch)
             {
-                yield return new WaitUntil(() => !IsAnimating());
+                yield return new WaitUntil(() => !IsAnimating() && DOTween.timeScale != 0);
                 yield return new WaitForSeconds(delay);
                 
                 if(!isAutomaticSearch) // in case it was turned off while waiting

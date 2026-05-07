@@ -63,5 +63,7 @@ namespace Search.Core
         /// </remarks>
         /// <param name="childNode"></param>
         void ResetParent(SearchNode childNode);
+
+        bool isAutomaticSearch { get; }
     }
 }
