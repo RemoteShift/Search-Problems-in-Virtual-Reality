@@ -26,7 +26,6 @@ namespace Search.Controllers
         {
             problemVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Expanded);
             treeVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Expanded);
-            queueUI?.RemoveFirstNode();
         }
 
         public void OnNodeExpanding(SearchNode node)

@@ -3,9 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/QueueUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/QueueUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/SearchResultUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/SearchResultUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,15 +220,7 @@
       <workItem from="1778088227339" duration="14990000" />
       <workItem from="1778149796806" duration="25938000" />
       <workItem from="1778188399058" duration="1794000" />
-      <workItem from="1778227639648" duration="29541000" />
-    </task>
-    <task id="LOCAL-00011" summary="Added scrollview with VR Inputs and ray interactor.">
-      <option name="closed" value="true" />
-      <created>1772808473045</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1772808473045</updated>
+      <workItem from="1778227639648" duration="31165000" />
     </task>
     <task id="LOCAL-00012" summary="Added AutoHand">
       <option name="closed" value="true" />
@@ -615,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778269948404</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Refactor QueueUI and SearchResultUI; improve null safety and streamline UI disable logic">
+      <option name="closed" value="true" />
+      <created>1778273742121</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1778273742121</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +647,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Refactor visualizer components; enhance TreeVisualizer and SearchController for improved node handling and edge management" />
     <MESSAGE value="Add same state animation to Node visuals; enhance visual feedback in TreeVisualizer and SearchController" />
     <MESSAGE value="Enhance node blinking functionality; update BlinkNode method to accept color parameter in IVisualizer and related visualizer classes" />
     <MESSAGE value="Refactor visualizer methods; update TryPlaySameState and StopSameStateAnimation in IVisualizer, MazeVisualizer, and TreeVisualizer for improved node handling" />
@@ -673,7 +671,8 @@
     <MESSAGE value="Refactor LevelManager and SearchController; update main menu handling and improve search result display" />
     <MESSAGE value="Refactor SearchResult and SearchResultUI; update variable accessibility, enhance UI elements, and improve result display logic" />
     <MESSAGE value="Add QueueUI and QueueElementUI; implement node management for search visualization and enhance UI interactions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add QueueUI and QueueElementUI; implement node management for search visualization and enhance UI interactions" />
+    <MESSAGE value="Refactor QueueUI and SearchResultUI; improve null safety and streamline UI disable logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor QueueUI and SearchResultUI; improve null safety and streamline UI disable logic" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -696,6 +695,19 @@
           </properties>
           <option name="timeStamp" value="16" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs</url>
+          <line>220</line>
+          <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\Core\Base\Search Algorithms\GeneralSearch.cs" containingFunctionPresentation="Method 'Expand'">
+            <startOffsets>
+              <option value="9731" />
+            </startOffsets>
+            <endOffsets>
+              <option value="9793" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
