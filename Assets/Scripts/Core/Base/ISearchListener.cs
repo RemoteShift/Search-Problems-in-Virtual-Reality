@@ -23,18 +23,13 @@ namespace Search.Core
         /// Called after the frontier has been reordered.
         /// Provides the current frontier for visualization.
         /// </summary>
-        void OnFrontierReordered();
+        void OnFrontierReordered(IReadOnlyList<SearchNode> frontier);
         
         /// <summary>
         /// Called when a node is added to the frontier.
         /// </summary>
         /// <param name="node">The new node</param>
         void OnNodesAddedToFrontier(IReadOnlyList<SearchNode> node);
-
-        /// <summary>
-        /// Called when a solution is found.
-        /// </summary>
-        void OnSolutionFound(SearchNode solution);
 
         /// <summary>
         /// Called when the search completes.
@@ -62,7 +57,7 @@ namespace Search.Core
         /// as it will read the current parent from the child node and update the visualizer(s) accordingly.
         /// </remarks>
         /// <param name="childNode"></param>
-        void ResetParent(SearchNode childNode);
+        void ResetParent(SearchNode childNode, IReadOnlyList<SearchNode> frontier);
 
         bool isAutomaticSearch { get; }
     }

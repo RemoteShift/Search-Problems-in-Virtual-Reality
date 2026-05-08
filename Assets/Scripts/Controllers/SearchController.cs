@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using Search.Core;
 using Search.Levels;
@@ -15,6 +16,8 @@ namespace Search.Controllers
         private TreeVisualizer treeVisualizer => !LevelManager.Instance.isMainMenu ? 
             LevelManager.Instance?.TreeVisualizer : null;
 
+        public QueueUI queueUI;
+        
         [field: SerializeField] public bool isAutomaticSearch { get; private set; } = false;
         public float problemNodeCreationAnimationDuration = 1f;
         public float treeNodeCreationAnimationDuration = 1f;
@@ -23,6 +26,7 @@ namespace Search.Controllers
         {
             problemVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Expanded);
             treeVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Expanded);
+            queueUI?.RemoveFirstNode();
         }
 
         public void OnNodeExpanding(SearchNode node)
@@ -42,23 +46,31 @@ namespace Search.Controllers
             treeVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Default);
         }
 
-        public void OnFrontierReordered()
+        public void OnFrontierReordered(IReadOnlyList<SearchNode> frontier)
         {
-            // TODO: Breh 0
+            var levelManager = LevelManager.Instance;
+            var nodeVisuals = frontier.Select(searchNode => levelManager.useGraphSearch
+                    ? problemVisualizer?.GetNodeVisual(searchNode)
+                    : treeVisualizer?.GetNodeVisual(searchNode))
+                .ToList();
+            queueUI?.SyncFrontierOrder(nodeVisuals);
         }
 
         public void OnNodesAddedToFrontier(IReadOnlyList<SearchNode> nodes)
         {
+            var levelManager = LevelManager.Instance;
+            List<NodeVisual> nodeVisuals = new();
             foreach (var node in nodes)
-            {
-                problemVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Frontier);
-                treeVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Frontier);
+            { 
+                var problemVisual = problemVisualizer?.GetOrCreateNodeVisual(node, node.parent);
+                problemVisual?.SetState(NodeState.Frontier);
+                
+                var treeVisual = treeVisualizer?.GetOrCreateNodeVisual(node, node.parent);
+                treeVisual?.SetState(NodeState.Frontier);
+                
+                nodeVisuals.Add(levelManager.useGraphSearch ? problemVisual : treeVisual);
             }
-        }
-
-        public void OnSolutionFound(SearchNode solution)
-        {
-            // TODO: Breh 2
+            queueUI?.AddNodes(nodeVisuals);
         }
 
         public void OnSearchComplete(SearchResult result)
@@ -123,7 +135,7 @@ namespace Search.Controllers
             EdgeManager.Instance.RemoveEdge(a.state.id + "_tree", b.state.id + "_tree");
         }
 
-        public void ResetParent(SearchNode childNode)
+        public void ResetParent(SearchNode childNode, IReadOnlyList<SearchNode> frontier)
         {
             if(!treeVisualizer)
                 return;
@@ -141,6 +153,7 @@ namespace Search.Controllers
             var childNodeVisual = treeVisualizer.GetOrCreateNodeVisual(childNode, childNode.parent);
             EdgeManager.Instance.AddEdge(childNode.parent.state.id + "_tree", childNode.state.id + "_tree",
                 parentNodeVisual.transform, childNodeVisual.transform, label);
+            OnFrontierReordered(frontier);
         }
 
         public void AdvanceStep()

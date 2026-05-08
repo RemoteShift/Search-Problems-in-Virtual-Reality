@@ -183,13 +183,7 @@ namespace Search.Visualization
             cameraComponent.projectionMatrix = m;
         }
 
-        public NodeVisual GetNodeVisual(SearchNode node)
-        {
-            var state = node.state;
-            if (_nodeVisuals.TryGetValue(state.id, out var existing))
-                return existing;
-            return null;
-        }
+        public NodeVisual GetNodeVisual(SearchNode node) => _nodeVisuals.GetValueOrDefault(node.state.id);
 
         public NodeVisual CreateNodeVisual(SearchNode node, SearchNode parent = null)
         {

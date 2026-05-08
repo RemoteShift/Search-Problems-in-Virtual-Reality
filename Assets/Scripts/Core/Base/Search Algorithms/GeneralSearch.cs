@@ -120,7 +120,6 @@ namespace Search.Core.Algorithms
                         totalNodesGenerated, 
                         solutionPath: solutionPath,
                         level: levelLimit ?? LevelLimit, timeS: ElapsedTimeinS);
-                    _searchListener?.OnSolutionFound(node);
                     yield break;
                 }
 
@@ -199,10 +198,9 @@ namespace Search.Core.Algorithms
                     existingNode.SetParent(node, action, stepCost);
                     if (_frontier.Contains(existingNode))
                     {
-                        if (_frontier is PriorityQueue<SearchNode> pq)
+                        if (_frontier is PriorityQueue<SearchNode> pq && pq.TryUpdate(existingNode))
                         {
-                            pq.TryUpdate(existingNode);
-                            _searchListener.OnFrontierReordered();
+                            _searchListener.OnFrontierReordered(_frontier.ToList());
                         }
                             
                     }
@@ -219,7 +217,7 @@ namespace Search.Core.Algorithms
                     {
                         _wrongfullyExpanded.Add(wrongfullyExpandedNode.SearchNode);
                     }
-                    _searchListener.ResetParent(existingNode);
+                    _searchListener.ResetParent(existingNode, _frontier.ToList());
                     _searchListener.AddEdge(node, existingNode);
                 }
             }
