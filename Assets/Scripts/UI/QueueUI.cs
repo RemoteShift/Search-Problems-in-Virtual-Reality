@@ -21,7 +21,7 @@ public class QueueUI : MonoBehaviour
     private void OnDisable()
     {
         SearchController.Instance.queueUI = null;
-        LevelManager.Instance.onSearchLoaded.RemoveListener(ClearUI);
+        LevelManager.Instance?.onSearchLoaded.RemoveListener(ClearUI);
     }
 
     /// <summary>

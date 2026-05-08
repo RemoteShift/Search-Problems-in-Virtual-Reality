@@ -22,7 +22,7 @@ public class SearchResultUI : Singleton<SearchResultUI>
 
     private void OnDisable()
     {
-        LevelManager.Instance.onSearchLoaded.RemoveListener(DisableUI);
+        LevelManager.Instance?.onSearchLoaded.RemoveListener(DisableUI);
     }
 
     public void DisplayResult(SearchResult result)

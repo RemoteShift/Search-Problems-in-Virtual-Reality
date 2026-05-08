@@ -126,36 +126,35 @@ namespace Search.Visualization
 
         public void ResetParent(SearchNode child)
         {
-            if (child == null)
-                return;
-
-            if (!_nodeVisuals.TryGetValue(child, out var oldVisual) || !oldVisual)
-                return;
+            if (child == null) return;
+            if (!_nodeVisuals.TryGetValue(child, out var oldVisual) || !oldVisual) return;
 
             var newParent = child.parent;
 
-            if (_parentMap.TryGetValue(child, out var previousParent) &&
-                _childrenMap.TryGetValue(previousParent, out var previousSiblings))
-            {
-                previousSiblings.Remove(child);
-            }
+            // 1. Capture the entire subtree (including the old root) while maps are still intact
+            var subtree = GetSubTree(oldVisual);
 
+            // 2. Remove the old child from its previous parent and from dictionaries
+            if (_parentMap.TryGetValue(child, out var previousParent) &&
+                _childrenMap.TryGetValue(previousParent, out var siblings))
+            {
+                siblings.Remove(child);
+            }
+            _parentMap.Remove(child);
+            _childrenMap.Remove(child);
+            _nodeVisuals.Remove(child);   // old visual is no longer the "active" one
+
+            // 3. Attach to the new parent (if it exists)
             if (newParent != null)
             {
                 _parentMap[child] = newParent;
                 if (!_childrenMap.ContainsKey(newParent))
                     _childrenMap[newParent] = new List<SearchNode>();
-
                 if (!_childrenMap[newParent].Contains(child))
                     _childrenMap[newParent].Add(child);
             }
-            else
-            {
-                _parentMap.Remove(child);
-            }
 
-            StartCoroutine(DeleteSubTree(oldVisual, subTreeDeletionDelay));
-
+            // 4. Create the replacement visual and put it into the dictionary
             var go = Instantiate(nodePrefab, _nodeContainer.transform);
             go.transform.localRotation = Quaternion.identity;
             go.transform.localScale = Vector3.one * nodeScale;
@@ -165,43 +164,56 @@ namespace Search.Visualization
             newVisual.manuallyPositioned = false;
             _nodeVisuals[child] = newVisual;
 
+            // 5. Start the old subtree deletion (with delay, turning red, then destroying)
+            StartCoroutine(DeleteSubTree(subtree, subTreeDeletionDelay));
+
+            // 6. Recalculate layout (the new visual will be placed, old ones are still visible until deleted)
             LayoutTree();
         }
 
-        private IEnumerator DeleteSubTree(NodeVisual visual, float delay)
+        private IEnumerator DeleteSubTree(List<NodeVisual> subTree, float delay)
         {
-            var subTree = GetSubTree(visual);
-            foreach (var nodeVisual in subTree)
+            // Colour them red
+            foreach (var visual in subTree)
             {
-                if (nodeVisual)
-                    nodeVisual.SetColor(Color.red);
+                if (visual) visual.SetColor(Color.red);
             }
 
-            yield return new WaitForSeconds(delay/DOTween.timeScale);
-
-            var deletedAnyActiveNode = false;
-            foreach (var nodeVisual in subTree)
+            // Wait safely, respecting DOTween.timeScale and avoiding division by zero
+            float timer = 0f;
+            while (timer < delay)
             {
-                if (!nodeVisual)
-                    continue;
+                if (DOTween.timeScale > 0f)
+                {
+                    timer += Time.unscaledDeltaTime * DOTween.timeScale;
+                }
+                yield return null;
+            }
 
-                var node = nodeVisual.SearchNode;
+            bool anyMapChanges = false;
+            foreach (var visual in subTree)
+            {
+                if (!visual) continue;
+                var node = visual.SearchNode;
+                if (node == null) continue;
 
-                if (_nodeVisuals.TryGetValue(node, out var activeVisual) && activeVisual == nodeVisual)
+                // Only remove from maps if this visual is still the official one
+                if (_nodeVisuals.TryGetValue(node, out var activeVisual) && activeVisual == visual)
                 {
                     if (_parentMap.TryGetValue(node, out var parent) && _childrenMap.TryGetValue(parent, out var siblings))
                         siblings.Remove(node);
-
                     _parentMap.Remove(node);
                     _childrenMap.Remove(node);
                     _nodeVisuals.Remove(node);
-                    deletedAnyActiveNode = true;
+                    anyMapChanges = true;
                 }
 
-                Destroy(nodeVisual.gameObject);
+                // Kill any running tweens and destroy the GameObject
+                visual.transform.DOKill();
+                Destroy(visual.gameObject);
             }
 
-            if (deletedAnyActiveNode)
+            if (anyMapChanges)
                 LayoutTree();
         }
 
