@@ -7,11 +7,11 @@ public class SearchControllerUI : MonoBehaviour
 {
     [SerializeField] private Dropdown timeScaleDropdown;
 
-    private void Update()
-    {
-        Debug.Log($"Time Scale: {DOTween.timeScale}. Automatic Search: {SearchController.Instance.isAutomaticSearch}" +
-                  $" DOTween Tweens: {DOTween.TotalPlayingTweens()}");
-    }
+    // private void Update()
+    // {
+    //     Debug.Log($"Time Scale: {DOTween.timeScale}. Automatic Search: {SearchController.Instance.isAutomaticSearch}" +
+    //               $" DOTween Tweens: {DOTween.TotalPlayingTweens()}");
+    // }
 
     public void SetTimeScale(int index)
     {

@@ -11,8 +11,8 @@ namespace Search.Levels
     {
         [Header("Level Settings")] [SerializeField]
         public LevelData currentLevel;
-
-        public bool visualizeTree = true;
+        
+        public bool isMainMenu = true;
 
         [Header("Search Algorithm Settings")]
         public AlgorithmType currentAlgorithmType = AlgorithmType.None;
@@ -85,7 +85,7 @@ namespace Search.Levels
                 mazeVisualizer.Setup(mazeLevel, _problem);
             }
             
-            if (visualizeTree)
+            if (!isMainMenu)
             {
                 TreeVisualizer?.Setup(level, _problem);
             }

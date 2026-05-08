@@ -1,5 +1,4 @@
 using DG.Tweening;
-using Search.Controllers;
 using Search.Levels;
 using UnityEngine;
 

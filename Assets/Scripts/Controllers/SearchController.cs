@@ -12,7 +12,7 @@ namespace Search.Controllers
     public class SearchController : Singleton<SearchController>, ISearchListener
     {
         private IVisualizer problemVisualizer => LevelManager.Instance?.ProblemVisualizer;
-        private TreeVisualizer treeVisualizer => LevelManager.Instance.visualizeTree ? 
+        private TreeVisualizer treeVisualizer => !LevelManager.Instance.isMainMenu ? 
             LevelManager.Instance?.TreeVisualizer : null;
 
         [field: SerializeField] public bool isAutomaticSearch { get; private set; } = false;
@@ -66,13 +66,18 @@ namespace Search.Controllers
             if (result.success)
             {
                 var node = result.solutionNode;
-
+                
                 while (node != null)
                 {
                     problemVisualizer?.GetNodeVisual(node).SetState(NodeState.Path);
                     treeVisualizer?.GetNodeVisual(node).SetState(NodeState.Path);
                     node = node.parent;
                 }
+            }
+
+            if (!LevelManager.Instance.isMainMenu)
+            {
+                SearchResultUI.Instance.DisplayResult(result);
             }
             
             result.PrintSummary();
