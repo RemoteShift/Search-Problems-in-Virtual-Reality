@@ -177,7 +177,7 @@ namespace Search.Visualization
                     nodeVisual.SetColor(Color.red);
             }
 
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(delay/DOTween.timeScale);
 
             var deletedAnyActiveNode = false;
             foreach (var nodeVisual in subTree)

@@ -3,12 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Righteous-Regular SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Examples/Materials/Righteous-Regular SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/XR Origin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/XR Origin.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/MainMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/RestartSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/RestartSearch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/SearchResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/SearchResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/SearchResultUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/SearchResultUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +47,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/6dd00658fb454e6fb4c06a416ab8eaa1a69000/45/32a788e4/Editor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8c7a5484f44c4752a0d4812c53f2f7d834200/0b/f5a047a2/GUIUtility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ab2655e346314f2093c508ae091de9c75800/0b/98a0b5ca/NativeInputSystem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Animations.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Demigiant.meta" root0="FORCE_HIGHLIGHTING" />
@@ -223,15 +224,7 @@
       <workItem from="1778088227339" duration="14990000" />
       <workItem from="1778149796806" duration="25938000" />
       <workItem from="1778188399058" duration="1794000" />
-      <workItem from="1778227639648" duration="7807000" />
-    </task>
-    <task id="LOCAL-00008" summary="Added UI Element with toggle on left controller menu button">
-      <option name="closed" value="true" />
-      <created>1772569357310</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1772569357310</updated>
+      <workItem from="1778227639648" duration="11938000" />
     </task>
     <task id="LOCAL-00009" summary="Update graphics and quality settings, modify render pipeline configurations, and adjust scene object activation states">
       <option name="closed" value="true" />
@@ -617,7 +610,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778190190903</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Refactor LevelManager and SearchController; update main menu handling and improve search result display">
+      <option name="closed" value="true" />
+      <created>1778245913575</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1778245913575</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -650,7 +651,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add maze camera positioning logic and update maze level dimensions; enhance visual settings organization in MazeVisualizer" />
     <MESSAGE value="Update maze level dimensions and camera positioning; refactor MazeVisualizer for improved container management" />
     <MESSAGE value="Add TreeVisualizer for hierarchical search visualization; enhance SearchController and related components for improved node handling" />
     <MESSAGE value="Refactor visualizer components; enhance TreeVisualizer and SearchController for improved node handling and edge management" />
@@ -675,7 +675,8 @@
     <MESSAGE value="Refactor search-related classes; add automatic search functionality and improve animation handling" />
     <MESSAGE value="Refactor visualizer classes; improve variable naming, streamline node positioning logic, and enhance automatic search handling" />
     <MESSAGE value="Refactor LevelManager and SearchController; update variable accessibility, streamline search handling, and enhance UI interactions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor LevelManager and SearchController; update variable accessibility, streamline search handling, and enhance UI interactions" />
+    <MESSAGE value="Refactor LevelManager and SearchController; update main menu handling and improve search result display" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor LevelManager and SearchController; update main menu handling and improve search result display" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

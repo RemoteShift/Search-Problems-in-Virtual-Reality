@@ -6,12 +6,12 @@ namespace Search.Core
     {
         public bool success { get; }
         public SearchNode solutionNode { get; }
-        public List<string> solutionPath { get; }
+        private List<string> solutionPath { get; }
         public int nodesExpanded { get; }
-        private int nodesGenerated { get; }
+        public int nodesGenerated { get; }
         private int? level { get; }
-        private float totalTimeS { get; }
-        private string failureReason { get; }
+        public float totalTimeS { get; }
+        public string failureReason { get; }
 
         private SearchResult(bool success,
             int nodesExpanded,
