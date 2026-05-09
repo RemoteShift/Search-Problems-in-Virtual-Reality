@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
@@ -23,7 +24,25 @@ namespace Search.Controllers
         public float treeNodeCreationAnimationDuration = 1f;
 
         private Coroutine _pollAutomationCoroutine;
+        private Coroutine _solutionPathCoroutine;
         public float searchTimeScale = 1f;
+
+        private void OnEnable()
+        {
+            LevelManager.Instance.onSearchLoaded.AddListener(OnSearchLoaded);
+        }
+
+        private void OnDisable()
+        {
+            LevelManager.Instance.onSearchLoaded.RemoveListener(OnSearchLoaded);
+        }
+
+        private void OnSearchLoaded()
+        {
+            if(_solutionPathCoroutine != null)
+                StopCoroutine(_solutionPathCoroutine);
+            _solutionPathCoroutine = null;
+        }
 
         public void OnNodeExpanded(SearchNode node)
         {
@@ -81,12 +100,7 @@ namespace Search.Controllers
             {
                 var node = result.solutionNode;
                 
-                while (node != null)
-                {
-                    problemVisualizer?.GetNodeVisual(node).SetState(NodeState.Path);
-                    treeVisualizer?.GetNodeVisual(node).SetState(NodeState.Path);
-                    node = node.parent;
-                }
+                _solutionPathCoroutine = StartCoroutine(AnimateSolutionPath(node));
             }
 
             if (!LevelManager.Instance.isMainMenu)
@@ -95,6 +109,17 @@ namespace Search.Controllers
             }
             
             result.PrintSummary();
+        }
+
+        private IEnumerator AnimateSolutionPath(SearchNode node)
+        {
+            while (node != null)
+            {
+                problemVisualizer?.GetNodeVisual(node).SetState(NodeState.Path);
+                treeVisualizer?.GetNodeVisual(node).SetState(NodeState.Path);
+                node = node.parent;
+                yield return new WaitForSeconds(1f/searchTimeScale);
+            }
         }
 
         public void AddEdge(SearchNode a, SearchNode b)
@@ -239,8 +264,7 @@ namespace Search.Controllers
             
             foreach (var tween in tweens)
             {
-                tween.timeScale = 1f;
-                tween.timeScale = timeScale;
+                tween.timeScale = timeScale / tween.timeScale;
             }
         }
     }

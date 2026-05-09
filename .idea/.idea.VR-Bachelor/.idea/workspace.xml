@@ -3,12 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 1.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 1.asset.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/MainMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/TitleCanvasUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/TitleCanvasUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,15 +290,7 @@
       <workItem from="1778227639648" duration="31182000" />
       <workItem from="1778322674857" duration="1452000" />
       <workItem from="1778326695696" duration="11568000" />
-      <workItem from="1778346429239" duration="6693000" />
-    </task>
-    <task id="LOCAL-00014" summary="Changed UI to AutoHand UI.&#10;Made it Grabbable &amp; Distance Grabbable.&#10;UI resets position &amp; velocity when Menu Button toggles on.">
-      <option name="closed" value="true" />
-      <created>1773325121266</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1773325121266</updated>
+      <workItem from="1778346429239" duration="13557000" />
     </task>
     <task id="LOCAL-00015" summary="Add Follower script to enable object following behavior">
       <option name="closed" value="true" />
@@ -684,7 +676,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778349866852</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Refactor SearchController and UI components; implement search time scale adjustments for improved animation control">
+      <option name="closed" value="true" />
+      <created>1778353942410</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1778353942410</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -717,7 +717,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Refactor visualizer methods; update TryPlaySameState and StopSameStateAnimation in IVisualizer, MazeVisualizer, and TreeVisualizer for improved node handling" />
     <MESSAGE value="Update search algorithm configuration; modify expansion limit and algorithm type in Game.unity, LevelData, and LevelManager for improved search performance" />
     <MESSAGE value="Update dynamics and layer settings; modify collision matrix and layer bits in DynamicsManager, Game.unity, Node prefab, and TagManager for improved physics interactions" />
     <MESSAGE value="Add new scripts for UI functionality; implement FaceCamera and SetStateIDText for improved camera orientation and state display" />
@@ -742,7 +741,8 @@
     <MESSAGE value="Refactor QueueUI and SearchResultUI; improve null safety and streamline UI disable logic" />
     <MESSAGE value="Refactor GeneralSearch and SearchController; streamline node removal logic in search process" />
     <MESSAGE value="Add MainMenu, TitleCanvasUI, and LevelSelectorUI; implement UI transitions and animations for enhanced user experience" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add MainMenu, TitleCanvasUI, and LevelSelectorUI; implement UI transitions and animations for enhanced user experience" />
+    <MESSAGE value="Refactor SearchController and UI components; implement search time scale adjustments for improved animation control" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor SearchController and UI components; implement search time scale adjustments for improved animation control" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -765,19 +765,6 @@
           </properties>
           <option name="timeStamp" value="16" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs</url>
-          <line>220</line>
-          <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\Core\Base\Search Algorithms\GeneralSearch.cs" containingFunctionPresentation="Method 'Expand'">
-            <startOffsets>
-              <option value="9732" />
-            </startOffsets>
-            <endOffsets>
-              <option value="9794" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

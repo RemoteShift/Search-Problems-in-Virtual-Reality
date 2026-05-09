@@ -10,29 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2905a44838220f24da3ad043a9f9a62f, type: 3}
-  m_Name: MazeLevel 1
+  m_Name: MazeLevel 6
   m_EditorClassIdentifier: Assembly-CSharp::Search.Levels.MazeLevelData
-  levelName: Easy Maze
-  description: If you could even call it a maze
-  expansionLimit: 10
-  width: 6
-  height: 4
-  start: {x: 1, y: 1}
+  levelName: Maze?
+  description: What's even the point? I'm already out
+  expansionLimit: 100
+  width: 9
+  height: 9
+  start: {x: 0, y: 4}
   goals:
-  - {x: 2, y: 5}
-  wallsPositions:
-  - {x: 0, y: 0}
-  - {x: 0, y: 1}
-  - {x: 0, y: 2}
-  - {x: 0, y: 3}
-  - {x: 0, y: 4}
-  - {x: 0, y: 5}
-  - {x: 1, y: 0}
-  - {x: 1, y: 5}
-  - {x: 2, y: 0}
-  - {x: 2, y: 1}
-  - {x: 2, y: 2}
-  - {x: 3, y: 2}
-  - {x: 3, y: 3}
   - {x: 3, y: 4}
+  - {x: 8, y: 0}
+  wallsPositions:
+  - {x: 2, y: 3}
+  - {x: 2, y: 4}
+  - {x: 2, y: 5}
+  - {x: 3, y: 3}
   - {x: 3, y: 5}
+  - {x: 4, y: 3}
+  - {x: 4, y: 4}
+  - {x: 4, y: 5}

@@ -22,12 +22,12 @@ public class MainMenu : MonoBehaviour
     public void LevelSelector()
     {
         TransitionTo(levelSelectorUI);
-        /*LoadingManager.Instance.LoadScene(sceneIndex: 2, onComplete:() =>
-         { leftControllerUI.isUIToggleable = true; 
-         LevelManager.Instance.isMainMenu = false; 
-         LevelManager.Instance.Initialize(); 
-         LevelManager.Instance.StartSearch(); 
-         Destroy(gameObject); });*/
+        // LoadingManager.Instance.LoadScene(sceneIndex: 2, onComplete:() =>
+        //  { leftControllerUI.isUIToggleable = true; 
+        //  LevelManager.Instance.isMainMenu = false; 
+        //  LevelManager.Instance.Initialize(); 
+        //  LevelManager.Instance.StartSearch(); 
+        //  Destroy(gameObject); });
     }
 
     private void TransitionTo(AnimatableUI targetCanvas)
