@@ -22,6 +22,9 @@ namespace Search.Controllers
         public float problemNodeCreationAnimationDuration = 1f;
         public float treeNodeCreationAnimationDuration = 1f;
 
+        private Coroutine _pollAutomationCoroutine;
+        public float searchTimeScale = 1f;
+
         public void OnNodeExpanded(SearchNode node)
         {
             problemVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Expanded);
@@ -179,11 +182,18 @@ namespace Search.Controllers
 
                 if (value.Value)
                 {
-                    StartCoroutine(PollAutomation(1f / DOTween.timeScale));
+                    if(_pollAutomationCoroutine != null)
+                        StopCoroutine(_pollAutomationCoroutine);
+                    
+                    _pollAutomationCoroutine = StartCoroutine(PollAutomation(1f / searchTimeScale));
                 }
                 else
                 {
-                    StopAllCoroutines();
+                    if (_pollAutomationCoroutine != null)
+                    {
+                        StopCoroutine(_pollAutomationCoroutine);
+                        _pollAutomationCoroutine = null;
+                    }
                 }
             }
         }
@@ -195,7 +205,7 @@ namespace Search.Controllers
             while (isAutomaticSearch)
             {
                 var search = LevelManager.Instance.GetCurrentSearchAlgorithm();
-                yield return new WaitUntil(() => !IsAnimating() && DOTween.timeScale != 0);
+                yield return new WaitUntil(() => !IsAnimating() && searchTimeScale != 0);
 
                 skipDelay = false;
                 
@@ -205,8 +215,8 @@ namespace Search.Controllers
                     if(!isAutomaticSearch) // in case it was turned off while waiting
                         yield break;
                     
-                    yield return new WaitUntil(() => DOTween.timeScale > 0f);
-                    elapsed += Time.unscaledDeltaTime * DOTween.timeScale;
+                    yield return new WaitUntil(() => searchTimeScale > 0f);
+                    elapsed += Time.unscaledDeltaTime * searchTimeScale;
                     yield return null;
                 }
                 
@@ -218,5 +228,20 @@ namespace Search.Controllers
         }
         
         public bool IsAnimating() => DOTween.IsTweening("Search");
+
+        public void SetSearchTimeScale(float timeScale)
+        {
+            searchTimeScale =  timeScale;
+            var tweens = DOTween.TweensById("Search");
+
+            if(tweens == null)
+                return;
+            
+            foreach (var tween in tweens)
+            {
+                tween.timeScale = 1f;
+                tween.timeScale = timeScale;
+            }
+        }
     }
 }

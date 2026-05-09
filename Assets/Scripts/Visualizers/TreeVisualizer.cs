@@ -38,6 +38,8 @@ namespace Search.Visualization
         
         private List<NodeVisual> _currentSameStateVisuals = new();
 
+        private float searchTimeScale => SearchController.Instance.searchTimeScale;
+
         private void Awake()
         {
             _nodeContainer = CreateContainer("Nodes");
@@ -179,13 +181,13 @@ namespace Search.Visualization
                 if (visual) visual.SetColor(Color.red);
             }
 
-            // Wait safely, respecting DOTween.timeScale and avoiding division by zero
+            // Wait safely, respecting searchTimeScale and avoiding division by zero
             float timer = 0f;
             while (timer < delay)
             {
-                if (DOTween.timeScale > 0f)
+                if (searchTimeScale > 0f)
                 {
-                    timer += Time.unscaledDeltaTime * DOTween.timeScale;
+                    timer += Time.unscaledDeltaTime * searchTimeScale;
                 }
                 yield return null;
             }
@@ -401,7 +403,7 @@ namespace Search.Visualization
                             {
                                 if (collide) collide.enabled = true;
                                 visual.isNew = false;
-                            }).SetId("Search");
+                            }).SetId("Search").timeScale = searchController.searchTimeScale;
                     }
                     else
                     {

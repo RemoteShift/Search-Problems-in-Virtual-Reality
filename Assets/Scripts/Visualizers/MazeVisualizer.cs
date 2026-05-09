@@ -214,7 +214,7 @@ namespace Search.Visualization
                     {
                         if (collide) collide.enabled = true;
                         visual.isNew = false;
-                    }).SetId("Search");
+                    }).SetId("Search").timeScale = searchController.searchTimeScale;
             }
             else
             {   visual.transform.localPosition = pos;

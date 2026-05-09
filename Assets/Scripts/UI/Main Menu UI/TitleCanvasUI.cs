@@ -99,7 +99,7 @@ public class TitleCanvasUI : AnimatableUI
         seq.OnComplete(() =>
         {
             _algorithmSequenceCoroutine = StartCoroutine(AlgorithmSequence());
-            DOTween.timeScale = 5f;
+            _searchController.SetSearchTimeScale(5f);
         });
 
         return seq;
@@ -150,7 +150,7 @@ public class TitleCanvasUI : AnimatableUI
             _levelManager.onSearchLoaded.RemoveListener(UpdateAlgorithmText);
             StopCoroutine(_algorithmSequenceCoroutine);
             _algorithmSequenceCoroutine = null;
-            DOTween.timeScale = 1f;
+            _searchController.SetSearchTimeScale(1f);
             gameObject.SetActive(false);
         });
 
