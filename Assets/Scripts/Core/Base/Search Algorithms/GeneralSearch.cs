@@ -107,7 +107,7 @@ namespace Search.Core.Algorithms
                 _searchTimer.Stop();
                 _stepRequested = false;
                 yield return new WaitUntil(() => _stepRequested);
-                SearchController.Instance.queueUI.RemoveFirstNode();
+                SearchController.Instance.queueUI?.RemoveFirstNode();
                 _searchTimer.Start();
                 
                 var node = _frontier.Remove();

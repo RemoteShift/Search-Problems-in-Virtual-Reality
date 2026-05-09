@@ -3,13 +3,48 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Children/Level Manager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Children/Level Manager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/TitleCanvasUI.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/TitleCanvasUI.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/MainMenu.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/MainMenu.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/RestartSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/RestartSearch.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/FaceCamera.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/FaceCamera.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/MazeVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CopilotChats">
+    <option name="panelChat">
+      <chat>
+        <option name="activeSessionId" value="78c9cf01-e209-4557-af4c-7feacb0aa73f" />
+        <option name="sessions">
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="78c9cf01-e209-4557-af4c-7feacb0aa73f" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+        </option>
+        <option name="type" value="PANEL" />
+      </chat>
+    </option>
+  </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/allou/OneDrive/Desktop/Unity Projects/VR-Bachelor" value="3AAhwaufjRS4xe7odaIQqVOkM8D" />
+    </persistenceIdMap>
   </component>
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
@@ -71,6 +106,8 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Misc/NodeVisualPasser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/Left Controller.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/Hands/LeftControllerUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Interfaces/AnimatableUI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/LevelSelectorUI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Setters/StatsUI.cs.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/DistanceBasedScaler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/DontDestroyOnLoad.cs" root0="FORCE_HIGHLIGHTING" />
@@ -91,6 +128,7 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@57d0e36f6123/InputSystem/InputManagerStateMonitors.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@57d0e36f6123/InputSystem/NativeInputRuntime.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@57d0e36f6123/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@d6dfd1e235d5/ShaderLibrary/API/Metal.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@5f736ad4ccd8/Runtime/Inputs/InputActionManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.xr.interaction.toolkit@5f736ad4ccd8/Runtime/Locomotion/LocomotionMediator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -220,15 +258,10 @@
       <workItem from="1778088227339" duration="14990000" />
       <workItem from="1778149796806" duration="25938000" />
       <workItem from="1778188399058" duration="1794000" />
-      <workItem from="1778227639648" duration="31165000" />
-    </task>
-    <task id="LOCAL-00012" summary="Added AutoHand">
-      <option name="closed" value="true" />
-      <created>1772894944538</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1772894944538</updated>
+      <workItem from="1778227639648" duration="31182000" />
+      <workItem from="1778322674857" duration="1452000" />
+      <workItem from="1778326695696" duration="11568000" />
+      <workItem from="1778346429239" duration="3042000" />
     </task>
     <task id="LOCAL-00013" summary="Added UI Interaction, Removed old UI Interaction">
       <option name="closed" value="true" />
@@ -614,7 +647,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778273742121</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Refactor GeneralSearch and SearchController; streamline node removal logic in search process">
+      <option name="closed" value="true" />
+      <created>1778275388132</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1778275388134</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -647,7 +688,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add same state animation to Node visuals; enhance visual feedback in TreeVisualizer and SearchController" />
     <MESSAGE value="Enhance node blinking functionality; update BlinkNode method to accept color parameter in IVisualizer and related visualizer classes" />
     <MESSAGE value="Refactor visualizer methods; update TryPlaySameState and StopSameStateAnimation in IVisualizer, MazeVisualizer, and TreeVisualizer for improved node handling" />
     <MESSAGE value="Update search algorithm configuration; modify expansion limit and algorithm type in Game.unity, LevelData, and LevelManager for improved search performance" />
@@ -672,7 +712,8 @@
     <MESSAGE value="Refactor SearchResult and SearchResultUI; update variable accessibility, enhance UI elements, and improve result display logic" />
     <MESSAGE value="Add QueueUI and QueueElementUI; implement node management for search visualization and enhance UI interactions" />
     <MESSAGE value="Refactor QueueUI and SearchResultUI; improve null safety and streamline UI disable logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor QueueUI and SearchResultUI; improve null safety and streamline UI disable logic" />
+    <MESSAGE value="Refactor GeneralSearch and SearchController; streamline node removal logic in search process" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor GeneralSearch and SearchController; streamline node removal logic in search process" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -700,10 +741,10 @@
           <line>220</line>
           <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\Core\Base\Search Algorithms\GeneralSearch.cs" containingFunctionPresentation="Method 'Expand'">
             <startOffsets>
-              <option value="9731" />
+              <option value="9732" />
             </startOffsets>
             <endOffsets>
-              <option value="9793" />
+              <option value="9794" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="17" />

@@ -161,7 +161,7 @@ namespace Search.Controllers
 
             if (IsAnimating())
             {
-                DOTween.CompleteAll();
+                DOTween.Complete("Search");
                 return;
             }
             
@@ -217,6 +217,6 @@ namespace Search.Controllers
             }
         }
         
-        public bool IsAnimating() => DOTween.TotalPlayingTweens() > 0;
+        public bool IsAnimating() => DOTween.IsTweening("Search");
     }
 }

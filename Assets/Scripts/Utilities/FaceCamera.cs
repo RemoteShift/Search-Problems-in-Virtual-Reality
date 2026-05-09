@@ -8,9 +8,9 @@ namespace Search.Utils
         [Tooltip("The camera to face. If null, will use the main camera.")]
         [SerializeField] private Camera playerCamera;
 
-        [Foldout("Constraints")] public bool lockX = false;
-        [Foldout("Constraints")] public bool lockY = false;
-        [Foldout("Constraints")] public bool lockZ = false;
+        [Foldout("Constraints")] public bool lockX;
+        [Foldout("Constraints")] public bool lockY;
+        [Foldout("Constraints")] public bool lockZ;
 
         public bool enable = true;
         

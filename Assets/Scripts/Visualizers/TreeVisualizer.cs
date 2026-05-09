@@ -401,7 +401,7 @@ namespace Search.Visualization
                             {
                                 if (collide) collide.enabled = true;
                                 visual.isNew = false;
-                            });
+                            }).SetId("Search");
                     }
                     else
                     {

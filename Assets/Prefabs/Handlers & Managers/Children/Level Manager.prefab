@@ -48,13 +48,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Search.Levels.LevelManager
   currentLevel: {fileID: 11400000, guid: d532c4e372077654c86c74fbdaafa0f8, type: 2}
-  visualizeTree: 0
+  isMainMenu: 1
   currentAlgorithmType: 1
   onAlgorithmChanged:
     m_PersistentCalls:
       m_Calls: []
-  useGraphSearch: 0
-  isStepped: 1
+  useGraphSearch: 1
   levelLimit: 10
   searchAlgorithm:
     currentLevelLimit: 0

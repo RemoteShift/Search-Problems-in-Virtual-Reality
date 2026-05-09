@@ -33,7 +33,7 @@ public class SearchControllerUI : MonoBehaviour
 
     public void SetAutomaticSearch(bool value)
     {
-        DOTween.CompleteAll();
+        DOTween.Complete("Search");
         
         SearchController.Instance.SetAutomaticSearch(value);
     }
@@ -58,7 +58,7 @@ public class SearchControllerUI : MonoBehaviour
 
     public void SkipAnimations()
     {
-        DOTween.CompleteAll();
+        DOTween.Complete("Search");
         SearchController.Instance.skipDelay = true;
     }
 }

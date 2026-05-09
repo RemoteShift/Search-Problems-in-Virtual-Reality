@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using Search.Core;
 using Search.Core.Algorithms;
@@ -100,6 +101,8 @@ namespace Search.Levels
 
         private void StartSearchCoroutine(int? levelLimitValue = null)
         {
+            DOTween.Complete("Search");
+            
             if (_problem == null)
             {
                 Debug.LogError("No search problem loaded. Cannot start search.");
