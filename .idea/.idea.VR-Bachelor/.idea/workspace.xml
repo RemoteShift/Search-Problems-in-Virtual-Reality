@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/AlgorithmType.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/AlgorithmType.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Level Button.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Level Button.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/TitleCanvasUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/TitleCanvasUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/ChangeAlgorithm.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/ChangeAlgorithm.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/SearchProblemStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/SearchProblemStats.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,7 +17,7 @@
   <component name="CopilotChats">
     <option name="panelChat">
       <chat>
-        <option name="activeSessionId" value="9e845516-524b-459c-b506-1c33a854f88e" />
+        <option name="activeSessionId" value="9ab48fb8-6a36-4193-9c45-c8f923567b75" />
         <option name="sessions">
           <session>
             <option name="chatType" value="PANEL" />
@@ -36,10 +38,18 @@
           <session>
             <option name="chatType" value="PANEL" />
             <option name="id" value="9e845516-524b-459c-b506-1c33a854f88e" />
-            <option name="modeId" value="Ask" />
+            <option name="modeId" value="Agent" />
             <option name="modelType" value="builtin_family" />
             <option name="modelValue" value="auto" />
             <option name="status" value="Completed" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="9ab48fb8-6a36-4193-9c45-c8f923567b75" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
             <option name="targetType" value="LOCAL" />
           </session>
         </option>
@@ -101,7 +111,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Samples/XR Hands/1.7.3.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptable Objects.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scriptable Objects/LevelData.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/EdgeDynamicUpdater.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/LoadingSceneController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -290,15 +299,7 @@
       <workItem from="1778322674857" duration="1452000" />
       <workItem from="1778326695696" duration="11568000" />
       <workItem from="1778346429239" duration="15918000" />
-      <workItem from="1778405072637" duration="16824000" />
-    </task>
-    <task id="LOCAL-00018" summary="Add ScriptableObject classes for search problems and types; implement SearchProblemSO and SearchProblemType">
-      <option name="closed" value="true" />
-      <created>1775850850813</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1775850850813</updated>
+      <workItem from="1778405072637" duration="24284000" />
     </task>
     <task id="LOCAL-00019" summary="Refactor GridState to use Row and Column properties; add MazeLevelData and MazeTransition classes for maze level handling&#10;&#10;Changed all grid layouts to be defined as (row, column)">
       <option name="closed" value="true" />
@@ -684,7 +685,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778429167057</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Refactor algorithm handling in LevelManager and ChangeAlgorithm; remove unused enum value and improve UI integration for algorithm selection">
+      <option name="closed" value="true" />
+      <created>1778429917570</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1778429917570</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -717,7 +726,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add CanvasCulling script for improved canvas visibility management; implement distance-based culling and frustum checks" />
     <MESSAGE value="Implement canvas culling functionality; add toggle for culling, update prefab settings, and enhance edge management in visualizers" />
     <MESSAGE value="Added UI in Main Menu Scene&#10;&#10;Imported packages:&#10;- Better Mesh&#10;- LeanTween" />
     <MESSAGE value="Refactor search result handling in SearchController; update visualizer states for successful search paths and remove summary printing" />
@@ -742,7 +750,8 @@
     <MESSAGE value="Add maze level assets and metadata; implement new maze levels for enhanced gameplay experience" />
     <MESSAGE value="Add new UI prefabs and update existing ones; implement adjustments for improved layout and functionality" />
     <MESSAGE value="Update LevelManager and UI components; adjust level data handling and improve UI scaling for better performance" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update LevelManager and UI components; adjust level data handling and improve UI scaling for better performance" />
+    <MESSAGE value="Refactor algorithm handling in LevelManager and ChangeAlgorithm; remove unused enum value and improve UI integration for algorithm selection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor algorithm handling in LevelManager and ChangeAlgorithm; remove unused enum value and improve UI integration for algorithm selection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -771,6 +780,7 @@
       <pinned-members>
         <PinnedItemInfo parentTag="Type#Search.Visualization.NodeVisual" memberName="position" />
         <PinnedItemInfo parentTag="Type#Search.Core.GridState" memberName="id" />
+        <PinnedItemInfo parentTag="Type#TMPro.TMP_Text" memberName="text" />
       </pinned-members>
     </pin-to-top-manager>
   </component>

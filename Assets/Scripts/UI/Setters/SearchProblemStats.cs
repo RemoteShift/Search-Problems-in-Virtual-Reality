@@ -4,36 +4,59 @@ using UnityEngine;
 
 public class SearchProblemStats : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI levelNameText;
+    [SerializeField] private TextMeshProUGUI levelDescriptionText;
     [SerializeField] private TextMeshProUGUI startStateText;
-    [SerializeField] private GameObject goalStatesContent;
+    [SerializeField] private Transform goalStatesContent;
     [SerializeField] private GameObject goalStateTextPrefab;
     
     private void OnEnable()
     {
-        LevelManager.Instance.onLevelDataChanged.AddListener(UpdateStats);
+        LevelManager.Instance?.onLevelDataChanged.AddListener(UpdateStats);
     }
 
     private void OnDisable()
     {
-        LevelManager.Instance.onLevelDataChanged.RemoveListener(UpdateStats);
+        LevelManager.Instance?.onLevelDataChanged.RemoveListener(UpdateStats);
     }
 
     private void UpdateStats(LevelData levelData)
     {
-        startStateText.text = levelData.startState.id;
+        if (!levelData)
+            return;
+
+        // startState/goalStates are populated in CreateSearchProblem for current level assets.
+        if (levelData.startState == null || levelData.goalStates == null)
+        {
+            levelData.CreateSearchProblem();
+        }
+
+        levelNameText.text = levelData.levelName;
+        levelDescriptionText.text = levelData.description;
+        startStateText.text = levelData.startState?.id ?? "-";
         
-        foreach (Transform child in goalStatesContent.transform)
+        foreach (Transform child in goalStatesContent)
         {
             Destroy(child.gameObject);
         }
 
-        foreach (var goalState in levelData.goalStates)
-        {
-            var goalStateText =  Instantiate(goalStateTextPrefab, goalStatesContent.transform)
-                        .GetComponent<TextMeshProUGUI>();
+        if (levelData.goalStates == null)
+            return;
 
-            goalStateText.text = goalStatesContent.transform.childCount == 1 ? goalState.id : $"{goalState.id}&";
+        for (var i = 0; i < levelData.goalStates.Count; i++)
+        {
+            var goalState = levelData.goalStates[i];
+            var goalStateText = Instantiate(goalStateTextPrefab, goalStatesContent)
+                .GetComponent<TextMeshProUGUI>();
+
+            if (!goalStateText)
+            {
+                Debug.LogWarning("SearchProblemStats: goalStateTextPrefab is missing a TextMeshProUGUI component.");
+                continue;
+            }
+
+            var isFirst = i == 0;
+            goalStateText.text = isFirst ? goalState.id : $"{goalState.id} &";
         }
-        
     }
 }

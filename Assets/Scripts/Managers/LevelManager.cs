@@ -12,7 +12,7 @@ namespace Search.Levels
     {
         [Header("Level Settings")] [SerializeField]
         private LevelData currentLevel;
-        public UnityEvent<LevelData> onLevelDataChanged;
+        [HideInInspector] public UnityEvent<LevelData> onLevelDataChanged = new();
         
         public bool isMainMenu = true;
 
@@ -42,6 +42,7 @@ namespace Search.Levels
         private Coroutine _searchCoroutine;
 
         [HideInInspector] public UnityEvent onSearchLoaded;
+        [HideInInspector] public UnityEvent onLevelLoaded;
         
         public void Initialize()
         {
@@ -84,6 +85,8 @@ namespace Search.Levels
             {
                 TreeVisualizer?.Setup(currentLevel, _problem);
             }
+            
+            onLevelLoaded.Invoke();
         }
         
         public void UnloadLevel()
