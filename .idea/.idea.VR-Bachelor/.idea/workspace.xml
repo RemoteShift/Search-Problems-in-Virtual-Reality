@@ -3,12 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 1.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 1.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 1.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Label Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Label Canvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Label Canvas.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Edge Label Canvas.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Label Canvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/Label Canvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/State ID Canvas.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/State ID Canvas.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Children/Level Manager.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Children/Level Manager.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Handlers &amp; Managers.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Handlers &amp; Managers.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Meshes/Node Mesh.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Meshes/Node Mesh.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/MainMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/SetStateIDText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/SetStateIDText.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,15 +298,7 @@
       <workItem from="1778227639648" duration="31182000" />
       <workItem from="1778322674857" duration="1452000" />
       <workItem from="1778326695696" duration="11568000" />
-      <workItem from="1778346429239" duration="13557000" />
-    </task>
-    <task id="LOCAL-00015" summary="Add Follower script to enable object following behavior">
-      <option name="closed" value="true" />
-      <created>1775250885442</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1775250885442</updated>
+      <workItem from="1778346429239" duration="15880000" />
     </task>
     <task id="LOCAL-00016" summary="Added `IState` interface for all states&#10;Renamed `Node` to `SearchNode` &amp; Modified to worth with new interface `IState`&#10;Added namespace `SearchCore`">
       <option name="closed" value="true" />
@@ -684,7 +684,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778353942410</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="Add maze level assets and metadata; implement new maze levels for enhanced gameplay experience">
+      <option name="closed" value="true" />
+      <created>1778369154091</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1778369154091</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -717,7 +725,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Update search algorithm configuration; modify expansion limit and algorithm type in Game.unity, LevelData, and LevelManager for improved search performance" />
     <MESSAGE value="Update dynamics and layer settings; modify collision matrix and layer bits in DynamicsManager, Game.unity, Node prefab, and TagManager for improved physics interactions" />
     <MESSAGE value="Add new scripts for UI functionality; implement FaceCamera and SetStateIDText for improved camera orientation and state display" />
     <MESSAGE value="Add CanvasCulling script for improved canvas visibility management; implement distance-based culling and frustum checks" />
@@ -742,7 +749,8 @@
     <MESSAGE value="Refactor GeneralSearch and SearchController; streamline node removal logic in search process" />
     <MESSAGE value="Add MainMenu, TitleCanvasUI, and LevelSelectorUI; implement UI transitions and animations for enhanced user experience" />
     <MESSAGE value="Refactor SearchController and UI components; implement search time scale adjustments for improved animation control" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor SearchController and UI components; implement search time scale adjustments for improved animation control" />
+    <MESSAGE value="Add maze level assets and metadata; implement new maze levels for enhanced gameplay experience" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add maze level assets and metadata; implement new maze levels for enhanced gameplay experience" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

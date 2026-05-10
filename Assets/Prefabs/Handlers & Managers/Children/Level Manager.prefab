@@ -113,7 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Search.Visualization.EdgeManager
   edgeMaterial: {fileID: 2100000, guid: 55f37ab2ffee134489dd70db9326c1f6, type: 2}
   edgeWidth: 0.03
-  labelPrefab: {fileID: 0}
+  labelPrefab: {fileID: 5844918289570248116, guid: a9ffe8107497b3f46b22d8cf7ec7fe5d, type: 3}
 --- !u!1001 &3031416412392948568
 PrefabInstance:
   m_ObjectHideFlags: 0

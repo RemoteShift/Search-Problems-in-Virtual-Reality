@@ -283,10 +283,6 @@ PrefabInstance:
       propertyPath: edgeWidth
       value: 0.05
       objectReference: {fileID: 0}
-    - target: {fileID: 2195378564306077073, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
-      propertyPath: labelPrefab
-      value: 
-      objectReference: {fileID: 4366408394120971138, guid: 27783922061d7a84b823b1782a8651ac, type: 3}
     - target: {fileID: 3950165550301626801, guid: 0ee60457543f32b4197080b62d6a6d60, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

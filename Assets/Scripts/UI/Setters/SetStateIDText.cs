@@ -11,7 +11,7 @@ namespace Search.UI
 
         private void Start()
         {
-            _nodeVisual = transform.parent.parent.GetComponent<NodeVisual>();
+            _nodeVisual = transform.parent.parent.parent.GetComponent<NodeVisual>();
             _textMeshPro = GetComponent<TextMeshProUGUI>();
 
             if (_nodeVisual && _textMeshPro)
