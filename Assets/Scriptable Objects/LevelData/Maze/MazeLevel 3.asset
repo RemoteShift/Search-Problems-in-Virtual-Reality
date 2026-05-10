@@ -15,8 +15,8 @@ MonoBehaviour:
   levelName: Two goals
   description: Some algorithms prefer doing things the hard way
   expansionLimit: 50
-  width: 7
-  height: 7
+  columns: 7
+  rows: 7
   start: {x: 1, y: 5}
   goals:
   - {x: 1, y: 0}
@@ -45,7 +45,6 @@ MonoBehaviour:
   - {x: 4, y: 6}
   - {x: 5, y: 0}
   - {x: 5, y: 2}
-  - {x: 5, y: 4}
   - {x: 5, y: 6}
   - {x: 6, y: 0}
   - {x: 6, y: 2}

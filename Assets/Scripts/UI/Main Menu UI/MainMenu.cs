@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Search.Utils;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour

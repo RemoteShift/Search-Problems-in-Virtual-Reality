@@ -35,6 +35,11 @@ public class LevelSelectorUI : AnimatableUI
 
         var seq = DOTween.Sequence().SetId("UI");
         
+        seq.AppendCallback(() =>
+        {
+            _levelManager.useGraphSearch = false;
+        });
+        
         #region Animate Rect Mask Padding Open
         
         rectMask.padding = new Vector4(left, bottom, right, top);

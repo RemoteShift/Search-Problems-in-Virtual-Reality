@@ -37,7 +37,7 @@ public class LoadingSceneController : MonoBehaviour
 
         if (!string.IsNullOrEmpty(targetString))
             asyncLoad = SceneManager.LoadSceneAsync(targetString);
-        else if (targetInt > 0 && targetInt != LoadingManager.Instance.loadingSceneIndex)
+        else if (targetInt >= 0 && targetInt != LoadingManager.Instance.loadingSceneIndex)
             asyncLoad = SceneManager.LoadSceneAsync(targetInt);
         else
             throw new InvalidEnumArgumentException("Invalid target scene in LoadingManager");

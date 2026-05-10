@@ -78,4 +78,14 @@ public class StatsUI : Singleton<StatsUI>
         nodesExpandedText.text = $"Nodes Expanded: {_generalSearch.expandedCount}";
         nodesWrongfullyExpandedText.text = $"Wrongly Expanded Nodes: {_generalSearch.wrongfullyExpandedCount}";
     }
+    
+    public void LoadMainMenu()
+    {
+        transform.parent.gameObject.SetActive(false);
+        LoadingManager.Instance.LoadScene(sceneName: "Main Menu", onComplete:() =>
+        { LeftControllerUI.IsUIToggleable = false;
+            
+            LevelManager.Instance.isMainMenu = true;
+        });
+    }
 }

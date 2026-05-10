@@ -49,20 +49,26 @@ public class TitleCanvasUI : AnimatableUI
     {
         _levelManager = LevelManager.Instance;
         _searchController = SearchController.Instance;
-        _levelManager.onSearchLoaded.AddListener(UpdateAlgorithmText);
-
-        _levelManager.SetCurrentLevelData(levelData);
-        _levelManager.Initialize();
-        _searchController.SetAutomaticSearch(true);
-        _levelManager.useGraphSearch = true;
 
         #region Animation
 
         var seq = DOTween.Sequence().SetId("UI");
         
+        seq.AppendCallback(() =>
+        {
+            _levelManager.onSearchLoaded.AddListener(UpdateAlgorithmText);
+            _levelManager.SetCurrentLevelData(levelData);
+            _levelManager.Initialize();
+            _searchController.SetAutomaticSearch(true);
+            _levelManager.useGraphSearch = true;
+        });
+
         #region Animate Rect Mask Padding Open
         
-        rectMask.padding = new Vector4(left, bottom, right, top);
+        seq.AppendCallback(() =>
+        {
+            rectMask.padding = new Vector4(left, bottom, right, top);
+        });
         
         seq.Append(
             DOTween.To(

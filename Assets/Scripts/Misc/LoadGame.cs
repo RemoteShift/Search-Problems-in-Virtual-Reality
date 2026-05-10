@@ -1,0 +1,11 @@
+using Search.Utils;
+using UnityEngine.SceneManagement;
+
+public class LoadGame : Singleton<LoadGame>
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+}

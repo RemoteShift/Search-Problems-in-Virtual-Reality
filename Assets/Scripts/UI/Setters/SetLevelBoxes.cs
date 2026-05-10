@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Search.Levels;
 using TMPro;
@@ -12,9 +13,15 @@ public class SetLevelBoxes : MonoBehaviour
     
     private Button _firstButton;
     
-    private void Start()
+    private void OnEnable()
     {
         UpdateLevelBoxes();
+        StartCoroutine(TryPressFirstButton());
+    }
+
+    private IEnumerator TryPressFirstButton()
+    {
+        yield return new WaitUntil(() => SearchProblemStats.isReady);
         _firstButton?.onClick.Invoke();
     }
 

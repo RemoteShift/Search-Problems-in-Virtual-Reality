@@ -5,7 +5,7 @@ public class LoadLevel : MonoBehaviour
 {
     public void Load()
     {
-        LoadingManager.Instance.LoadScene(sceneIndex: 2, onComplete:() =>
+        LoadingManager.Instance.LoadScene(sceneName: "Level Selector", onComplete:() =>
          { LeftControllerUI.IsUIToggleable = true; 
          LevelManager.Instance.isMainMenu = false; 
          LevelManager.Instance.Initialize(); 

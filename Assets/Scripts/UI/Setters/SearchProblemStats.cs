@@ -9,15 +9,19 @@ public class SearchProblemStats : MonoBehaviour
     [SerializeField] private TextMeshProUGUI startStateText;
     [SerializeField] private Transform goalStatesContent;
     [SerializeField] private GameObject goalStateTextPrefab;
+
+    public static bool isReady = false;
     
     private void OnEnable()
     {
-        LevelManager.Instance?.onLevelDataChanged.AddListener(UpdateStats);
+        LevelManager.Instance.onLevelDataChanged.AddListener(UpdateStats);
+        isReady = true;
     }
 
     private void OnDisable()
     {
-        LevelManager.Instance?.onLevelDataChanged.RemoveListener(UpdateStats);
+        isReady = false;
+        LevelManager.Instance.onLevelDataChanged.RemoveListener(UpdateStats);
     }
 
     private void UpdateStats(LevelData levelData)
@@ -56,7 +60,7 @@ public class SearchProblemStats : MonoBehaviour
             }
 
             var isFirst = i == 0;
-            goalStateText.text = isFirst ? goalState.id : $"{goalState.id} &";
+            goalStateText.text = isFirst ? goalState.id : $"{goalState.id}&";
         }
     }
 }
