@@ -1,10 +1,11 @@
+using Search.Utils;
 using UnityEngine;
 
 public class LeftControllerUI : MonoBehaviour
 {
     private VRInputHandler _inputHandler;
 
-    public bool isUIToggleable;
+    public static bool IsUIToggleable;
     
     public GameObject controllerCanvas;
     [SerializeField] private Rigidbody rb;
@@ -33,7 +34,7 @@ public class LeftControllerUI : MonoBehaviour
 
     private void HandleUIToggle(bool isPressed)
     {
-        if (!controllerCanvas || !isUIToggleable)
+        if (!controllerCanvas || !IsUIToggleable)
             return;
         
         if (isPressed)

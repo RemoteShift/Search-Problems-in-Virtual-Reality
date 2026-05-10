@@ -118,8 +118,8 @@ namespace Search.Visualization
         private void BuildGroundAndWalls()
         {
             var walls = _levelData.GetWalls2D();
-            var height = _levelData.height;
-            var width = _levelData.width;
+            var height = _levelData.rows;
+            var width = _levelData.columns;
 
             for (var row = 0; row < height; row++)
             for (var col = 0; col < width; col++)
@@ -166,8 +166,8 @@ namespace Search.Visualization
 
         private void PositionCamera()
         {
-            var width = _levelData.width;
-            var height = _levelData.height;
+            var width = _levelData.columns;
+            var height = _levelData.rows;
 
             mazeCamera.transform.SetParent(transform);
             mazeCamera.transform.localPosition = new Vector3((width - 1) / 2f, 10f, (height - 1) / 2f);

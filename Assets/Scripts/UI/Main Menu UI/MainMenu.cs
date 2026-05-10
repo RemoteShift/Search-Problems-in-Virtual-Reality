@@ -1,11 +1,8 @@
 using DG.Tweening;
-using Search.Levels;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private LeftControllerUI leftControllerUI;
-
     [Header("Left Canvas Scripts")] 
     [SerializeField] private TitleCanvasUI titleCanvasUI;
     [SerializeField] private LevelSelectorUI levelSelectorUI;
@@ -21,13 +18,7 @@ public class MainMenu : MonoBehaviour
 
     public void LevelSelector()
     {
-        //TransitionTo(levelSelectorUI);
-        LoadingManager.Instance.LoadScene(sceneIndex: 2, onComplete:() =>
-         { leftControllerUI.isUIToggleable = true; 
-         LevelManager.Instance.isMainMenu = false; 
-         LevelManager.Instance.Initialize(); 
-         LevelManager.Instance.StartSearch(); 
-         Destroy(gameObject); });
+        TransitionTo(levelSelectorUI);
     }
 
     private void TransitionTo(AnimatableUI targetCanvas)

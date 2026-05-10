@@ -11,7 +11,8 @@ namespace Search.Levels
     public class LevelManager : Singleton<LevelManager>
     {
         [Header("Level Settings")] [SerializeField]
-        public LevelData currentLevel;
+        private LevelData currentLevel;
+        public UnityEvent<LevelData> onLevelDataChanged;
         
         public bool isMainMenu = true;
 
@@ -134,6 +135,13 @@ namespace Search.Levels
         }
         
         public SearchProblem GetCurrentProblem() => _problem;
+        public LevelData GetCurrentLevelData() => currentLevel;
+        public void SetCurrentLevelData(LevelData levelData)
+        {
+            currentLevel = levelData;
+            onLevelDataChanged.Invoke(levelData);
+        }
+
         public GeneralSearch GetCurrentSearchAlgorithm() => searchAlgorithm;
         public AlgorithmType GetCurrentAlgorithm() => currentAlgorithmType;
         public void SetCurrentAlgorithm(AlgorithmType algorithmType)
@@ -141,7 +149,5 @@ namespace Search.Levels
             currentAlgorithmType = algorithmType;
             onAlgorithmChanged.Invoke();
         }
-
-        public LevelData GetCurrentLevel() => currentLevel;
     }
 }

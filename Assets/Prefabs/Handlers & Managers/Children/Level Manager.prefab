@@ -53,7 +53,7 @@ MonoBehaviour:
   onAlgorithmChanged:
     m_PersistentCalls:
       m_Calls: []
-  useGraphSearch: 1
+  useGraphSearch: 0
   levelLimit: 10
   searchAlgorithm:
     currentLevelLimit: 0

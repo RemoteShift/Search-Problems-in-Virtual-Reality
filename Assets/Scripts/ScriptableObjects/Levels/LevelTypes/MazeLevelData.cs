@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using Search.Core;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Search.Levels
 {
     [CreateAssetMenu(fileName = "MazeLevel", menuName = "Levels/Maze")]
     public class MazeLevelData : LevelData
     {
-        public int width;
-        public int height;
+        [FormerlySerializedAs("width")] public int columns;
+        [FormerlySerializedAs("height")] public int rows;
         public Vector2Int start;
+        public override IState startState { get; set; }
         public Vector2Int[] goals;
+        public override List<IState> goalStates { get; set; }
         public List<Vector2Int> wallsPositions; // only cells where there are walls, the rest is considered empty
 
         private bool[,] walls;
@@ -21,19 +24,24 @@ namespace Search.Levels
         {
             var actions = new List<string> { "Up", "Down", "Left", "Right" };
 
-            var walls = GetWalls2D();
+            var walls2D = GetWalls2D();
             
-            ITransitionFunction transitionFunc = new MazeTransition(walls, height, width);
+            ITransitionFunction transitionFunc = new MazeTransition(walls2D, rows, columns);
             IStepCostFunction stepCostFunc = new MazeStep();
             
             var initialState = new GridState(start.x, start.y);
+            startState = initialState;
 
+            goalStates = goals.Select(g => new GridState(g.x, g.y)).Cast<IState>().ToList();
+            
             return new SearchProblem(initialState, GoalTest, actions, transitionFunc, stepCostFunc, HeuristicFunction);
 
             bool GoalTest(IState state)
             {
                 return state is GridState gs && goals.Any(goal => gs.Row == goal.x && gs.Column == goal.y);
             }
+            
+            
 
             float HeuristicFunction(IState state)
             {
@@ -48,9 +56,9 @@ namespace Search.Levels
             {
                 return walls;
             }
-            walls = new bool[height, width];
-            foreach (var wall in wallsPositions.Where(pos => pos.x >= 0 && pos.x < height && 
-                                                            pos.y >= 0 && pos.y < width))
+            walls = new bool[rows, columns];
+            foreach (var wall in wallsPositions.Where(pos => pos.x >= 0 && pos.x < rows && 
+                                                            pos.y >= 0 && pos.y < columns))
             {
                 walls[wall.x, wall.y] = true;
             }

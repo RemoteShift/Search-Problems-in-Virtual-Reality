@@ -51,7 +51,7 @@ public class TitleCanvasUI : AnimatableUI
         _searchController = SearchController.Instance;
         _levelManager.onSearchLoaded.AddListener(UpdateAlgorithmText);
 
-        _levelManager.currentLevel = levelData;
+        _levelManager.SetCurrentLevelData(levelData);
         _levelManager.Initialize();
         _searchController.SetAutomaticSearch(true);
         _levelManager.useGraphSearch = true;
@@ -150,7 +150,9 @@ public class TitleCanvasUI : AnimatableUI
             _levelManager.onSearchLoaded.RemoveListener(UpdateAlgorithmText);
             StopCoroutine(_algorithmSequenceCoroutine);
             _algorithmSequenceCoroutine = null;
+            _searchController.SetAutomaticSearch(false);
             _searchController.SetSearchTimeScale(1f);
+            _levelManager.UnloadLevel();
             gameObject.SetActive(false);
         });
 

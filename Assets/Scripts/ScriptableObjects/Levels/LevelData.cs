@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Search.Core;
 
@@ -9,6 +10,9 @@ namespace Search.Levels
         public string description;
         public int expansionLimit;
 
+        public abstract IState startState { get; set; }
+        public abstract List<IState> goalStates { get; set; }
+        
         public abstract SearchProblem CreateSearchProblem();
     }
 }
