@@ -988,6 +988,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ChangeAlgorithm
   changeAlgorithmUI: {fileID: 904626682892973293}
   confirmationText: {fileID: 8047778376581251119}
+  algorithmDropdown: {fileID: 6171112682128480905}
 --- !u!1 &1149344652662218641
 GameObject:
   m_ObjectHideFlags: 0
@@ -5863,7 +5864,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d385e73db6ae2f48827f13f02da035c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LeftControllerUI
-  isUIToggleable: 0
   controllerCanvas: {fileID: 3862261343290010594}
   rb: {fileID: 7788329743252340535}
 --- !u!1 &8069510818306956799

@@ -3,11 +3,13 @@ using Search.Core;
 using Search.Levels;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChangeAlgorithm : MonoBehaviour
 {
     [SerializeField] private GameObject changeAlgorithmUI;
     [SerializeField] private TextMeshProUGUI confirmationText;
+    [SerializeField] private Dropdown algorithmDropdown;
     
     private Coroutine _textCoroutine;
     
@@ -16,6 +18,8 @@ public class ChangeAlgorithm : MonoBehaviour
         if (changeAlgorithmUI)
         {
             changeAlgorithmUI.SetActive(!changeAlgorithmUI.activeSelf);
+            if(changeAlgorithmUI.activeSelf)
+                algorithmDropdown.value = (int)LevelManager.Instance.GetCurrentAlgorithm();
         }
     }
 

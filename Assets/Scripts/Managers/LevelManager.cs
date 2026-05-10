@@ -17,7 +17,7 @@ namespace Search.Levels
         public bool isMainMenu = true;
 
         [Header("Search Algorithm Settings")]
-        public AlgorithmType currentAlgorithmType = AlgorithmType.None;
+        private AlgorithmType _currentAlgorithmType = AlgorithmType.BFS;
         [HideInInspector] public UnityEvent onAlgorithmChanged = new();
         
         [Tooltip("Whether to use graph search (track explored states and avoid duplicates in frontier) " +
@@ -52,44 +52,37 @@ namespace Search.Levels
             _edgeManager = EdgeManager.Instance;
 
             if (currentLevel)
-                LoadLevel(currentLevel);
+                LoadLevel();
             else
                 Debug.LogWarning("No level assigned to LevelManager");
         }
 
         public void StartSearch()
         {
-            if (currentAlgorithmType != AlgorithmType.None)
-            {
-                ProblemVisualizer?.ClearNodeVisuals();
-                TreeVisualizer?.ClearNodeVisuals();
-                if (currentAlgorithmType == AlgorithmType.IDS)
-                    StartSearchCoroutine(levelLimit);
-                else
-                    StartSearchCoroutine();
-            }
-                
+            ProblemVisualizer?.ClearNodeVisuals();
+            TreeVisualizer?.ClearNodeVisuals();
+            if (_currentAlgorithmType == AlgorithmType.IDS)
+                StartSearchCoroutine(levelLimit);
             else
-                Debug.LogWarning("No search algorithm assigned to LevelManager");
+                StartSearchCoroutine();
         }
 
-        public void LoadLevel(LevelData level)
+        public void LoadLevel()
         {
-            currentLevel = level;
-            _problem = level.CreateSearchProblem();
+            _problem = currentLevel.CreateSearchProblem();
 
             ProblemVisualizer?.ClearVisuals();
             TreeVisualizer?.ClearVisuals();
             _edgeManager.ClearEdges();
 
-            if (ProblemVisualizer is MazeVisualizer mazeVisualizer && level is MazeLevelData mazeLevel)
+            if (ProblemVisualizer is MazeVisualizer mazeVisualizer && currentLevel is MazeLevelData mazeLevel)
             {
                 mazeVisualizer.Setup(mazeLevel, _problem);
             }
             
             if (!isMainMenu)
             {
-                TreeVisualizer?.Setup(level, _problem);
+                TreeVisualizer?.Setup(currentLevel, _problem);
             }
         }
         
@@ -113,7 +106,7 @@ namespace Search.Levels
             if (_searchCoroutine != null)
                 StopCoroutine(_searchCoroutine);
 
-            IQueuingFunction queuingFunction = currentAlgorithmType switch
+            IQueuingFunction queuingFunction = _currentAlgorithmType switch
             {
                 AlgorithmType.BFS => new BFS(),
                 AlgorithmType.DFS => new DFS(),
@@ -121,7 +114,6 @@ namespace Search.Levels
                 AlgorithmType.IDS => new IDS(),
                 AlgorithmType.GBFS => new GBFS(),
                 AlgorithmType.Astar => new Astar(),
-                AlgorithmType.None => throw new System.InvalidOperationException("No algorithm selected"),
                 _ => throw new System.ArgumentException("Unsupported algorithm type")
             };
 
@@ -143,10 +135,10 @@ namespace Search.Levels
         }
 
         public GeneralSearch GetCurrentSearchAlgorithm() => searchAlgorithm;
-        public AlgorithmType GetCurrentAlgorithm() => currentAlgorithmType;
+        public AlgorithmType GetCurrentAlgorithm() => _currentAlgorithmType;
         public void SetCurrentAlgorithm(AlgorithmType algorithmType)
         {
-            currentAlgorithmType = algorithmType;
+            _currentAlgorithmType = algorithmType;
             onAlgorithmChanged.Invoke();
         }
     }

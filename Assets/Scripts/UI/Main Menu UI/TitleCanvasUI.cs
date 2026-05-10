@@ -177,7 +177,7 @@ public class TitleCanvasUI : AnimatableUI
         {
             foreach (var algorithmType in algorithmSequence)
             {
-                _levelManager.currentAlgorithmType = algorithmType;
+                _levelManager.SetCurrentAlgorithm(algorithmType);
                 _levelManager.StartSearch();
                 yield return new WaitForSeconds(algorithmDisplayDuration);
             }
