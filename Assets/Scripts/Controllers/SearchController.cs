@@ -118,7 +118,8 @@ namespace Search.Controllers
                 problemVisualizer?.GetNodeVisual(node).SetState(NodeState.Path);
                 treeVisualizer?.GetNodeVisual(node).SetState(NodeState.Path);
                 node = node.parent;
-                yield return new WaitForSeconds(0.5f/searchTimeScale);
+                if(isAutomaticSearch)
+                    yield return new WaitForSeconds(0.5f/searchTimeScale);
             }
         }
 

@@ -38,6 +38,7 @@ public class SearchControllerUI : MonoBehaviour
         DOTween.Complete("Search");
         
         SearchController.Instance.SetAutomaticSearch(value);
+        timeScaleDropdown.gameObject.SetActive(value);
     }
     
     public void PauseAnimations()

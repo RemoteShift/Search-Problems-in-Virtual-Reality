@@ -1,9 +1,11 @@
 using DG.Tweening;
-using Search.Utils;
 using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject toolTipsWindow;
+    private static bool _firstTime = true;
+    
     [Header("Left Canvas Scripts")] 
     [SerializeField] private TitleCanvasUI titleCanvasUI;
     [SerializeField] private LevelSelectorUI levelSelectorUI;
@@ -14,6 +16,12 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
+        if(_firstTime)
+        {
+            toolTipsWindow.SetActive(true);
+            _firstTime = false;
+        }
+        
         TransitionTo(titleCanvasUI);
     }
 

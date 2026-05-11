@@ -22,7 +22,7 @@ namespace Search.Levels
         
         [Tooltip("Whether to use graph search (track explored states and avoid duplicates in frontier) " +
                  "or tree search (allow duplicates in frontier).")]
-        public bool useGraphSearch;
+        public bool useGraphSearch = false;
         
         [Tooltip("For algorithms like IDS, this sets the maximum depth limit. Ignored for other algorithms.")]
         public int levelLimit = 5;

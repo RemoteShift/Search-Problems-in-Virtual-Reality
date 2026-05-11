@@ -159,6 +159,7 @@ public class TitleCanvasUI : AnimatableUI
             _searchController.SetAutomaticSearch(false);
             _searchController.SetSearchTimeScale(1f);
             _levelManager.UnloadLevel();
+            _levelManager.useGraphSearch = false;
             gameObject.SetActive(false);
         });
 
