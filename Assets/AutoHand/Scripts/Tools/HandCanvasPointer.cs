@@ -30,7 +30,8 @@ namespace Autohand
         public UnityCanvasPointerEvent StartPoint;
         public UnityCanvasPointerEvent StopPoint;
 
-
+        // Added by Aly Gaafar
+        public static UnityEvent OnEventSystemReady = new();
 
         private GameObject _currTarget;
         public GameObject currTarget
@@ -174,8 +175,12 @@ namespace Autohand
                     }
                     inputModule = system.gameObject.AddComponent<AutoInputModule>();
                     inputModule.transform.parent = AutoHandExtensions.transformParent;
+                    // Added by Aly Gaafar
+                    DontDestroyOnLoad(AutoHandExtensions.transformParent.gameObject);
                 }
             }
+            
+            OnEventSystemReady.Invoke();
         }
 
         protected virtual void LateUpdate()

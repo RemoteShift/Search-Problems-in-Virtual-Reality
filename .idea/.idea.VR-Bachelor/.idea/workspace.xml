@@ -3,16 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Tools/AutoInputModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Tools/AutoInputModule.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Tools/HandCanvasPointer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Tools/HandCanvasPointer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boot.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boot.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/LevelManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/LevelSelectorUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/LevelSelectorUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/MainMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/TitleCanvasUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/TitleCanvasUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/LoadGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Misc/LoadGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/Quality URP Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Quality URP Config.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXRPackageSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXRPackageSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
@@ -25,7 +23,7 @@
   <component name="CopilotChats">
     <option name="panelChat">
       <chat>
-        <option name="activeSessionId" value="9e845516-524b-459c-b506-1c33a854f88e" />
+        <option name="activeSessionId" value="1ee94278-74d3-4035-8e1a-014d4fd82226" />
         <option name="sessions">
           <session>
             <option name="chatType" value="PANEL" />
@@ -55,6 +53,14 @@
           <session>
             <option name="chatType" value="PANEL" />
             <option name="id" value="9ab48fb8-6a36-4193-9c45-c8f923567b75" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="1ee94278-74d3-4035-8e1a-014d4fd82226" />
             <option name="modeId" value="Ask" />
             <option name="modelType" value="builtin_family" />
             <option name="modelValue" value="auto" />
@@ -314,23 +320,8 @@
       <workItem from="1778346429239" duration="15918000" />
       <workItem from="1778405072637" duration="28281000" />
       <workItem from="1778445252094" duration="3783000" />
-      <workItem from="1778484969407" duration="2839000" />
-    </task>
-    <task id="LOCAL-00021" summary="Add Queue and PriorityQueue implementations; introduce IFrontier interface for frontier management&#10;Added Heuristic function fro informed searches&#10;&#10;TODO: Implement different IQueuingFunctions like BFS, DFS, UCS, and so on">
-      <option name="closed" value="true" />
-      <created>1776107534820</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1776107534820</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Add A* and BFS algorithm implementations&#10;Completed logic of `GeneralSearch.cs`&#10;&#10;TODO: Add the expanded collection, call the visualizer and implement it">
-      <option name="closed" value="true" />
-      <created>1776362196435</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1776362196435</updated>
+      <workItem from="1778484969407" duration="3428000" />
+      <workItem from="1778591180516" duration="11561000" />
     </task>
     <task id="LOCAL-00023" summary="Add expanded node collection to GeneralSearch">
       <option name="closed" value="true" />
@@ -708,7 +699,23 @@
       <option name="project" value="LOCAL" />
       <updated>1778449527253</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Add new sprite package; update UI components for improved functionality and performance">
+      <option name="closed" value="true" />
+      <created>1778491418950</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1778491418952</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Add URL shortcuts for Kenney and Patreon; include new meta files for various assets">
+      <option name="closed" value="true" />
+      <created>1778491642720</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1778491642720</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -741,8 +748,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Refactor search result handling in SearchController; update visualizer states for successful search paths and remove summary printing" />
-    <MESSAGE value="Add Edge Label Canvas prefab; update SearchNode to include step cost and modify edge labeling in SearchController" />
     <MESSAGE value="Add DistanceBasedScaler script for dynamic label scaling based on distance from target; update prefab settings for edge labels" />
     <MESSAGE value="Add MainMenu and LoadingManager scripts; implement scene loading and UI management" />
     <MESSAGE value="Add Clock and CanvasCameraAssigner scripts; implement time management and camera assignment for UI elements" />
@@ -766,7 +771,9 @@
     <MESSAGE value="Refactor algorithm handling in LevelManager and ChangeAlgorithm; remove unused enum value and improve UI integration for algorithm selection" />
     <MESSAGE value="Add SetLevelBoxes component; implement dynamic level box creation and UI integration for level selection" />
     <MESSAGE value="Add LoadGame and Boot components; implement scene loading and new prefab assets for improved UI functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add LoadGame and Boot components; implement scene loading and new prefab assets for improved UI functionality" />
+    <MESSAGE value="Add new sprite package; update UI components for improved functionality and performance" />
+    <MESSAGE value="Add URL shortcuts for Kenney and Patreon; include new meta files for various assets" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add URL shortcuts for Kenney and Patreon; include new meta files for various assets" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
