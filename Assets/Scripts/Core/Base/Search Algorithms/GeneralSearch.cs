@@ -85,9 +85,7 @@ namespace Search.Core.Algorithms
         private IEnumerator RunSingleSearchCoroutine(SearchProblem searchProblem, int? levelLimit = null)
         {
             Reset();
-            var initialHeuristic = QueueingFunction.isInformed
-                ? searchProblem.GetHeuristicCost(searchProblem.initialState)
-                : 0f;
+            var initialHeuristic = searchProblem.GetHeuristicCost(searchProblem.initialState);
             var startNode = new SearchNode(searchProblem.initialState, 0, heuristicCost: initialHeuristic);
             _searchListener?.OnNodeGenerated(startNode);
             
@@ -168,9 +166,7 @@ namespace Search.Core.Algorithms
 
                 var candidateDepth = node.depth + 1;
                 var stepCost = stepCostFunction.GetCost(node.state, action, successorState);
-                var heuristic = QueueingFunction.isInformed
-                    ? searchProblem.GetHeuristicCost(successorState)
-                    : 0f;
+                var heuristic = searchProblem.GetHeuristicCost(successorState);
 
                 // Tree search: no need to check for existing nodes or expanded states. Keep duplicates in frontier.
                 if (!_levelManager.useGraphSearch)

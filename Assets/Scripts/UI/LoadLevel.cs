@@ -10,6 +10,7 @@ public class LoadLevel : MonoBehaviour
          LevelManager.Instance.isMainMenu = false; 
          LevelManager.Instance.Initialize(); 
          LevelManager.Instance.StartSearch(); 
+         PlayerLocomotion.Instance.ResetTransform();
         });
     }
 }

@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MainMenu : MonoBehaviour
 {
@@ -8,7 +9,8 @@ public class MainMenu : MonoBehaviour
     
     [Header("Left Canvas Scripts")] 
     [SerializeField] private TitleCanvasUI titleCanvasUI;
-    [SerializeField] private LevelSelectorUI levelSelectorUI;
+    [FormerlySerializedAs("levelSelectorUI")] 
+    [SerializeField] private ProblemSelectorUI problemSelectorUI;
 
     private AnimatableUI _currentOpenCanvas;
     private AnimatableUI _nextCanvas;
@@ -27,7 +29,7 @@ public class MainMenu : MonoBehaviour
 
     public void LevelSelector()
     {
-        TransitionTo(levelSelectorUI);
+        TransitionTo(problemSelectorUI);
     }
 
     private void TransitionTo(AnimatableUI targetCanvas)

@@ -174,7 +174,8 @@ namespace Autohand
                     inputModule = system.gameObject.AddComponent<AutoInputModule>();
                     inputModule.transform.parent = AutoHandExtensions.transformParent;
                     // Added by Aly Gaafar
-                    DontDestroyOnLoad(AutoHandExtensions.transformParent.gameObject);
+                    if (AutoHandExtensions.transformParent != null)
+                        DontDestroyOnLoad(AutoHandExtensions.transformParent.gameObject);
                 }
             }
         }

@@ -71,29 +71,31 @@ public class NodeStatsUI : Singleton<NodeStatsUI>
         stateIDText.text = nodeVisual.stateId;
         actionFromParentText.text = nodeVisual.SearchNode.actionFromParent;
         depthText.text = nodeVisual.SearchNode.depth.ToString();
-
-        if (algorithmType is Astar or GBFS or UCS)
+        
+        pathCostText.text = nodeVisual.SearchNode.pathCost + "";
+        
+        if (algorithmType is Astar or UCS)
         {
-            pathCostText.transform.parent.gameObject.SetActive(true);
-            pathCostText.text = nodeVisual.SearchNode.pathCost + "";
+            pathCostText.transform.parent.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Normal;
         }
         else
         {
-            pathCostText.transform.parent.gameObject.SetActive(false);
+            pathCostText.transform.parent.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Strikethrough;
         }
 
+        heuristicCostText.text = nodeVisual.SearchNode.heuristicCost + "";
+        
+        fCostText.text = nodeVisual.SearchNode.F + "";
+        
         if (algorithmType is Astar or GBFS)
         {
-            heuristicCostText.transform.parent.gameObject.SetActive(true);
-            heuristicCostText.text = nodeVisual.SearchNode.heuristicCost + "";
-            
-            fCostText.transform.parent.gameObject.SetActive(true);
-            fCostText.text = nodeVisual.SearchNode.F + "";
+            heuristicCostText.transform.parent.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Normal;
+            fCostText.transform.parent.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Normal;
         }
         else
         {
-            heuristicCostText.transform.parent.gameObject.SetActive(false);
-            fCostText.transform.parent.gameObject.SetActive(false);
+            heuristicCostText.transform.parent.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Strikethrough;
+            fCostText.transform.parent.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Strikethrough;
         }
     }
 }

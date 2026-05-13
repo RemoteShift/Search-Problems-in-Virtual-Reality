@@ -5,7 +5,7 @@ using Search.Levels;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelSelectorUI : AnimatableUI
+public class ProblemSelectorUI : AnimatableUI
 {
     private LevelManager _levelManager;
     private SearchController _searchController;

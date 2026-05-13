@@ -1047,7 +1047,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Search Problem Settings
+  m_text: "Search Problem \nStats"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
   m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
@@ -1282,9 +1282,9 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 829462300}
   m_HandleRect: {fileID: 829462299}
-  m_Direction: 1
-  m_Value: 1
-  m_Size: 0.80338806
+  m_Direction: 0
+  m_Value: 0
+  m_Size: 0.8155605
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2563,7 +2563,7 @@ GameObject:
   - component: {fileID: 419412564}
   - component: {fileID: 419412563}
   m_Layer: 5
-  m_Name: Level Data Text
+  m_Name: Algorithm Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2608,7 +2608,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Level
+  m_text: 'Algorithm
 
     Settings'
   m_isRightToLeft: 0
@@ -2928,7 +2928,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 36.24582, y: -2.9841}
+  m_AnchoredPosition: {x: 27.762753, y: -2.9841}
   m_SizeDelta: {x: 0.15, y: 0.074}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &441669934
@@ -3536,7 +3536,7 @@ GameObject:
   - component: {fileID: 616190031}
   - component: {fileID: 616190030}
   m_Layer: 5
-  m_Name: Level Selector Button
+  m_Name: Problem Selector Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3851,8 +3851,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 51.66957, y: -2.9841}
-  m_SizeDelta: {x: 0.2, y: 0.074}
+  m_AnchoredPosition: {x: 16.194939, y: -2.9841}
+  m_SizeDelta: {x: 0.21, y: 0.074}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &828410164
 MonoBehaviour:
@@ -3888,7 +3888,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Right)
+  m_text: (Right,
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
   m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
@@ -4001,10 +4001,10 @@ RectTransform:
   m_Father: {fileID: 110027858}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.80338806, y: 1}
+  m_AnchorMax: {x: 0.8155606, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &829462300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4603,7 +4603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1003712333}
   m_Layer: 5
-  m_Name: Level Settings
+  m_Name: Algorithm Settings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5511,7 +5511,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <size=80%>Level Editor</size>
+  m_text: <size=90%>Problem Editor</size>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 58debf685de78d64398a594761c7a148, type: 2}
   m_sharedMaterial: {fileID: -3438387809978036471, guid: 58debf685de78d64398a594761c7a148, type: 2}
@@ -5538,10 +5538,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.1
-  m_fontSizeBase: 0.25
+  m_fontSize: 0.07
+  m_fontSizeBase: 0.07
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 0.01
   m_fontSizeMax: 72
   m_fontStyle: 16
@@ -6145,8 +6145,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 9.254251, y: -2.9841}
-  m_SizeDelta: {x: 0.12, y: 0.074}
+  m_AnchoredPosition: {x: 50.89838, y: -2.9841}
+  m_SizeDelta: {x: 0.1, y: 0.074}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1584599285
 MonoBehaviour:
@@ -6182,7 +6182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (Up,
+  m_text: Up)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
   m_sharedMaterial: {fileID: -3438387809978036471, guid: f5ba820a8971fa449b12f4c76629933c, type: 2}
@@ -6314,7 +6314,7 @@ GameObject:
   - component: {fileID: 1728631285}
   - component: {fileID: 1728631286}
   m_Layer: 5
-  m_Name: Level Selector Canvas
+  m_Name: Problem Selector Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7033,7 +7033,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 24.678003, y: -2.9841}
+  m_AnchoredPosition: {x: 43.186504, y: -2.9841}
   m_SizeDelta: {x: 0.2, y: 0.074}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1804506210
@@ -7265,7 +7265,7 @@ GameObject:
   - component: {fileID: 1826036793}
   - component: {fileID: 1826036792}
   m_Layer: 5
-  m_Name: Level Editor Button
+  m_Name: Problem Editor Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7935,16 +7935,16 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 828410163}
-  - {fileID: 441669933}
-  - {fileID: 1804506209}
   - {fileID: 1584599284}
+  - {fileID: 1804506209}
+  - {fileID: 441669933}
+  - {fileID: 828410163}
   m_Father: {fileID: 1751143548}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000009536743, y: 0}
-  m_SizeDelta: {x: 51.669567, y: 5.9682}
+  m_AnchoredPosition: {x: 9.387662, y: 0}
+  m_SizeDelta: {x: 50.89838, y: 5.9682}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &2001924967
 MonoBehaviour:
@@ -8220,7 +8220,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level Selector
+  m_text: <size=90%>Problem Selector</size>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 58debf685de78d64398a594761c7a148, type: 2}
   m_sharedMaterial: {fileID: -3438387809978036471, guid: 58debf685de78d64398a594761c7a148, type: 2}
@@ -10166,7 +10166,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -0.07735012, y: -1.6990494}
-  m_SizeDelta: {x: 0.7491, y: 0.0949}
+  m_SizeDelta: {x: 0.9059, y: 0.0949}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!224 &1756840661453779892
 RectTransform:
@@ -12776,7 +12776,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: <size=80%>Load Level</size>
+  m_text: <size=80%>Load Problem</size>
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 58debf685de78d64398a594761c7a148, type: 2}
   m_sharedMaterial: {fileID: -3438387809978036471, guid: 58debf685de78d64398a594761c7a148, type: 2}
@@ -13223,7 +13223,7 @@ GameObject:
   - component: {fileID: 2766661716729171451}
   - component: {fileID: 8119640758224038600}
   m_Layer: 5
-  m_Name: Load Level
+  m_Name: Load Problem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

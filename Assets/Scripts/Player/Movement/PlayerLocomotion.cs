@@ -57,9 +57,17 @@ public class PlayerLocomotion : Singleton<PlayerLocomotion>
     
     public void TeleportTo(Vector3 position, Quaternion rotation)
     {
-        _characterController.enabled = false; // Disable to avoid collision issues
+        _characterController.enabled = false;
         transform.position = position;
         transform.rotation = rotation;
-        _characterController.enabled = true; // Re-enable after teleporting
+        _characterController.enabled = true;
+    }
+
+    public void ResetTransform()
+    {
+        _characterController.enabled = false;
+        transform.position = Vector3.zero;
+        transform.rotation = Quaternion.identity;
+        _characterController.enabled = true;
     }
 }

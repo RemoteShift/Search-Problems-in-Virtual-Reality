@@ -83,9 +83,9 @@ public class StatsUI : Singleton<StatsUI>
     {
         transform.parent.gameObject.SetActive(false);
         LoadingManager.Instance.LoadScene(sceneName: "Main Menu", onComplete:() =>
-        { LeftControllerUI.IsUIToggleable = false;
-            
+        {   LeftControllerUI.IsUIToggleable = false;
             LevelManager.Instance.isMainMenu = true;
+            PlayerLocomotion.Instance.ResetTransform();
         });
     }
 }
