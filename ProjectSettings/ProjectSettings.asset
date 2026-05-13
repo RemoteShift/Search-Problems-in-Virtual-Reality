@@ -854,11 +854,11 @@ PlayerSettings:
   scriptingBackend:
     Android: 1
   il2cppCompilerConfiguration:
-    Android: 0
+    Android: 1
   il2cppCodeGeneration:
     Android: 0
   il2cppStacktraceInformation:
-    Android: 1
+    Android: 0
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}
   suppressCommonWarnings: 1

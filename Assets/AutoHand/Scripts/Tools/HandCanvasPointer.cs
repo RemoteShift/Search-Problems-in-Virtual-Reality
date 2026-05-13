@@ -29,9 +29,7 @@ namespace Autohand
         public UnityCanvasPointerEvent StopSelect;
         public UnityCanvasPointerEvent StartPoint;
         public UnityCanvasPointerEvent StopPoint;
-
-        // Added by Aly Gaafar
-        public static UnityEvent OnEventSystemReady = new();
+        
 
         private GameObject _currTarget;
         public GameObject currTarget
@@ -179,8 +177,6 @@ namespace Autohand
                     DontDestroyOnLoad(AutoHandExtensions.transformParent.gameObject);
                 }
             }
-            
-            OnEventSystemReady.Invoke();
         }
 
         protected virtual void LateUpdate()

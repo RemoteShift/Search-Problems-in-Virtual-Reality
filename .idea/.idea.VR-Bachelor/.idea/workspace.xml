@@ -3,16 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Tools/AutoInputModule.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Tools/AutoInputModule.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Tools/HandCanvasPointer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Tools/HandCanvasPointer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boot.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boot.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/LoadGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Misc/LoadGame.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/Quality URP Config.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/Quality URP Config.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXRPackageSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXRPackageSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -321,15 +313,7 @@
       <workItem from="1778405072637" duration="28281000" />
       <workItem from="1778445252094" duration="3783000" />
       <workItem from="1778484969407" duration="3428000" />
-      <workItem from="1778591180516" duration="11561000" />
-    </task>
-    <task id="LOCAL-00023" summary="Add expanded node collection to GeneralSearch">
-      <option name="closed" value="true" />
-      <created>1776364402757</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1776364402757</updated>
+      <workItem from="1778591180516" duration="13251000" />
     </task>
     <task id="LOCAL-00024" summary="Refactor GeneralSearch to support iterative deepening search; enhance SearchResult handling and visualization">
       <option name="closed" value="true" />
@@ -715,7 +699,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778491642720</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="I fixed this stupid error&#10;build now works&#10;thank you for being open source, autohand">
+      <option name="closed" value="true" />
+      <created>1778603773504</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1778603773505</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -748,7 +740,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add DistanceBasedScaler script for dynamic label scaling based on distance from target; update prefab settings for edge labels" />
     <MESSAGE value="Add MainMenu and LoadingManager scripts; implement scene loading and UI management" />
     <MESSAGE value="Add Clock and CanvasCameraAssigner scripts; implement time management and camera assignment for UI elements" />
     <MESSAGE value="Add metadata files for various assets; update LeftControllerUI and ChangeAlgorithm scripts for UI improvements" />
@@ -773,7 +764,8 @@
     <MESSAGE value="Add LoadGame and Boot components; implement scene loading and new prefab assets for improved UI functionality" />
     <MESSAGE value="Add new sprite package; update UI components for improved functionality and performance" />
     <MESSAGE value="Add URL shortcuts for Kenney and Patreon; include new meta files for various assets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add URL shortcuts for Kenney and Patreon; include new meta files for various assets" />
+    <MESSAGE value="I fixed this stupid error&#10;build now works&#10;thank you for being open source, autohand" />
+    <option name="LAST_COMMIT_MESSAGE" value="I fixed this stupid error&#10;build now works&#10;thank you for being open source, autohand" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
