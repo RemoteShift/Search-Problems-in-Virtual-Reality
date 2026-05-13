@@ -3,6 +3,7 @@ using Search.Controllers;
 using Search.Core.Algorithms;
 using Search.Levels;
 using Search.Visualization;
+using Search.GameModes;
 using UnityEngine;
 
 public class QueueUI : MonoBehaviour
@@ -92,5 +93,10 @@ public class QueueUI : MonoBehaviour
             Destroy(child.gameObject);
         }
         _uiLookup.Clear();
+    }
+    
+    public bool TryAddDeltaNodeToPlayerFrontier(NodeVisual nodeVisual)
+    {
+        return SearchModeController.Instance.TryAddDeltaNodeToPlayerFrontier(nodeVisual);
     }
 }

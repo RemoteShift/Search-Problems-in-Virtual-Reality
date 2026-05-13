@@ -1,4 +1,5 @@
 using Search.Controllers;
+using Search.GameModes;
 using UnityEngine;
 
 public class NextStep : MonoBehaviour
@@ -8,7 +9,7 @@ public class NextStep : MonoBehaviour
         var button = GetComponent<UnityEngine.UI.Button>();
         if (button)
         {
-            button.onClick.AddListener(SearchController.Instance.AdvanceStep);
+            button.onClick.AddListener(SearchModeController.Instance.PlayerRequestsAdvance);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
@@ -7,6 +6,7 @@ using Search.Core;
 using Search.Levels;
 using Search.Utils;
 using Search.Visualization;
+using Search.GameModes;
 using UnityEngine;
 
 namespace Search.Controllers
@@ -42,6 +42,8 @@ namespace Search.Controllers
             if(_solutionPathCoroutine != null)
                 StopCoroutine(_solutionPathCoroutine);
             _solutionPathCoroutine = null;
+            
+            SearchModeController.Instance.ResetSolveState();
         }
 
         public void OnNodeExpanded(SearchNode node)
@@ -73,8 +75,10 @@ namespace Search.Controllers
             var nodeVisuals = frontier.Select(searchNode => levelManager.useGraphSearch
                     ? problemVisualizer?.GetNodeVisual(searchNode)
                     : treeVisualizer?.GetNodeVisual(searchNode))
+                .Where(v => v)
                 .ToList();
             queueUI?.SyncFrontierOrder(nodeVisuals);
+            SearchModeController.Instance.NotifyFrontierChanged(nodeVisuals);
         }
 
         public void OnNodesAddedToFrontier(IReadOnlyList<SearchNode> nodes)
@@ -92,6 +96,7 @@ namespace Search.Controllers
                 nodeVisuals.Add(levelManager.useGraphSearch ? problemVisual : treeVisual);
             }
             queueUI?.AddNodes(nodeVisuals);
+            SearchModeController.Instance.NotifyDeltaGenerated(nodeVisuals);
         }
 
         public void OnSearchComplete(SearchResult result)
