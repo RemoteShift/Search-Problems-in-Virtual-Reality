@@ -85,16 +85,23 @@ public class NodeStatsUI : Singleton<NodeStatsUI>
 
         heuristicCostText.text = nodeVisual.SearchNode.heuristicCost + "";
         
-        fCostText.text = nodeVisual.SearchNode.F + "";
-        
         if (algorithmType is Astar or GBFS)
         {
             heuristicCostText.transform.parent.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Normal;
-            fCostText.transform.parent.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Normal;
         }
         else
         {
             heuristicCostText.transform.parent.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Strikethrough;
+        }
+
+        fCostText.text = nodeVisual.SearchNode.F + "";
+        
+        if (algorithmType is Astar)
+        {
+            fCostText.transform.parent.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Normal;
+        }
+        else
+        {
             fCostText.transform.parent.GetComponent<TextMeshProUGUI>().fontStyle = FontStyles.Strikethrough;
         }
     }

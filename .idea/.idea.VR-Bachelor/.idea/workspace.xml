@@ -3,22 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Tools/HandCanvasPointer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AutoHand/Scripts/Tools/HandCanvasPointer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/References/Maze Levels/Maze Level 2.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/References/Maze Levels/Maze Level 2.tmx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/References/Maze Levels/Maze Level 3.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/References/Maze Levels/Maze Level 3.tmx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/References/Maze Levels/Maze Level 5.tmx" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/References/Maze Levels/Maze Level 5.tmx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 2.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 3.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/LevelData/Maze/MazeLevel 5.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Movement/PlayerLocomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Movement/PlayerLocomotion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/LoadLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/LoadLevel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/LevelSelectorUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/ProblemSelectorUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/LevelSelectorUI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/ProblemSelectorUI.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/MainMenu.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/NodeStatsUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/NodeStatsUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/StatsUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/StatsUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -327,15 +312,7 @@
       <workItem from="1778405072637" duration="28281000" />
       <workItem from="1778445252094" duration="3783000" />
       <workItem from="1778484969407" duration="3428000" />
-      <workItem from="1778591180516" duration="16822000" />
-    </task>
-    <task id="LOCAL-00025" summary="Refactor GeneralSearch to improve state management and add algorithm selection; enhance SearchResult handling">
-      <option name="closed" value="true" />
-      <created>1776526296797</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1776526296797</updated>
+      <workItem from="1778591180516" duration="18064000" />
     </task>
     <task id="LOCAL-00026" summary="Refactor GeneralSearch to enhance state management and search result reporting; update LevelManager for algorithm selection and level limit configuration&#10;&#10;All search algorithms work now. fadel adding time logging and visualization">
       <option name="closed" value="true" />
@@ -721,7 +698,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778666969324</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Refactor search algorithms and UI components; improve variable naming and enhance scene management">
+      <option name="closed" value="true" />
+      <created>1778671141181</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1778671141182</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -754,7 +739,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add Clock and CanvasCameraAssigner scripts; implement time management and camera assignment for UI elements" />
     <MESSAGE value="Add metadata files for various assets; update LeftControllerUI and ChangeAlgorithm scripts for UI improvements" />
     <MESSAGE value="Add metadata files for new UI components; implement StatsUI, ChangeAlgorithm, and related scripts for enhanced functionality" />
     <MESSAGE value="Add NodeStatsUI and related metadata files; implement UI updates for node statistics and visual representation" />
@@ -779,7 +763,8 @@
     <MESSAGE value="Add URL shortcuts for Kenney and Patreon; include new meta files for various assets" />
     <MESSAGE value="I fixed this stupid error&#10;build now works&#10;thank you for being open source, autohand" />
     <MESSAGE value="Refactor LoadGame and HandCanvasPointer components; remove unused event handling and streamline scene loading" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor LoadGame and HandCanvasPointer components; remove unused event handling and streamline scene loading" />
+    <MESSAGE value="Refactor search algorithms and UI components; improve variable naming and enhance scene management" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor search algorithms and UI components; improve variable naming and enhance scene management" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
