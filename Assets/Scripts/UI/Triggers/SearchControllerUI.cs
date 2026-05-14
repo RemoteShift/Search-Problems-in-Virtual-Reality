@@ -1,14 +1,26 @@
 using DG.Tweening;
 using Search.Controllers;
+using Search.GameModes;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SearchControllerUI : MonoBehaviour
 {
     [SerializeField] private Dropdown timeScaleDropdown;
+    [SerializeField] private Toggle automaticSearchToggle;
 
     private float searchTimeScale => SearchController.Instance.searchTimeScale;
 
+    private void OnEnable()
+    {
+        SearchModeController.Instance.onModeChanged.AddListener(HandleModeChanged);
+    }
+
+    private void HandleModeChanged(SearchPlayMode mode)
+    {
+        automaticSearchToggle.gameObject.SetActive(mode == SearchPlayMode.Observe);
+    }
+    
     // private void Update()
     // {
     //     Debug.Log($"Time Scale: {searchTimeScale}. Automatic Search: {SearchController.Instance.isAutomaticSearch}" +

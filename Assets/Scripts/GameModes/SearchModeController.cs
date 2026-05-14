@@ -16,7 +16,7 @@ namespace Search.GameModes
 
         public readonly PlayerQueueState PlayerQueueState = new();
 
-        public UnityEvent onModeChanged = new();
+        public UnityEvent<SearchPlayMode> onModeChanged = new();
         public UnityEvent onValidationSuccess = new();
         public UnityEvent<string> onValidationFailure = new();
 
@@ -32,8 +32,7 @@ namespace Search.GameModes
                 return;
 
             currentMode = mode;
-            ResetSolveState();
-            onModeChanged.Invoke();
+            onModeChanged.Invoke(mode);
         }
 
         public void NotifyFrontierChanged(IReadOnlyList<NodeVisual> frontier)
@@ -45,6 +44,14 @@ namespace Search.GameModes
             PlayerQueueState.SetExpectedFrontier(_authoritativeFrontier);
         }
 
+        public void NotifyNodesAddedToFrontier(IReadOnlyList<NodeVisual> nodeVisuals)
+        {
+            if(nodeVisuals != null)
+                _authoritativeFrontier.AddRange(nodeVisuals.Where(v => v));
+            
+            PlayerQueueState.AddToExpectedFrontier(nodeVisuals);
+        }
+
         public void NotifyDeltaGenerated(IReadOnlyList<NodeVisual> deltaNodes)
         {
             _latestDelta.Clear();
@@ -54,9 +61,18 @@ namespace Search.GameModes
             PlayerQueueState.SetDeltaNodes(_latestDelta);
         }
 
-        public bool TryAddDeltaNodeToPlayerFrontier(NodeVisual nodeVisual)
+        public void NotifyNodeExpanded(NodeVisual expandedNodeVisual)
         {
-            return PlayerQueueState.AddDeltaNodeToFrontier(nodeVisual);
+            if (!expandedNodeVisual)
+                return;
+            
+            PlayerQueueState.RemoveFromExpectedFrontier(expandedNodeVisual);
+            PlayerQueueState.RemoveFromPlayerFrontier(expandedNodeVisual);
+        }
+
+        public bool TryAddDeltaNodeToPlayerFrontier(NodeVisual nodeVisual, int index = -1)
+        {
+            return PlayerQueueState.AddDeltaNodeToFrontier(nodeVisual, index);
         }
 
         public void PlayerRequestsAdvance()

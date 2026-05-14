@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1337402299731556307}
   - component: {fileID: 6817424023003604344}
   - component: {fileID: 4275246426324231026}
+  - component: {fileID: 8713581761850569306}
   m_Layer: 0
   m_Name: Search Controller
   m_TagString: Untagged
@@ -45,9 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f8ca4e6c0f543a49919a037a56df705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Search.Controllers.SearchController
-  isAutomaticSearch: 0
+  queueUI: {fileID: 0}
+  <isAutomaticSearch>k__BackingField: 0
   problemNodeCreationAnimationDuration: 0.5
   treeNodeCreationAnimationDuration: 0.5
+  searchTimeScale: 1
+  skipDelay: 0
 --- !u!114 &4275246426324231026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,3 +64,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a031b6aa5f6db4f9e7af4e1f0f64c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DontDestroyOnLoad
+--- !u!114 &8713581761850569306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4041134760986948717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d014e1b622ca4e4aa7cf91f540c90dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Search.GameModes.SearchModeController
+  currentMode: 0
+  onModeChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onValidationSuccess:
+    m_PersistentCalls:
+      m_Calls: []
+  onValidationFailure:
+    m_PersistentCalls:
+      m_Calls: []

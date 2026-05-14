@@ -1,0 +1,57 @@
+{
+    "version": 1,
+    "name": "Custom Input Action Asset",
+    "maps": [
+        {
+            "name": "RightHandCombos",
+            "id": "30c6493b-da6a-496b-bac5-0c52e05f6b42",
+            "actions": [
+                {
+                    "name": "RightGribAndB",
+                    "type": "Button",
+                    "id": "e2fe05b5-9b61-441e-9e81-358d851bda0a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "One Modifier",
+                    "id": "5b814434-c9a1-473b-adce-61f84ebfbe8e",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightGribAndB",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "2e3a5f91-2769-487e-bfa0-fdb269474aec",
+                    "path": "<XRController>{RightHand}/{GripButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightGribAndB",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "27a4f299-de77-4c2a-9cf3-27b74429106e",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightGribAndB",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

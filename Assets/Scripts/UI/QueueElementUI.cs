@@ -6,7 +6,11 @@ using UnityEngine.EventSystems;
 
 public class QueueElementUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public NodeVisual nodeVisual;
+    [HideInInspector] public NodeVisual nodeVisual;
+    /// <summary>
+    /// If this element is in the vicinity of the queue, then this is true, else false.
+    /// </summary>
+    public bool isDroppingIntoQueue;
     private TextMeshProUGUI _nodeStateText;
 
     public void Initialize(NodeVisual nodeVisualInitial)

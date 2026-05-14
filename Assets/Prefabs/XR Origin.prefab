@@ -5124,6 +5124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 071c6fd6b85e14948a50989166114585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerVMovementController
+  tempQueueHandAttachmentPoint: {fileID: 2602425296094335657}
   vMoveSpeed: 1.5
   sprintMultiplier: 2
 --- !u!114 &482517113734007929
@@ -7703,6 +7704,11 @@ PrefabInstance:
 --- !u!4 &465305083931202525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4298821846212431286, guid: 511b14ca14dd3c24fab488776e348f70, type: 3}
+  m_PrefabInstance: {fileID: 4457828278065520235}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2602425296094335657 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1855710883888024770, guid: 511b14ca14dd3c24fab488776e348f70, type: 3}
   m_PrefabInstance: {fileID: 4457828278065520235}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4588633838305059780 stripped

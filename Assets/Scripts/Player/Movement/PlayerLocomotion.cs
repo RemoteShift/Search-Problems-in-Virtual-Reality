@@ -5,6 +5,8 @@ using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerLocomotion : Singleton<PlayerLocomotion>
 {
+    public Transform tempQueueHandAttachmentPoint;
+    
     private CharacterController _characterController;
     private ContinuousMoveProvider _continuousMoveProvider;
     

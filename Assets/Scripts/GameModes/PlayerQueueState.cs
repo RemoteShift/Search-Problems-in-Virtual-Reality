@@ -28,6 +28,12 @@ namespace Search.GameModes
                 _expectedFrontier.AddRange(frontier.Where(v => v));
         }
 
+        public void AddToExpectedFrontier(IReadOnlyList<NodeVisual> nodeVisuals)
+        {
+            if(nodeVisuals != null)
+                _expectedFrontier.AddRange(nodeVisuals.Where(v => v));
+        }
+
         public void SetDeltaNodes(IReadOnlyList<NodeVisual> DeltaNodes)
         {
             _deltaNodes.Clear();
@@ -35,7 +41,7 @@ namespace Search.GameModes
                 _deltaNodes.AddRange(DeltaNodes.Where(v => v));
         }
 
-        public bool AddDeltaNodeToFrontier(NodeVisual nodeVisual)
+        public bool AddDeltaNodeToFrontier(NodeVisual nodeVisual, int index = -1)
         {
             if (!nodeVisual)
                 return false;
@@ -43,10 +49,10 @@ namespace Search.GameModes
             if (!_deltaNodes.Contains(nodeVisual))
                 return false;
 
+            if (!AddToFrontier(nodeVisual, index))
+                return false;
+            
             _deltaNodes.Remove(nodeVisual);
-
-            if (!_playerFrontier.Contains(nodeVisual))
-                _playerFrontier.Add(nodeVisual);
 
             return true;
         }
@@ -66,8 +72,8 @@ namespace Search.GameModes
 
             return true;
         }
-
-        public bool RemoveFromFrontier(NodeVisual nodeVisual)
+        
+        public bool RemoveFromPlayerFrontier(NodeVisual nodeVisual)
         {
             if (!nodeVisual)
                 return false;
@@ -75,6 +81,14 @@ namespace Search.GameModes
             return _playerFrontier.Remove(nodeVisual);
         }
 
+        public bool RemoveFromExpectedFrontier(NodeVisual nodeVisual)
+        {
+            if (!nodeVisual)
+                return false;
+            
+            return _expectedFrontier.Remove(nodeVisual);
+        }
+        
         public bool MoveFrontierNode(int fromIndex, int toIndex)
         {
             if (fromIndex < 0 || fromIndex >= _playerFrontier.Count)

@@ -164,6 +164,7 @@ MonoBehaviour:
   pathMat: {fileID: 2100000, guid: b531e8ba5345c8f439bf187010a60c8c, type: 2}
   manuallyPositioned: 0
   isNew: 1
+  queueElementPrefab: {fileID: 2661928223120629802, guid: bb74db685bb8dbc4590236cb764178ac, type: 3}
 --- !u!135 &4688975999596157272
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -10,7 +10,9 @@ public class QueueUI : MonoBehaviour
 {
     [SerializeField] private GameObject queueElementPrefab;
     [SerializeField] private Transform queueContent;
-    
+    [SerializeField] private GameObject cube;
+
+    private Canvas _canvas;
     private Dictionary<NodeVisual, QueueElementUI> _uiLookup = new ();
 
     private void OnEnable()
@@ -23,6 +25,23 @@ public class QueueUI : MonoBehaviour
     {
         SearchController.Instance.queueUI = null;
         LevelManager.Instance?.onSearchLoaded.RemoveListener(ClearUI);
+    }
+
+    private void Start()
+    {
+        _canvas = GetComponentInChildren<Canvas>();
+
+        if (SearchModeController.Instance.CurrentMode != SearchPlayMode.Observe)
+        {
+            _canvas.enabled = false;
+            cube?.SetActive(false);
+        }
+        
+        SearchModeController.Instance.onModeChanged.AddListener((mode) =>
+        {
+            _canvas.enabled = mode == SearchPlayMode.Observe;
+            cube?.SetActive(mode == SearchPlayMode.Observe);
+        });
     }
 
     /// <summary>
@@ -93,10 +112,5 @@ public class QueueUI : MonoBehaviour
             Destroy(child.gameObject);
         }
         _uiLookup.Clear();
-    }
-    
-    public bool TryAddDeltaNodeToPlayerFrontier(NodeVisual nodeVisual)
-    {
-        return SearchModeController.Instance.TryAddDeltaNodeToPlayerFrontier(nodeVisual);
     }
 }

@@ -29,7 +29,7 @@ namespace Search.Controllers
 
         private void OnEnable()
         {
-            LevelManager.Instance.onSearchLoaded.AddListener(OnSearchLoaded);
+            LevelManager.Instance?.onSearchLoaded.AddListener(OnSearchLoaded);
         }
 
         private void OnDisable()
@@ -48,8 +48,14 @@ namespace Search.Controllers
 
         public void OnNodeExpanded(SearchNode node)
         {
-            problemVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Expanded);
-            treeVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Expanded);
+            var problemVisual = problemVisualizer?.GetOrCreateNodeVisual(node, node.parent);
+                problemVisual?.SetState(NodeState.Expanded);
+                
+            var treeVisual = treeVisualizer?.GetOrCreateNodeVisual(node, node.parent);
+                treeVisual?.SetState(NodeState.Expanded);
+            
+            var nodeVisual = LevelManager.Instance.useGraphSearch ? problemVisual : treeVisual;
+            SearchModeController.Instance.NotifyNodeExpanded(nodeVisual);
         }
 
         public void OnNodeExpanding(SearchNode node)
@@ -97,6 +103,7 @@ namespace Search.Controllers
             }
             queueUI?.AddNodes(nodeVisuals);
             SearchModeController.Instance.NotifyDeltaGenerated(nodeVisuals);
+            SearchModeController.Instance.NotifyNodesAddedToFrontier(nodeVisuals);
         }
 
         public void OnSearchComplete(SearchResult result)
