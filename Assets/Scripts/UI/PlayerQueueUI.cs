@@ -10,12 +10,14 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
 {
     [SerializeField] private GameObject queueElementPrefab;
     [SerializeField] private GameObject dropZonePrefab;
+    [SerializeField] private GameObject hoveringElementPrefab;
     [SerializeField] private Transform queueContent;
     [SerializeField] private Transform dropZoneContent;
     [SerializeField] private GameObject cube;
 
     [HideInInspector] public GameObject currentlyGrabbedQueueElementObject;
     private int _hoveredZoneIndex;
+    private GameObject _hoveringElementInstance;
     
     private Canvas _canvas;
     private readonly Dictionary<NodeVisual, QueueElementUI> _uiLookup = new();
@@ -144,11 +146,26 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
 
         if (index == -1)
         {
-            //DisableHoveringVisual();
+            DisableHoveringVisual();
             return;
         }
-        
-        
+
+        ShowHoveringVisual(index);
+    }
+
+    private void ShowHoveringVisual(int index)
+    {
+        if (_hoveringElementInstance)
+            return;
+
+        _hoveringElementInstance = Instantiate(hoveringElementPrefab, queueContent);
+        _hoveringElementInstance.transform.SetSiblingIndex(index + 1);
+    }
+    
+    private void DisableHoveringVisual()
+    {
+        Destroy(_hoveringElementInstance);
+        _hoveringElementInstance = null;
     }
 
     private void RepopulateUI(SearchPlayMode mode)

@@ -1180,12 +1180,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 300953334}
+  - component: {fileID: 300953337}
   - component: {fileID: 300953335}
   - component: {fileID: 300953336}
   - component: {fileID: 300953340}
   - component: {fileID: 300953339}
   - component: {fileID: 300953338}
-  - component: {fileID: 300953337}
   m_Layer: 0
   m_Name: Player Queue UI
   m_TagString: Untagged
@@ -1334,6 +1334,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerQueueUI
   queueElementPrefab: {fileID: 2661928223120629802, guid: bb74db685bb8dbc4590236cb764178ac, type: 3}
   dropZonePrefab: {fileID: 6373452000460593366, guid: ac33922e70df6c542afc1f27b9992c98, type: 3}
+  hoveringElementPrefab: {fileID: 1675027851847667775, guid: ec7725633d7655647bca07b85ddedc15, type: 3}
   queueContent: {fileID: 1120646837}
   dropZoneContent: {fileID: 353906525}
   cube: {fileID: 2118676895}

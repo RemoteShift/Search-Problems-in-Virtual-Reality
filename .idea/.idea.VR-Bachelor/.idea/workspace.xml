@@ -3,14 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Drop Zone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Drop Zone.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Hovering Element Visual.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Hovering Element Visual.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/SearchModeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/SearchModeController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/QueueUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/QueueUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,6 +212,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (8).unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (9).unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0.unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.inputsystem@57d0e36f6123/InputSystem/Utilities/DelegateHelpers.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -369,15 +368,7 @@
       <workItem from="1778759373953" duration="13008000" />
       <workItem from="1778778697103" duration="2586000" />
       <workItem from="1778781323529" duration="11653000" />
-      <workItem from="1778853323309" duration="21034000" />
-    </task>
-    <task id="LOCAL-00028" summary="Add elapsed time tracking to search results; update SearchResult to report time in seconds">
-      <option name="closed" value="true" />
-      <created>1776957135816</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1776957135816</updated>
+      <workItem from="1778853323309" duration="23034000" />
     </task>
     <task id="LOCAL-00029" summary="Refactor GeneralSearch and LevelManager to support step-by-step search execution; enhance visualization and state management">
       <option name="closed" value="true" />
@@ -763,7 +754,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778800114263</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Add drop zone functionality and enhance player queue UI; implement QueueDropZone and ColliderViewportCuller components">
+      <option name="closed" value="true" />
+      <created>1778882941743</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1778882941744</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -796,7 +795,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add NodeStatsUI and related metadata files; implement UI updates for node statistics and visual representation" />
     <MESSAGE value="Add new UI components and scripts; implement functionality for SearchControllerUI and NodeStatsUI&#10;&#10;TODO: Find out why the nodes are still spawning at the start position in both visualizers" />
     <MESSAGE value="Refactor search-related classes; add automatic search functionality and improve animation handling" />
     <MESSAGE value="Refactor visualizer classes; improve variable naming, streamline node positioning logic, and enhance automatic search handling" />
@@ -821,7 +819,8 @@
     <MESSAGE value="Refactor search algorithms and UI components; improve variable naming and enhance scene management" />
     <MESSAGE value="Add game mode management; implement PlayerQueueState and SearchModeController&#10;&#10;Initial thing. Let's hope this works (it seldom does)" />
     <MESSAGE value="Implement player queue UI and enhance search mode handling; add node management features and improve event subscriptions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement player queue UI and enhance search mode handling; add node management features and improve event subscriptions" />
+    <MESSAGE value="Add drop zone functionality and enhance player queue UI; implement QueueDropZone and ColliderViewportCuller components" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add drop zone functionality and enhance player queue UI; implement QueueDropZone and ColliderViewportCuller components" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

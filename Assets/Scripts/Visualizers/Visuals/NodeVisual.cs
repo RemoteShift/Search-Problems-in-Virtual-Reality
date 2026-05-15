@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using Search.Core;
 using Search.GameModes;
-using UnityEngine.Serialization;
 
 namespace Search.Visualization
 {
@@ -130,11 +129,12 @@ namespace Search.Visualization
             // if (currentState != NodeState.Default) return;
             if (currentlyGrabbedQueueElementObject && value)
                 return;
-            
-            var currentlyGrabbedQueueElement = currentlyGrabbedQueueElementObject?.GetComponent<QueueElementUI>();
+
+            QueueElementUI currentlyGrabbedQueueElement;
             
             if (!value)
             {
+                currentlyGrabbedQueueElement = currentlyGrabbedQueueElementObject?.GetComponent<QueueElementUI>();
                 if (!(currentlyGrabbedQueueElement?.isDroppingIntoQueue ?? true))
                     Destroy(currentlyGrabbedQueueElementObject);
                 currentlyGrabbedQueueElementObject = null;
@@ -145,8 +145,8 @@ namespace Search.Visualization
             
             var parentTransform = PlayerLocomotion.Instance.tempQueueHandAttachmentPoint;
             
-            currentlyGrabbedQueueElement = Instantiate(queueElementPrefab, parentTransform)
-                .GetComponent<QueueElementUI>();
+            currentlyGrabbedQueueElementObject = Instantiate(queueElementPrefab, parentTransform);
+            currentlyGrabbedQueueElement = currentlyGrabbedQueueElementObject.GetComponent<QueueElementUI>();
             
             currentlyGrabbedQueueElement.Initialize(this);
             
