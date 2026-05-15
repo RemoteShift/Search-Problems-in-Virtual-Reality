@@ -2,95 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/discord.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/FollowingSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/FollowingSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralAdvancedTechniquesSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralAdvancedTechniquesSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralBasicSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralBasicSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralBasics2dSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralBasics2dSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralCameraShakeSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralCameraShakeSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralEasingTypesSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralEasingTypesSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralEventsSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralEventsSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralSequencerSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralSequencerSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralSimpleUiSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/GeneralSimpleUiSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/LogoCinematicSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/LogoCinematicSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathBezier2dSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathBezier2dSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathBezierSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathBezierSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathSpline2dSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathSpline2dSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathSplineEndlessSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathSplineEndlessSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathSplinePerformanceSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathSplinePerformanceSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathSplineTrackSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathSplineTrackSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathSplinesSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/PathSplinesSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/TestingUnitTestsSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/TestingUnitTestsSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/TestingZLegacySettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Examples/Scenes/TestingZLegacySettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/FollowingTestsSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/FollowingTestsSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/PerformanceTestsSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/PerformanceTestsSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/Testing240Settings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/Testing240Settings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/Testing243Settings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/Testing243Settings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/Testing246Settings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/Testing246Settings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/Testing248Settings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/Testing248Settings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingDescrSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingDescrSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingIssueSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingIssueSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingMaxTweensSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingMaxTweensSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingOptionalCancelSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingOptionalCancelSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingRotateSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingRotateSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingSceneSwitchingSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingSceneSwitchingSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingSequencerSettings.lighting" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LeanTween/Testing/TestingSequencerSettings.lighting.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Controls/Right.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Controls/Right.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Children/Search Controller.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Children/Search Controller.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Children/VR Input Handler.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Children/VR Input Handler.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Meshes/Node Mesh.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Meshes/Node Mesh.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Objects/Maze/Node.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/XR Origin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/XR Origin.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/SearchModeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/SearchModeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/SearchModeController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/SearchModeController.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Handlers/VRInputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Handlers/VRInputHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Misc/NodeVisualPasser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Misc/NodeVisualPasser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Movement/PlayerLocomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Movement/PlayerLocomotion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/QueueElementUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/QueueElementUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/QueueUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/QueueUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,7 +20,7 @@
   <component name="CopilotChats">
     <option name="panelChat">
       <chat>
-        <option name="activeSessionId" value="52273dc8-ba5b-41b6-aeda-c3926fcbf7d7" />
+        <option name="activeSessionId" value="4100e5ed-5a40-4304-93e8-3b0d06ad490a" />
         <option name="sessions">
           <session>
             <option name="chatType" value="PANEL" />
@@ -184,6 +104,14 @@
             <option name="modelValue" value="auto" />
             <option name="targetType" value="LOCAL" />
           </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="4100e5ed-5a40-4304-93e8-3b0d06ad490a" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+            <option name="targetType" value="LOCAL" />
+          </session>
         </option>
         <option name="type" value="PANEL" />
       </chat>
@@ -219,6 +147,7 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/2d04f6fca5544dec9e59e548aa62384f1c800/99/591b5a79/02000014pdb54.il" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/36/b137be67/Nullable`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/68/ab9b00d3/NullReferenceException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/6b/553687d2/List`1.cs" root0="FORCE_HIGHLIGHTING" />
@@ -254,6 +183,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/Algorithms/Uninformed/UCS.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Search Problems/Maze/MazeStep.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Culling.meta" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Culling/ColliderViewportCuller.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Editor.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Enums.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameModes.meta" root0="FORCE_HIGHLIGHTING" />
@@ -282,6 +212,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (5).unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (7).unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (8).unity" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0 (9).unity" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/_Recovery/0.unity" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
@@ -310,27 +241,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Device#class com.jetbrains.rider.plugins.unity.run.devices.UnityEditorDeviceKind#com.jetbrains.rider.plugins.unity.run.devices.UnityDevicesProvider#Unity Attach To: Attach to": "Unity Editor",
-    "DeviceKind#com.jetbrains.rider.plugins.unity.run.devices.UnityDevicesProvider": "Unity Editor",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "ShowUsagesActions.previewPropertyKey": "true",
-    "Unity Attach To.Attach to.executor": "Debug",
-    "XThreadsFramesViewSplitterKey": "0.26404494",
-    "git-widget-placeholder": "playmode",
-    "ignore.virus.scanning.warn.message": "true",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "discord-application",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Device#class com.jetbrains.rider.plugins.unity.run.devices.UnityEditorDeviceKind#com.jetbrains.rider.plugins.unity.run.devices.UnityDevicesProvider#Unity Attach To: Attach to&quot;: &quot;Unity Editor&quot;,
+    &quot;DeviceKind#com.jetbrains.rider.plugins.unity.run.devices.UnityDevicesProvider&quot;: &quot;Unity Editor&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;ShowUsagesActions.previewPropertyKey&quot;: &quot;true&quot;,
+    &quot;Unity Attach To.Attach to.executor&quot;: &quot;Debug&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.26404494&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;playmode&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;discord-application&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Unity Attach To.Attach to">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.8f1\Editor\Unity.exe" />
@@ -437,15 +368,8 @@
       <workItem from="1778736534349" duration="5809000" />
       <workItem from="1778759373953" duration="13008000" />
       <workItem from="1778778697103" duration="2586000" />
-      <workItem from="1778781323529" duration="11585000" />
-    </task>
-    <task id="LOCAL-00027" summary="Refactor GeneralSearch to support configurable graph search and expansion limits; update LevelManager for improved algorithm management&#10;&#10;Added Tree Search and made it interchangeable with Graph Search">
-      <option name="closed" value="true" />
-      <created>1776770916035</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1776770916035</updated>
+      <workItem from="1778781323529" duration="11653000" />
+      <workItem from="1778853323309" duration="21034000" />
     </task>
     <task id="LOCAL-00028" summary="Add elapsed time tracking to search results; update SearchResult to report time in seconds">
       <option name="closed" value="true" />
@@ -831,7 +755,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778698392252</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Implement player queue UI and enhance search mode handling; add node management features and improve event subscriptions">
+      <option name="closed" value="true" />
+      <created>1778800114263</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1778800114263</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -864,7 +796,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add metadata files for new UI components; implement StatsUI, ChangeAlgorithm, and related scripts for enhanced functionality" />
     <MESSAGE value="Add NodeStatsUI and related metadata files; implement UI updates for node statistics and visual representation" />
     <MESSAGE value="Add new UI components and scripts; implement functionality for SearchControllerUI and NodeStatsUI&#10;&#10;TODO: Find out why the nodes are still spawning at the start position in both visualizers" />
     <MESSAGE value="Refactor search-related classes; add automatic search functionality and improve animation handling" />
@@ -889,7 +820,8 @@
     <MESSAGE value="Refactor LoadGame and HandCanvasPointer components; remove unused event handling and streamline scene loading" />
     <MESSAGE value="Refactor search algorithms and UI components; improve variable naming and enhance scene management" />
     <MESSAGE value="Add game mode management; implement PlayerQueueState and SearchModeController&#10;&#10;Initial thing. Let's hope this works (it seldom does)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add game mode management; implement PlayerQueueState and SearchModeController&#10;&#10;Initial thing. Let's hope this works (it seldom does)" />
+    <MESSAGE value="Implement player queue UI and enhance search mode handling; add node management features and improve event subscriptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement player queue UI and enhance search mode handling; add node management features and improve event subscriptions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -906,32 +838,19 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.NullReferenceException" breakIfHandledByUserCode="true" breakIfUnhandled="false" isInternal="false" displayValue="NullReferenceException" namespaceName="System">
+        <breakpoint enabled="true" suspend="NONE" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.NullReferenceException" breakIfHandledByUserCode="true" isInternal="false" displayValue="NullReferenceException" namespaceName="System">
             <option name="internal" value="false" />
           </properties>
           <option name="timeStamp" value="16" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs</url>
-          <line>110</line>
-          <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\GameModes\PlayerQueueState.cs" containingFunctionPresentation="Method 'ValidateExactMatch'">
-            <startOffsets>
-              <option value="3307" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3360" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
-        <PinnedItemInfo parentTag="Type#Search.Visualization.NodeVisual" memberName="position" />
         <PinnedItemInfo parentTag="Type#Search.Core.GridState" memberName="id" />
         <PinnedItemInfo parentTag="Type#TMPro.TMP_Text" memberName="text" />
+        <PinnedItemInfo parentTag="Type#Search.Visualization.NodeVisual" memberName="stateId" />
       </pinned-members>
     </pin-to-top-manager>
   </component>

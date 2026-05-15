@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Search.GameModes;
 using Search.Levels;
 using Search.Utils;
@@ -8,13 +9,17 @@ using UnityEngine;
 public class PlayerQueueUI : Singleton<PlayerQueueUI>
 {
     [SerializeField] private GameObject queueElementPrefab;
+    [SerializeField] private GameObject dropZonePrefab;
     [SerializeField] private Transform queueContent;
+    [SerializeField] private Transform dropZoneContent;
     [SerializeField] private GameObject cube;
 
-    public QueueElementUI currentlyGrabbedQueueElement;
+    [HideInInspector] public GameObject currentlyGrabbedQueueElementObject;
+    private int _hoveredZoneIndex;
     
     private Canvas _canvas;
     private readonly Dictionary<NodeVisual, QueueElementUI> _uiLookup = new();
+    private readonly Dictionary<QueueElementUI, QueueDropZone> _dropZoneLookup = new();
 
     private void OnEnable()
     {
@@ -59,10 +64,18 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
 
         var uiObject = Instantiate(queueElementPrefab, queueContent);
         var ui = uiObject.GetComponent<QueueElementUI>();
+        ui.GetComponent<Collider>().enabled = false;
         ui.Initialize(nodeVisual);
 
         _uiLookup.Add(nodeVisual, ui);
         ui.transform.SetSiblingIndex(index >= 0 ? index : 0);
+
+        var dropZoneObject = Instantiate(dropZonePrefab, dropZoneContent);
+        var dropZone = dropZoneObject.GetComponent<QueueDropZone>();
+        dropZone.zoneIndex = index >= 0 ? index : 0;
+        
+        _dropZoneLookup.Add(ui, dropZone);
+        dropZone.transform.SetSiblingIndex(index >= 0 ? index : 0);
         
         return true;
     }
@@ -72,14 +85,17 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
     /// </summary>
     public void RemoveFirstNode()
     {
-        if (queueContent.childCount == 0)
+        if (queueContent.childCount == 1)
             return;
 
-        var uiTransform = queueContent.GetChild(0);
+        var uiTransform = queueContent.GetChild(1);
         var element = uiTransform.GetComponent<QueueElementUI>();
         if (element && element.nodeVisual)
             _uiLookup.Remove(element.nodeVisual);
 
+        Destroy(_dropZoneLookup[element].gameObject);
+        _dropZoneLookup.Remove(element);
+        
         Destroy(uiTransform.gameObject);
     }
 
@@ -94,8 +110,12 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         if (!_uiLookup.TryGetValue(nodeVisual, out var ui))
             return false;
 
+        Destroy(_dropZoneLookup[ui].gameObject);
+        _dropZoneLookup.Remove(ui);
+        
         _uiLookup.Remove(nodeVisual);
         Destroy(ui.gameObject);
+        
         return true;
     }
     
@@ -107,7 +127,7 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
     {
         var order = new List<NodeVisual>();
 
-        for (var i = 0; i < queueContent.childCount; i++)
+        for (var i = 1; i < queueContent.childCount; i++)
         {
             var child = queueContent.GetChild(i);
             var element = child.GetComponent<QueueElementUI>();
@@ -116,6 +136,19 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         }
 
         return order;
+    }
+
+    public void SetHoveringIndex(int index)
+    {
+        _hoveredZoneIndex = index;
+
+        if (index == -1)
+        {
+            //DisableHoveringVisual();
+            return;
+        }
+        
+        
     }
 
     private void RepopulateUI(SearchPlayMode mode)
@@ -130,15 +163,48 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
 
         for (int i = 0; i < frontier.Count; i++)
         {
-            AddNode(frontier[i], i);
+            var nodeVisual = frontier[i];
+            
+            if(!SearchModeController.Instance.PlayerQueueState.AddToPlayerFrontier(nodeVisual, i))
+                continue;
+            
+            var uiObject = Instantiate(queueElementPrefab, queueContent);
+            var ui = uiObject.GetComponent<QueueElementUI>();
+            ui.GetComponent<Collider>().enabled = false;
+            ui.Initialize(nodeVisual);
+
+            _uiLookup.Add(nodeVisual, ui);
+            ui.transform.SetSiblingIndex(i + 1);
+
+            var dropZoneObject = Instantiate(dropZonePrefab, dropZoneContent);
+            dropZoneObject.layer = LayerMask.NameToLayer("Default");
+            dropZoneObject.name = i.ToString();
+            var dropZone = dropZoneObject.GetComponent<QueueDropZone>();
+            dropZone.zoneIndex = i;
+        
+            _dropZoneLookup.Add(ui, dropZone);
+            dropZone.transform.SetSiblingIndex(i);
         }
     }
     
     private void ClearUI()
     {
         foreach (Transform child in queueContent)
+        {
+            if (child.GetSiblingIndex() == 0) // Clear all the Drop Zones
+            {
+                foreach (Transform zone in child.GetChild(0))
+                {
+                    Destroy(zone.gameObject);
+                }
+                continue;
+            }
+            
             Destroy(child.gameObject);
-
+        }
+        
         _uiLookup.Clear();
+        _dropZoneLookup.Clear();
+        SearchModeController.Instance.PlayerQueueState.ClearPlayerFrontier();
     }
 }

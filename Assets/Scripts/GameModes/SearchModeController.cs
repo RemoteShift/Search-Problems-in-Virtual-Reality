@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Search.Controllers;
+using Search.Levels;
 using Search.Visualization;
 using Search.Utils;
 using UnityEngine;
@@ -25,6 +27,14 @@ namespace Search.GameModes
 
         public IReadOnlyList<NodeVisual> AuthoritativeFrontier => _authoritativeFrontier;
         public IReadOnlyList<NodeVisual> LatestDelta => _latestDelta;
+
+        private void Start()
+        {
+            LevelManager.Instance.onSearchLoaded.AddListener(() =>
+            {
+                SetMode(SearchPlayMode.Observe);
+            });
+        }
 
         public void SetMode(SearchPlayMode mode)
         {

@@ -58,6 +58,7 @@ public class QueueUI : MonoBehaviour
             uiObject = Instantiate(queueElementPrefab, queueContent);
             var ui = uiObject.GetComponent<QueueElementUI>();
             ui.Initialize(nodeVisual);
+            ui.GetComponent<Collider>().enabled = false;
             _uiLookup.Add(nodeVisual, ui);
             
             if (queueingFunction is DFS or IDS)

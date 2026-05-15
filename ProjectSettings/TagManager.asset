@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Node
+  - QueueElement
   layers:
   - Default
   - TransparentFX

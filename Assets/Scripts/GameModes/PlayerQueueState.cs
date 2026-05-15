@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Search.Visualization;
+using UnityEngine;
 
 namespace Search.GameModes
 {
@@ -18,6 +19,12 @@ namespace Search.GameModes
         {
             _playerFrontier.Clear();
             _expectedFrontier.Clear();
+            _deltaNodes.Clear();
+        }
+
+        public void ClearPlayerFrontier()
+        {
+            _playerFrontier.Clear();
             _deltaNodes.Clear();
         }
 
@@ -49,7 +56,7 @@ namespace Search.GameModes
             if (!_deltaNodes.Contains(nodeVisual))
                 return false;
 
-            if (!AddToFrontier(nodeVisual, index))
+            if (!AddToPlayerFrontier(nodeVisual, index))
                 return false;
             
             _deltaNodes.Remove(nodeVisual);
@@ -57,7 +64,7 @@ namespace Search.GameModes
             return true;
         }
 
-        public bool AddToFrontier(NodeVisual nodeVisual, int index = -1)
+        public bool AddToPlayerFrontier(NodeVisual nodeVisual, int index = -1)
         {
             if (!nodeVisual)
                 return false;

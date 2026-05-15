@@ -111,25 +111,33 @@ namespace Search.Visualization
                     VRInputHandler.Instance.OnRightGridAndBPressChanged += HandleNodeGrabbedQueue;
                     break;
                 case false:
-                    if(!PlayerQueueUI.Instance.currentlyGrabbedQueueElement)
+                    if(!PlayerQueueUI.Instance.currentlyGrabbedQueueElementObject)
                         VRInputHandler.Instance.OnRightGridAndBPressChanged -= HandleNodeGrabbedQueue;
                     break;
             }
         }
 
         [SerializeField] private GameObject queueElementPrefab;
+        private GameObject currentlyGrabbedQueueElementObject
+        {
+            get => PlayerQueueUI.Instance.currentlyGrabbedQueueElementObject;
+            set => PlayerQueueUI.Instance.currentlyGrabbedQueueElementObject = value;
+        }
+
         private void HandleNodeGrabbedQueue(bool value)
         {
             if (SearchModeController.Instance.CurrentMode != SearchPlayMode.Solve) return;
             // if (currentState != NodeState.Default) return;
-            if (PlayerQueueUI.Instance.currentlyGrabbedQueueElement && value)
+            if (currentlyGrabbedQueueElementObject && value)
                 return;
+            
+            var currentlyGrabbedQueueElement = currentlyGrabbedQueueElementObject?.GetComponent<QueueElementUI>();
             
             if (!value)
             {
-                if (!(PlayerQueueUI.Instance.currentlyGrabbedQueueElement?.isDroppingIntoQueue ?? true))
-                    Destroy(PlayerQueueUI.Instance.currentlyGrabbedQueueElement.gameObject);
-                PlayerQueueUI.Instance.currentlyGrabbedQueueElement = null;
+                if (!(currentlyGrabbedQueueElement?.isDroppingIntoQueue ?? true))
+                    Destroy(currentlyGrabbedQueueElementObject);
+                currentlyGrabbedQueueElementObject = null;
                 
                 VRInputHandler.Instance.OnRightGridAndBPressChanged -= HandleNodeGrabbedQueue;
                 return;
@@ -137,13 +145,13 @@ namespace Search.Visualization
             
             var parentTransform = PlayerLocomotion.Instance.tempQueueHandAttachmentPoint;
             
-            PlayerQueueUI.Instance.currentlyGrabbedQueueElement = Instantiate(queueElementPrefab, parentTransform)
+            currentlyGrabbedQueueElement = Instantiate(queueElementPrefab, parentTransform)
                 .GetComponent<QueueElementUI>();
             
-            PlayerQueueUI.Instance.currentlyGrabbedQueueElement.Initialize(this);
+            currentlyGrabbedQueueElement.Initialize(this);
             
             EdgeManager.Instance.AddEdge("GrabbedNodeVisual", "TempQueueElementUI", 
-                transform, PlayerQueueUI.Instance.currentlyGrabbedQueueElement.transform);
+                transform, currentlyGrabbedQueueElement.transform);
         }
     }
 }
