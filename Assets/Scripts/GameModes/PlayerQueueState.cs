@@ -85,6 +85,11 @@ namespace Search.GameModes
             if (!nodeVisual)
                 return false;
 
+            if (!_playerFrontier.Remove(nodeVisual))
+                return false;
+            
+            PlayerQueueUI.Instance.RemoveNode(nodeVisual);
+            
             return _playerFrontier.Remove(nodeVisual);
         }
 
@@ -135,6 +140,8 @@ namespace Search.GameModes
                 }
             }
 
+            
+            
             return ValidationResult.Ok();
         }
     }

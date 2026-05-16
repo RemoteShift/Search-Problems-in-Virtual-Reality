@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Drop Zone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Drop Zone.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boot.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boot.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/QueueDropZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/QueueDropZone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/QueueElementUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/QueueElementUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -178,7 +177,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8c7a5484f44c4752a0d4812c53f2f7d834200/0b/f5a047a2/GUIUtility.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ab2655e346314f2093c508ae091de9c75800/0b/98a0b5ca/NativeInputSystem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3ea01e77be99618395f448b16bd7cc2bd4248bd9e5d8474964b2d97f39c5d74/System.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d44b17e136d09081da1e8fd0e8c83fde60e11818b9f2442d7ed8cb733fae895e/System.Collections.Generic.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Animations.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Plugins/Demigiant.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Prefabs/Canvases/Label/State ID Canvas 1.prefab" root0="FORCE_HIGHLIGHTING" />
@@ -386,15 +385,7 @@
       <workItem from="1778778697103" duration="2586000" />
       <workItem from="1778781323529" duration="11653000" />
       <workItem from="1778853323309" duration="23137000" />
-      <workItem from="1778928279913" duration="9114000" />
-    </task>
-    <task id="LOCAL-00030" summary="Add SearchController to manage search state and visualization; enhance node state handling and UI interaction">
-      <option name="closed" value="true" />
-      <created>1776974685193</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1776974685194</updated>
+      <workItem from="1778928279913" duration="13132000" />
     </task>
     <task id="LOCAL-00031" summary="Add EdgeManager and EdgeDynamicUpdater for dynamic edge visualization; implement edge addition and removal in search visualization">
       <option name="closed" value="true" />
@@ -780,7 +771,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778884848466</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Enhance player queue functionality; add last drop zone and improve hover handling in QueueDropZone">
+      <option name="closed" value="true" />
+      <created>1778938828522</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1778938828523</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -813,7 +812,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Refactor search-related classes; add automatic search functionality and improve animation handling" />
     <MESSAGE value="Refactor visualizer classes; improve variable naming, streamline node positioning logic, and enhance automatic search handling" />
     <MESSAGE value="Refactor LevelManager and SearchController; update variable accessibility, streamline search handling, and enhance UI interactions" />
     <MESSAGE value="Refactor LevelManager and SearchController; update main menu handling and improve search result display" />
@@ -838,7 +836,8 @@
     <MESSAGE value="Implement player queue UI and enhance search mode handling; add node management features and improve event subscriptions" />
     <MESSAGE value="Add drop zone functionality and enhance player queue UI; implement QueueDropZone and ColliderViewportCuller components" />
     <MESSAGE value="TODO: Add an extra dropbox at the end to be able to add to the ed of the player queue&#10;Also, fix the glitching when sliding between different positions to put in the player queue&#10;Also, fix the problem with the collisions not detecting. Maybe the element collider is too small?" />
-    <option name="LAST_COMMIT_MESSAGE" value="TODO: Add an extra dropbox at the end to be able to add to the ed of the player queue&#10;Also, fix the glitching when sliding between different positions to put in the player queue&#10;Also, fix the problem with the collisions not detecting. Maybe the element collider is too small?" />
+    <MESSAGE value="Enhance player queue functionality; add last drop zone and improve hover handling in QueueDropZone" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance player queue functionality; add last drop zone and improve hover handling in QueueDropZone" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

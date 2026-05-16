@@ -20,6 +20,7 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
     [HideInInspector] public GameObject currentlyGrabbedQueueElementObject;
     private readonly Dictionary<QueueDropZone, int> _hoverCounts = new();
     private GameObject _hoveringElementInstance;
+    private QueueDropZone _zoneToDropAt;
     
     private Canvas _canvas;
     private readonly Dictionary<NodeVisual, QueueElementUI> _uiLookup = new();
@@ -29,6 +30,7 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
     {
         LevelManager.Instance.onSearchLoaded.AddListener(ClearUI);
         SearchModeController.Instance.onModeChanged.AddListener(RepopulateUI);
+        VRInputHandler.Instance.OnRightGridAndBPressChanged += HandleFrontierAddNode;
     }
 
     private void OnDisable()
@@ -83,6 +85,39 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         
         lastDropZone.zoneIndex++;
         
+        return true;
+    }
+
+    private bool AddNode(GameObject elementObject, int index = -1)
+    {
+        if (!elementObject)
+            return false;
+        
+        var element = elementObject.GetComponent<QueueElementUI>();
+        
+        if(!element || _uiLookup.ContainsKey(element.nodeVisual))
+            return false;
+        
+        if (!SearchModeController.Instance.TryAddDeltaNodeToPlayerFrontier(element.nodeVisual, index))
+            return false;
+        
+        var uiObject = Instantiate(queueElementPrefab, queueContent);
+        var ui = uiObject.GetComponent<QueueElementUI>();
+        ui.GetComponent<Collider>().enabled = false;
+        ui.Initialize(element.nodeVisual, element.textColor);
+        
+        _uiLookup.Add(ui.nodeVisual, ui);
+        ui.transform.SetSiblingIndex(index >= 0 ? index + 1 : 1);
+        
+        var dropZoneObject = Instantiate(dropZonePrefab, dropZoneContent);
+        var dropZone = dropZoneObject.GetComponent<QueueDropZone>();
+        dropZone.zoneIndex = index >= 0 ? index : 0;
+        
+        _dropZoneLookup.Add(element, dropZone);
+        dropZone.transform.SetSiblingIndex(index >= 0 ? index : 0);
+        
+        lastDropZone.zoneIndex++;
+
         return true;
     }
 
@@ -189,8 +224,8 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         }
 
         // pick best zone; e.g. smallest zoneIndex or change to distance-based
-        var bestZone = _hoverCounts.Keys.OrderBy(z => z.zoneIndex).First();
-        ShowHoveringVisual(bestZone.zoneIndex);
+        _zoneToDropAt = _hoverCounts.Keys.OrderBy(z => z.zoneIndex).First();
+        ShowHoveringVisual(_zoneToDropAt.zoneIndex);
     }
     
     private void ShowHoveringVisual(int index)
@@ -210,6 +245,19 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
     {
         Destroy(_hoveringElementInstance);
         _hoveringElementInstance = null;
+    }
+
+    private void HandleFrontierAddNode(bool value)
+    {
+        if (value || !currentlyGrabbedQueueElementObject || !_hoveringElementInstance)
+            return; // Element was grabbed, not dropped. Or not being hovered
+        
+        DisableHoveringVisual();
+        _hoverCounts.Clear();
+        AddNode(currentlyGrabbedQueueElementObject, _zoneToDropAt.zoneIndex);
+        
+        Destroy(currentlyGrabbedQueueElementObject);
+        currentlyGrabbedQueueElementObject = null;
     }
 
     private void RepopulateUI(SearchPlayMode mode)

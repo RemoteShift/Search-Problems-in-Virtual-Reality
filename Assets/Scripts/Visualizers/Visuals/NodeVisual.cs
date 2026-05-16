@@ -136,12 +136,12 @@ namespace Search.Visualization
             {
                 currentlyGrabbedQueueElement = currentlyGrabbedQueueElementObject?.GetComponent<QueueElementUI>();
                 if (!(currentlyGrabbedQueueElement?.isDroppingIntoQueue ?? true))
+                {
                     Destroy(currentlyGrabbedQueueElementObject);
-                currentlyGrabbedQueueElementObject = null;
+                    currentlyGrabbedQueueElementObject = null;
+                }
                 
                 PlayerQueueUI.Instance.GetComponent<Rigidbody>().isKinematic = false;
-                
-                EdgeManager.Instance.RemoveEdge("GrabbedNodeVisual", "TempQueueElementUI");
                 
                 VRInputHandler.Instance.OnRightGridAndBPressChanged -= HandleNodeGrabbedQueue;
                 return;
@@ -153,7 +153,8 @@ namespace Search.Visualization
             currentlyGrabbedQueueElementObject.layer = LayerMask.NameToLayer("Default");
             currentlyGrabbedQueueElement = currentlyGrabbedQueueElementObject.GetComponent<QueueElementUI>();
             
-            currentlyGrabbedQueueElement.Initialize(this);
+            currentlyGrabbedQueueElement.Initialize(this, 
+                new Color(53, 71, 100, 100)); // Frontier node color
 
             PlayerQueueUI.Instance.GetComponent<Rigidbody>().isKinematic = true;
             

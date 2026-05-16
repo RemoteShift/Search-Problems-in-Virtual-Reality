@@ -22,8 +22,6 @@ public class QueueDropZone : MonoBehaviour
     {
         if (!other.CompareTag("QueueElement"))
             return;
-
-        Debug.Log($"Entered Drop Zone {zoneIndex}");
         
         PlayerQueueUI.Instance.RegisterHover(this);
         var grabbed = PlayerQueueUI.Instance.currentlyGrabbedQueueElementObject;
@@ -34,8 +32,6 @@ public class QueueDropZone : MonoBehaviour
     {
         if (!other.CompareTag("QueueElement"))
             return;
-        
-        Debug.Log($"Exited Drop Zone {zoneIndex}");
         
         PlayerQueueUI.Instance.UnregisterHover(this);
         var grabbed = PlayerQueueUI.Instance.currentlyGrabbedQueueElementObject;

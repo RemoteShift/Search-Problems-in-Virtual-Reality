@@ -12,12 +12,16 @@ public class QueueElementUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     /// </summary>
     public bool isDroppingIntoQueue;
     private TextMeshProUGUI _nodeStateText;
+    public Color textColor;
 
-    public void Initialize(NodeVisual nodeVisualInitial)
+    public void Initialize(NodeVisual nodeVisualInitial, Color color = default)
     {
         nodeVisual = nodeVisualInitial;
         _nodeStateText = GetComponentInChildren<TextMeshProUGUI>();
         _nodeStateText.text = nodeVisualInitial.stateId;
+        if(color != default)
+            _nodeStateText.color = color;
+        textColor = _nodeStateText.color;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
