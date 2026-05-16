@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Search.Controllers;
+using Search.Core;
 using Search.Levels;
 using Search.Visualization;
 using Search.Utils;
@@ -26,15 +27,7 @@ namespace Search.GameModes
 
         public IReadOnlyList<NodeVisual> authoritativeFrontier => _authoritativeFrontier;
         public IReadOnlyList<NodeVisual> latestDelta => _latestDelta;
-
-        private void Start()
-        {
-            LevelManager.Instance.onSearchLoaded.AddListener(() =>
-            {
-                SetMode(SearchPlayMode.Observe);
-            });
-        }
-
+        
         public void SetMode(SearchPlayMode mode)
         {
             if (currentMode == mode)
@@ -55,12 +48,13 @@ namespace Search.GameModes
             PlayerQueueState.SetExpectedFrontier(_authoritativeFrontier);
         }
 
-        public void NotifyNodesAddedToFrontier(IReadOnlyList<NodeVisual> nodeVisuals)
+        public void NotifyNodesAddedToFrontier(IReadOnlyList<NodeVisual> nodeVisuals, 
+            IQueuingFunction queuingFunction = null)
         {
             if(nodeVisuals != null)
                 _authoritativeFrontier.AddRange(nodeVisuals.Where(v => v));
             
-            PlayerQueueState.AddToExpectedFrontier(nodeVisuals);
+            PlayerQueueState.AddToExpectedFrontier(nodeVisuals, queuingFunction);
         }
 
         public void NotifyDeltaGenerated(IReadOnlyList<NodeVisual> deltaNodes)
@@ -93,7 +87,7 @@ namespace Search.GameModes
                 SearchController.Instance.AdvanceStep();
                 return;
             }
-
+            
             var validation = PlayerQueueState.ValidateExactMatch();
             if (!validation.Success)
             {

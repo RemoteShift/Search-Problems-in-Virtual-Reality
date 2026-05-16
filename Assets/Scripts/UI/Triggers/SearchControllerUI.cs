@@ -14,6 +14,7 @@ public class SearchControllerUI : MonoBehaviour
     private void OnEnable()
     {
         SearchModeController.Instance.onModeChanged.AddListener(HandleModeChanged);
+        HandleModeChanged(SearchModeController.Instance.CurrentMode);
     }
 
     private void HandleModeChanged(SearchPlayMode mode)

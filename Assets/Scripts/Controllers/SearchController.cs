@@ -127,7 +127,8 @@ namespace Search.Controllers
             }
             queueUI?.AddNodes(nodeVisuals);
             SearchModeController.Instance.NotifyDeltaGenerated(nodeVisuals);
-            SearchModeController.Instance.NotifyNodesAddedToFrontier(nodeVisuals);
+            SearchModeController.Instance.NotifyNodesAddedToFrontier(nodeVisuals, 
+                LevelManager.Instance.GetCurrentSearchAlgorithm().QueueingFunction);
         }
 
         public void OnSearchComplete(SearchResult result)
@@ -234,6 +235,8 @@ namespace Search.Controllers
             {
                 nodeVisual.SetState(NodeState.Frontier);
             }
+            
+            _nodeVisualsToFrontier.Clear();
             
             search?.AdvanceStep();
         }

@@ -3,16 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Algorithms/GeneralSearch.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/SearchModeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/SearchModeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/TitleCanvasUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/TitleCanvasUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/QueueElementUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/QueueElementUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/SetSolveModeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/SetSolveModeUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Triggers/SearchControllerUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,7 +21,7 @@
   <component name="CopilotChats">
     <option name="panelChat">
       <chat>
-        <option name="activeSessionId" value="d8f07da9-e886-4bf3-b995-7508f354b31f" />
+        <option name="activeSessionId" value="0a706884-b28a-4a02-b80b-ce8d0d34fe8e" />
         <option name="sessions">
           <session>
             <option name="chatType" value="PANEL" />
@@ -152,6 +151,15 @@
           <session>
             <option name="chatType" value="PANEL" />
             <option name="id" value="d8f07da9-e886-4bf3-b995-7508f354b31f" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+            <option name="status" value="Completed" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="0a706884-b28a-4a02-b80b-ce8d0d34fe8e" />
             <option name="modeId" value="Ask" />
             <option name="modelType" value="builtin_family" />
             <option name="modelValue" value="auto" />
@@ -289,27 +297,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Device#class com.jetbrains.rider.plugins.unity.run.devices.UnityEditorDeviceKind#com.jetbrains.rider.plugins.unity.run.devices.UnityDevicesProvider#Unity Attach To: Attach to&quot;: &quot;Unity Editor&quot;,
-    &quot;DeviceKind#com.jetbrains.rider.plugins.unity.run.devices.UnityDevicesProvider&quot;: &quot;Unity Editor&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ShowUsagesActions.previewPropertyKey&quot;: &quot;true&quot;,
-    &quot;Unity Attach To.Attach to.executor&quot;: &quot;Debug&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.26404494&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;playmode&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;discord-application&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Device#class com.jetbrains.rider.plugins.unity.run.devices.UnityEditorDeviceKind#com.jetbrains.rider.plugins.unity.run.devices.UnityDevicesProvider#Unity Attach To: Attach to": "Unity Editor",
+    "DeviceKind#com.jetbrains.rider.plugins.unity.run.devices.UnityDevicesProvider": "Unity Editor",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ShowUsagesActions.previewPropertyKey": "true",
+    "Unity Attach To.Attach to.executor": "Debug",
+    "XThreadsFramesViewSplitterKey": "0.26404494",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "discord-application",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Unity Attach To.Attach to">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\6000.3.8f1\Editor\Unity.exe" />
@@ -907,47 +915,61 @@
         </breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs</url>
-          <line>134</line>
+          <line>135</line>
           <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\UI\PlayerQueueUI.cs" containingFunctionPresentation="Method 'AddNode'">
             <startOffsets>
-              <option value="4748" />
+              <option value="4791" />
             </startOffsets>
             <endOffsets>
-              <option value="4767" />
+              <option value="4810" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="36" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs</url>
-          <line>82</line>
+          <line>95</line>
           <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\GameModes\PlayerQueueState.cs" containingFunctionPresentation="Method 'RemoveFromPlayerFrontier'">
             <startOffsets>
-              <option value="2495" />
+              <option value="2869" />
             </startOffsets>
             <endOffsets>
-              <option value="2496" />
+              <option value="2870" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs</url>
-          <line>66</line>
+          <line>79</line>
           <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\GameModes\PlayerQueueState.cs" containingFunctionPresentation="Method 'AddToPlayerFrontier'">
             <startOffsets>
-              <option value="2042" />
+              <option value="2416" />
             </startOffsets>
             <endOffsets>
-              <option value="2043" />
+              <option value="2417" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs</url>
+          <line>136</line>
+          <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\GameModes\PlayerQueueState.cs" containingFunctionPresentation="Method 'ValidateExactMatch'">
+            <startOffsets>
+              <option value="4075" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4076" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
+        <PinnedItemInfo parentTag="Type#Search.Visualization.NodeVisual" memberName="position" />
         <PinnedItemInfo parentTag="Type#Search.Core.GridState" memberName="id" />
         <PinnedItemInfo parentTag="Type#TMPro.TMP_Text" memberName="text" />
         <PinnedItemInfo parentTag="Type#Search.Visualization.NodeVisual" memberName="stateId" />

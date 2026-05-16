@@ -91,8 +91,9 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         var nodeVisuals = SearchModeController.Instance.latestDelta;
         foreach (var nodeVisual in nodeVisuals)
         {
-            var element = _uiLookup[nodeVisual];
-            element.textColor = Color.white;
+            _uiLookup.TryGetValue(nodeVisual, out var element);
+            if(element)
+                element.textColor = Color.white;
         }
     }
 

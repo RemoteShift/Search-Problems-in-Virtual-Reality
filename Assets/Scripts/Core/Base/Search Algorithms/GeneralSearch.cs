@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Search.Controllers;
+using Search.GameModes;
 using Search.Levels;
 using Search.Utils;
 using Search.Visualization;
@@ -245,11 +246,13 @@ namespace Search.Core.Algorithms
             _expanded.Clear();
             _searchResult = null;
             SearchNodes?.Clear();
+            SearchModeController.Instance.ResetSolveState();
+            SearchController.Instance.ClearState();
         }
 
-        public List<SearchNode> GetFrontierQueue()
+        public IReadOnlyList<SearchNode> GetFrontierQueue()
         {
-            return _frontier.ToList().ToList();
+            return _frontier.ToList();
         }
         
         /// <summary>Called by the SearchController to advance one step.</summary>

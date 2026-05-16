@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Search.Core;
+using Search.Core.Algorithms;
 using Search.Visualization;
 
 namespace Search.GameModes
@@ -34,10 +36,21 @@ namespace Search.GameModes
                 _expectedFrontier.AddRange(frontier.Where(v => v));
         }
 
-        public void AddToExpectedFrontier(IReadOnlyList<NodeVisual> nodeVisuals)
+        public void AddToExpectedFrontier(IReadOnlyList<NodeVisual> nodeVisuals, IQueuingFunction queuingFunction = null)
         {
-            if(nodeVisuals != null)
-                _expectedFrontier.AddRange(nodeVisuals.Where(v => v));
+            if (nodeVisuals == null)
+                return;
+
+            var nodesToAdd = nodeVisuals.Where(v => v).ToList();
+
+            if (queuingFunction is DFS or IDS)
+            {
+                _expectedFrontier.InsertRange(0, nodesToAdd.AsEnumerable().Reverse());
+            }
+            else
+            {
+                _expectedFrontier.AddRange(nodesToAdd);
+            }
         }
 
         public void SetDeltaNodes(IReadOnlyList<NodeVisual> DeltaNodes)
