@@ -29,6 +29,11 @@ namespace Search.Visualization
                 return;
             }
             
+            if(!_from.gameObject.activeSelf ||  !_to.gameObject.activeSelf)
+                _lr.enabled = false;
+            else
+                _lr.enabled = true;
+            
             if (_from && _to)
                 _lr.SetPositions(new[] { _from.position, _to.position });
             

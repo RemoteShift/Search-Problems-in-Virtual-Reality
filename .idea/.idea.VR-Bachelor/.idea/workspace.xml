@@ -3,10 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/EdgeDynamicUpdater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/EdgeDynamicUpdater.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/SearchModeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/SearchModeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/ValidationResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/ValidationResult.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/QueueDropZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/QueueDropZone.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/QueueElementUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/QueueElementUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +22,7 @@
   <component name="CopilotChats">
     <option name="panelChat">
       <chat>
-        <option name="activeSessionId" value="fbdb4580-3f67-4623-9668-5c496dc0d3d8" />
+        <option name="activeSessionId" value="352e6148-d4e8-455b-b156-78996379ec56" />
         <option name="sessions">
           <session>
             <option name="chatType" value="PANEL" />
@@ -120,6 +125,15 @@
           <session>
             <option name="chatType" value="PANEL" />
             <option name="id" value="fbdb4580-3f67-4623-9668-5c496dc0d3d8" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+            <option name="status" value="Completed" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="352e6148-d4e8-455b-b156-78996379ec56" />
             <option name="modeId" value="Ask" />
             <option name="modelType" value="builtin_family" />
             <option name="modelValue" value="auto" />
@@ -385,15 +399,7 @@
       <workItem from="1778778697103" duration="2586000" />
       <workItem from="1778781323529" duration="11653000" />
       <workItem from="1778853323309" duration="23137000" />
-      <workItem from="1778928279913" duration="13132000" />
-    </task>
-    <task id="LOCAL-00031" summary="Add EdgeManager and EdgeDynamicUpdater for dynamic edge visualization; implement edge addition and removal in search visualization">
-      <option name="closed" value="true" />
-      <created>1777215157766</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1777215157766</updated>
+      <workItem from="1778928279913" duration="21835000" />
     </task>
     <task id="LOCAL-00032" summary="Add maze camera positioning logic and update maze level dimensions; enhance visual settings organization in MazeVisualizer">
       <option name="closed" value="true" />
@@ -779,7 +785,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778938828523</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="Enhance player queue functionality; improve node addition and hover handling in PlayerQueueUI">
+      <option name="closed" value="true" />
+      <created>1778942883717</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1778942883717</updated>
+    </task>
+    <option name="localTasksCounter" value="81" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -812,7 +826,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Refactor visualizer classes; improve variable naming, streamline node positioning logic, and enhance automatic search handling" />
     <MESSAGE value="Refactor LevelManager and SearchController; update variable accessibility, streamline search handling, and enhance UI interactions" />
     <MESSAGE value="Refactor LevelManager and SearchController; update main menu handling and improve search result display" />
     <MESSAGE value="Refactor SearchResult and SearchResultUI; update variable accessibility, enhance UI elements, and improve result display logic" />
@@ -837,7 +850,8 @@
     <MESSAGE value="Add drop zone functionality and enhance player queue UI; implement QueueDropZone and ColliderViewportCuller components" />
     <MESSAGE value="TODO: Add an extra dropbox at the end to be able to add to the ed of the player queue&#10;Also, fix the glitching when sliding between different positions to put in the player queue&#10;Also, fix the problem with the collisions not detecting. Maybe the element collider is too small?" />
     <MESSAGE value="Enhance player queue functionality; add last drop zone and improve hover handling in QueueDropZone" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance player queue functionality; add last drop zone and improve hover handling in QueueDropZone" />
+    <MESSAGE value="Enhance player queue functionality; improve node addition and hover handling in PlayerQueueUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance player queue functionality; improve node addition and hover handling in PlayerQueueUI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

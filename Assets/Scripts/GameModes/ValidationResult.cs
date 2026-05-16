@@ -1,9 +1,13 @@
-﻿namespace Search.GameModes
+﻿using System.Collections.Generic;
+using Search.Visualization;
+
+namespace Search.GameModes
 {
     public struct ValidationResult
     {
         public bool Success;
 		public string Message;
+		public List<NodeVisual> MisplacedNodeVisuals;
 
 		public static ValidationResult Ok()
 		{
@@ -13,13 +17,23 @@
 				Message = "OK"
 			};
 		}
-
+		
 		public static ValidationResult Fail(string message)
 		{
 			return new ValidationResult
 			{
 				Success = false,
-				Message = message
+				Message = message,
+			};
+		}
+
+		public static ValidationResult Fail(string message, List<NodeVisual> misplacedNodeVisuals)
+		{
+			return new ValidationResult
+			{
+				Success = false,
+				Message = message,
+				MisplacedNodeVisuals = misplacedNodeVisuals
 			};
 		}
     }

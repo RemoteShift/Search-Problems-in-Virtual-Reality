@@ -25,8 +25,8 @@ namespace Search.GameModes
         private readonly List<NodeVisual> _authoritativeFrontier = new();
         private readonly List<NodeVisual> _latestDelta = new();
 
-        public IReadOnlyList<NodeVisual> AuthoritativeFrontier => _authoritativeFrontier;
-        public IReadOnlyList<NodeVisual> LatestDelta => _latestDelta;
+        public IReadOnlyList<NodeVisual> authoritativeFrontier => _authoritativeFrontier;
+        public IReadOnlyList<NodeVisual> latestDelta => _latestDelta;
 
         private void Start()
         {
@@ -97,6 +97,12 @@ namespace Search.GameModes
             if (!validation.Success)
             {
                 onValidationFailure.Invoke(validation.Message);
+
+                if (validation.MisplacedNodeVisuals != null)
+                {
+                    PlayerQueueUI.Instance.ShowMisplacedElements(validation.MisplacedNodeVisuals);
+                }
+                
                 return;
             }
 

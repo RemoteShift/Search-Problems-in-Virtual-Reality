@@ -3,14 +3,9 @@ using UnityEngine;
 public class QueueDropZone : MonoBehaviour
 {
     [SerializeField] private PlayerQueueUI playerQueueUI;
-    public int zoneIndex;
+    public int zoneIndex => transform.GetSiblingIndex();
     
     private bool _wasInProximity;
-
-    // private void OnDestroy()
-    // {
-    //     Debug.Log($"Object {gameObject.name} destroyed. StackTrace: \n{StackTraceUtility.ExtractStackTrace()}");
-    // }
 
     protected void Awake()
     {

@@ -154,7 +154,7 @@ namespace Search.Visualization
             currentlyGrabbedQueueElement = currentlyGrabbedQueueElementObject.GetComponent<QueueElementUI>();
             
             currentlyGrabbedQueueElement.Initialize(this, 
-                new Color(53, 71, 100, 100)); // Frontier node color
+                frontierMat.color); // Frontier node color
 
             PlayerQueueUI.Instance.GetComponent<Rigidbody>().isKinematic = true;
             

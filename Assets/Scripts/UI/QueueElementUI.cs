@@ -3,6 +3,7 @@ using Search.Visualization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class QueueElementUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -11,17 +12,19 @@ public class QueueElementUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     /// If this element is in the vicinity of the queue, then this is true, else false.
     /// </summary>
     public bool isDroppingIntoQueue;
-    private TextMeshProUGUI _nodeStateText;
-    public Color textColor;
+    [SerializeField] private TextMeshProUGUI nodeStateText;
+    public Color32 textColor
+    {
+        get => nodeStateText.color;
+        set => nodeStateText.color = value;
+    }
 
-    public void Initialize(NodeVisual nodeVisualInitial, Color color = default)
+    public void Initialize(NodeVisual nodeVisualInitial, Color32? color = null)
     {
         nodeVisual = nodeVisualInitial;
-        _nodeStateText = GetComponentInChildren<TextMeshProUGUI>();
-        _nodeStateText.text = nodeVisualInitial.stateId;
-        if(color != default)
-            _nodeStateText.color = color;
-        textColor = _nodeStateText.color;
+        nodeStateText.text = nodeVisualInitial.stateId;
+        if(color != null)
+            textColor = color.Value;
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Search.Visualization;
-using UnityEngine;
 
 namespace Search.GameModes
 {
@@ -126,6 +125,10 @@ namespace Search.GameModes
                     $"Count mismatch. Player has {_playerFrontier.Count}, expected {_expectedFrontier.Count}.");
             }
 
+            bool failed = false;
+            string failureMessage = "";
+            List<NodeVisual> misplacedNodes = new();
+            
             for (var i = 0; i < _expectedFrontier.Count; i++)
             {
                 var expected = _expectedFrontier[i];
@@ -135,12 +138,16 @@ namespace Search.GameModes
                 {
                     var expectedName = expected ? expected.stateId : "<null>";
                     var actualName = actual ? actual.stateId : "<null>";
-                    return ValidationResult.Fail(
-                        $"Mismatch at position {i + 1}. Expected {expectedName}, got {actualName}.");
+                    failed = true;
+                    failureMessage += $"\nMismatch at position {i}. Expected {expectedName}, got {actualName}.";
+                    misplacedNodes.Add(actual);
                 }
             }
 
-            
+            if (failed)
+            {
+                return ValidationResult.Fail(failureMessage, misplacedNodes);
+            }
             
             return ValidationResult.Ok();
         }

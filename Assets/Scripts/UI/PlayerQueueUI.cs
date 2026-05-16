@@ -25,11 +25,13 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
     private Canvas _canvas;
     private readonly Dictionary<NodeVisual, QueueElementUI> _uiLookup = new();
     private readonly Dictionary<QueueElementUI, QueueDropZone> _dropZoneLookup = new();
+    private readonly List<QueueElementUI> _currentlyMisplacedElements = new();
 
     private void OnEnable()
     {
         LevelManager.Instance.onSearchLoaded.AddListener(ClearUI);
         SearchModeController.Instance.onModeChanged.AddListener(RepopulateUI);
+        SearchModeController.Instance.onValidationSuccess.AddListener(SetLatestDeltaElementsTextColorWhite);
         VRInputHandler.Instance.OnRightGridAndBPressChanged += HandleFrontierAddNode;
     }
 
@@ -37,6 +39,12 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
     {
         LevelManager.Instance?.onSearchLoaded.RemoveListener(ClearUI);
         SearchModeController.Instance?.onModeChanged.RemoveListener(RepopulateUI);
+        SearchModeController.Instance?.onValidationSuccess.RemoveListener(SetLatestDeltaElementsTextColorWhite);
+        var handler = VRInputHandler.Instance;
+        if (handler)
+        {
+            handler.OnRightGridAndBPressChanged -= HandleFrontierAddNode;
+        }
     }
 
     private void Start()
@@ -54,6 +62,35 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
             _canvas.enabled = mode == SearchPlayMode.Solve;
             cube?.SetActive(mode == SearchPlayMode.Solve);
         });
+    }
+
+    public void ShowMisplacedElements(List<NodeVisual> nodes)
+    {
+        foreach (var kvp in _uiLookup.Where(kv => nodes.Contains(kv.Key)))
+        {
+            kvp.Value.textColor = Color.red;
+            _currentlyMisplacedElements.Add(kvp.Value);
+        }
+    }
+
+    private void ResetMisplacedElements()
+    {
+        foreach (var misplacedElement in _currentlyMisplacedElements)
+        {
+            misplacedElement.textColor = Color.white;
+        }
+        
+        _currentlyMisplacedElements.Clear();
+    }
+
+    private void SetLatestDeltaElementsTextColorWhite()
+    {
+        var nodeVisuals = SearchModeController.Instance.latestDelta;
+        foreach (var nodeVisual in nodeVisuals)
+        {
+            var element = _uiLookup[nodeVisual];
+            element.textColor = Color.white;
+        }
     }
 
     /// <summary>
@@ -77,13 +114,15 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         ui.transform.SetSiblingIndex(index >= 0 ? index + 1 : 1);
 
         var dropZoneObject = Instantiate(dropZonePrefab, dropZoneContent);
+        dropZoneObject.layer = LayerMask.NameToLayer("Default");
         var dropZone = dropZoneObject.GetComponent<QueueDropZone>();
-        dropZone.zoneIndex = index >= 0 ? index : 0;
         
         _dropZoneLookup.Add(ui, dropZone);
         dropZone.transform.SetSiblingIndex(index >= 0 ? index : 0);
         
-        lastDropZone.zoneIndex++;
+        dropZoneObject.name = dropZone.zoneIndex.ToString();
+        
+        ResetMisplacedElements();
         
         return true;
     }
@@ -110,14 +149,15 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         ui.transform.SetSiblingIndex(index >= 0 ? index + 1 : 1);
         
         var dropZoneObject = Instantiate(dropZonePrefab, dropZoneContent);
+        dropZoneObject.layer = LayerMask.NameToLayer("Default");
         var dropZone = dropZoneObject.GetComponent<QueueDropZone>();
-        dropZone.zoneIndex = index >= 0 ? index : 0;
         
         _dropZoneLookup.Add(element, dropZone);
         dropZone.transform.SetSiblingIndex(index >= 0 ? index : 0);
-        
-        lastDropZone.zoneIndex++;
+        dropZoneObject.name = dropZone.zoneIndex.ToString();
 
+        ResetMisplacedElements();
+        
         return true;
     }
 
@@ -139,7 +179,7 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         
         Destroy(uiTransform.gameObject);
         
-        lastDropZone.zoneIndex--;
+        ResetMisplacedElements();
     }
 
     /// <summary>
@@ -158,8 +198,8 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         
         _uiLookup.Remove(nodeVisual);
         Destroy(ui.gameObject);
-
-        lastDropZone.zoneIndex--;
+        
+        ResetMisplacedElements();
         
         return true;
     }
@@ -287,14 +327,11 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
 
             var dropZoneObject = Instantiate(dropZonePrefab, dropZoneContent);
             dropZoneObject.layer = LayerMask.NameToLayer("Default");
-            dropZoneObject.name = i.ToString();
             var dropZone = dropZoneObject.GetComponent<QueueDropZone>();
-            dropZone.zoneIndex = i;
         
             _dropZoneLookup.Add(ui, dropZone);
             dropZone.transform.SetSiblingIndex(i);
-
-            lastDropZone.zoneIndex++;
+            dropZoneObject.name = i.ToString();
         }
     }
     
@@ -309,8 +346,7 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
                     if(zone != lastDropZone.transform)
                         Destroy(zone.gameObject);
                 }
-
-                lastDropZone.zoneIndex = 0;
+                
                 continue;
             }
             
@@ -319,6 +355,7 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         
         _uiLookup.Clear();
         _dropZoneLookup.Clear();
+        _currentlyMisplacedElements.Clear();
         SearchModeController.Instance.PlayerQueueState.ClearPlayerFrontier();
     }
 }
