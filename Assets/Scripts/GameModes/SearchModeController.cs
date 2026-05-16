@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Search.Controllers;
 using Search.Levels;
@@ -43,6 +42,8 @@ namespace Search.GameModes
 
             currentMode = mode;
             onModeChanged.Invoke(mode);
+            
+            SearchController.Instance.ClearState();
         }
 
         public void NotifyFrontierChanged(IReadOnlyList<NodeVisual> frontier)

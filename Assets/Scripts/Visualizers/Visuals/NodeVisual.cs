@@ -10,7 +10,7 @@ namespace Search.Visualization
         private MeshRenderer _renderer;
         public Color currentOriginalColor;
         [SerializeField] private Material defaultMat;
-        [SerializeField] private Material frontierMat;
+        public Material frontierMat;
         [SerializeField] private Material expandedMat;
         [Tooltip("Used when a node is being expanded in the next step, " +
                  "to differentiate it from already expanded nodes.")]
@@ -107,10 +107,15 @@ namespace Search.Visualization
             switch (isHovering)
             {
                 case true:
-                    VRInputHandler.Instance.OnRightGridAndBPressChanged += HandleNodeGrabbedQueue;
+                    if(currentState == NodeState.Default 
+                       && SearchModeController.Instance.CurrentMode == SearchPlayMode.Solve
+                       && !currentlyGrabbedQueueElementObject)
+                        VRInputHandler.Instance.OnRightGridAndBPressChanged += HandleNodeGrabbedQueue;
                     break;
                 case false:
-                    if(!PlayerQueueUI.Instance.currentlyGrabbedQueueElementObject)
+                    if(currentState == NodeState.Default 
+                       && SearchModeController.Instance.CurrentMode == SearchPlayMode.Solve
+                       && !currentlyGrabbedQueueElementObject)
                         VRInputHandler.Instance.OnRightGridAndBPressChanged -= HandleNodeGrabbedQueue;
                     break;
             }
@@ -125,8 +130,6 @@ namespace Search.Visualization
 
         private void HandleNodeGrabbedQueue(bool value)
         {
-            if (SearchModeController.Instance.CurrentMode != SearchPlayMode.Solve) return;
-            // if (currentState != NodeState.Default) return;
             if (currentlyGrabbedQueueElementObject && value)
                 return;
 
@@ -141,8 +144,6 @@ namespace Search.Visualization
                     currentlyGrabbedQueueElementObject = null;
                 }
                 
-                PlayerQueueUI.Instance.GetComponent<Rigidbody>().isKinematic = false;
-                
                 VRInputHandler.Instance.OnRightGridAndBPressChanged -= HandleNodeGrabbedQueue;
                 return;
             }
@@ -155,8 +156,6 @@ namespace Search.Visualization
             
             currentlyGrabbedQueueElement.Initialize(this, 
                 frontierMat.color); // Frontier node color
-
-            PlayerQueueUI.Instance.GetComponent<Rigidbody>().isKinematic = true;
             
             EdgeManager.Instance.AddEdge("GrabbedNodeVisual", "TempQueueElementUI", 
                 transform, currentlyGrabbedQueueElement.transform);

@@ -61,6 +61,7 @@ public class TitleCanvasUI : AnimatableUI
             _levelManager.Initialize();
             _searchController.SetAutomaticSearch(true);
             _levelManager.useGraphSearch = true;
+            _searchController.SetSearchTimeScale(5f);
         });
 
         #region Animate Rect Mask Padding Open
@@ -105,7 +106,6 @@ public class TitleCanvasUI : AnimatableUI
         seq.OnComplete(() =>
         {
             _algorithmSequenceCoroutine = StartCoroutine(AlgorithmSequence());
-            _searchController.SetSearchTimeScale(5f);
         });
 
         return seq;

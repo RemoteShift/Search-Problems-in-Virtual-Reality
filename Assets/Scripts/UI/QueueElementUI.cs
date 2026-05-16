@@ -1,9 +1,11 @@
+using System.Collections;
+using Search.Core;
+using Search.GameModes;
 using Search.Levels;
 using Search.Visualization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 
 public class QueueElementUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -27,6 +29,53 @@ public class QueueElementUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             textColor = color.Value;
     }
 
+    private void OnDestroy()
+    {
+        VRInputHandler.Instance.OnRightGridAndBPressChanged -= HandleNodeGrabbedQueue;
+    }
+
+    [SerializeField] private GameObject queueElementPrefab;
+    private GameObject currentlyGrabbedQueueElementObject
+    {
+        get => PlayerQueueUI.Instance.currentlyGrabbedQueueElementObject;
+        set => PlayerQueueUI.Instance.currentlyGrabbedQueueElementObject = value;
+    }
+    
+    public void HandleNodeGrabbedQueue(bool value)
+    {
+        QueueElementUI currentlyGrabbedQueueElement;
+
+        if (!value)
+        {
+            currentlyGrabbedQueueElement = currentlyGrabbedQueueElementObject?.GetComponent<QueueElementUI>();
+            if (!(currentlyGrabbedQueueElement?.isDroppingIntoQueue ?? true))
+            {
+                Destroy(currentlyGrabbedQueueElementObject);
+                currentlyGrabbedQueueElementObject = null;
+            }
+            
+            VRInputHandler.Instance.OnRightGridAndBPressChanged -= HandleNodeGrabbedQueue;
+            return;
+        }
+
+        var parentTransform = PlayerLocomotion.Instance.tempQueueHandAttachmentPoint;
+
+        currentlyGrabbedQueueElementObject = Instantiate(queueElementPrefab, parentTransform);
+        currentlyGrabbedQueueElementObject.GetComponent<Collider>().enabled = true;
+        currentlyGrabbedQueueElementObject.layer = LayerMask.NameToLayer("Default");
+        currentlyGrabbedQueueElement = currentlyGrabbedQueueElementObject.GetComponent<QueueElementUI>();
+
+        currentlyGrabbedQueueElement.Initialize(nodeVisual, 
+            nodeVisual.frontierMat.color); // Frontier node color
+
+        SearchModeController.Instance.PlayerQueueState.RemoveFromPlayerFrontier(nodeVisual);
+        
+        EdgeManager.Instance.AddEdge("GrabbedNodeVisual", "TempQueueElementUI", 
+            nodeVisual.transform, currentlyGrabbedQueueElement.transform);
+
+        VRInputHandler.Instance.OnRightGridAndBPressChanged += currentlyGrabbedQueueElement.HandleNodeGrabbedQueue;
+    }
+    
     public void OnPointerEnter(PointerEventData eventData)
     {
         NodeStatsUI.Instance.EnableAndUpdateNodeStatsUI(nodeVisual);
@@ -34,11 +83,21 @@ public class QueueElementUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         if(visual)
             EdgeManager.Instance.AddEdge("QueueElementUI", "ResultingNodeVisual", 
             transform, visual.transform);
+        
+        if(nodeVisual.currentState == NodeState.Default
+           && SearchModeController.Instance.CurrentMode == SearchPlayMode.Solve
+           && !currentlyGrabbedQueueElementObject)
+            VRInputHandler.Instance.OnRightGridAndBPressChanged += HandleNodeGrabbedQueue;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         NodeStatsUI.Instance.DisableNodeStatsUI();
         EdgeManager.Instance.RemoveEdge("QueueElementUI", "ResultingNodeVisual");
+        
+        if(nodeVisual.currentState == NodeState.Default
+           && SearchModeController.Instance.CurrentMode == SearchPlayMode.Solve
+           && !currentlyGrabbedQueueElementObject)
+            VRInputHandler.Instance.OnRightGridAndBPressChanged -= HandleNodeGrabbedQueue;
     }
 }

@@ -89,7 +89,10 @@ namespace Search.GameModes
             
             PlayerQueueUI.Instance.RemoveNode(nodeVisual);
             
-            return _playerFrontier.Remove(nodeVisual);
+            if(SearchModeController.Instance.latestDelta.Contains(nodeVisual))
+                _deltaNodes.Add(nodeVisual);
+
+            return true;
         }
 
         public bool RemoveFromExpectedFrontier(NodeVisual nodeVisual)

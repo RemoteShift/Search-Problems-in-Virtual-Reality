@@ -4,14 +4,14 @@
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/EdgeDynamicUpdater.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/EdgeDynamicUpdater.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/SearchModeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/SearchModeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameModes/ValidationResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameModes/ValidationResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/TitleCanvasUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Main Menu UI/TitleCanvasUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/QueueDropZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/QueueDropZone.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/QueueElementUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/QueueElementUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/TreeVisualizer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/SetSolveModeUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Setters/SetSolveModeUI.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +22,7 @@
   <component name="CopilotChats">
     <option name="panelChat">
       <chat>
-        <option name="activeSessionId" value="352e6148-d4e8-455b-b156-78996379ec56" />
+        <option name="activeSessionId" value="d8f07da9-e886-4bf3-b995-7508f354b31f" />
         <option name="sessions">
           <session>
             <option name="chatType" value="PANEL" />
@@ -140,6 +140,24 @@
             <option name="status" value="Completed" />
             <option name="targetType" value="LOCAL" />
           </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="e49dc09a-713a-4021-9523-6c54257c7ac3" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+            <option name="status" value="Completed" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="d8f07da9-e886-4bf3-b995-7508f354b31f" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+            <option name="status" value="Completed" />
+            <option name="targetType" value="LOCAL" />
+          </session>
         </option>
         <option name="type" value="PANEL" />
       </chat>
@@ -176,6 +194,7 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/2d04f6fca5544dec9e59e548aa62384f1c800/99/591b5a79/02000014pdb54.il" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/2a/ef3e876e/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/36/b137be67/Nullable`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/68/ab9b00d3/NullReferenceException.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/1eb9db207454431c84a47bcd81e79c3746ae00/6b/553687d2/List`1.cs" root0="FORCE_HIGHLIGHTING" />
@@ -399,15 +418,7 @@
       <workItem from="1778778697103" duration="2586000" />
       <workItem from="1778781323529" duration="11653000" />
       <workItem from="1778853323309" duration="23137000" />
-      <workItem from="1778928279913" duration="21835000" />
-    </task>
-    <task id="LOCAL-00032" summary="Add maze camera positioning logic and update maze level dimensions; enhance visual settings organization in MazeVisualizer">
-      <option name="closed" value="true" />
-      <created>1777223769384</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1777223769384</updated>
+      <workItem from="1778928279913" duration="35341000" />
     </task>
     <task id="LOCAL-00033" summary="Update maze level dimensions and camera positioning; refactor MazeVisualizer for improved container management">
       <option name="closed" value="true" />
@@ -793,7 +804,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778942883717</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="Enhance player queue validation; improve mismatch reporting and add misplaced node handling in PlayerQueueUI">
+      <option name="closed" value="true" />
+      <created>1778951900470</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1778951900471</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -826,7 +845,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Refactor LevelManager and SearchController; update variable accessibility, streamline search handling, and enhance UI interactions" />
     <MESSAGE value="Refactor LevelManager and SearchController; update main menu handling and improve search result display" />
     <MESSAGE value="Refactor SearchResult and SearchResultUI; update variable accessibility, enhance UI elements, and improve result display logic" />
     <MESSAGE value="Add QueueUI and QueueElementUI; implement node management for search visualization and enhance UI interactions" />
@@ -851,7 +869,8 @@
     <MESSAGE value="TODO: Add an extra dropbox at the end to be able to add to the ed of the player queue&#10;Also, fix the glitching when sliding between different positions to put in the player queue&#10;Also, fix the problem with the collisions not detecting. Maybe the element collider is too small?" />
     <MESSAGE value="Enhance player queue functionality; add last drop zone and improve hover handling in QueueDropZone" />
     <MESSAGE value="Enhance player queue functionality; improve node addition and hover handling in PlayerQueueUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance player queue functionality; improve node addition and hover handling in PlayerQueueUI" />
+    <MESSAGE value="Enhance player queue validation; improve mismatch reporting and add misplaced node handling in PlayerQueueUI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Enhance player queue validation; improve mismatch reporting and add misplaced node handling in PlayerQueueUI" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -874,6 +893,57 @@
           </properties>
           <option name="timeStamp" value="16" />
         </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="UnityEditor.Editor+SerializedObjectNotCreatableException" breakIfHandledByUserCode="true" breakIfUnhandled="false" isInternal="false" displayValue="Editor+SerializedObjectNotCreatableException" namespaceName="UnityEditor">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="25" />
+        </breakpoint>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet_Exception_Breakpoints">
+          <properties exception="UnityEngine.MissingReferenceException" breakIfHandledByUserCode="true" isInternal="false" displayValue="MissingReferenceException" namespaceName="UnityEngine">
+            <option name="internal" value="false" />
+          </properties>
+          <option name="timeStamp" value="28" />
+        </breakpoint>
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs</url>
+          <line>134</line>
+          <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\UI\PlayerQueueUI.cs" containingFunctionPresentation="Method 'AddNode'">
+            <startOffsets>
+              <option value="4748" />
+            </startOffsets>
+            <endOffsets>
+              <option value="4767" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs</url>
+          <line>82</line>
+          <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\GameModes\PlayerQueueState.cs" containingFunctionPresentation="Method 'RemoveFromPlayerFrontier'">
+            <startOffsets>
+              <option value="2495" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2496" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/GameModes/PlayerQueueState.cs</url>
+          <line>66</line>
+          <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\GameModes\PlayerQueueState.cs" containingFunctionPresentation="Method 'AddToPlayerFrontier'">
+            <startOffsets>
+              <option value="2042" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2043" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <pin-to-top-manager>

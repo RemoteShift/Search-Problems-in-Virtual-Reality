@@ -27,6 +27,10 @@ namespace Search.Controllers
         private Coroutine _solutionPathCoroutine;
         public float searchTimeScale = 1f;
 
+        // List of node visuals that need to be set to frontier state once
+        // the player has advanced the step (ordered the frontier correctly) :)
+        private readonly List<NodeVisual> _nodeVisualsToFrontier = new();
+
         private void OnEnable()
         {
             LevelManager.Instance?.onSearchLoaded.AddListener(OnSearchLoaded);
@@ -37,12 +41,22 @@ namespace Search.Controllers
             LevelManager.Instance.onSearchLoaded.RemoveListener(OnSearchLoaded);
         }
 
+        /// <summary>
+        /// Only clears the collection of node visuals that are waiting to be set to frontier.
+        /// Should only be called when switching modes or when a new search is loaded
+        /// </summary>
+        public void ClearState()
+        {
+            _nodeVisualsToFrontier.Clear();
+        }
+        
         private void OnSearchLoaded()
         {
             if(_solutionPathCoroutine != null)
                 StopCoroutine(_solutionPathCoroutine);
             _solutionPathCoroutine = null;
             
+            ClearState();
             SearchModeController.Instance.ResetSolveState();
         }
 
@@ -60,6 +74,10 @@ namespace Search.Controllers
 
         public void OnNodeExpanding(SearchNode node)
         {
+            // Don't show any nodes getting expanded in the next step. Cheating is bad
+            if (SearchModeController.Instance.CurrentMode == SearchPlayMode.Solve)
+                return;
+            
             problemVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Expanding);
             problemVisualizer?.BlinkNode(node.state, Color.red);
             problemVisualizer?.TryPlaySameState(node);
@@ -94,10 +112,16 @@ namespace Search.Controllers
             foreach (var node in nodes)
             { 
                 var problemVisual = problemVisualizer?.GetOrCreateNodeVisual(node, node.parent);
-                problemVisual?.SetState(NodeState.Frontier);
+                if(SearchModeController.Instance.CurrentMode == SearchPlayMode.Observe)
+                    problemVisual?.SetState(NodeState.Frontier);
+                else
+                    _nodeVisualsToFrontier.Add(problemVisual);
                 
                 var treeVisual = treeVisualizer?.GetOrCreateNodeVisual(node, node.parent);
-                treeVisual?.SetState(NodeState.Frontier);
+                if(SearchModeController.Instance.CurrentMode == SearchPlayMode.Observe)
+                    treeVisual?.SetState(NodeState.Frontier);
+                else
+                    _nodeVisualsToFrontier.Add(treeVisual);
                 
                 nodeVisuals.Add(levelManager.useGraphSearch ? problemVisual : treeVisual);
             }
@@ -204,6 +228,11 @@ namespace Search.Controllers
             {
                 DOTween.Complete("Search");
                 return;
+            }
+
+            foreach (var nodeVisual in _nodeVisualsToFrontier)
+            {
+                nodeVisual.SetState(NodeState.Frontier);
             }
             
             search?.AdvanceStep();

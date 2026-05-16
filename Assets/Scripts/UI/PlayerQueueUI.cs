@@ -51,6 +51,9 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
     {
         _canvas = GetComponentInChildren<Canvas>();
 
+        if(lastDropZone)
+            lastDropZone.gameObject.layer = LayerMask.NameToLayer("Default");
+        
         if (SearchModeController.Instance.CurrentMode != SearchPlayMode.Solve)
         {
             _canvas.enabled = false;
@@ -152,7 +155,7 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         dropZoneObject.layer = LayerMask.NameToLayer("Default");
         var dropZone = dropZoneObject.GetComponent<QueueDropZone>();
         
-        _dropZoneLookup.Add(element, dropZone);
+        _dropZoneLookup.Add(ui, dropZone);
         dropZone.transform.SetSiblingIndex(index >= 0 ? index : 0);
         dropZoneObject.name = dropZone.zoneIndex.ToString();
 
@@ -289,6 +292,8 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
 
     private void HandleFrontierAddNode(bool value)
     {
+        GetComponent<Rigidbody>().isKinematic = value;
+        
         if (value || !currentlyGrabbedQueueElementObject || !_hoveringElementInstance)
             return; // Element was grabbed, not dropped. Or not being hovered
         

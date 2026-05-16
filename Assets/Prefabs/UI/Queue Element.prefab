@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4423002251227730336}
   - component: {fileID: -9011845791845353333}
   - component: {fileID: 3190696115446730072}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Queue Element
   m_TagString: QueueElement
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ MonoBehaviour:
   nodeVisual: {fileID: 0}
   isDroppingIntoQueue: 0
   nodeStateText: {fileID: 6820762428148415685}
-  textColor: {r: 0, g: 0, b: 0, a: 0}
+  queueElementPrefab: {fileID: 2661928223120629802}
 --- !u!54 &-9011845791845353333
 Rigidbody:
   m_ObjectHideFlags: 0

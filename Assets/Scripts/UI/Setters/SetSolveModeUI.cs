@@ -14,7 +14,6 @@ public class SetSolveModeUI : MonoBehaviour
         toggle.onValueChanged.AddListener((bool value) =>
         {
             SearchModeController.Instance.SetMode(value ? SearchPlayMode.Solve : SearchPlayMode.Observe);
-            
         });
     }
 }
