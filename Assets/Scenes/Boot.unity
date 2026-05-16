@@ -382,6 +382,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1249196126242638507, guid: 42e38d74c8ec0e348a6bd3a48b5a3b86, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6427998411007737107, guid: 42e38d74c8ec0e348a6bd3a48b5a3b86, type: 3}
       propertyPath: m_Name
       value: XR Origin

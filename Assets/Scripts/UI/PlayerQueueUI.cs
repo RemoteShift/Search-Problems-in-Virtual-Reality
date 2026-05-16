@@ -5,6 +5,7 @@ using Search.Levels;
 using Search.Utils;
 using Search.Visualization;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerQueueUI : Singleton<PlayerQueueUI>
 {
@@ -14,9 +15,10 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
     [SerializeField] private Transform queueContent;
     [SerializeField] private Transform dropZoneContent;
     [SerializeField] private GameObject cube;
+    [SerializeField] private QueueDropZone lastDropZone;
 
     [HideInInspector] public GameObject currentlyGrabbedQueueElementObject;
-    private int _hoveredZoneIndex;
+    private readonly Dictionary<QueueDropZone, int> _hoverCounts = new();
     private GameObject _hoveringElementInstance;
     
     private Canvas _canvas;
@@ -70,7 +72,7 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         ui.Initialize(nodeVisual);
 
         _uiLookup.Add(nodeVisual, ui);
-        ui.transform.SetSiblingIndex(index >= 0 ? index : 0);
+        ui.transform.SetSiblingIndex(index >= 0 ? index + 1 : 1);
 
         var dropZoneObject = Instantiate(dropZonePrefab, dropZoneContent);
         var dropZone = dropZoneObject.GetComponent<QueueDropZone>();
@@ -78,6 +80,8 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         
         _dropZoneLookup.Add(ui, dropZone);
         dropZone.transform.SetSiblingIndex(index >= 0 ? index : 0);
+        
+        lastDropZone.zoneIndex++;
         
         return true;
     }
@@ -99,6 +103,8 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         _dropZoneLookup.Remove(element);
         
         Destroy(uiTransform.gameObject);
+        
+        lastDropZone.zoneIndex--;
     }
 
     /// <summary>
@@ -117,6 +123,8 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         
         _uiLookup.Remove(nodeVisual);
         Destroy(ui.gameObject);
+
+        lastDropZone.zoneIndex--;
         
         return true;
     }
@@ -140,26 +148,62 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         return order;
     }
 
-    public void SetHoveringIndex(int index)
+    public void RegisterHover(QueueDropZone zone)
     {
-        _hoveredZoneIndex = index;
+        if (zone == null) return;
 
-        if (index == -1)
+        var count = _hoverCounts.GetValueOrDefault(zone, 0);
+
+        count++;
+        _hoverCounts[zone] = count;
+
+        if (count == 1)
+            UpdateHoverVisual();
+    }
+
+    public void UnregisterHover(QueueDropZone zone)
+    {
+        if (zone == null) return;
+
+        if (!_hoverCounts.TryGetValue(zone, out var count))
+            return;
+
+        count--;
+        if (count <= 0)
+        {
+            _hoverCounts.Remove(zone);
+            UpdateHoverVisual(); // zone fully cleared
+        }
+        else
+        {
+            _hoverCounts[zone] = count;
+        }
+    }
+
+    private void UpdateHoverVisual()
+    {
+        if (_hoverCounts.Count == 0)
         {
             DisableHoveringVisual();
             return;
         }
 
-        ShowHoveringVisual(index);
+        // pick best zone; e.g. smallest zoneIndex or change to distance-based
+        var bestZone = _hoverCounts.Keys.OrderBy(z => z.zoneIndex).First();
+        ShowHoveringVisual(bestZone.zoneIndex);
     }
-
+    
     private void ShowHoveringVisual(int index)
     {
-        if (_hoveringElementInstance)
-            return;
+        if (_hoveringElementInstance == null)
+        {
+            _hoveringElementInstance = Instantiate(hoveringElementPrefab, queueContent);
+        }
 
-        _hoveringElementInstance = Instantiate(hoveringElementPrefab, queueContent);
         _hoveringElementInstance.transform.SetSiblingIndex(index + 1);
+        
+        if (queueContent is RectTransform rect)
+            LayoutRebuilder.ForceRebuildLayoutImmediate(rect);
     }
     
     private void DisableHoveringVisual()
@@ -201,6 +245,8 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
         
             _dropZoneLookup.Add(ui, dropZone);
             dropZone.transform.SetSiblingIndex(i);
+
+            lastDropZone.zoneIndex++;
         }
     }
     
@@ -212,8 +258,11 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
             {
                 foreach (Transform zone in child.GetChild(0))
                 {
-                    Destroy(zone.gameObject);
+                    if(zone != lastDropZone.transform)
+                        Destroy(zone.gameObject);
                 }
+
+                lastDropZone.zoneIndex = 0;
                 continue;
             }
             

@@ -1,16 +1,11 @@
-using System;
 using UnityEngine;
 
 public class QueueDropZone : MonoBehaviour
 {
     [SerializeField] private PlayerQueueUI playerQueueUI;
     public int zoneIndex;
-
-    public bool isHoveringDropZone { get; private set; }
     
     private bool _wasInProximity;
-    private QueueElementUI currentlyGrabbedQueueElement => 
-        PlayerQueueUI.Instance.currentlyGrabbedQueueElementObject.GetComponent<QueueElementUI>();
 
     // private void OnDestroy()
     // {
@@ -28,18 +23,22 @@ public class QueueDropZone : MonoBehaviour
         if (!other.CompareTag("QueueElement"))
             return;
 
-        isHoveringDropZone = true;
-        PlayerQueueUI.Instance.SetHoveringIndex(zoneIndex);
-        currentlyGrabbedQueueElement.isDroppingIntoQueue = true;
+        Debug.Log($"Entered Drop Zone {zoneIndex}");
+        
+        PlayerQueueUI.Instance.RegisterHover(this);
+        var grabbed = PlayerQueueUI.Instance.currentlyGrabbedQueueElementObject;
+        if (grabbed) grabbed.GetComponent<QueueElementUI>().isDroppingIntoQueue = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag("QueueElement"))
             return;
-
-        isHoveringDropZone = false;
-        PlayerQueueUI.Instance.SetHoveringIndex(-1);
-        currentlyGrabbedQueueElement.isDroppingIntoQueue = false;
+        
+        Debug.Log($"Exited Drop Zone {zoneIndex}");
+        
+        PlayerQueueUI.Instance.UnregisterHover(this);
+        var grabbed = PlayerQueueUI.Instance.currentlyGrabbedQueueElementObject;
+        if (grabbed) grabbed.GetComponent<QueueElementUI>().isDroppingIntoQueue = false;
     }
 }

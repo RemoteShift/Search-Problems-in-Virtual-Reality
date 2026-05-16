@@ -139,6 +139,10 @@ namespace Search.Visualization
                     Destroy(currentlyGrabbedQueueElementObject);
                 currentlyGrabbedQueueElementObject = null;
                 
+                PlayerQueueUI.Instance.GetComponent<Rigidbody>().isKinematic = false;
+                
+                EdgeManager.Instance.RemoveEdge("GrabbedNodeVisual", "TempQueueElementUI");
+                
                 VRInputHandler.Instance.OnRightGridAndBPressChanged -= HandleNodeGrabbedQueue;
                 return;
             }
@@ -146,9 +150,12 @@ namespace Search.Visualization
             var parentTransform = PlayerLocomotion.Instance.tempQueueHandAttachmentPoint;
             
             currentlyGrabbedQueueElementObject = Instantiate(queueElementPrefab, parentTransform);
+            currentlyGrabbedQueueElementObject.layer = LayerMask.NameToLayer("Default");
             currentlyGrabbedQueueElement = currentlyGrabbedQueueElementObject.GetComponent<QueueElementUI>();
             
             currentlyGrabbedQueueElement.Initialize(this);
+
+            PlayerQueueUI.Instance.GetComponent<Rigidbody>().isKinematic = true;
             
             EdgeManager.Instance.AddEdge("GrabbedNodeVisual", "TempQueueElementUI", 
                 transform, currentlyGrabbedQueueElement.transform);

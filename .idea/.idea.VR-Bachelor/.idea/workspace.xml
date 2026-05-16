@@ -4,10 +4,10 @@
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Drop Zone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Drop Zone.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Hovering Element Visual.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Hovering Element Visual.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boot.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boot.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/QueueDropZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/QueueDropZone.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +18,7 @@
   <component name="CopilotChats">
     <option name="panelChat">
       <chat>
-        <option name="activeSessionId" value="4100e5ed-5a40-4304-93e8-3b0d06ad490a" />
+        <option name="activeSessionId" value="fbdb4580-3f67-4623-9668-5c496dc0d3d8" />
         <option name="sessions">
           <session>
             <option name="chatType" value="PANEL" />
@@ -108,6 +108,23 @@
             <option name="modeId" value="Ask" />
             <option name="modelType" value="builtin_family" />
             <option name="modelValue" value="auto" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="92a6d0a9-5c9c-4ff5-b1bd-6eb5b06abe09" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+            <option name="targetType" value="LOCAL" />
+          </session>
+          <session>
+            <option name="chatType" value="PANEL" />
+            <option name="id" value="fbdb4580-3f67-4623-9668-5c496dc0d3d8" />
+            <option name="modeId" value="Ask" />
+            <option name="modelType" value="builtin_family" />
+            <option name="modelValue" value="auto" />
+            <option name="status" value="Completed" />
             <option name="targetType" value="LOCAL" />
           </session>
         </option>
@@ -368,15 +385,8 @@
       <workItem from="1778759373953" duration="13008000" />
       <workItem from="1778778697103" duration="2586000" />
       <workItem from="1778781323529" duration="11653000" />
-      <workItem from="1778853323309" duration="23034000" />
-    </task>
-    <task id="LOCAL-00029" summary="Refactor GeneralSearch and LevelManager to support step-by-step search execution; enhance visualization and state management">
-      <option name="closed" value="true" />
-      <created>1776966450621</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1776966450621</updated>
+      <workItem from="1778853323309" duration="23137000" />
+      <workItem from="1778928279913" duration="9114000" />
     </task>
     <task id="LOCAL-00030" summary="Add SearchController to manage search state and visualization; enhance node state handling and UI interaction">
       <option name="closed" value="true" />
@@ -762,7 +772,15 @@
       <option name="project" value="LOCAL" />
       <updated>1778882941744</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="TODO: Add an extra dropbox at the end to be able to add to the ed of the player queue&#10;Also, fix the glitching when sliding between different positions to put in the player queue&#10;Also, fix the problem with the collisions not detecting. Maybe the element collider is too small?">
+      <option name="closed" value="true" />
+      <created>1778884848466</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1778884848466</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -795,7 +813,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add new UI components and scripts; implement functionality for SearchControllerUI and NodeStatsUI&#10;&#10;TODO: Find out why the nodes are still spawning at the start position in both visualizers" />
     <MESSAGE value="Refactor search-related classes; add automatic search functionality and improve animation handling" />
     <MESSAGE value="Refactor visualizer classes; improve variable naming, streamline node positioning logic, and enhance automatic search handling" />
     <MESSAGE value="Refactor LevelManager and SearchController; update variable accessibility, streamline search handling, and enhance UI interactions" />
@@ -820,7 +837,8 @@
     <MESSAGE value="Add game mode management; implement PlayerQueueState and SearchModeController&#10;&#10;Initial thing. Let's hope this works (it seldom does)" />
     <MESSAGE value="Implement player queue UI and enhance search mode handling; add node management features and improve event subscriptions" />
     <MESSAGE value="Add drop zone functionality and enhance player queue UI; implement QueueDropZone and ColliderViewportCuller components" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add drop zone functionality and enhance player queue UI; implement QueueDropZone and ColliderViewportCuller components" />
+    <MESSAGE value="TODO: Add an extra dropbox at the end to be able to add to the ed of the player queue&#10;Also, fix the glitching when sliding between different positions to put in the player queue&#10;Also, fix the problem with the collisions not detecting. Maybe the element collider is too small?" />
+    <option name="LAST_COMMIT_MESSAGE" value="TODO: Add an extra dropbox at the end to be able to add to the ed of the player queue&#10;Also, fix the glitching when sliding between different positions to put in the player queue&#10;Also, fix the problem with the collisions not detecting. Maybe the element collider is too small?" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
