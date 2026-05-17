@@ -37,7 +37,7 @@ namespace Search.Visualization
             initialScale = transform.localScale;
             _renderer = GetComponent<MeshRenderer>();
             _anim = GetComponent<Animator>();
-            SetState(NodeState.Default);
+            SetState(NodeState.Generated);
 
             // By default, a newly initialized visual is considered new (animation should run)
             isNew = true;
@@ -48,7 +48,7 @@ namespace Search.Visualization
             currentState = newState;
             _renderer.material = newState switch
             {
-                NodeState.Default => defaultMat,
+                NodeState.Generated => defaultMat,
                 NodeState.Frontier => frontierMat,
                 NodeState.Expanded => expandedMat,
                 NodeState.Expanding => expandingMat,
@@ -107,13 +107,13 @@ namespace Search.Visualization
             switch (isHovering)
             {
                 case true:
-                    if(currentState == NodeState.Default 
+                    if(currentState == NodeState.Generated 
                        && SearchModeController.Instance.CurrentMode == SearchPlayMode.Solve
                        && !currentlyGrabbedQueueElementObject)
                         VRInputHandler.Instance.OnRightGridAndBPressChanged += HandleNodeGrabbedQueue;
                     break;
                 case false:
-                    if(currentState == NodeState.Default 
+                    if(currentState == NodeState.Generated 
                        && SearchModeController.Instance.CurrentMode == SearchPlayMode.Solve
                        && !currentlyGrabbedQueueElementObject)
                         VRInputHandler.Instance.OnRightGridAndBPressChanged -= HandleNodeGrabbedQueue;

@@ -2,7 +2,7 @@ namespace Search.Core
 {
     public enum NodeState
     {
-        Default,
+        Generated,
         Expanded,
         Expanding,
         Frontier,

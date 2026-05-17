@@ -59,7 +59,8 @@ public class QueueElementUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         var parentTransform = PlayerLocomotion.Instance.tempQueueHandAttachmentPoint;
 
-        currentlyGrabbedQueueElementObject = Instantiate(queueElementPrefab, parentTransform);
+        currentlyGrabbedQueueElementObject = Instantiate(queueElementPrefab, parentTransform.position,
+            parentTransform.rotation, parentTransform);
         currentlyGrabbedQueueElementObject.GetComponent<Collider>().enabled = true;
         currentlyGrabbedQueueElementObject.layer = LayerMask.NameToLayer("Default");
         currentlyGrabbedQueueElement = currentlyGrabbedQueueElementObject.GetComponent<QueueElementUI>();
@@ -83,7 +84,7 @@ public class QueueElementUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             EdgeManager.Instance.AddEdge("QueueElementUI", "ResultingNodeVisual", 
             transform, visual.transform);
         
-        if(nodeVisual.currentState == NodeState.Default
+        if(nodeVisual.currentState == NodeState.Generated
            && SearchModeController.Instance.CurrentMode == SearchPlayMode.Solve
            && !currentlyGrabbedQueueElementObject)
             VRInputHandler.Instance.OnRightGridAndBPressChanged += HandleNodeGrabbedQueue;
@@ -94,7 +95,7 @@ public class QueueElementUI : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         NodeStatsUI.Instance.DisableNodeStatsUI();
         EdgeManager.Instance.RemoveEdge("QueueElementUI", "ResultingNodeVisual");
         
-        if(nodeVisual.currentState == NodeState.Default
+        if(nodeVisual.currentState == NodeState.Generated
            && SearchModeController.Instance.CurrentMode == SearchPlayMode.Solve
            && !currentlyGrabbedQueueElementObject)
             VRInputHandler.Instance.OnRightGridAndBPressChanged -= HandleNodeGrabbedQueue;

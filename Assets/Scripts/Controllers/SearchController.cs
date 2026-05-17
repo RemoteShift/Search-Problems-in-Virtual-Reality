@@ -89,8 +89,8 @@ namespace Search.Controllers
 
         public void OnNodeGenerated(SearchNode node)
         {
-            problemVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Default);
-            treeVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Default);
+            problemVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Generated);
+            treeVisualizer?.GetOrCreateNodeVisual(node, node.parent).SetState(NodeState.Generated);
         }
 
         public void OnFrontierReordered(IReadOnlyList<SearchNode> frontier)
