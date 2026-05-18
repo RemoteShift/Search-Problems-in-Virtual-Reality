@@ -3382,7 +3382,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6373452000460593366, guid: ac33922e70df6c542afc1f27b9992c98, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 588105150}
   m_SourcePrefab: {fileID: 100100000, guid: ac33922e70df6c542afc1f27b9992c98, type: 3}
 --- !u!224 &588105147 stripped
 RectTransform:
@@ -3394,12 +3397,29 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2597277923604280156, guid: ac33922e70df6c542afc1f27b9992c98, type: 3}
   m_PrefabInstance: {fileID: 588105146}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 588105149}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9130432079c789a4c92aac8cf8082dfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QueueDropZone
+--- !u!1 &588105149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6373452000460593366, guid: ac33922e70df6c542afc1f27b9992c98, type: 3}
+  m_PrefabInstance: {fileID: 588105146}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &588105150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588105149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3954f0e167fd8754d985dbbaf2133b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1001 &591808615
 PrefabInstance:
   m_ObjectHideFlags: 0

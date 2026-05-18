@@ -71,6 +71,8 @@ public class PlayerQueueUI : Singleton<PlayerQueueUI>
     {
         foreach (var kvp in _uiLookup.Where(kv => nodes.Contains(kv.Key)))
         {
+            if (!SearchModeController.Instance.latestDelta.Contains(kvp.Key))
+                continue;
             kvp.Value.textColor = Color.red;
             _currentlyMisplacedElements.Add(kvp.Value);
         }

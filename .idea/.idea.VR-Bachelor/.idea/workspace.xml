@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Queue Element.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/SearchController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enums/NodeState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enums/NodeState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/QueueElementUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/QueueElementUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Visualizers/Visuals/NodeVisual.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -425,6 +421,8 @@
       <workItem from="1778853323309" duration="23137000" />
       <workItem from="1778928279913" duration="35341000" />
       <workItem from="1779009110396" duration="2111000" />
+      <workItem from="1779016430790" duration="989000" />
+      <workItem from="1779122031073" duration="719000" />
     </task>
     <task id="LOCAL-00034" summary="Add TreeVisualizer for hierarchical search visualization; enhance SearchController and related components for improved node handling">
       <option name="closed" value="true" />
@@ -913,13 +911,13 @@
         </breakpoint>
         <line-breakpoint type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/UI/PlayerQueueUI.cs</url>
-          <line>135</line>
+          <line>137</line>
           <properties documentPath="C:\Users\allou\OneDrive\Desktop\Unity Projects\VR-Bachelor\Assets\Scripts\UI\PlayerQueueUI.cs" containingFunctionPresentation="Method 'AddNode'">
             <startOffsets>
-              <option value="4791" />
+              <option value="4895" />
             </startOffsets>
             <endOffsets>
-              <option value="4810" />
+              <option value="4914" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="36" />
