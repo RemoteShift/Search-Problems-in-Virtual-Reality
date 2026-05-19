@@ -1,0 +1,153 @@
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{tikz-uml}
+
+\begin{document}
+\begin{tikzpicture}
+  % Package: Orchestration
+  \begin{umlpackage}[x=0,y=0]{Orchestration}
+    \umlclass[x=0,y=0]{LevelManager}{
+      - _problem : SearchProblem\\
+      - searchAlgorithm : GeneralSearch
+    }{
+      + StartSearch()\\
+      + LoadLevel()
+    }
+    \umlclass[x=7.2,y=0]{GeneralSearch}{
+      + QueueingFunction : IQueuingFunction\\
+      - _frontier : IFrontier<SearchNode>\\
+      - _searchResult : SearchResult
+    }{
+      + SearchCoroutine(problem, owner)\\
+      + AdvanceStep()
+    }
+    \umlclass[x=14.4,y=0]{SearchController}{
+      + isAutomaticSearch : bool
+    }{
+      + AdvanceStep()\\
+      + OnSearchComplete(result)
+    }
+    \umlclass[x=7.2,y=-4.2]{SearchResult}{
+      + success : bool\\
+      + solutionNode : SearchNode
+    }{
+      + Found(...)\\
+      + Failed(...)
+    }
+    \umlinterface[x=14.4,y=-4.2]{ISearchListener}{}{
+      + OnNodeExpanded(node)\\
+      + OnSearchComplete(result)\\
+      + AddEdge(a,b)
+    }
+  \end{umlpackage}
+
+  % Package: Problem Model
+  \begin{umlpackage}[x=0,y=-8.2]{Problem Model}
+    \umlclass[x=0,y=0]{SearchProblem}{
+      + actions : IReadOnlyList\textless string\textgreater\\
+      + initialState : IState\\
+      + transitionFunction : ITransitionFunction\\
+      + stepCostFunction : IStepCostFunction
+    }{
+      + IsGoal(state)\\
+      + GetHeuristicCost(state)
+    }
+    \umlinterface[x=7.2,y=0]{IState}{
+      + id : string
+    }{
+      + Equals(other)
+    }
+    \umlclass[x=11.6,y=0]{GridState}{
+      + Row : int\\
+      + Column : int
+    }{}
+
+    \umlinterface[x=0,y=-4.2]{ITransitionFunction}{}{
+      + GetSuccessor(state, action)
+    }
+    \umlclass[x=4.8,y=-4.2]{MazeTransition}{
+      - _mazeWalls : bool[,]
+    }{
+      + GetSuccessor(state, action)
+    }
+
+    \umlinterface[x=9.8,y=-4.2]{IStepCostFunction}{}{
+      + GetCost(from, action, to)
+    }
+    \umlclass[x=14.4,y=-4.2]{MazeStep}{}{
+      + GetCost(from, action, to)
+    }
+    \umlclass[x=7.2,y=-8.4]{SearchNode}{
+      + state : IState\\
+      + parent : SearchNode\\
+      + pathCost : float\\
+      + heuristicCost : float
+    }{
+      + GetPathActions()
+    }
+  \end{umlpackage}
+
+  % Package: Strategy + Frontier
+  \begin{umlpackage}[x=18.8,y=0]{Strategy + Frontier}
+    \umlinterface[x=0,y=0]{IQueuingFunction}{
+      + isInformed : bool
+    }{
+      + Reorder(frontier, successors)
+    }
+    \umlclass[x=0,y=-3.2]{BFS}{}{}
+    \umlclass[x=3.4,y=-3.2]{DFS}{}{}
+    \umlclass[x=6.8,y=-3.2]{UCS}{}{}
+    \umlclass[x=0,y=-6.4]{IDS}{}{}
+    \umlclass[x=3.4,y=-6.4]{GBFS}{}{}
+    \umlclass[x=6.8,y=-6.4]{Astar}{}{}
+
+    \umlinterface[x=0,y=-10]{IFrontierSearchNode}{}{
+      + Add(node)\\
+      + Remove()\\
+      + Contains(node)
+    }
+    \umlclass[x=0,y=-13.4]{QueueSearchNode}{}{}
+    \umlclass[x=3.8,y=-13.4]{StackSearchNode}{}{}
+    \umlclass[x=8.4,y=-13.4]{PriorityQueueSearchNode}{}{}
+  \end{umlpackage}
+
+  % Package: Visualization hooks
+  \begin{umlpackage}[x=18.8,y=-15.4]{Visualization hooks}
+    \umlinterface[x=0,y=0]{IVisualizer}{}{
+      + Setup(levelData, problem)\\
+      + ClearVisuals()
+    }
+    \umlclass[x=4.5,y=0]{MazeVisualizer}{}{}
+    \umlclass[x=9.4,y=0]{TreeVisualizer}{}{}
+  \end{umlpackage}
+
+  % Required relations
+  \umlcompo{LevelManager}{GeneralSearch}
+  \umldep{LevelManager}{SearchProblem}
+  \umldep{GeneralSearch}{SearchProblem}
+  \umldep{GeneralSearch}{IQueuingFunction}
+  \umldep{GeneralSearch}{IFrontierSearchNode}
+  \umldep{GeneralSearch}{SearchNode}
+  \umldep{SearchProblem}{ITransitionFunction}
+  \umldep{SearchProblem}{IStepCostFunction}
+  \umldep{SearchProblem}{IState}
+  \umldep{GeneralSearch}{ISearchListener}
+  \umldep{SearchController}{IVisualizer}
+
+  % Interface realizations
+  \umlimpl{SearchController}{ISearchListener}
+  \umlimpl{GridState}{IState}
+  \umlimpl{MazeTransition}{ITransitionFunction}
+  \umlimpl{MazeStep}{IStepCostFunction}
+  \umlimpl{BFS}{IQueuingFunction}
+  \umlimpl{DFS}{IQueuingFunction}
+  \umlimpl{UCS}{IQueuingFunction}
+  \umlimpl{IDS}{IQueuingFunction}
+  \umlimpl{GBFS}{IQueuingFunction}
+  \umlimpl{Astar}{IQueuingFunction}
+  \umlimpl{QueueSearchNode}{IFrontierSearchNode}
+  \umlimpl{StackSearchNode}{IFrontierSearchNode}
+  \umlimpl{PriorityQueueSearchNode}{IFrontierSearchNode}
+  \umlimpl{MazeVisualizer}{IVisualizer}
+  \umlimpl{TreeVisualizer}{IVisualizer}
+\end{tikzpicture}
+\end{document}

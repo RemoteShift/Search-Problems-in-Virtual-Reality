@@ -1,0 +1,79 @@
+\documentclass[tikz,border=6pt]{standalone}
+\usepackage{tikz-uml}
+
+\begin{document}
+\begin{tikzpicture}
+  % Package: Level Data
+  \begin{umlpackage}[x=0,y=0]{Level Data}
+    \umlclass[x=0,y=0, type=abstract]{LevelData}{
+      + levelName : string\\
+      + expansionLimit : int
+    }{
+      + CreateSearchProblem() : SearchProblem
+    }
+    \umlclass[x=8,y=0]{MazeLevelData}{
+      + rows : int\\
+      + columns : int\\
+      + start : Vector2Int\\
+      + goals : Vector2Int[]\\
+      + wallsPositions : List<Vector2Int>
+    }{
+      + GetWalls2D() : bool[,]\\
+      + CreateSearchProblem() : SearchProblem
+    }
+  \end{umlpackage}
+
+  % Package: Level Loading
+  \begin{umlpackage}[x=0,y=-7]{Level Loading}
+    \umlclass[x=0,y=0]{LevelManager}{
+      - currentLevel : LevelData\\
+      - _problem : SearchProblem
+    }{
+      + LoadLevel()\\
+      + StartSearch()
+    }
+    \umlclass[x=8,y=0]{EdgeManager}{}{
+      + ClearEdges()
+    }
+  \end{umlpackage}
+
+  % Package: Visual Generation
+  \begin{umlpackage}[x=0,y=-14]{Visual Generation}
+    \umlinterface[x=0,y=0]{IVisualizer}{}{
+      + Setup(levelData, problem)\\
+      + ClearVisuals()
+    }
+    \umlclass[x=6.2,y=0]{MazeVisualizer}{}{
+      + Setup(levelData, problem)\\
+      - BuildGroundAndWalls()\\
+      - PlaceStartMarker()\\
+      - PlaceGoalMarkers()\\
+      - PositionCamera()
+    }
+    \umlclass[x=12.8,y=0]{TreeVisualizer}{}{
+      + Setup(levelData, problem)
+    }
+  \end{umlpackage}
+
+  % Package: Search Problem Objects built during load
+  \begin{umlpackage}[x=16.8,y=-7]{Search Problem Objects built during load}
+    \umlclass[x=0,y=0]{SearchProblem}{}{}
+    \umlclass[x=5,y=0]{GridState}{}{}
+    \umlclass[x=0,y=-3.8]{MazeTransition}{}{}
+    \umlclass[x=5,y=-3.8]{MazeStep}{}{}
+  \end{umlpackage}
+
+  % Required relations
+  \umlinherit{MazeLevelData}{LevelData}
+  \umldep{LevelManager}{LevelData}
+  \umldep{MazeLevelData}{SearchProblem}
+  \umldep{LevelManager}{MazeVisualizer}
+  \umldep{LevelManager}{TreeVisualizer}
+  \umldep{LevelManager}{EdgeManager}
+  \umldep{MazeVisualizer}{MazeLevelData}
+
+  % Realizations
+  \umlimpl{MazeVisualizer}{IVisualizer}
+  \umlimpl{TreeVisualizer}{IVisualizer}
+\end{tikzpicture}
+\end{document}
