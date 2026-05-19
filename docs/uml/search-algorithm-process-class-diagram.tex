@@ -100,14 +100,14 @@
     \umlclass[x=3.4,y=-6.4]{GBFS}{}{}
     \umlclass[x=6.8,y=-6.4]{Astar}{}{}
 
-    \umlinterface[x=0,y=-10]{IFrontierSearchNode}{}{
+    \umlinterface[x=0,y=-10]{IFrontier}{}{
       + Add(node)\\
       + Remove()\\
       + Contains(node)
     }
-    \umlclass[x=0,y=-13.4]{QueueSearchNode}{}{}
-    \umlclass[x=3.8,y=-13.4]{StackSearchNode}{}{}
-    \umlclass[x=8.4,y=-13.4]{PriorityQueueSearchNode}{}{}
+    \umlclass[x=0,y=-13.4]{QueueFrontier}{}{}
+    \umlclass[x=3.8,y=-13.4]{StackFrontier}{}{}
+    \umlclass[x=8.4,y=-13.4]{PriorityQueueFrontier}{}{}
   \end{umlpackage}
 
   % Package: Visualization hooks
@@ -125,7 +125,7 @@
   \umldep{LevelManager}{SearchProblem}
   \umldep{GeneralSearch}{SearchProblem}
   \umldep{GeneralSearch}{IQueuingFunction}
-  \umldep{GeneralSearch}{IFrontierSearchNode}
+  \umldep{GeneralSearch}{IFrontier}
   \umldep{GeneralSearch}{SearchNode}
   \umldep{SearchProblem}{ITransitionFunction}
   \umldep{SearchProblem}{IStepCostFunction}
@@ -144,9 +144,9 @@
   \umlimpl{IDS}{IQueuingFunction}
   \umlimpl{GBFS}{IQueuingFunction}
   \umlimpl{Astar}{IQueuingFunction}
-  \umlimpl{QueueSearchNode}{IFrontierSearchNode}
-  \umlimpl{StackSearchNode}{IFrontierSearchNode}
-  \umlimpl{PriorityQueueSearchNode}{IFrontierSearchNode}
+  \umlimpl{QueueFrontier}{IFrontier}
+  \umlimpl{StackFrontier}{IFrontier}
+  \umlimpl{PriorityQueueFrontier}{IFrontier}
   \umlimpl{MazeVisualizer}{IVisualizer}
   \umlimpl{TreeVisualizer}{IVisualizer}
 \end{tikzpicture}
