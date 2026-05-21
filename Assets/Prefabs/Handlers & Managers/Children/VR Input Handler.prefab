@@ -52,3 +52,4 @@ MonoBehaviour:
   rightTriggerValue: {fileID: 7904272356298805229, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   rightGripValue: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f, type: 3}
   rightGripAndB: {fileID: -1417971812758391805, guid: ccb6a038810ed214887a1691bc483117, type: 3}
+  rightGripAndA: {fileID: -395424816506771068, guid: ccb6a038810ed214887a1691bc483117, type: 3}

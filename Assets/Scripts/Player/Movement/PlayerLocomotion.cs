@@ -6,6 +6,7 @@ using UnityEngine.XR.Interaction.Toolkit.Locomotion.Movement;
 public class PlayerLocomotion : Singleton<PlayerLocomotion>
 {
     public Transform tempQueueHandAttachmentPoint;
+    public GameObject questionMarkCanvasObject;
     
     private CharacterController _characterController;
     private ContinuousMoveProvider _continuousMoveProvider;

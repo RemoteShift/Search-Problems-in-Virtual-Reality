@@ -14,8 +14,9 @@ public class VRInputHandler : Singleton<VRInputHandler>
     [SerializeField] private InputActionReference leftMenuPress;
     [Header("Right Hand Inputs")]
     [SerializeField] private InputActionReference rightTriggerValue;
-    [SerializeField] private InputActionReference rightGripValue;
+    [SerializeField] public InputActionReference rightGripValue;
     [SerializeField] private InputActionReference rightGripAndB;
+    [SerializeField] private InputActionReference rightGripAndA;
     
     public event Action<float> OnLeftTriggerValueChanged;
     public event Action<float> OnLeftGripValueChanged;
@@ -25,6 +26,7 @@ public class VRInputHandler : Singleton<VRInputHandler>
     public event Action<float> OnRightTriggerValueChanged;
     public event Action<float> OnRightGripValueChanged;
     public event Action<bool> OnRightGridAndBPressChanged;
+    public event Action OnRightGripAndAValueChanged;
 
     private void OnEnable()
     {
@@ -36,6 +38,7 @@ public class VRInputHandler : Singleton<VRInputHandler>
         rightTriggerValue.action.Enable();
         rightGripValue.action.Enable();
         rightGripAndB.action.Enable();
+        rightGripAndA.action.Enable();
         
         leftTriggerValue.action.performed += HandleLeftTrigger;
         leftTriggerValue.action.canceled += HandleLeftTrigger;
@@ -57,6 +60,8 @@ public class VRInputHandler : Singleton<VRInputHandler>
 
         rightGripAndB.action.performed += HandleRightGripAndB;
         rightGripAndB.action.canceled += HandleRightGripAndB;
+
+        rightGripAndA.action.performed += HandleRightGripAndA;
     }
 
     private void OnDisable()
@@ -82,6 +87,8 @@ public class VRInputHandler : Singleton<VRInputHandler>
         rightGripAndB.action.performed -= HandleRightGripAndB;
         rightGripAndB.action.canceled -= HandleRightGripAndB;
         
+        rightGripAndA.action.performed -= HandleRightGripAndA;
+        
         leftTriggerValue.action.Disable();
         leftGripValue.action.Disable();
         leftScalePress.action.Disable();
@@ -90,6 +97,7 @@ public class VRInputHandler : Singleton<VRInputHandler>
         rightTriggerValue.action.Disable();
         rightGripValue.action.Disable();
         rightGripAndB.action.Disable();
+        rightGripAndA.action.Disable();
     }
     
     private void HandleLeftTrigger(InputAction.CallbackContext ctx)
@@ -130,5 +138,10 @@ public class VRInputHandler : Singleton<VRInputHandler>
     private void HandleRightGripAndB(InputAction.CallbackContext ctx)
     {
         OnRightGridAndBPressChanged?.Invoke(ctx.ReadValueAsButton());
+    }
+
+    private void HandleRightGripAndA(InputAction.CallbackContext ctx)
+    {
+        OnRightGripAndAValueChanged?.Invoke();
     }
 }
