@@ -450,6 +450,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuestionMarkText
       objectReference: {fileID: 0}
+    - target: {fileID: 8767262410107916064, guid: 42e38d74c8ec0e348a6bd3a48b5a3b86, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767262410107916064, guid: 42e38d74c8ec0e348a6bd3a48b5a3b86, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767262410107916064, guid: 42e38d74c8ec0e348a6bd3a48b5a3b86, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767262410107916064, guid: 42e38d74c8ec0e348a6bd3a48b5a3b86, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767262410107916064, guid: 42e38d74c8ec0e348a6bd3a48b5a3b86, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -5.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767262410107916064, guid: 42e38d74c8ec0e348a6bd3a48b5a3b86, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 8767262410107916064, guid: 42e38d74c8ec0e348a6bd3a48b5a3b86, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

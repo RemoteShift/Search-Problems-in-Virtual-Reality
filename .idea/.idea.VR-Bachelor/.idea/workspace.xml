@@ -3,15 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b9caf2ea-d699-4bc3-afb7-040106673f6b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.VR-Bachelor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Input/Custom Input Action Asset.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Input/Custom Input Action Asset.inputactions" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Controls/Right.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Controls/Right.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Children/VR Input Handler.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Handlers &amp; Managers/Children/VR Input Handler.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/XR Origin.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/XR Origin.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Boot.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Boot.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Selector.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/SearchProblem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/Base/Search Problems/SearchProblem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Handlers/VRInputHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Handlers/VRInputHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/Movement/PlayerLocomotion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/Movement/PlayerLocomotion.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -380,15 +374,10 @@
       <workItem from="1779016430790" duration="989000" />
       <workItem from="1779122031073" duration="745000" />
       <workItem from="1779187132970" duration="7578000" />
-      <workItem from="1779379482993" duration="4440000" />
-    </task>
-    <task id="LOCAL-00035" summary="Refactor visualizer components; enhance TreeVisualizer and SearchController for improved node handling and edge management">
-      <option name="closed" value="true" />
-      <created>1777468700167</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1777468700167</updated>
+      <workItem from="1779379482993" duration="4464000" />
+      <workItem from="1779457393866" duration="5446000" />
+      <workItem from="1779466855966" duration="2018000" />
+      <workItem from="1779490636884" duration="238000" />
     </task>
     <task id="LOCAL-00036" summary="Add same state animation to Node visuals; enhance visual feedback in TreeVisualizer and SearchController">
       <option name="closed" value="true" />
@@ -774,7 +763,15 @@
       <option name="project" value="LOCAL" />
       <updated>1779133804474</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Trying to add tooltips">
+      <option name="closed" value="true" />
+      <created>1779396157123</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1779396157123</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -807,7 +804,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add QueueUI and QueueElementUI; implement node management for search visualization and enhance UI interactions" />
     <MESSAGE value="Refactor QueueUI and SearchResultUI; improve null safety and streamline UI disable logic" />
     <MESSAGE value="Refactor GeneralSearch and SearchController; streamline node removal logic in search process" />
     <MESSAGE value="Add MainMenu, TitleCanvasUI, and LevelSelectorUI; implement UI transitions and animations for enhanced user experience" />
@@ -832,7 +828,8 @@
     <MESSAGE value="Enhance player queue validation; improve mismatch reporting and add misplaced node handling in PlayerQueueUI" />
     <MESSAGE value="Enhance player queue functionality; improve expected frontier handling and UI updates in PlayerQueueState, PlayerQueueUI, and SearchModeController&#10;&#10;I'm finally done" />
     <MESSAGE value="Enhance player queue UI; improve misplaced node handling and add debug logging for destroyed objects" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enhance player queue UI; improve misplaced node handling and add debug logging for destroyed objects" />
+    <MESSAGE value="Trying to add tooltips" />
+    <option name="LAST_COMMIT_MESSAGE" value="Trying to add tooltips" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
